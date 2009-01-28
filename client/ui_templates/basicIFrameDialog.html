@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Basic IFrame Dialog</title>
+</head>
+<body>
+	<form action="#" class="xqFormDialog xqBasicIFrameDialog">
+		<table>
+			<tr>
+				<td>IFrame src:</td>
+				<td><input type="text" class="initialFocus" name="p_src" size="36" value="http://" /></td>
+			</tr>
+			<tr>
+				<td>Width:</td>
+				<td><input type="text" name="p_width" size="6" value="320" /></td>
+			</tr>
+			<tr>
+				<td>Height:</td>
+				<td><input type="text" name="p_height" size="6" value="200" /></td>
+			</tr>
+			<tr>
+				<td>Frame border:</td>
+				<td><select name="p_frameborder">
+					<option value="0" selected="selected">No</option>
+					<option value="1">Yes</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Scrolling:</td>
+				<td><select name="p_scrolling">
+					<option value="0">No</option>
+					<option value="1" selected="selected">Yes</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>ID(optional):</td>
+				<td><input type="text" name="p_id" size="24" value="" /></td>
+			</tr>
+			<tr>
+				<td>Class(optional):</td>
+				<td><input type="text" name="p_class" size="24" value="" /></td>
+			</tr>
+		</table>
+		<p>
+			<input type="submit" value="Ok" />
+			<input type="button" class="cancel" value="Cancel" />
+		</p>
+	</form>
+</body>
+</html>
