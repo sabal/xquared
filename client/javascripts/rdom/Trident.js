@@ -236,7 +236,7 @@ xq.rdom.Trident = xq.Class(xq.rdom.Base,
 	},
 	
 	deleteSelection: function() {
-		if(this.getSelectionAsText() !== "") this.sel().clear();
+		if(this.getSelectionAsText() !== "" || this.sel().type.toLowerCase() === 'control') this.sel().clear();
 	},
 	
 	placeCaretAtStartOf: function(element) {
