@@ -63,15 +63,18 @@
 
 /* selected */
 .xquared ul.buttons li a.selected {
-	background-color: #ffea5f;
-	border: 1px solid #a0a0a0;
+	background-color: #dbdbdb;
+	border-top: 1px solid #a2a2a2;
+	border-left: 1px solid #9b9b9b;
+	border-right: 1px solid #bfbfbf;
+	border-bottom: 1px solid #bfbfbf;
 	position: relative;
 	z-index: 1;
 }
 
 /* mouseover */
 .xquared ul.buttons li a:hover {
-	border: 1px solid #000;
+	border: 1px solid #666;
 	background-color: transparent;
 	position: relative;
 	z-index: 2;
