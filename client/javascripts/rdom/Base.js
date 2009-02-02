@@ -2129,8 +2129,13 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 		var foregroundColor = doc.queryCommandValue("forecolor");
 		var fontName = doc.queryCommandValue("fontname");
 		var fontSize = doc.queryCommandValue("fontsize");
-		// @WORKAROUND: Trident's fontSize value is affected by CSS
-		if(xq.Browser.isTrident && fontSize === 5 && this.getParentElementOf(element, ["H1", "H2", "H3", "H4", "H5", "H6"])) fontSize = "";
+		
+		// @WORKAROUND: Trident's fontSize, foregroundColor, fontName value is affected by CSS
+		if(xq.Browser.isTrident && fontSize === 5 && this.getParentElementOf(element, ["H1", "H2", "H3", "H4", "H5", "H6"])){
+			fontSize = "";
+			foregroundColor = "";
+			fontName = "";
+		}
 		
 		// @TODO: remove conditional
 		var backgroundColor;
