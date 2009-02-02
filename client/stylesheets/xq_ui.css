@@ -61,6 +61,48 @@
 	font-size: 1.25em;
 }
 
+.xquared div.dialogs .lightweight {
+	background-color: #fff;
+	position: absolute;
+	border: 1px solid #B9BFCC;
+	z-index: 10;
+}
+
+.xquared div.dialogs .lightweight ul {
+	padding: 0;
+	margin: 3px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.xquared div.dialogs .lightweight ul li {
+	padding: 0 0 2px;
+	margin: 0;
+	overflow: hidden;
+}
+
+/* foreground Dialog, backgroundDialog */
+.xquared div#foregroundColorDialog ul,
+.xquared div#backgroundColorDialog ul {
+	width: 171px;
+	height: 61px;
+}
+
+.xquared div#foregroundColorDialog ul li,
+.xquared div#backgroundColorDialog ul li {
+	display: inline;
+}
+
+.xquared div#foregroundColorDialog ul li a,
+.xquared div#backgroundColorDialog ul li a {
+	cursor: pointer;
+	float: left;
+	height: 12px;
+	margin-left: 2px;
+	width: 12px;
+}
+
 /* selected */
 .xquared ul.buttons li a.selected {
 	background-color: #dbdbdb;

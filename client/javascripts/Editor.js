@@ -67,24 +67,157 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		this.config.defaultToolbarButtonGroups = {
 			"color": [
- 				{className:"foregroundColor", title:"Foreground color", handler:"xed.handleForegroundColor()"},
-				{className:"backgroundColor", title:"Background color", handler:"xed.handleBackgroundColor()"}
+ 				{className:"foregroundColor", title:"Foreground color", list:[
+					{style: {backgroundColor:"#ffd8d8"}, handler:"xed.handleForegroundColor('#ffd8d8')"},
+					{style: {backgroundColor:"#ffead9"}, handler:"xed.handleForegroundColor('#ffead9')"},
+					{style: {backgroundColor:"#fef2dc"}, handler:"xed.handleForegroundColor('#fef2dc')"},
+					{style: {backgroundColor:"#fff5da"}, handler:"xed.handleForegroundColor('#fff5da')"},
+					{style: {backgroundColor:"#eefed9"}, handler:"xed.handleForegroundColor('#eefed9')"},
+					{style: {backgroundColor:"#dafeda"}, handler:"xed.handleForegroundColor('#dafeda')"},
+					{style: {backgroundColor:"#d8ffff"}, handler:"xed.handleForegroundColor('#d8ffff')"},
+					{style: {backgroundColor:"#d9f7ff"}, handler:"xed.handleForegroundColor('#d9f7ff')"},
+					{style: {backgroundColor:"#d5ebff"}, handler:"xed.handleForegroundColor('#d5ebff')"},
+					{style: {backgroundColor:"#eed8ff"}, handler:"xed.handleForegroundColor('#eed8ff')"},
+					{style: {backgroundColor:"#fed8ff"}, handler:"xed.handleForegroundColor('#fed8ff')"},
+					{style: {backgroundColor:"#ffffff"}, handler:"xed.handleForegroundColor('#ffffff')"},
+
+					{style: {backgroundColor:"#fe8c8c"}, handler:"xed.handleForegroundColor('#fe8c8c')"},
+					{style: {backgroundColor:"#feba8d"}, handler:"xed.handleForegroundColor('#feba8d')"},
+					{style: {backgroundColor:"#ffe88b"}, handler:"xed.handleForegroundColor('#ffe88b')"},
+					{style: {backgroundColor:"#ffff8d"}, handler:"xed.handleForegroundColor('#ffff8d')"},
+					{style: {backgroundColor:"#d0fc8d"}, handler:"xed.handleForegroundColor('#d0fc8d')"},
+					{style: {backgroundColor:"#8efb8e"}, handler:"xed.handleForegroundColor('#8efb8e')"},
+					{style: {backgroundColor:"#8bffff"}, handler:"xed.handleForegroundColor('#8bffff')"},
+					{style: {backgroundColor:"#8ce8ff"}, handler:"xed.handleForegroundColor('#8ce8ff')"},
+					{style: {backgroundColor:"#8b8cff"}, handler:"xed.handleForegroundColor('#8b8cff')"},
+					{style: {backgroundColor:"#d18cff"}, handler:"xed.handleForegroundColor('#d18cff')"},
+					{style: {backgroundColor:"#ff8bfe"}, handler:"xed.handleForegroundColor('#ff8bfe')"},
+					{style: {backgroundColor:"#cccccc"}, handler:"xed.handleForegroundColor('#cccccc')"},
+
+					{style: {backgroundColor:"#ff0103"}, handler:"xed.handleForegroundColor('#ff0103')"},
+					{style: {backgroundColor:"#ff6600"}, handler:"xed.handleForegroundColor('#ff6600')"},
+					{style: {backgroundColor:"#ffcc01"}, handler:"xed.handleForegroundColor('#ffcc01')"},
+					{style: {backgroundColor:"#ffff01"}, handler:"xed.handleForegroundColor('#ffff01')"},
+					{style: {backgroundColor:"#96f908"}, handler:"xed.handleForegroundColor('#96f908')"},
+					{style: {backgroundColor:"#07f905"}, handler:"xed.handleForegroundColor('#07f905')"},
+					{style: {backgroundColor:"#02feff"}, handler:"xed.handleForegroundColor('#02feff')"},
+					{style: {backgroundColor:"#00ccff"}, handler:"xed.handleForegroundColor('#00ccff')"},
+					{style: {backgroundColor:"#0100fe"}, handler:"xed.handleForegroundColor('#0100fe')"},
+					{style: {backgroundColor:"#9801ff"}, handler:"xed.handleForegroundColor('#9801ff')"},
+					{style: {backgroundColor:"#fc01fe"}, handler:"xed.handleForegroundColor('#fc01fe')"},
+					{style: {backgroundColor:"#999999"}, handler:"xed.handleForegroundColor('#999999')"},
+
+					{style: {backgroundColor:"#990002"}, handler:"xed.handleForegroundColor('#990002')"},
+					{style: {backgroundColor:"#b65006"}, handler:"xed.handleForegroundColor('#b65006')"},
+					{style: {backgroundColor:"#bf7900"}, handler:"xed.handleForegroundColor('#bf7900')"},
+					{style: {backgroundColor:"#cca500"}, handler:"xed.handleForegroundColor('#cca500')"},
+					{style: {backgroundColor:"#5a9603"}, handler:"xed.handleForegroundColor('#5a9603')"},
+					{style: {backgroundColor:"#059502"}, handler:"xed.handleForegroundColor('#059502')"},
+					{style: {backgroundColor:"#009997"}, handler:"xed.handleForegroundColor('#009997')"},
+					{style: {backgroundColor:"#007998"}, handler:"xed.handleForegroundColor('#007998')"},
+					{style: {backgroundColor:"#095392"}, handler:"xed.handleForegroundColor('#095392')"},
+					{style: {backgroundColor:"#6a19a4"}, handler:"xed.handleForegroundColor('#6a19a4')"},
+					{style: {backgroundColor:"#98019a"}, handler:"xed.handleForegroundColor('#98019a')"},
+					{style: {backgroundColor:"#666666"}, handler:"xed.handleForegroundColor('#666666')"},
+
+					{style: {backgroundColor:"#590100"}, handler:"xed.handleForegroundColor('#590100')"},
+					{style: {backgroundColor:"#773505"}, handler:"xed.handleForegroundColor('#773505')"},
+					{style: {backgroundColor:"#7f5000"}, handler:"xed.handleForegroundColor('#7f5000')"},
+					{style: {backgroundColor:"#927300"}, handler:"xed.handleForegroundColor('#927300')"},
+					{style: {backgroundColor:"#365802"}, handler:"xed.handleForegroundColor('#365802')"},
+					{style: {backgroundColor:"#035902"}, handler:"xed.handleForegroundColor('#035902')"},
+					{style: {backgroundColor:"#01595a"}, handler:"xed.handleForegroundColor('#01595a')"},
+					{style: {backgroundColor:"#00485b"}, handler:"xed.handleForegroundColor('#00485b')"},
+					{style: {backgroundColor:"#083765"}, handler:"xed.handleForegroundColor('#083765')"},
+					{style: {backgroundColor:"#370159"}, handler:"xed.handleForegroundColor('#370159')"},
+					{style: {backgroundColor:"#59005a"}, handler:"xed.handleForegroundColor('#59005a')"},
+					{style: {backgroundColor:"#000000"}, handler:"xed.handleForegroundColor('#000000')"}
+				]},
+				
+				{className:"backgroundColor", title:"Background color", list:[
+					{style: {backgroundColor:"#ffd8d8"}, handler:"xed.handleBackgroundColor('#ffd8d8')"},
+					{style: {backgroundColor:"#ffead9"}, handler:"xed.handleBackgroundColor('#ffead9')"},
+					{style: {backgroundColor:"#fef2dc"}, handler:"xed.handleBackgroundColor('#fef2dc')"},
+					{style: {backgroundColor:"#fff5da"}, handler:"xed.handleBackgroundColor('#fff5da')"},
+					{style: {backgroundColor:"#eefed9"}, handler:"xed.handleBackgroundColor('#eefed9')"},
+					{style: {backgroundColor:"#dafeda"}, handler:"xed.handleBackgroundColor('#dafeda')"},
+					{style: {backgroundColor:"#d8ffff"}, handler:"xed.handleBackgroundColor('#d8ffff')"},
+					{style: {backgroundColor:"#d9f7ff"}, handler:"xed.handleBackgroundColor('#d9f7ff')"},
+					{style: {backgroundColor:"#d5ebff"}, handler:"xed.handleBackgroundColor('#d5ebff')"},
+					{style: {backgroundColor:"#eed8ff"}, handler:"xed.handleBackgroundColor('#eed8ff')"},
+					{style: {backgroundColor:"#fed8ff"}, handler:"xed.handleBackgroundColor('#fed8ff')"},
+					{style: {backgroundColor:"#ffffff"}, handler:"xed.handleBackgroundColor('#ffffff')"},
+
+					{style: {backgroundColor:"#fe8c8c"}, handler:"xed.handleBackgroundColor('#fe8c8c')"},
+					{style: {backgroundColor:"#feba8d"}, handler:"xed.handleBackgroundColor('#feba8d')"},
+					{style: {backgroundColor:"#ffe88b"}, handler:"xed.handleBackgroundColor('#ffe88b')"},
+					{style: {backgroundColor:"#ffff8d"}, handler:"xed.handleBackgroundColor('#ffff8d')"},
+					{style: {backgroundColor:"#d0fc8d"}, handler:"xed.handleBackgroundColor('#d0fc8d')"},
+					{style: {backgroundColor:"#8efb8e"}, handler:"xed.handleBackgroundColor('#8efb8e')"},
+					{style: {backgroundColor:"#8bffff"}, handler:"xed.handleBackgroundColor('#8bffff')"},
+					{style: {backgroundColor:"#8ce8ff"}, handler:"xed.handleBackgroundColor('#8ce8ff')"},
+					{style: {backgroundColor:"#8b8cff"}, handler:"xed.handleBackgroundColor('#8b8cff')"},
+					{style: {backgroundColor:"#d18cff"}, handler:"xed.handleBackgroundColor('#d18cff')"},
+					{style: {backgroundColor:"#ff8bfe"}, handler:"xed.handleBackgroundColor('#ff8bfe')"},
+					{style: {backgroundColor:"#cccccc"}, handler:"xed.handleBackgroundColor('#cccccc')"},
+
+					{style: {backgroundColor:"#ff0103"}, handler:"xed.handleBackgroundColor('#ff0103')"},
+					{style: {backgroundColor:"#ff6600"}, handler:"xed.handleBackgroundColor('#ff6600')"},
+					{style: {backgroundColor:"#ffcc01"}, handler:"xed.handleBackgroundColor('#ffcc01')"},
+					{style: {backgroundColor:"#ffff01"}, handler:"xed.handleBackgroundColor('#ffff01')"},
+					{style: {backgroundColor:"#96f908"}, handler:"xed.handleBackgroundColor('#96f908')"},
+					{style: {backgroundColor:"#07f905"}, handler:"xed.handleBackgroundColor('#07f905')"},
+					{style: {backgroundColor:"#02feff"}, handler:"xed.handleBackgroundColor('#02feff')"},
+					{style: {backgroundColor:"#00ccff"}, handler:"xed.handleBackgroundColor('#00ccff')"},
+					{style: {backgroundColor:"#0100fe"}, handler:"xed.handleBackgroundColor('#0100fe')"},
+					{style: {backgroundColor:"#9801ff"}, handler:"xed.handleBackgroundColor('#9801ff')"},
+					{style: {backgroundColor:"#fc01fe"}, handler:"xed.handleBackgroundColor('#fc01fe')"},
+					{style: {backgroundColor:"#999999"}, handler:"xed.handleBackgroundColor('#999999')"},
+
+					{style: {backgroundColor:"#990002"}, handler:"xed.handleBackgroundColor('#990002')"},
+					{style: {backgroundColor:"#b65006"}, handler:"xed.handleBackgroundColor('#b65006')"},
+					{style: {backgroundColor:"#bf7900"}, handler:"xed.handleBackgroundColor('#bf7900')"},
+					{style: {backgroundColor:"#cca500"}, handler:"xed.handleBackgroundColor('#cca500')"},
+					{style: {backgroundColor:"#5a9603"}, handler:"xed.handleBackgroundColor('#5a9603')"},
+					{style: {backgroundColor:"#059502"}, handler:"xed.handleBackgroundColor('#059502')"},
+					{style: {backgroundColor:"#009997"}, handler:"xed.handleBackgroundColor('#009997')"},
+					{style: {backgroundColor:"#007998"}, handler:"xed.handleBackgroundColor('#007998')"},
+					{style: {backgroundColor:"#095392"}, handler:"xed.handleBackgroundColor('#095392')"},
+					{style: {backgroundColor:"#6a19a4"}, handler:"xed.handleBackgroundColor('#6a19a4')"},
+					{style: {backgroundColor:"#98019a"}, handler:"xed.handleBackgroundColor('#98019a')"},
+					{style: {backgroundColor:"#666666"}, handler:"xed.handleBackgroundColor('#666666')"},
+
+					{style: {backgroundColor:"#590100"}, handler:"xed.handleBackgroundColor('#590100')"},
+					{style: {backgroundColor:"#773505"}, handler:"xed.handleBackgroundColor('#773505')"},
+					{style: {backgroundColor:"#7f5000"}, handler:"xed.handleBackgroundColor('#7f5000')"},
+					{style: {backgroundColor:"#927300"}, handler:"xed.handleBackgroundColor('#927300')"},
+					{style: {backgroundColor:"#365802"}, handler:"xed.handleBackgroundColor('#365802')"},
+					{style: {backgroundColor:"#035902"}, handler:"xed.handleBackgroundColor('#035902')"},
+					{style: {backgroundColor:"#01595a"}, handler:"xed.handleBackgroundColor('#01595a')"},
+					{style: {backgroundColor:"#00485b"}, handler:"xed.handleBackgroundColor('#00485b')"},
+					{style: {backgroundColor:"#083765"}, handler:"xed.handleBackgroundColor('#083765')"},
+					{style: {backgroundColor:"#370159"}, handler:"xed.handleBackgroundColor('#370159')"},
+					{style: {backgroundColor:"#59005a"}, handler:"xed.handleBackgroundColor('#59005a')"},
+					{style: {backgroundColor:"#000000"}, handler:"xed.handleBackgroundColor('#000000')"}
+				]}
  			],
+ 			
  			"font": [
 				{className:"fontFace", title:"Font face", list:[
-                    {title:"Arial", handler:"xed.handleFontFace('Arial')"},
-                    {title:"Helvetica", handler:"xed.handleFontFace('Helvetica')"},
-                    {title:"Serif", handler:"xed.handleFontFace('Serif')"},
-                    {title:"Tahoma", handler:"xed.handleFontFace('Tahoma')"},
-                    {title:"Verdana", handler:"xed.handleFontFace('Verdana')"}
+                    {title:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
+                    {title:"Helvetica", style: {fontFamily: "Helvetica"}, handler:"xed.handleFontFace('Helvetica')"},
+                    {title:"Serif", style: {fontFamily: "Serif"}, handler:"xed.handleFontFace('Serif')"},
+                    {title:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
+                    {title:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
 				]},
+				
 				{className:"fontSize", title:"Font size", list:[
-                    {title:"1", handler:"xed.handleFontSize('1')"},
-                    {title:"2", handler:"xed.handleFontSize('2')"},
-                    {title:"3", handler:"xed.handleFontSize('3')"},
-                    {title:"4", handler:"xed.handleFontSize('4')"},
-                    {title:"5", handler:"xed.handleFontSize('5')"},
-                    {title:"6", handler:"xed.handleFontSize('6')"}
+                    {title:"8pt", style: {fontSize: "8pt"}, handler:"xed.handleFontSize('1')"},
+                    {title:"10pt", style: {fontSize: "10pt"}, handler:"xed.handleFontSize('2')"},
+                    {title:"12pt", style: {fontSize: "12pt"}, handler:"xed.handleFontSize('3')"},
+                    {title:"14pt", style: {fontSize: "14pt"}, handler:"xed.handleFontSize('4')"},
+                    {title:"18pt", style: {fontSize: "18pt"}, handler:"xed.handleFontSize('5')"},
+                    {title:"24pt", style: {fontSize: "24pt"}, handler:"xed.handleFontSize('6')"}
 				]}
 			],
 			"link": [
@@ -130,13 +263,13 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * @type Object
 		 */
 		this.config.defaultToolbarButtonMap = [
-		    this.config.defaultToolbarButtonGroups.color,
 		    this.config.defaultToolbarButtonGroups.font,
-		    this.config.defaultToolbarButtonGroups.link,
+		    this.config.defaultToolbarButtonGroups.color,
 		    this.config.defaultToolbarButtonGroups.style,
 		    this.config.defaultToolbarButtonGroups.justification,
 		    this.config.defaultToolbarButtonGroups.indentation,
 		    this.config.defaultToolbarButtonGroups.block,
+		    this.config.defaultToolbarButtonGroups.link,
 		    this.config.defaultToolbarButtonGroups.insert,
 			[
 				{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}
@@ -1322,6 +1455,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		} else if(["contextmenu"].indexOf(e.type) !== -1) {
 			this._handleContextMenu(e);
 		} else if("focus" == e.type) {
+			this.toolbar._closeAllLightweight();
 			this.rdom.focused = true;
 		} else if("blur" == e.type) {
 			this.rdom.focused = false;

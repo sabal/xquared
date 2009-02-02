@@ -41,6 +41,8 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		} else {
 			this.container = container;
 		}
+		
+		xq.observe(document, 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
 	},
 	
 	finalize: function() {
@@ -159,6 +161,12 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		buttons.className = 'buttons';
 		this.container.appendChild(buttons);
 		
+		// dialog container
+		var dialogs = this.doc.createElement('div');
+		dialogs.className = 'dialogs';
+		this.dialogContainer = dialogs;
+		this.container.appendChild(dialogs);
+		
 		// Generate buttons from map and append it to button container
 		for(var i = 0; i < this.buttonMap.length; i++) {
 			for(var j = 0; j < this.buttonMap[i].length; j++) {
@@ -189,63 +197,84 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		span.appendChild(a);
 		a.href = '#';
 		a.title = buttonConfig.title;
-		a.handler = buttonConfig.handler;
+		if (buttonConfig.handler){
+			a.handler = buttonConfig.handler;
+			xq.observe(a, 'click', this._clickHandler.bindAsEventListener(this));
+		}
 		
 		this.anchorsCache.push(a);
 		
 		xq.observe(a, 'mousedown', xq.cancelHandler);
-		xq.observe(a, 'click', this._clickHandler.bindAsEventListener(this));
 
 		var img = this.doc.createElement('img');
 		a.appendChild(img);
+		img.className = buttonConfig.className;
 		img.src = this.imagePath + buttonConfig.className + '.gif';
+		
+		return a;
 	},
 	
 	_createDropdown: function(buttonConfig, span) {
-		var select = this.doc.createElement('select');
-		select.handlers = buttonConfig.list;
-		var xed = this.xed;
+		// Create button
+		var btn = this._createButton(buttonConfig, span);
+		btn.items = buttonConfig.list;
 		
-		xq.observe(select, 'change', function(e) {
-			var src = e.target || e.srcElement;
-			if(src.value === "-1") {
-				src.selectedIndex = 0;
-				return true;
+		xq.observe(btn, 'click', this._openDropdownDialog.bindAsEventListener(this));
+		
+		// Create dialog
+		var dialog = this.doc.createElement('DIV');
+		dialog.id = buttonConfig.className + "Dialog";
+		dialog.className = "lightweight";
+		dialog.style.display = 'none';
+		var ul = this.doc.createElement('UL');
+		
+		for (var i = 0; i < btn.items.length; i++) {
+			var item = btn.items[i];
+			var li = this.doc.createElement('LI');
+			var anchor = this.doc.createElement('A');
+			li.appendChild(anchor);
+			if (item.title) {
+				anchor.innerHTML = item.title;
+				anchor.title = item.title;
 			}
+			anchor.href = "#";
+			anchor.handler = item.handler;
 			
-			var handler = src.handlers[src.value].handler;
-			xed.focus();
-			var stop = (typeof handler === "function") ? handler(this) : eval(handler);
-			src.selectedIndex = 0;
-			
-			if(stop) {
-				xq.stopEvent(e);
-				return false;
-			} else {
-				return true;
+			for (attr in item.style){
+				anchor.style[attr] = item.style[attr];
 			}
-		});
-		
-		var option = this.doc.createElement('option');
-		option.innerHTML = buttonConfig.title;
-		option.value = -1;
-		select.appendChild(option);
-		
-		option = this.doc.createElement('option');
-		option.innerHTML = '----';
-		option.value = -1;
-		select.appendChild(option);
-		
-		for(var i = 0; i < buttonConfig.list.length; i++) {
-			option = this.doc.createElement('option');
-			option.innerHTML = buttonConfig.list[i].title;
-			option.value = i;
+			xq.observe(anchor, 'mousedown', xq.cancelHandler);
+			xq.observe(anchor, 'mouseup', this._closeAllLightweight.bindAsEventListener(this));
+			xq.observe(anchor, 'click', this._clickHandler.bindAsEventListener(this));
 			
-			select.appendChild(option);
+			ul.appendChild(li);
 		}
-		span.appendChild(select);
+		dialog.appendChild(ul);
+		this.dialogContainer.appendChild(dialog);
+		span.appendChild(btn);
 	},
 	
+	_openDropdownDialog: function(e){
+		this._closeAllLightweight();
+		
+		var src = e.target || e.srcElement;
+		var dialog = document.getElementById(src.className + "Dialog");
+		
+		if (dialog) {
+			dialog.style.display = 'block';
+			dialog.style.top = this.container.offsetHeight + 'px';
+			dialog.style.left = src.parentNode.offsetLeft + 'px';
+		} 
+		xq.stopEvent(e);
+		return false;
+	},
+	
+	_closeAllLightweight: function(){
+		var dialogs = this.dialogContainer.childNodes;
+		for (var i = 0; i < dialogs.length; i++){
+			dialogs[i].style.display = "none";
+		}
+	},
 	_clickHandler: function(e) {
 		var src = e.target || e.srcElement;
 		while(src.nodeName !== "A") src = src.parentNode;
