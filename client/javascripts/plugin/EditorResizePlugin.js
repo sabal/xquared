@@ -37,7 +37,7 @@ xq.plugin.EditorResizePlugin = xq.Class(xq.plugin.Base,
 		
 		// register event
 		xq.observe(this.bar, 'mousedown', this.onMousedown.bindAsEventListener(this));
-		xq.observe(this.bar, 'mouseup', this.onMouseup.bindAsEventListener(this));
+		xq.observe(document, 'mouseup', this.onMouseup.bindAsEventListener(this));
 		xq.observe(this.bar, 'click', this.onMouseup.bindAsEventListener(this));
 		this.mousemoveHandler = this.onMousemove.bindAsEventListener(this);
 	},
@@ -80,7 +80,6 @@ xq.plugin.EditorResizePlugin = xq.Class(xq.plugin.Base,
 	},
 	onMouseup: function(e) {
 		if(!this.active) return;
-		
 		this.active = false;
 		
 		xq.stopObserving(document, 'mousemove', this.mousemoveHandler);
