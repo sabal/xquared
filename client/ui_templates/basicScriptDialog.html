@@ -5,17 +5,17 @@
 	<title>Basic Script Dialog</title>
 </head>
 <body>
-	<form action="#" class="xqFormDialog xqBasicScriptDialog">
-		<table>
-			<tr>
-				<td>Script URL:</td>
-				<td><input type="text" class="initialFocus" name="url" size="36" value="http://" /></td>
-			</tr>
-		</table>
-		<p>
-			<input type="submit" value="Ok" />
-			<input type="button" class="cancel" value="Cancel" />
-		</p>
+	<form id="scriptDialog" class="xqFormDialog modal">
+		<h3>Insert Script</h3>
+		<div class="dialog-content">
+			<p>Script URL:
+			<input type="text" class="initialFocus" class="type-text" name="url" size="36" value="http://" /></p>
+			<div class="dialog-buttons">
+				<a href="#" class="button-white cancel">Close</a>
+				<a href="#" class="button-gray submit">Insert</a>
+			</div>
+		</div>
+		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>
 	</form>
 </body>
 </html>

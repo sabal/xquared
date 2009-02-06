@@ -179,10 +179,10 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				var span = this.doc.createElement('span');
 				li.appendChild(span);
 				
-				if(buttonConfig.handler) {
-					this._createButton(buttonConfig, span);
-				} else {
+				if(buttonConfig.list) {
 					this._createDropdown(buttonConfig, span);
+				} else {
+					this._createButton(buttonConfig, span);
 				}
 
 				if(j === 0 && i !== 0) li.className += ' xq_separator';
@@ -224,19 +224,28 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		// Create dialog
 		var dialog = this.doc.createElement('DIV');
 		dialog.id = buttonConfig.className + "Dialog";
-		dialog.className = "lightweight";
+		dialog.className = "xqFormDialog lightweight";
 		dialog.style.display = 'none';
+		
+		var title = this.doc.createElement('H3');
+		title.innerHTML = buttonConfig.title;
+		dialog.appendChild(title);
+
+		var dialogContent = this.doc.createElement('DIV');
+		dialogContent.className = 'dialog-content';
+		
 		var ul = this.doc.createElement('UL');
+		ul.className = "item-list";
 		
 		for (var i = 0; i < btn.items.length; i++) {
 			var item = btn.items[i];
 			var li = this.doc.createElement('LI');
 			var anchor = this.doc.createElement('A');
 			li.appendChild(anchor);
-			if (item.title) {
-				anchor.innerHTML = item.title;
-				anchor.title = item.title;
+			if (item.html) {
+				anchor.innerHTML = item.html;
 			}
+			
 			anchor.href = "#";
 			anchor.handler = item.handler;
 			
@@ -249,7 +258,9 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			
 			ul.appendChild(li);
 		}
-		dialog.appendChild(ul);
+		
+		dialogContent.appendChild(ul);
+		dialog.appendChild(dialogContent);
 		this.dialogContainer.appendChild(dialog);
 		span.appendChild(btn);
 	},

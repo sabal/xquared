@@ -1,5 +1,5 @@
 /*! Xquared is copyrighted free software by Alan Kang <jania902@gmail.com>.
- *  For more information, see http://xquared.springbook.playmaru.net/
+ *  For more information, see http://xquared.springnote.com/
  */
 if(!window.xq) {
 	/**
@@ -8,8 +8,8 @@ if(!window.xq) {
 	var xq = {};
 }
 
-xq.majorVersion = '0.7';
-xq.minorVersion = '20080701';
+xq.majorVersion = '0.8';
+xq.minorVersion = '20090206';
 
 
 

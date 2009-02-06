@@ -46,17 +46,22 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		container.innerHTML = this.html;
 		this.form = container.getElementsByTagName('FORM')[0];
 		
-		this.form.onsubmit = function() {
-			self.onCloseHandler(xq.serializeForm(this));
-			self.close();
-			return false;
-		};
+		var submitButtons = xq.getElementsByClassName(this.form, 'submit');
+		for (var i = 0; i < submitButtons.length; i++) {
+			submitButtons[i].onclick = function() {
+				self.onCloseHandler(xq.serializeForm(this.form));
+				self.close();
+				return false;
+			}.bind(this);
+		}
 		
-		var cancelButton = xq.getElementsByClassName(this.form, 'cancel')[0];
-		cancelButton.onclick = function() {
-			self.onCloseHandler();
-			self.close();
-		};
+		var cancelButtons = xq.getElementsByClassName(this.form, 'cancel');
+		for (var j = 0; j < cancelButtons.length; j++) {
+			cancelButtons[j].onclick = function() {
+				self.onCloseHandler();
+				self.close();
+			};
+		}
 		
 		if(options.mode === 'modal') {
 			this.dimmed = document.createElement('DIV');
@@ -128,9 +133,9 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		var targetElement = null;
 		var left = 0;
 		var top = 0;
-		
+		document.title = target
 		if(target === 'centerOfWindow') {
-			targetElement = document.documentElement;
+			targetElement = document.documentElement || document.body;
 			left += targetElement.scrollLeft;
 			top += targetElement.scrollTop;
 		} else if(target === 'centerOfEditor') {

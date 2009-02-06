@@ -135,89 +135,35 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				]},
 				
 				{className:"backgroundColor", title:"Background color", list:[
-					{style: {backgroundColor:"#ffd8d8"}, handler:"xed.handleBackgroundColor('#ffd8d8')"},
-					{style: {backgroundColor:"#ffead9"}, handler:"xed.handleBackgroundColor('#ffead9')"},
-					{style: {backgroundColor:"#fef2dc"}, handler:"xed.handleBackgroundColor('#fef2dc')"},
-					{style: {backgroundColor:"#fff5da"}, handler:"xed.handleBackgroundColor('#fff5da')"},
-					{style: {backgroundColor:"#eefed9"}, handler:"xed.handleBackgroundColor('#eefed9')"},
-					{style: {backgroundColor:"#dafeda"}, handler:"xed.handleBackgroundColor('#dafeda')"},
-					{style: {backgroundColor:"#d8ffff"}, handler:"xed.handleBackgroundColor('#d8ffff')"},
-					{style: {backgroundColor:"#d9f7ff"}, handler:"xed.handleBackgroundColor('#d9f7ff')"},
-					{style: {backgroundColor:"#d5ebff"}, handler:"xed.handleBackgroundColor('#d5ebff')"},
-					{style: {backgroundColor:"#eed8ff"}, handler:"xed.handleBackgroundColor('#eed8ff')"},
-					{style: {backgroundColor:"#fed8ff"}, handler:"xed.handleBackgroundColor('#fed8ff')"},
-					{style: {backgroundColor:"#ffffff"}, handler:"xed.handleBackgroundColor('#ffffff')"},
-
-					{style: {backgroundColor:"#fe8c8c"}, handler:"xed.handleBackgroundColor('#fe8c8c')"},
-					{style: {backgroundColor:"#feba8d"}, handler:"xed.handleBackgroundColor('#feba8d')"},
-					{style: {backgroundColor:"#ffe88b"}, handler:"xed.handleBackgroundColor('#ffe88b')"},
-					{style: {backgroundColor:"#ffff8d"}, handler:"xed.handleBackgroundColor('#ffff8d')"},
-					{style: {backgroundColor:"#d0fc8d"}, handler:"xed.handleBackgroundColor('#d0fc8d')"},
-					{style: {backgroundColor:"#8efb8e"}, handler:"xed.handleBackgroundColor('#8efb8e')"},
-					{style: {backgroundColor:"#8bffff"}, handler:"xed.handleBackgroundColor('#8bffff')"},
-					{style: {backgroundColor:"#8ce8ff"}, handler:"xed.handleBackgroundColor('#8ce8ff')"},
-					{style: {backgroundColor:"#8b8cff"}, handler:"xed.handleBackgroundColor('#8b8cff')"},
-					{style: {backgroundColor:"#d18cff"}, handler:"xed.handleBackgroundColor('#d18cff')"},
-					{style: {backgroundColor:"#ff8bfe"}, handler:"xed.handleBackgroundColor('#ff8bfe')"},
-					{style: {backgroundColor:"#cccccc"}, handler:"xed.handleBackgroundColor('#cccccc')"},
-
-					{style: {backgroundColor:"#ff0103"}, handler:"xed.handleBackgroundColor('#ff0103')"},
-					{style: {backgroundColor:"#ff6600"}, handler:"xed.handleBackgroundColor('#ff6600')"},
-					{style: {backgroundColor:"#ffcc01"}, handler:"xed.handleBackgroundColor('#ffcc01')"},
-					{style: {backgroundColor:"#ffff01"}, handler:"xed.handleBackgroundColor('#ffff01')"},
-					{style: {backgroundColor:"#96f908"}, handler:"xed.handleBackgroundColor('#96f908')"},
-					{style: {backgroundColor:"#07f905"}, handler:"xed.handleBackgroundColor('#07f905')"},
-					{style: {backgroundColor:"#02feff"}, handler:"xed.handleBackgroundColor('#02feff')"},
-					{style: {backgroundColor:"#00ccff"}, handler:"xed.handleBackgroundColor('#00ccff')"},
-					{style: {backgroundColor:"#0100fe"}, handler:"xed.handleBackgroundColor('#0100fe')"},
-					{style: {backgroundColor:"#9801ff"}, handler:"xed.handleBackgroundColor('#9801ff')"},
-					{style: {backgroundColor:"#fc01fe"}, handler:"xed.handleBackgroundColor('#fc01fe')"},
-					{style: {backgroundColor:"#999999"}, handler:"xed.handleBackgroundColor('#999999')"},
-
-					{style: {backgroundColor:"#990002"}, handler:"xed.handleBackgroundColor('#990002')"},
-					{style: {backgroundColor:"#b65006"}, handler:"xed.handleBackgroundColor('#b65006')"},
-					{style: {backgroundColor:"#bf7900"}, handler:"xed.handleBackgroundColor('#bf7900')"},
-					{style: {backgroundColor:"#cca500"}, handler:"xed.handleBackgroundColor('#cca500')"},
-					{style: {backgroundColor:"#5a9603"}, handler:"xed.handleBackgroundColor('#5a9603')"},
-					{style: {backgroundColor:"#059502"}, handler:"xed.handleBackgroundColor('#059502')"},
-					{style: {backgroundColor:"#009997"}, handler:"xed.handleBackgroundColor('#009997')"},
-					{style: {backgroundColor:"#007998"}, handler:"xed.handleBackgroundColor('#007998')"},
-					{style: {backgroundColor:"#095392"}, handler:"xed.handleBackgroundColor('#095392')"},
-					{style: {backgroundColor:"#6a19a4"}, handler:"xed.handleBackgroundColor('#6a19a4')"},
-					{style: {backgroundColor:"#98019a"}, handler:"xed.handleBackgroundColor('#98019a')"},
-					{style: {backgroundColor:"#666666"}, handler:"xed.handleBackgroundColor('#666666')"},
-
-					{style: {backgroundColor:"#590100"}, handler:"xed.handleBackgroundColor('#590100')"},
-					{style: {backgroundColor:"#773505"}, handler:"xed.handleBackgroundColor('#773505')"},
-					{style: {backgroundColor:"#7f5000"}, handler:"xed.handleBackgroundColor('#7f5000')"},
-					{style: {backgroundColor:"#927300"}, handler:"xed.handleBackgroundColor('#927300')"},
-					{style: {backgroundColor:"#365802"}, handler:"xed.handleBackgroundColor('#365802')"},
-					{style: {backgroundColor:"#035902"}, handler:"xed.handleBackgroundColor('#035902')"},
-					{style: {backgroundColor:"#01595a"}, handler:"xed.handleBackgroundColor('#01595a')"},
-					{style: {backgroundColor:"#00485b"}, handler:"xed.handleBackgroundColor('#00485b')"},
-					{style: {backgroundColor:"#083765"}, handler:"xed.handleBackgroundColor('#083765')"},
-					{style: {backgroundColor:"#370159"}, handler:"xed.handleBackgroundColor('#370159')"},
-					{style: {backgroundColor:"#59005a"}, handler:"xed.handleBackgroundColor('#59005a')"},
-					{style: {backgroundColor:"#000000"}, handler:"xed.handleBackgroundColor('#000000')"}
+					{style: {backgroundColor:"#FFF700"}, handler:"xed.handleBackgroundColor('#FFF700')"},
+					{style: {backgroundColor:"#AEFF66"}, handler:"xed.handleBackgroundColor('#AEFF66')"},
+					{style: {backgroundColor:"#FFCC66"}, handler:"xed.handleBackgroundColor('#FFCC66')"},
+					{style: {backgroundColor:"#DCB0FB"}, handler:"xed.handleBackgroundColor('#DCB0FB')"},
+					{style: {backgroundColor:"#B0EEFB"}, handler:"xed.handleBackgroundColor('#B0EEFB')"},
+					{style: {backgroundColor:"#FBBDB0"}, handler:"xed.handleBackgroundColor('#FBBDB0')"},
+					{style: {backgroundColor:"#FFFFFF"}, handler:"xed.handleBackgroundColor('#FFFFFF')"}
 				]}
  			],
  			
  			"font": [
 				{className:"fontFace", title:"Font face", list:[
-                    {title:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
-                    {title:"Helvetica", style: {fontFamily: "Helvetica"}, handler:"xed.handleFontFace('Helvetica')"},
-                    {title:"Serif", style: {fontFamily: "Serif"}, handler:"xed.handleFontFace('Serif')"},
-                    {title:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
-                    {title:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
+                    {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
+                    {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
+                    {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
+                    {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},
+                    {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
+                    {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},
+                    {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
+                    {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
 				]},
 				
 				{className:"fontSize", title:"Font size", list:[
-                    {title:"8pt", style: {fontSize: "8pt"}, handler:"xed.handleFontSize('1')"},
-                    {title:"10pt", style: {fontSize: "10pt"}, handler:"xed.handleFontSize('2')"},
-                    {title:"12pt", style: {fontSize: "12pt"}, handler:"xed.handleFontSize('3')"},
-                    {title:"14pt", style: {fontSize: "14pt"}, handler:"xed.handleFontSize('4')"},
-                    {title:"18pt", style: {fontSize: "18pt"}, handler:"xed.handleFontSize('5')"},
-                    {title:"24pt", style: {fontSize: "24pt"}, handler:"xed.handleFontSize('6')"}
+                    {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
+                    {html:"Lorem ipsum dolor (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
+                    {html:"Lorem ipsum dolor (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
+                    {html:"Lorem ipsum dolor (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},
+                    {html:"Lorem ipsum dolor (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
+                    {html:"Lorem ipsum dolor (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
 				]}
 			],
 			"link": [
@@ -245,7 +191,14 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
   			],
   			"block": [
 				{className:"paragraph", title:"Paragraph", handler:"xed.handleApplyBlock('P')"},
-				{className:"heading1", title:"Heading 1", handler:"xed.handleApplyBlock('H1')"},
+				{className:"heading1", title:"Heading 1", list:[
+					{html:"Heading1", style: {fontSize: "2.845em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H1')"},
+					{html:"Heading2", style: {fontSize: "2.46em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H2')"},
+					{html:"Heading3", style: {fontSize: "2.153em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H3')"},
+					{html:"Heading4", style: {fontSize: "1.922em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H4')"},
+					{html:"Heading5", style: {fontSize: "1.461em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H5')"},
+					{html:"Heading6", style: {fontSize: "1.23em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H6')"}
+				]},
 				{className:"blockquote", title:"Blockquote", handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
 				{className:"code", title:"Code", handler:"xed.handleList('OL', 'code')"},
 				{className:"division", title:"Division", handler:"xed.handleApplyBlock('DIV')"},
@@ -254,7 +207,32 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
   			],
   			"insert": [
 				{className:"table", title:"Table", handler:"xed.handleTable({'rows':4, 'cols':4, 'headerPositions':'tl'})"},
-				{className:"separator", title:"Separator", handler:"xed.handleSeparator()"}
+				{className:"separator", title:"Separator", handler:"xed.handleSeparator()"},
+				{className:"emoticon", title:"Emoticon", list: [
+                    {html:"<img src='../images/dialogs/emoticon/num1.gif' />", handler:"xed.handleEmoticon('num1.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/num2.gif' />", handler:"xed.handleEmoticon('num2.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/num3.gif' />", handler:"xed.handleEmoticon('num3.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/num4.gif' />", handler:"xed.handleEmoticon('num4.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/num5.gif' />", handler:"xed.handleEmoticon('num5.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/question.gif' />", handler:"xed.handleEmoticon('question.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/disk.gif' />", handler:"xed.handleEmoticon('disk.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/play.gif' />", handler:"xed.handleEmoticon('play.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/flag1.gif' />", handler:"xed.handleEmoticon('flag1.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/flag2.gif' />", handler:"xed.handleEmoticon('flag2.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/flag3.gif' />", handler:"xed.handleEmoticon('flag3.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/flag4.gif' />", handler:"xed.handleEmoticon('flag4.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/arrow_left.gif' />", handler:"xed.handleEmoticon('arrow_left.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/arrow_right.gif' />", handler:"xed.handleEmoticon('arrow_right.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/arrow_up.gif' />", handler:"xed.handleEmoticon('arrow_up.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/arrow_down.gif' />", handler:"xed.handleEmoticon('arrow_down.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/step1.gif' />", handler:"xed.handleEmoticon('step1.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/step2.gif' />", handler:"xed.handleEmoticon('step2.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/step3.gif' />", handler:"xed.handleEmoticon('step3.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/note.gif' />", handler:"xed.handleEmoticon('note.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/heart.gif' />", handler:"xed.handleEmoticon('heart.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/good.gif' />", handler:"xed.handleEmoticon('good.gif')"},
+                    {html:"<img src='../images/dialogs/emoticon/bad.gif' />", handler:"xed.handleEmoticon('bad.gif')"}
+				]}
   			]
 		};
 		
@@ -291,6 +269,18 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * @type String
 		 */
 		this.config.imagePathForContent = '../images/content/';
+		
+		/**
+		 * Image path for dialog.
+		 * @type String
+		 */
+		this.config.imagePathForDialog = '../images/dialogs/';
+		
+		/**
+		 * Image path for emoticon.
+		 * @type String
+		 */
+		this.config.imagePathForEmoticon = '../images/dialogs/emoticon/';
 		
 		/**
 		 * Widget Container path.
@@ -1671,7 +1661,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 		
-		dialog.show({position: 'centerOfEditor'});
+		dialog.show({position: 'centerOfEditor', mode: 'lightweight'});
 		
 		return true;
 	},
@@ -2611,7 +2601,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		return true;
 	},
 	
-	
+	handleEmoticon: function(fileName){
+		var img = this.getDoc().createElement('IMG');
+		img.src = this.config.imagePathForEmoticon + fileName;
+		this.rdom.insertNode(img);
+	},
 	
 	_handleContextMenu: function(e) {
 		if (xq.Browser.isWebkit) {

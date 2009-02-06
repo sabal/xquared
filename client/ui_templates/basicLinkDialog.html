@@ -5,14 +5,16 @@
 	<title>Basic Link Dialog</title>
 </head>
 <body>
-	<form action="#" class="xqFormDialog xqBasicLinkDialog">
-		<h3>Link</h3>
-		<div>
-			<input type="text" class="initialFocus" name="text" value="" />
-			<input type="text" name="url" value="http://" />
-			
-			<input type="submit" value="Ok" />
-			<input type="button" class="cancel" value="Cancel" />
+	<form id="linkDialog" class="xqFormDialog lightweight" action="#">
+		<h3>link</h3>
+		<div class="dialog-content">
+			<p>Please enter the URL and label.</p>
+			<input type="text" name="text" class="type-text initialFocus" value="" />
+			<input type="text" name="url" class="type-text" value="http://" />
+			<div class="dialog-buttons">
+				<a href="#" class="button-white cancel">Cancel</a>
+				<a href="#" class="button-gray submit">Create</a>
+			</div>
 		</div>
 	</form>
 </body>
