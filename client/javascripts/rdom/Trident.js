@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/Base.js
  */
 xq.rdom.Trident = xq.Class(xq.rdom.Base,

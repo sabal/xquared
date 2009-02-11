@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.Shortcut = xq.Class(/** @lends xq.Shortcut.prototype */{
 	/**

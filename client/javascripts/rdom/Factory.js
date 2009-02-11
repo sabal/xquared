@@ -1,7 +1,7 @@
 /**
  * Creates and returns instance of browser specific implementation.
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/Base.js
  * @requires rdom/Trident.js
  * @requires rdom/Gecko.js

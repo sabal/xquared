@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/Factory.js
  */
 xq.EditHistory = xq.Class(/** @lends xq.EditHistory.prototype */{

@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires macro/Base.js
  */
 xq.macro.Factory = xq.Class(/** @lends xq.macro.Factory.prototype */{

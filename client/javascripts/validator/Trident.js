@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires validator/Base.js
  */
 xq.validator.Trident = xq.Class(xq.validator.Base,

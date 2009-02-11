@@ -4,7 +4,7 @@
 xq.validator = {}
 
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires Browser.js
  * @requires rdom/Factory.js
  */

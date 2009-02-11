@@ -4,7 +4,7 @@
 xq.rdom = {}
 
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires DomTree.js
  */
 xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{

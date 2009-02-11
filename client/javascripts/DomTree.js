@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.DomTree = xq.Class(/** @lends xq.DomTree.prototype */{
 	/**

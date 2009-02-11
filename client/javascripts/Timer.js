@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.Timer = xq.Class(/** @lends xq.Timer.prototype */{
 	/**

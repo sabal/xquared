@@ -4,7 +4,7 @@
 xq.macro = {};
 
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.macro.Base = xq.Class(/** @lends xq.macro.Base.prototype */{
 	/**

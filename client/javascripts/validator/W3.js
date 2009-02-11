@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires validator/Base.js
  */
 xq.validator.W3 = xq.Class(xq.validator.Base,

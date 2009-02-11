@@ -4,7 +4,7 @@
 xq.plugin = {};
 
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.plugin.Base = xq.Class(/** @lends xq.plugin.Base.prototype */{
 	/**

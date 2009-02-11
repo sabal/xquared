@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires Browser.js
  * @requires Timer.js
  * @requires rdom/Factory.js

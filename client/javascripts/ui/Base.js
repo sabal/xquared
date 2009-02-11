@@ -1,6 +1,6 @@
 /**
  * @namespace UI Controls
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.ui = {};

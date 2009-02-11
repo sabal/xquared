@@ -1,7 +1,7 @@
 /**
  * @namespace UI Controls
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires ui/Base.js
  */
 xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {

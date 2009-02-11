@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/Base.js
  */
 xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{

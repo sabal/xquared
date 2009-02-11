@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires Editor.js
  */
 xq.Layer = xq.Class(/** @lends xq.Layer.prototype */{

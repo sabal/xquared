@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires Editor.js
  * @requires plugin/MacroPlugin.js
  * @requires plugin/FlashMovieMacroPlugin.js

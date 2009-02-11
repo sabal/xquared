@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires validator/W3.js
  */
 xq.validator.Webkit = xq.Class(xq.validator.W3,

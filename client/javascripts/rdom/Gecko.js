@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/W3.js
  */
 xq.rdom.Gecko = xq.Class(xq.rdom.W3,

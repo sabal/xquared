@@ -1,7 +1,7 @@
 /**
  * @namespace Contains browser detection codes
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  */
 xq.Browser = new function() {
 	// By Rendering Engines

@@ -1,7 +1,7 @@
 /**
  * Base for W3C Standard Engine
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires rdom/Base.js
  */
 xq.rdom.W3 = xq.Class(xq.rdom.Base,

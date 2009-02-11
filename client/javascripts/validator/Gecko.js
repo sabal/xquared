@@ -1,5 +1,5 @@
 /**
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires validator/W3.js
  */
 xq.validator.Gecko = xq.Class(xq.validator.W3,

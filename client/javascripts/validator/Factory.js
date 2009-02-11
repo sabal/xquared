@@ -1,7 +1,7 @@
 /**
  * Creates and returns instance of browser specific implementation.
  * 
- * @requires Xquared.js
+ * @requires XQuared.js
  * @requires validator/Base.js
  * @requires validator/Trident.js
  * @requires validator/Gecko.js
