@@ -228,10 +228,11 @@ xq.rdom.Trident = xq.Class(xq.rdom.Base,
 		}
 	},
 	
-	hasSelection: function() {
+	hasSelection: function(ignoreControlType) {
 		var selectionType = this.sel().type.toLowerCase();
 		if("none" === selectionType) return false;
 		if("text" === selectionType && this.getSelectionAsHtml().length === 0) return false;
+		if(ignoreControlType && "control" === selectionType) return false; 
 		return true;
 	},
 	

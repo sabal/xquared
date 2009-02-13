@@ -243,7 +243,13 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			var anchor = this.doc.createElement('A');
 			li.appendChild(anchor);
 			if (item.html) {
-				anchor.innerHTML = item.html;
+				if (buttonConfig.className == 'emoticon') {
+					var emoticon = this.doc.createElement('IMG');
+					emoticon.src = xed.config.imagePathForEmoticon + item.html;
+					anchor.appendChild(emoticon);				
+				} else {
+					anchor.innerHTML = item.html;
+				}
 			}
 			
 			anchor.href = "#";

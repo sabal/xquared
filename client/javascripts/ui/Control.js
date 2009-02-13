@@ -50,7 +50,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		for (var i = 0; i < submitButtons.length; i++) {
 			submitButtons[i].onclick = function() {
 				self.onCloseHandler(xq.serializeForm(this.form));
-				self.close();
+				if(!options.notSelfClose) self.close();
 				return false;
 			}.bind(this);
 		}
@@ -95,7 +95,11 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		
 		// give focus
 		var elementToFocus = xq.getElementsByClassName(this.form, 'initialFocus');
-		if(elementToFocus.length > 0) elementToFocus[0].focus();
+		if(elementToFocus.length > 0) {
+			setTimeout(function(){ // @WORKAROUND: required to avoid Windows IE focus bug.
+				elementToFocus[0].focus();
+			},0);
+		}
 		
 		// handle cancelOnEsc option
 		if(options.cancelOnEsc) {
@@ -133,7 +137,6 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		var targetElement = null;
 		var left = 0;
 		var top = 0;
-		document.title = target
 		if(target === 'centerOfWindow') {
 			targetElement = document.documentElement || document.body;
 			left += targetElement.scrollLeft;

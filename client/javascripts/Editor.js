@@ -209,29 +209,29 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				{className:"table", title:"Table", handler:"xed.handleTable({'rows':4, 'cols':4, 'headerPositions':'tl'})"},
 				{className:"separator", title:"Separator", handler:"xed.handleSeparator()"},
 				{className:"emoticon", title:"Emoticon", list: [
-                    {html:"<img src='../images/dialogs/emoticon/num1.gif' />", handler:"xed.handleEmoticon('num1.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/num2.gif' />", handler:"xed.handleEmoticon('num2.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/num3.gif' />", handler:"xed.handleEmoticon('num3.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/num4.gif' />", handler:"xed.handleEmoticon('num4.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/num5.gif' />", handler:"xed.handleEmoticon('num5.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/question.gif' />", handler:"xed.handleEmoticon('question.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/disk.gif' />", handler:"xed.handleEmoticon('disk.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/play.gif' />", handler:"xed.handleEmoticon('play.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/flag1.gif' />", handler:"xed.handleEmoticon('flag1.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/flag2.gif' />", handler:"xed.handleEmoticon('flag2.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/flag3.gif' />", handler:"xed.handleEmoticon('flag3.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/flag4.gif' />", handler:"xed.handleEmoticon('flag4.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/arrow_left.gif' />", handler:"xed.handleEmoticon('arrow_left.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/arrow_right.gif' />", handler:"xed.handleEmoticon('arrow_right.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/arrow_up.gif' />", handler:"xed.handleEmoticon('arrow_up.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/arrow_down.gif' />", handler:"xed.handleEmoticon('arrow_down.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/step1.gif' />", handler:"xed.handleEmoticon('step1.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/step2.gif' />", handler:"xed.handleEmoticon('step2.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/step3.gif' />", handler:"xed.handleEmoticon('step3.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/note.gif' />", handler:"xed.handleEmoticon('note.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/heart.gif' />", handler:"xed.handleEmoticon('heart.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/good.gif' />", handler:"xed.handleEmoticon('good.gif')"},
-                    {html:"<img src='../images/dialogs/emoticon/bad.gif' />", handler:"xed.handleEmoticon('bad.gif')"}
+                    {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
+                    {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
+                    {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
+                    {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
+                    {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
+                    {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
+                    {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
+                    {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
+                    {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
+                    {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
+                    {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
+                    {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
+                    {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
+                    {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
+                    {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
+                    {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
+                    {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
+                    {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
+                    {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
+                    {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
+                    {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
+                    {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
+                    {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
 				]}
   			]
 		};
@@ -2234,7 +2234,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @TODO: Add selenium test
 	 */
 	handleIndent: function() {
-		if(this.rdom.hasSelection()) {
+		if(this.rdom.hasSelection(true)) {
 			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
 			if(blocks.first() !== blocks.last()) {
 				var affected = this.rdom.indentElements(blocks.first(), blocks.last());
@@ -2249,8 +2249,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		var block = this.rdom.getCurrentBlockElement();
 		var affected = this.rdom.indentElement(block);
-		
-		if(affected) {
+		if(affected && !this.rdom.tree.isAtomic(this.rdom.getCurrentElement())) {
 			this.rdom.placeCaretAtStartOf(affected);
 			
 			var historyAdded = this.editHistory.onCommand();
@@ -2265,7 +2264,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @TODO: Add selenium test
 	 */
 	handleOutdent: function() {
-		if(this.rdom.hasSelection()) {
+		if(this.rdom.hasSelection(true)) {
 			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
 			if(blocks.first() !== blocks.last()) {
 				var affected = this.rdom.outdentElements(blocks.first(), blocks.last());
@@ -2281,7 +2280,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		var block = this.rdom.getCurrentBlockElement();
 		var affected = this.rdom.outdentElement(block);
 		
-		if(affected) {
+		if(affected && !this.rdom.tree.isAtomic(this.rdom.getCurrentElement())) {
 			this.rdom.placeCaretAtStartOf(affected);
 
 			var historyAdded = this.editHistory.onCommand();
@@ -2299,7 +2298,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @param {String} CSS class name
 	 */
 	handleList: function(type, className) {
-		if(this.rdom.hasSelection()) {
+		if(this.rdom.hasSelection(true)) {
 			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
 			if(blocks.first() !== blocks.last()) {
 				blocks = this.rdom.applyLists(blocks.first(), blocks.last(), type, className);
@@ -2324,8 +2323,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @param {String} dir "left", "center", "right" or "both"
 	 */
 	handleJustify: function(dir) {
-		if(this.rdom.hasSelection()) {
+		if(this.rdom.hasSelection(true)) {
 			var blocks = this.rdom.getSelectedBlockElements();
+    		
     		var dir = (dir === "left" || dir === "both") && (blocks[0].style.textAlign === "left" || blocks[0].style.textAlign === "") ? "both" : dir;
 			this.rdom.justifyBlocks(blocks, dir);
 			this.rdom.selectBlocksBetween(blocks.first(), blocks.last());
