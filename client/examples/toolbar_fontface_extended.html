@@ -10,7 +10,7 @@
 	
 	window.onload = function() {
 		xed = new xq.Editor("xqEditor");
-	
+		
 		xed.config.defaultToolbarButtonMap = [
 			[
 				{className:"fontFace", title:"Font face", list:[
@@ -26,7 +26,7 @@
                     {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
                     {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
 				]}
-				
+				,
 				
 				{className:"fontSize", title:"Font size", list:[
                     {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
