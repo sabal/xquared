@@ -37,6 +37,10 @@
 	line-height: 1.230em;
 }
 
+.xed p font {
+	line-height: 1.230em;
+}
+
 .xed hr {
 }
 
@@ -94,36 +98,30 @@
 
 
 /* table */
-.xed table.datatable {
+.xed table.datatable2 {
 	width: 100%;
 	/width: auto;
 	border-collapse: collapse;
 	table-layout: fixed;
 }
-.xed table.datatable th {
+.xed table.datatable2 th {
 	font-weight: normal;
 	padding: 0.25em 0.307em;
 }
-.xed table.datatable td {
+.xed table.datatable2 td {
 	padding: 0.25em 0.307em;
 }
-.xed table.datatable {
+.xed table.datatable2 {
 	border-left: 1px solid #000;
 	border-top: 1px solid #000;	
 }
-.xed table.datatable th {
+.xed table.datatable2 th {
 	background-color: #e7e7e7;
 	border-bottom: 1px solid #000;
 	border-right: 1px solid #000;	
 }
-.xed table.datatable td {
+.xed table.datatable2 td {
 	border-bottom: 1px solid #000;
 	border-right: 1px solid #000;	
 }
 
-.xed table.datatable2 {
-	border-collapse: separate;
-}
-.xed table.datatable2 td {
-	border:1px dotted gray;
-}
