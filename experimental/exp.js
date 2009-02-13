@@ -123,9 +123,11 @@ xq.HostEnvironment = Class.extend({
 		doc.close();
 		
 		this.turnOnDesignMode();
+		this.registerEventHandlers();
 	},
 	generateCleanDocmentHtml: function() {throw 'Not implemented';},
-	turnOnDesignMode: function() {throw 'Not implemented';}
+	turnOnDesignMode: function() {throw 'Not implemented';},
+	registerEventHandlers: function() {throw 'Not implemented';}
 });
 
 xq.HostEnvironment.getInstance = function(iframe) {
@@ -149,6 +151,9 @@ xq.TridentHostEnvironment = xq.HostEnvironment.extend({
 	},
 	turnOnDesignMode: function() {
 		this.iframe.contentWindow.document.body.contentEditable = true;
+	},
+	registerEventHandlers: function() {
+		
 	}
 });
 
@@ -166,5 +171,8 @@ xq.W3HostEnvironment = xq.HostEnvironment.extend({
 	},
 	turnOnDesignMode: function() {
 		this.iframe.contentWindow.document.designMode = "On";
+	},
+	registerEventHandlers: function() {
+		
 	}
 });
