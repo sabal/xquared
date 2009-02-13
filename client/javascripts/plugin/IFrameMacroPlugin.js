@@ -28,6 +28,12 @@ xq.plugin.IFrameMacroPlugin = xq.Class(xq.plugin.Base,
 					function(dialog) {},
 					function(data) {
 						this.focus();
+					
+						if(xq.Browser.isTrident) {
+							var rng = this.rdom.rng();
+							rng.moveToBookmark(bm);
+							rng.select();
+						}
 						
 						// cancel?
 						if(!data) return;
@@ -42,6 +48,7 @@ xq.plugin.IFrameMacroPlugin = xq.Class(xq.plugin.Base,
 					}.bind(this)
 			);
 			
+			if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 			dialog.show({position: 'centerOfEditor'});
 			
 			return true;

@@ -498,63 +498,69 @@
 	width: 428px;
 }
 
-/* imageAttachmentDialog */
-#imageAttachmentDialog {
+/* fileUploadDialog */
+#fileUploadDialog {
 	width: 428px;
 }
-#imageAttachmentDialog .attachment-section {
+#fileUploadDialog .attachment-section {
 	border: 1px solid #e0e0e0;
 	background-color: #f5f5f5;
-	padding: 25px 0 21px;
+	padding: 25px 0px 21px;
 }
-#imageAttachmentDialog .attachment-section p {
+#fileUploadDialog .attachment-section label {
+	margin-right: 9px;
+	font-weight: bold;
+}
+#fileUploadDialog .attachment-section p {
 	font: 11px dotum,sans-serif;
-	width: 210px;
+	width: 300px;
 	padding: 0 0 0 36px;
 	margin: 0 auto;
 	background: url(../images/dialogs/multifile.gif) no-repeat 0 0 ;
 	line-height: 16px;
 }
-#imageAttachmentDialog .attachment-section p strong {
+#fileUploadDialog .attachment-section p strong {
 	font-weight: bold;
 	color: #ff7536;
 }
-#imageAttachmentDialog .attachment-section .upload-button {
+#fileUploadDialog .attachment-section .upload-button {
 	text-align: center;
 }
-#imageAttachmentDialog .buttons {
+#fileUploadDialog .buttons {
 	text-align: right;
 }
-#imageAttachmentDialog .noti {
+#fileUploadDialog .noti {
 	font: 11px dotum, sans-serif;
 	color: #979797;
 	background: url(../images/dialogs/notice.gif) no-repeat 0 0;
 	padding: 0 0 0 16px;
 	letter-spacing: -1px;
 }
-#imageAttachmentDialog .noti span {
+#fileUploadDialog .noti span {
 	display: block;
 	margin: 5px 0 0;
 }
-#imageAttachmentDialog .noti a {
+#fileUploadDialog .noti a {
 	color: #ff7536;
 	text-decoration: underline;
 }
-#imageAttachmentDialog .dialog-buttons {
+#fileUploadDialog .dialog-buttons {
 	margin: 10px 0 11px;
 }
-#imageAttachmentDialog .dialog-buttons a {
+#multiFileUploadDialog .dialog-buttons a,
+#fileUploadDialog .dialog-buttons a {
 	float: right;
 	margin: 0 0 0 4px;
 }
-#imageAttachmentDialog .upload-buttons {
+#fileUploadDialog .upload-buttons {
 	margin: 12px 0 0 157px;
 }
-#imageAttachmentDialog .upload-buttons a {
+#fileUploadDialog .upload-buttons a {
 	font: 11px dotum,sans-serif;
 	padding: 4px 4px 4px 5px;
 	float: left;
 }
+
 /* videoDialog */
 #videoDialog {
 	width: 428px;

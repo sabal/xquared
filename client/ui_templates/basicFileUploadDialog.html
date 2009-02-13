@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Basic Link Dialog</title>
+</head>
+<body>
+	<form id="fileUploadDialog" class="xqFormDialog modal" method="post" enctype="multipart/form-data" target="uploadTarget" action="../uploaded.html">
+		<h3>Upload image</h3>
+		<div class="dialog-content">
+			<div class="attachment-section">
+				<label class="label" for="searchAttachFile">Find a file</label><input type="file" class="type-text" id="searchAttachFile" name="FileData" />
+			</div>
+			<div class="dialog-buttons">
+				<a href="#" class="button-white cancel">Close</a>
+				<a href="#" class="button-gray submit">Insert</a>
+			</div>
+		</div>
+		<iframe id="uploadTarget" name="uploadTarget" src="" style="width:0;height:0;border:0px solid #fff;"></iframe>
+		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="Close" /></a>
+	</form>
+</body>
+</html>
