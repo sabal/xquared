@@ -17,6 +17,7 @@ var xed;
 window.onload = function() {
 	xed = new xq.Editor("xqEditor");
 	xed.addPlugin('FileUpload');
+	xed.setUploadTarget("uploaded.html");
 	xed.setEditMode('wysiwyg');
 	xed.setWidth("100%");
 };
