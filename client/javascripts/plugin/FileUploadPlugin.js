@@ -25,15 +25,25 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			
 			var img = xed.getDoc().createElement('IMG');
 			img.src = fileName;
+			
 			xed.focus();
 			xed.rdom.insertNode(img) ;
 		}
 		
+		xed.fileUploadTarget = "../uploaded.html";
+		
+		xed.setUploadTarget = function(target)
+		{
+			xed.fileUploadTarget = target;
+		}
+		
 		xed.handleFileUpload = function() {
+		
 			var dialog = new xq.ui.FormDialog(
 				this,
 				xq.ui_templates.basicFileUploadDialog,
 				function(dialog) {
+					document.getElementById("fileUploadDialog").action = xed.fileUploadTarget;
 				},
 				function(dialog) {
 					xed.focus();
@@ -59,6 +69,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			dialog: null,
 			onComplete: function(index, result){
 				if (document.getElementById("uploadTarget")){
+					
 					//Response page: ../uploaded.html 
 					var ret = document.getElementById("uploadTarget").contentWindow.document.body.innerHTML;
 					var data = eval("("+ret+")");
