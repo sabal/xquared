@@ -1626,7 +1626,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		return false;
 	},
-
+	lastLinkDialog: null,
 	/**
 	 * Show link dialog
 	 *
@@ -1634,16 +1634,23 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * TODO: Add selenium test
 	 */
 	handleLink: function() {
+		var linkDialog = document.getElementById('linkDialog');
+		if (linkDialog && linkDialog.style.display != 'none') this.lastLinkDialog.close();
+		
 		var text = this.rdom.getSelectionAsText() || '';
 		var dialog = new xq.ui.FormDialog(
 			this,
 			xq.ui_templates.basicLinkDialog,
 			function(dialog) {
-				if(text) {
-					dialog.form.text.value = text;
-					dialog.form.url.focus();
-					dialog.form.url.select();
-				}
+				setTimeout(function(){
+					if(text) {
+						dialog.form.text.value = text;
+						dialog.form.url.focus();
+						dialog.form.url.select();
+					} else {
+						dialog.form.text.focus();
+					}
+				}, 0);
 			},
 			function(data) {
 				this.focus();
@@ -1662,7 +1669,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 		
 		dialog.show({position: 'centerOfEditor', mode: 'lightweight'});
-		
+		this.lastLinkDialog = dialog;
 		return true;
 	},
 	
