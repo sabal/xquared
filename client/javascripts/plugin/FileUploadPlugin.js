@@ -30,7 +30,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			xed.rdom.insertNode(img) ;
 		}
 		
-		xed.fileUploadTarget = "../uploaded.html";
+		xed.fileUploadTarget = "uploaded.html";
 		
 		xed.setUploadTarget = function(target)
 		{
