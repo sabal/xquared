@@ -341,7 +341,7 @@
 
 /* foreGroundDialog , backGroundDialog */
 #foregroundColorDialog {
-	width: 190px;
+	width: 216px;
 }
 #foregroundColorDialog .dialog-content, 
 #backgroundColorDialog .dialog-content {
@@ -354,8 +354,9 @@
 }
 #foregroundColorDialog .item-list li,
 #backgroundColorDialog .item-list li {
-	margin: 0 0 0 2px;
-	padding: 0 0 2px;	
+	margin: 0 0 2px 4px;
+	_margin: 0 0 0 2px !important;
+	padding: 0 0 2px !important;
 	font-size: 0;
 	line-height: 0;
 	float: left;
@@ -373,10 +374,10 @@
 #backgroundColorDialog .item-list li.first-child {
 	margin: 0;
 }
-#foregroundColorDialog .item-list li a:hover {
-	/*border: 1px solid #000;*/
+#foregroundColorDialog .item-list li a:hover,
+#backgroundColorDialog .item-list li a:hover {
+	border-color: #000 !important;
 }
-
 #foregroundColorDialog a.remove-color {
 	font-family: Arial, Dotum;
 	font-size: 0.916em;
@@ -391,17 +392,15 @@
 
 /* backgroundColorDialog */
 #backgroundColorDialog {
-	width: 178px;
+	width: 164px;
 }
 #backgroundColorDialog .item-list li {
 	width: 16px;
 	height: 16px;
 	margin-left: 4px;
-	padding: 0;
-	border: 1px solid #acacac;
 }
-#backgroundColorDialog .item-list li a:hover {
-	border-color: #000;
+#backgroundColorDialog .item-list a {
+	border: 1px solid #acacac;
 }
 
 /* headingDialog */
