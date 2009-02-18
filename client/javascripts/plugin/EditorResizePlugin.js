@@ -30,9 +30,12 @@ xq.plugin.EditorResizePlugin = xq.Class(xq.plugin.Base,
 		// create resize bar
 		this.bar = doc.createElement("DIV");
 		if(xq.Browser.isIE6) this.bar.innerHTML = "<span></span>";
-		this.bar.style.height = "6px";
-		this.bar.style.backgroundColor = "#ddd";
+		this.bar.style.height = "10px";
+		this.bar.style.backgroundImage = 'url(../images/plugin/resize_arrow.gif)';
+		this.bar.style.backgroundRepeat = 'no-repeat';
+		this.bar.style.backgroundPosition = 'center';
 		this.bar.style.cursor = "n-resize";
+		
 		wrapper.appendChild(this.bar);
 		
 		// register event
