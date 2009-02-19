@@ -4,8 +4,6 @@
  * @requires Editor.js
  * @requires plugin/Base.js
  * @requires ui/Control.js
- * @requires macro/Factory.js
- * @requires macro/FlashMovieMacro.js
  */
 xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 	/**

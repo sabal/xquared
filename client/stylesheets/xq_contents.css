@@ -125,3 +125,6 @@
 	border-right: 1px solid #000;	
 }
 
+.xed img {
+	max-width: 100%;
+}
