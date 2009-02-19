@@ -40,6 +40,15 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			]);
 		} else {
 			this.container = container;
+			
+			if(!this.dialogContainer)
+			{
+				// dialog container
+				var dialogs = this.doc.createElement('div');
+				dialogs.className = 'dialogs';
+				this.dialogContainer = dialogs;
+				this.container.appendChild(dialogs);
+			}
 		}
 		
 		xq.observe(document, 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
