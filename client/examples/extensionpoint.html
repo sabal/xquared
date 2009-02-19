@@ -8,16 +8,17 @@
 	<script type="text/javascript">//<![CDATA[
 	var xed;
 	
-	window.onload = function() {
-		xed = new xq.Editor("xqEditor");
+window.onload = function() {
+	xed = new xq.Editor("xqEditor");
 
-		xed.setEditMode('wysiwyg');
-		xed.setWidth("100%");
-		xed.addShortcuts(getAdditionalShortcuts());
-		xed.addAutocorrections(getAdditionalAutocorrections());
-		xed.addAutocompletions(getAdditionalAutocompletions());
-		xed.addContextMenuHandler('test', contextMenuHandler);
-	}
+	xed.addShortcuts(getAdditionalShortcuts());
+	xed.addAutocorrections(getAdditionalAutocorrections());
+	xed.addAutocompletions(getAdditionalAutocompletions());
+	xed.addContextMenuHandler('test', contextMenuHandler);
+	
+	xed.setEditMode('wysiwyg');
+	xed.setWidth("100%");
+}
 	
 	function getAdditionalAutocompletions() {
 		return [
