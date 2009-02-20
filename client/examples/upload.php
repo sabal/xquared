@@ -1,11 +1,5 @@
 <?php
 
-$server=getenv("SERVER_NAME"); 
-
-print_r();
-
-echo $server;
-exit; 
 /*
 This is an upload script for SWFUpload that attempts to properly handle uploaded files
 in a secure way.
@@ -66,13 +60,13 @@ Notes:
 	}
 
 // Settings
-	$save_path = getcwd() . "/uploads/";				// The path were we will save the file (getcwd() may not be reliable and should be tested in your environment)
+  $upload_path = "/uploads/";
+	$save_path = getcwd() . $upload_path;				// The path were we will save the file (getcwd() may not be reliable and should be tested in your environment)
 	$upload_name = "Filedata";
 	$max_file_size_in_bytes = 2147483647;				// 2GB in bytes
 	$extension_whitelist = array("jpg", "gif", "png");	// Allowed file extensions
 	$valid_chars_regex = '.A-Z0-9_ !@#$%^&()+={}\[\]\',~`-';				// Characters allowed in the file name (in a Regular Expression format)
 	
-  	
 // Other variables	
 	$MAX_FILENAME_LENGTH = 260;
 	$file_name = "";
@@ -190,7 +184,8 @@ function getUploadedFileUrl($save_path, $file_name)
 
 function showResult($success, $filename, $message)
 {
-	$result = array('success' => $success, 'file_name' => $filename, 'message' =>  $message);
+	$fileUrl = getUploadedPath($upload_path) . $filename;
+	$result = array('success' => $success, 'file_name' => $fileUrl, 'message' =>  $message);
 	echo json_encode($result);
 }
 
@@ -200,4 +195,13 @@ function HandleError($message) {
 	$result = array('success' => false, 'file_name' => null, 'message' =>  $message);
 	echo json_encode($result);
 }
+
+function getUploadedPath($upload_path)
+{
+  $uri = $_SERVER['REQUEST_URI'];
+  $uri = substr($uri, 0, strripos($uri, '/'));
+  
+  return 'http://' . $_SERVER['HTTP_HOST'] . $uri . $upload_path;
+}
+
 ?>
