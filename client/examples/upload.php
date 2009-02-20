@@ -1,4 +1,11 @@
 <?php
+
+$server=getenv("SERVER_NAME"); 
+
+print_r();
+
+echo $server;
+exit; 
 /*
 This is an upload script for SWFUpload that attempts to properly handle uploaded files
 in a secure way.
@@ -53,7 +60,8 @@ Notes:
 
 	if ((int)$_SERVER['CONTENT_LENGTH'] > $multiplier*(int)$POST_MAX_SIZE && $POST_MAX_SIZE) {
 		header("HTTP/1.1 500 Internal Server Error"); // This will trigger an uploadError event in SWFUpload
-		echo "POST exceeded maximum allowed size.";
+		
+		HandleError("POST exceeded maximum allowed size.");
 		exit(0);
 	}
 
@@ -168,12 +176,28 @@ Notes:
 		exit(0);
 	}
 
+	// success
+	
+	$file_url = getUploadedFileUrl($save_path, $file_name);
+	
+	showResult(true, $file_url, "upload completed"); 
 	exit(0);
 
+function getUploadedFileUrl($save_path, $file_name)
+{
+	
+}
+
+function showResult($success, $filename, $message)
+{
+	$result = array('success' => $success, 'file_name' => $filename, 'message' =>  $message);
+	echo json_encode($result);
+}
 
 /* Handles the error output. This error message will be sent to the uploadSuccess event handler.  The event handler
 will have to check for any error messages and react as needed. */
 function HandleError($message) {
-	echo $message;
+	$result = array('success' => false, 'file_name' => null, 'message' =>  $message);
+	echo json_encode($result);
 }
 ?>
