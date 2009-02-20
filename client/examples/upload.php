@@ -172,20 +172,21 @@ Notes:
 
 	// success
 	
-	$file_url = getUploadedFileUrl($save_path, $file_name);
+	$file_url = getUploadedFileUrl($upload_path, $file_name);
 	
 	showResult(true, $file_url, "upload completed"); 
 	exit(0);
 
-function getUploadedFileUrl($save_path, $file_name)
+function getUploadedFileUrl($upload_path, $file_name)
 {
-	
+	$url = getUploadedPath($upload_path) . $file_name;
+	return $url;
 }
 
-function showResult($success, $filename, $message)
+function showResult($success, $fileurl, $message)
 {
-	$fileUrl = getUploadedPath($upload_path) . $filename;
-	$result = array('success' => $success, 'file_name' => $fileUrl, 'message' =>  $message);
+	$result = array('success' => $success, 'file_name' => $fileurl, 'message' =>  $message);
+	
 	echo json_encode($result);
 }
 
