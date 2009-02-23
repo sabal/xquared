@@ -118,7 +118,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 	 * Closes dialog
 	 */
 	close: function() {
-		this.form.parentNode.removeChild(this.form);
+		if(this.form.parentNode) this.form.parentNode.removeChild(this.form);
 		
 		if(this.dimmed) {
 			this.dimmed.parentNode.removeChild(this.dimmed);

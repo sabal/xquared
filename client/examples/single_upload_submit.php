@@ -58,7 +58,7 @@ Notes:
 	  
 		if (window.parent.xed)
 		{
-			window.parent.xed.fileUploadListener.onComplete();
+			window.parent.xed.fileUploadListener.onSuccess();
 		}
 	}
 //]]></script>
