@@ -328,7 +328,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				} else {
 					
 					var settings = {
-						flash_url : "../libraries/swfupload/swfupload.swf",
+						flash_url : "../javascripts/plugin/swfupload/swfupload.swf",
 						upload_url: "../../examples/" + xed.fileUploadTarget(),	// Relative to the SWF file
 						//post_params: {},
 						file_post_name : xed.fileUploadFieldName, 
