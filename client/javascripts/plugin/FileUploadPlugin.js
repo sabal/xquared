@@ -86,7 +86,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 					// cancel?
 					if(!dialog) {
 						xed.fileUploadController.dialog = null;
-						if (xed.fileUploadController.swfUploader){
+						if (!xed.isSingleFileUpload && xed.fileUploadController.swfUploader){
 							xed.fileUploadController.swfUploader.destroy();
 							xed.fileUploadController.swfUploader = null;
 						}
@@ -260,12 +260,12 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			},
 			onQueueComplete: function(numFilesUploaded){
 				if (!this.isError) {
-					xed.fileUploadController.dialog.close();
-					xed.fileUploadController.dialog = null;
-					if (!xed.isSingleFileUpload){
+					if (!xed.isSingleFileUpload && xed.fileUploadController.swfUploader){
 						xed.fileUploadController.swfUploader.destroy();
 						xed.fileUploadController.swfUploader = null;
 					}
+					xed.fileUploadController.dialog.close();
+					xed.fileUploadController.dialog = null;
 				}
 			},
 			onUploadError: function(file, errorCode, message){
