@@ -13,8 +13,10 @@ var xed;
 
 window.onload = function() {
 	xed = new xq.Editor("xqEditor");
+	
 	xed.isSingleFileUpload = true;
 	xed.addPlugin('FileUpload');
+	xed.setFileUploadTarget('/client/examples/single_upload_submit.php', null);
 	xed.setEditMode('wysiwyg');
 	xed.setWidth("100%");
 };

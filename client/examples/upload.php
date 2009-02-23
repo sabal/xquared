@@ -185,7 +185,7 @@ function getUploadedFileUrl($upload_path, $file_name)
 
 function showResult($success, $fileurl, $message)
 {
-	$result = array('success' => $success, 'file_name' => $fileurl, 'message' =>  $message);
+	$result = array('success' => $success, 'file_url' => $fileurl, 'message' =>  $message);
 	
 	echo json_encode($result);
 }

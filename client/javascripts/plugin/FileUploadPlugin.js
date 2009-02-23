@@ -34,14 +34,29 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			xed.rdom.insertNode(img) ;
 		}
 		
+		xed.fileUploadFieldName = "Filedata";
+		xed.singleUploadTarget = "/examples/single_upload_submit.php";
+		xed.multiUploadTarget = "/examples/upload.php";
+
+		xed.setFileUploadTarget = function(singleUploadTarget, multiUploadTarget)
+		{
+			xed.singleUploadTarget = singleUploadTarget;
+			xed.multiUploadTarget = multiUploadTarget;
+		}
+		
+		xed.setUploadFieldName = function(fieldName)
+		{
+			xed.fileUploadFieldName = fieldName;
+		}
+		
 		xed.fileUploadTarget = function(){
+		// uploadTarget must be absolute path
 			if (xed.isSingleFileUpload) {
-				return "single_upload_submit.php";
+				return xed.singleUploadTarget;
 			} else {
-				return "upload.php";
+				return xed.multiUploadTarget;
 			}
 		}
-		xed.fileUploadFieldName = "Filedata";
 		
 		xed.handleFileUpload = function(isSingleFileUpload) {
 			var requiredMajorVersion = 9;
@@ -199,25 +214,23 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				document.getElementById('file-' + file.id + '-option').style.display = 'none'
 			},
 			onSuccess: function(file, serverData){
-				var uploadFolder = "../examples/uploads/"; // temp upload folder path
-				
 				if (xed.isSingleFileUpload){
 					var doc = document.getElementById("uploadTarget");
-					var ret = doc.contentWindow.document.body.innerHTML;
-					if (!ret) return;
-					eval("var data = " + ret);
+					var serverData = doc.contentWindow.document.body.innerHTML;
+				}
+				if (!serverData) return;
+				eval("var data = " + serverData);
 					
-					if(data && data.success) {
-						xed.insertImageFileToEditor(data.file_name, window.parent.xed);
+				if(data && data.success) {
+					if (xed.isSingleFileUpload){
+						xed.insertImageFileToEditor(data.file_url, window.parent.xed);
 						this.onQueueComplete();
 					} else {
-						alert(data.message);
-						return;
+						xed.insertImageFileToEditor(data.file_url);
+						document.getElementById('file-' + file.id + '-progress').style.width = '100%';
 					}
 				} else {
-					if (!file) return;
-					document.getElementById('file-' + file.id + '-progress').style.width = '100%';
-					xed.insertImageFileToEditor(uploadFolder + file.name);
+					alert(data.message);
 				}
 				
 			},
@@ -329,7 +342,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 					
 					var settings = {
 						flash_url : "../javascripts/plugin/swfupload/swfupload.swf",
-						upload_url: "../../examples/" + xed.fileUploadTarget(),	// Relative to the SWF file
+						upload_url: xed.fileUploadTarget(),	// Relative to the SWF file
 						//post_params: {},
 						file_post_name : xed.fileUploadFieldName, 
 						file_types : "*.*",
@@ -342,6 +355,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 						button_height: "23",
 						button_placeholder_id: "MultiFileUploaderDiv",
 						button_text: '<span class="theFont">Add Files</span>',
+						button_cursor: -2,
 						button_text_style: ".theFont { font-size: 12px; font-family: dotum; color:#ffffff; }",
 						button_text_left_padding: "9",
 						button_text_top_padding: "4",
