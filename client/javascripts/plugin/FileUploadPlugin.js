@@ -14,8 +14,14 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 	 */
 	{
 	onAfterLoad: function(xed) {
+		
+		if(!xed.isSingleFileUpload)
+		{
+			xed.isSingleFileUpload = false;
+		}
+		
 		xed.config.defaultToolbarButtonGroups.insert.push(
-			{className:"image", title:"Upload Image", handler:"xed.handleFileUpload()"}
+			{className:"image", title:"Upload Image", handler:"xed.handleFileUpload(" + xed.isSingleFileUpload + ")"}
 		)
 
 		xed.insertImageFileToEditor = function(fileName, xed){
@@ -27,7 +33,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			xed.focus();
 			xed.rdom.insertNode(img) ;
 		}
-
+		
 		xed.fileUploadTarget = function(){
 			if (xed.isSingleFileUpload) {
 				return "single_upload_submit.php";
@@ -36,8 +42,6 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			}
 		}
 		xed.fileUploadFieldName = "Filedata";
-
-		xed.isSingleFileUpload = true;
 		
 		xed.handleFileUpload = function(isSingleFileUpload) {
 			var requiredMajorVersion = 9;

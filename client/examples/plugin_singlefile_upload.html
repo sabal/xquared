@@ -4,12 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="../stylesheets/xq_ui.css" />
 <script type="text/javascript" src="../javascripts/XQuared.js?load_others=1"></script>
+<script type="text/javascript" src="../libraries/swfupload/AC_OETags.js"></script>
+<script type="text/javascript" src="../libraries/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="../libraries/swfupload/swfupload.queue.js"></script>
 <script type="text/javascript" src="../javascripts/plugin/FileUploadPlugin.js"></script>
 <script type="text/javascript">//<![CDATA[
 var xed;
 
 window.onload = function() {
 	xed = new xq.Editor("xqEditor");
+	xed.isSingleFileUpload = true;
 	xed.addPlugin('FileUpload');
 	xed.setEditMode('wysiwyg');
 	xed.setWidth("100%");
