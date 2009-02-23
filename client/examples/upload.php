@@ -46,29 +46,6 @@ Notes:
 	}
 
 	session_start();
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
-<head>
-<title>Xquared Upload Test</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<script type="text/javascript">//<![CDATA[
-	window.onload = function(){
-	  
-		if (window.parent.xed)
-		{
-			window.parent.xed.fileUploadListener.onComplete();
-		}
-	}
-//]]></script>
-</head>
-<body>
-</body>
-</html>
-
-
-<?php
 
 // Check post_max_size (http://us3.php.net/manual/en/features.file-upload.php#73762)
 	$POST_MAX_SIZE = ini_get('post_max_size');
