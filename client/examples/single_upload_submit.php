@@ -208,7 +208,7 @@ function getUploadedFileUrl($upload_path, $file_name)
 
 function showResult($success, $fileurl, $message)
 {
-	$result = array('success' => $success, 'file_name' => $fileurl, 'message' =>  $message);
+	$result = array('success' => $success, 'file_url' => $fileurl, 'message' =>  $message);
 	
 	echo json_encode($result);
 }
@@ -216,7 +216,7 @@ function showResult($success, $fileurl, $message)
 /* Handles the error output. This error message will be sent to the uploadSuccess event handler.  The event handler
 will have to check for any error messages and react as needed. */
 function HandleError($message) {
-	$result = array('success' => false, 'file_name' => null, 'message' =>  $message);
+	$result = array('success' => false, 'file_url' => null, 'message' =>  $message);
 	echo json_encode($result);
 }
 
