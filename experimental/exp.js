@@ -65,6 +65,25 @@ if(!this.xq) var xq = {};
 
 
 
+xq.$A = function(arraylike) {
+	var len = arraylike.length, a = [];
+	while (len--) {
+		a[len] = arraylike[len];
+	}
+	return a;
+};
+
+if(!Function.prototype.bindAsEventListener) {
+	Function.prototype.bindAsEventListener = function() {
+		var m = this, arg = xq.$A(arguments), o = arg.shift();
+		return function(event) {
+			return m.apply(o, [event || window.event].concat(arg));
+		};
+	};
+}
+
+
+
 xq.Browser = {
 	isTrident: navigator.appName === "Microsoft Internet Explorer",
 	isWebkit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
@@ -90,44 +109,34 @@ xq.Browser = {
 
 
 
-xq.Editor = Class.extend({
-	init: function(iframeId) {
-		var iframe = document.getElementById(iframeId);
-		this.hostenv = xq.HostEnvironment.getInstance(iframe);
-	},
-
-	setEditMode: function(mode) {
-		if('wysiwyg' === mode) {
-			this.hostenv.startEditMode();
-		} else if('source' === mode) {
-			
-		} else if('preview' === mode) {
-			
-		} else {
-			throw 'Unsupported mode: [' + mode + ']';
-		}
-	}
-});
-
-
-
 xq.HostEnvironment = Class.extend({
 	init: function(iframe) {
 		this.iframe = iframe;
 	},
 	startEditMode: function() {
-		var doc = this.iframe.contentWindow.document;
+		var doc = this.getDoc();
 		
 		doc.open();
 		doc.write(this.generateCleanDocumentHtml());
 		doc.close();
 		
 		this.turnOnDesignMode();
-		this.registerEventHandlers();
+	},
+	getDoc: function() {
+		return this.iframe.contentWindow.document;
 	},
 	generateCleanDocmentHtml: function() {throw 'Not implemented';},
 	turnOnDesignMode: function() {throw 'Not implemented';},
-	registerEventHandlers: function() {throw 'Not implemented';}
+	attachEvent: function(element, eventName, handler) {throw 'Not implemented';},
+	detachEvent: function(element, eventName, handler) {throw 'Not implemented';},
+	stopEvent: function(e) {
+		if(e.preventDefault) e.preventDefault();
+		if(e.stopPropagation) e.stopPropagation();
+		
+		e.returnValue = false;
+		e.cancelBubble = true;
+		e.stopped = true;
+	}
 });
 
 xq.HostEnvironment.getInstance = function(iframe) {
@@ -150,10 +159,15 @@ xq.TridentHostEnvironment = xq.HostEnvironment.extend({
 		return sb.join('');
 	},
 	turnOnDesignMode: function() {
-		this.iframe.contentWindow.document.body.contentEditable = true;
+		this.getDoc().body.contentEditable = true;
 	},
-	registerEventHandlers: function() {
-		
+	attachEvent: function(element, eventName, handler) {
+		element.attachEvent('on' + eventName, handler);
+		element = null;
+	},
+	detachEvent: function(element, eventName, handler) {
+		element.detachEvent('on' + eventName, handler);
+		element = null;
 	}
 });
 
@@ -170,9 +184,54 @@ xq.W3HostEnvironment = xq.HostEnvironment.extend({
 		return sb.join('');
 	},
 	turnOnDesignMode: function() {
-		this.iframe.contentWindow.document.designMode = "On";
+		this.getDoc().designMode = 'On';
 	},
-	registerEventHandlers: function() {
-		
+	attachEvent: function(element, eventName, handler) {
+		element.addEventListener(eventName, handler, false);
+		element = null;
+	},
+	detachEvent: function(element, eventName, handler) {
+		element.removeEventListener(eventName, handler, false);
+		element = null;
+	}
+});
+
+
+
+xq.Editor = Class.extend({
+	init: function(iframeId) {
+		var iframe = document.getElementById(iframeId);
+		this.hostenv = xq.HostEnvironment.getInstance(iframe);
+		this.gestureInterpreter = new xq.GestureInterpreter();
+	},
+	
+	setEditMode: function(mode) {
+		if('wysiwyg' === mode) {
+			this.hostenv.startEditMode();
+			this.hostenv.attachEvent(this.hostenv.getDoc(), 'keydown', this.onKeypress.bindAsEventListener(this));
+		} else if('source' === mode) {
+			
+		} else if('preview' === mode) {
+			
+		} else {
+			throw 'Unsupported mode: [' + mode + ']';
+		}
+	},
+	
+	onKeypress: function(e) {
+		var gesture = this.gestureInterpreter.interprete(e);
+		this.onGesture(gesture);
+	},
+	
+	onGesture: function(g) {
+		console.log(g);
+	}
+});
+
+
+
+xq.GestureInterpreter = Class.extend({
+	interprete: function(event) {
+		return {};
 	}
 });
