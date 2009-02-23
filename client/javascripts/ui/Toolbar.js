@@ -50,8 +50,12 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				this.container.appendChild(dialogs);
 			}
 		}
-		
-		xq.observe(document, 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
+		xed.addListener({
+			onEditorInitialized: function() {
+				xq.observe(xed.getDoc(), 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
+				xq.observe(document, 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
+			}.bind(this)
+		});
 	},
 	
 	finalize: function() {

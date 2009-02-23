@@ -131,12 +131,12 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 
 	getTableProperty: function() {
 		var prop = {
-			width: this.table.style.width || 'auto',
-			height: this.table.style.height || 'auto',
-			textAlign: this.table.style.textAlign || '',
-			borderColor: this.table.style.borderLeftColor || '',
-			borderWidth: this.table.style.borderLeftWidth.replace(/ .*/, '').replace(/[^0-9]/g, '') || '0',
-			backgroundColor: this.table.style.backgroundColor || 'transparent'
+			width: this.table.style.width || null,
+			height: this.table.style.height || null,
+			textAlign: this.table.style.textAlign || null,
+			borderColor: this.table.style.borderLeftColor || null,
+			borderWidth: this.table.style.borderLeftWidth.replace(/ .*/, '').replace(/[^0-9]/g, '') || null,
+			backgroundColor: this.table.style.backgroundColor || null
 		};
 		return prop;
 	},
@@ -145,10 +145,10 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 	},
 	getRowProperty: function(row) {
 		var prop = {
-			height: row.style.height || 'auto',
-			verticalAlign: row.style.verticalAlign || '',
-			textAlign: row.style.textAlign || '',
-			backgroundColor: row.style.backgroundColor || 'transparent'
+			height: row.style.height || null,
+			verticalAlign: row.style.verticalAlign || null,
+			textAlign: row.style.textAlign || null,
+			backgroundColor: row.style.backgroundColor || null
 		};
 		return prop;
 	},
@@ -157,10 +157,10 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 	},
 	getColumnProperty: function(cell) {
 		var prop = {
-			width: cell.style.width || 'auto',
-			verticalAlign: cell.style.verticalAlign || '',
-			textAlign: cell.style.textAlign || '',
-			backgroundColor: cell.style.backgroundColor || 'transparent'
+			width: cell.style.width || null,
+			verticalAlign: cell.style.verticalAlign || null,
+			textAlign: cell.style.textAlign || null,
+			backgroundColor: cell.style.backgroundColor || null
 		};
 		return prop;
 	},
@@ -171,35 +171,17 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 	},
 
 	_setTableProperty: function(el, prop) {
-		if (typeof prop.width != 'undefined'){
-			el.style.width = (typeof prop.width == 'string' ? prop.width : prop.width.size+prop.width.unit) || '';
-		}
-		if (typeof prop.height != 'undefined'){
-			el.style.height = (typeof prop.height == 'string' ? prop.height : prop.height.size+prop.height.unit) || '';
-		}
-		if (typeof prop.textAlign != 'undefined'){
-			el.style.textAlign = prop.textAlign || '';
-		}
-		if (typeof prop.verticalAlign != 'undefined'){
-			el.style.verticalAlign = prop.verticalAlign || '';
-		}
-		if (typeof prop.borderColor != 'undefined'){
-			el.style.borderColor = prop.borderColor || '';
-		}
-		if (typeof prop.borderWidth != 'undefined') {
-			el.style.borderWidth = prop.borderWidth+'px' || '';
-			if (prop.borderWidth > 0){
-				el.style.borderStyle='solid';
+		for (propName in prop){
+			if (prop[propName] != null){
+				var value = typeof prop[propName] == 'string' ? prop[propName] : prop[propName].size + prop[propName].unit;
+				
+				if (propName == 'className') {
+					el.className = prop.className || '';					
+				} else {
+					var defaultPropName = (propName == 'width')? el.nodeName.toLowerCase() + 'Width' : propName;
+					el.style[propName] = (value.length == 0 || value == xq.RichTable.defaultPropertyValues[defaultPropName])? '' : value;
+				}
 			}
-		}
-		if (typeof prop.fixed != 'undefined') {
-			el.style.tableLayout = 'fixed'
-		}
-		if (typeof prop.backgroundColor != 'undefined'){
-			el.style.backgroundColor = prop.backgroundColor || '';
-		}
-		if (typeof prop.className != 'undefined'){
-			el.className = prop.className || '';
 		}
 	},
 
@@ -245,6 +227,17 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 		}
 	}
 });
+
+xq.RichTable.defaultPropertyValues = {
+	borderColor: '#999999',
+	borderWidth: 1,
+	backgroundColor: '#FFFFFF',
+	tableWidth: '100%',
+	columnWidth: 'auto',
+	height: 'auto',
+	textAlign: '',
+	verticalAlign: 'top'
+};
 
 xq.RichTable.create = function(rdom, attrs) {
 	if(["t", "tl", "lt"].indexOf(attrs.headerPositions) !== -1) var headingAtTop = true

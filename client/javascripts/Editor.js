@@ -1445,7 +1445,6 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		} else if(["contextmenu"].indexOf(e.type) !== -1) {
 			this._handleContextMenu(e);
 		} else if("focus" == e.type) {
-			this.toolbar._closeAllLightweight();
 			this.rdom.focused = true;
 		} else if("blur" == e.type) {
 			this.rdom.focused = false;
@@ -1833,7 +1832,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		if(hasSelection) {
 			this.handleIndent();
-		} else if (table && table.className && table.className.match(/datatable/) && !li) {
+		} else if (table && !li) {
 			this.handleMoveToNextCell();
 		} else if (this.rdom.isCaretAtBlockStart()) {
 			this.handleIndent();
@@ -1855,7 +1854,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		if(hasSelection) {
 			this.handleOutdent();
-		} else if (table && table.className && table.className.match(/datatable/) && !li) {
+		} else if (table && !li) {
 			this.handleMoveToPreviousCell();
 		} else {
 			this.handleOutdent();
