@@ -158,13 +158,15 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 
 				var fileName = file["name"];
 				var charlength = fileName.length;
+				var maxLength = 30;
+				
 				for (var j = 0; j < fileName.length; j++){
 					if (fileName.substr(j,1).charCodeAt() >= 256) {
 						charlength++;
 						maxLength--;
 					}
 				}
-				if (charlength > 30) fileName = fileName.substr(0, 30) + '..';
+				if (charlength > maxLength) fileName = fileName.substr(0, maxLength) + '..';
 
 				var divLeft = document.createElement("DIV");
 				divLeft.innerHTML = fileName;
