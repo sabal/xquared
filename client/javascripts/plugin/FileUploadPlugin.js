@@ -63,9 +63,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			var requiredMinorVersion = 0;
 			var requiredRevision = 0;
 
-			var hasReqestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
-
-			this.isSingleFileUpload = isSingleFileUpload || !hasReqestedVersion;
+			this.isSingleFileUpload = isSingleFileUpload || !DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
 			if (this.fileUploadController.dialog) this.fileUploadController.dialog.close();
 
 			var dialog = new xq.ui.FormDialog(
@@ -216,6 +214,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				document.getElementById('file-' + file.id + '-option').style.display = 'none'
 			},
 			onSuccess: function(file, serverData){
+				console.log("1")
 				if (xed.isSingleFileUpload){
 					var doc = document.getElementById("uploadTarget");
 					var serverData = doc.contentWindow.document.body.innerHTML;
