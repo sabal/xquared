@@ -214,7 +214,6 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				document.getElementById('file-' + file.id + '-option').style.display = 'none'
 			},
 			onSuccess: function(file, serverData){
-				console.log("1")
 				if (xed.isSingleFileUpload){
 					var doc = document.getElementById("uploadTarget");
 					var serverData = doc.contentWindow.document.body.innerHTML;
@@ -346,12 +345,14 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 						upload_url: xed.fileUploadTarget(),	// Relative to the SWF file
 						//post_params: {},
 						file_post_name : xed.fileUploadFieldName, 
-						file_types : "*.*",
+						file_types : "*.jpg;*.gif;*.png;*.bmp;",
 						file_types_description : "Images",
+						//file_size_limit : "1024",
+						//file_upload_limit : 10,
 						debug: false,
 		
 						// Button settings
-						button_image_url: "../images/dialogs/btn_gray_bg_78X23.gif",	// Relative to the Flash file
+						button_image_url: xed.config.imagePathForDialog + "btn_gray_bg_78X23.gif",	// Relative to the Flash file
 						button_width: "78",
 						button_height: "23",
 						button_placeholder_id: "MultiFileUploaderDiv",
