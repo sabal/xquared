@@ -133,7 +133,10 @@ Notes:
 
 
 // Validate file name (for our purposes we'll just remove invalid characters)
-	$file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', "", basename($_FILES[$upload_name]['name']));
+	// $file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', "", basename($_FILES[$upload_name]['name']));
+	
+	$file_name = generateFilename($_FILES[$upload_name]['name']);
+	
 	if (strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH) {
 		HandleError("Invalid file name");
 		exit(0);
@@ -199,6 +202,14 @@ Notes:
 	
 	showResult(true, $file_url, "upload completed"); 
 	exit(0);
+
+function generateFilename($filename)
+{
+  $ext = substr($filename, strripos($filename, '.'));
+  
+  $result = base64_encode ($filename) . '_' . time() . $ext;
+  return $result;
+}
 
 function getUploadedFileUrl($upload_path, $file_name)
 {
