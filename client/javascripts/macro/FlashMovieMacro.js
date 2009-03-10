@@ -26,7 +26,7 @@ xq.macro.FlashMovieMacro.recognize = function(html) {
 		tvpot: /http:\/\/flvs\.daum\.net\/flvPlayer\.swf\?/,
 		youtube: /http:\/\/(?:www\.)?youtube\.com\/v\//,
 		youtube2: /http:\/\/(?:www\.)?youtube\.com\/p\//,
-		pandoratv: /http:\/\/flvr\.pandora\.tv\/flv2pan\/flvmovie\.dll\?/,
+		pandoratv: /http:\/\/flvr\.pandora\.tv\/flv2pan\/flvmovie\.dll/,
 		pandoratv2: /http:\/\/imgcdn\.pandora\.tv\/gplayer\/pandora\_EGplayer\.swf\?/,
 		mncast: /http:\/\/dory\.mncast\.com\/mncastPlayer\.swf\?/,
 		yahoo: /http:\/\/d\.yimg\.com\//,
@@ -37,7 +37,9 @@ xq.macro.FlashMovieMacro.recognize = function(html) {
 		mandki: /http:\/\/www\.mandki\.com\/mandki\/viewer\.swf\?/,
 		andu: /http:\/\/andu\.hanafos\.com\/home\/play\/playgw\.asp\?/,
 		plaync: /http:\/\/static\.plaync\.co\.kr\/plaza\/pcc\/view\/viewskin\_s\.swf\?movie\_id\=/,
-		naver: /http:\/\/serviceapi\.nmv\.naver\.com\/flash\/NFPlayer\.swf\?vid\=/
+		naver: /http:\/\/serviceapi\.nmv\.naver\.com\/flash\/NFPlayer\.swf\?vid\=/,
+		migame: /http:\/\/free\.migame\.tv\/UploadComponent\/FLVPlayer\/player/,
+		scribd: /http:\/\/d\.scribd\.com\/ScribdViewer\.swf\?/
 	};
 	
 	for(var id in providers) {
