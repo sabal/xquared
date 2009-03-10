@@ -1089,7 +1089,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		if(['wysiwyg', 'source'].indexOf(mode) === -1) throw "Illegal [mode] value: '" + mode + "'. Use 'wysiwyg' or 'source'";
 		if(this.currentEditMode === mode) return;
 		
-		// create editor frame if there's no editor frame.
+		// create editor frame if there's no editor frame.  
 		var editorCreated = !!this.outmostWrapper;
 		if(!editorCreated) {
 			// create validator
@@ -1119,9 +1119,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					this.timer.start();
 					this._fireOnInitialized(this);
 				}
+
+			this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
+
 			}.bind(this), 10);
 			
-			this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
 			return;
 		}
 		
