@@ -45,6 +45,14 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * Automatically gives initial focus.
 		 * @type boolean
 		 */
+		this.config.enablePreventExit = false;
+		
+		this.config.PreventExitMessage = "Document is not empty. If you want to leave, click 'Ok' button.";
+		
+		/**
+		 * Automatically gives initial focus.
+		 * @type boolean
+		 */
 		this.config.autoFocusOnInit = false;
 		
 		/**
@@ -657,13 +665,30 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				xed.toolbar.triggerUpdate();
 			}
 		});
+	
+	if(!this.PreventExit)
+	{
+		this.PreventExit = {};
+	}
+	
+	// add PreventExit handler	
+	xq.observe(window, "beforeunload", function(e)
+	{
+		if(xed.config.enablePreventExit === false) return;
+		
+		var content = xed.getCurrentContent().stripTags();
+
+		if(content !== '&nbsp;' && content !== xed.PreventExit.defaultContent)
+		{
+			xq.stopEvent(e, xed.config.PreventExitMessage);
+		}
+	});
+	
 	},
 	
 	finalize: function() {
 		for(var key in this.config.plugins) this.config.plugins[key].unload();
 	},
-	
-	
 	
 	/////////////////////////////////////////////
 	// Configuration Management
@@ -1096,6 +1121,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				}
 			}.bind(this), 10);
 			
+			this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
 			return;
 		}
 		
@@ -1491,6 +1517,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		if(this.config.automaticallyHookSubmitEvent && this.contentElement.form) {
 			var original = this.contentElement.form.onsubmit;
 			this.contentElement.form.onsubmit = function() {
+				xed.config.enablePreventExit === false;
 				this.contentElement.value = this.getCurrentContent();
 				return original ? original.bind(this.contentElement.form)() : true;
 			}.bind(this);
@@ -1809,6 +1836,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					} else {
 						dialog.form.text.focus();
 					}
+					
 				}, 0);
 			},
 			function(data) {
@@ -1821,13 +1849,24 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				}
 				
 				if(!data) return;
+					
+				var urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+				if( !urlRegex.test(data.url) )
+				{
+					alert("Url is invalid");
+					dialog.form.url.focus();
+					return;
+				}
+				
 				this.handleInsertLink(false, data.url, data.text, data.text);
+				
+				dialog.close();
 			}.bind(this)
 		);
 		
 		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 		
-		dialog.show({position: 'centerOfEditor', mode: 'lightweight'});
+		dialog.show({position: 'centerOfEditor', mode: 'lightweight', notSelfClose: true});
 		this.lastLinkDialog = dialog;
 		return true;
 	},
@@ -1850,6 +1889,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				var index = text.lastIndexOf(" ");
 				return index === -1 ? index : index + 1;
 			});
+							
 			a.href = url;
 			a.title = title;
 			if(text) {

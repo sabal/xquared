@@ -9,9 +9,7 @@ if(!window.xq) {
 }
 
 xq.majorVersion = '0.8';
-xq.minorVersion = '20090206';
-
-
+xq.minorVersion = '20090310';
 
 /**
  * Compiles regular expression pattern if possible.
@@ -101,14 +99,23 @@ xq.cancelHandler = function(e) {xq.stopEvent(e); return false;};
  *
  * @param {Event} e Event to stop.
  */
-xq.stopEvent = function(e) {
+xq.stopEvent = function(e, returnValue) {
       if(e.preventDefault) {
     	  e.preventDefault();
       }
       if(e.stopPropagation) {
     	  e.stopPropagation();
       }
-      e.returnValue = false;
+      
+      if(returnValue)
+      {
+		e.returnValue = returnValue;
+      }
+      else
+      {
+      	e.returnValue = false;
+      }
+      
       e.cancelBubble = true;
       e.stopped = true;
 };
@@ -623,6 +630,7 @@ xq.finalize = function(obj) {
 };
 
 xq.observe(window, "unload", function() {
+
 	// "xq" and "xq.autoFinalizeQueue" could be removed by another libraries' clean-up mechanism.
 	if(xq && xq.autoFinalizeQueue) {
 		for(var i = 0; i < xq.autoFinalizeQueue.length; i++) {
@@ -631,7 +639,6 @@ xq.observe(window, "unload", function() {
 		xq = null;
 	}
 });
-
 
 
 /**
