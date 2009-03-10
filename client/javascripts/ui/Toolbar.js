@@ -47,7 +47,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				var dialogs = this.doc.createElement('div');
 				dialogs.className = 'dialogs';
 				this.dialogContainer = dialogs;
-				this.container.appendChild(dialogs);
+				document.body.appendChild(dialogs);
 			}
 		}
 		xed.addListener({
@@ -178,7 +178,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		var dialogs = this.doc.createElement('div');
 		dialogs.className = 'dialogs';
 		this.dialogContainer = dialogs;
-		this.container.appendChild(dialogs);
+		document.body.appendChild(dialogs);
 		
 		// Generate buttons from map and append it to button container
 		for(var i = 0; i < this.buttonMap.length; i++) {
@@ -288,19 +288,20 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		this._closeAllLightweight();
 		
 		var src = e.target || e.srcElement;
-		var dialog = document.getElementById(src.className + "Dialog");
+		xed.lastAnchor = src;
+		var dialog = xq.$(src.className + "Dialog");
 		
 		if (dialog) {
 			dialog.style.display = 'block';
-			dialog.style.top = this.container.offsetHeight + 'px';
-			dialog.style.left = src.parentNode.offsetLeft + 'px';
+			dialog.style.top = this.container.offsetTop + this.container.offsetHeight + 'px';
+			dialog.style.left = this.container.offsetLeft + src.parentNode.offsetLeft + 'px';
 		} 
 		xq.stopEvent(e);
 		return false;
 	},
 	
 	_closeAllLightweight: function(){
-		var dialogs = this.dialogContainer.childNodes;
+		var dialogs = xq.getElementsByClassName(this.dialogContainer, 'lightweight');
 		for (var i = 0; i < dialogs.length; i++){
 			dialogs[i].style.display = "none";
 		}

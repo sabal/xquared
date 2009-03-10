@@ -116,7 +116,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			},
 			onProgress: function(file, bytesLoaded, bytesTotal){
 				var nPerc = bytesLoaded / bytesTotal * 100;
-				document.getElementById('file-' + file.id + '-progress').style.width = nPerc + '%';
+				xq.$('file-' + file.id + '-progress').style.width = nPerc + '%';
 			},
 			onSelectStart: function(){
 				var ul = document.createElement('UL');
@@ -127,8 +127,8 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				if(!successFiles) {
 					this.filListContainer = null;
 				} else {
-					var fileListContainer = document.getElementById('fileListContainer');
-					var fileUploadContainer = document.getElementById('fileUploadContainer');
+					var fileListContainer = xq.$('fileListContainer');
+					var fileUploadContainer = xq.$('fileUploadContainer');
 	
 				  	fileListContainer.style.display = 'block';
 					
@@ -210,12 +210,12 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				this.fileListContainer.appendChild(li);
 			},
 			onUploadStart: function(file){
-				document.getElementById('file-' + file.id + '-progress').parentNode.style.display = 'block'
-				document.getElementById('file-' + file.id + '-option').style.display = 'none'
+				xq.$('file-' + file.id + '-progress').parentNode.style.display = 'block'
+				xq.$('file-' + file.id + '-option').style.display = 'none'
 			},
 			onSuccess: function(file, serverData){
 				if (xed.isSingleFileUpload){
-					var doc = document.getElementById("uploadTarget");
+					var doc = xq.$("uploadTarget");
 					var serverData = doc.contentWindow.document.body.innerHTML;
 				}
 				if (!serverData) return;
@@ -227,7 +227,7 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 						this.onQueueComplete();
 					} else {
 						xed.insertImageFileToEditor(data.file_url);
-						document.getElementById('file-' + file.id + '-progress').style.width = '100%';
+						xq.$('file-' + file.id + '-progress').style.width = '100%';
 					}
 				} else {
 					alert(data.message);
@@ -309,11 +309,11 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 					}
 					
 					var index = file.id;
-					var div = document.getElementById('file-' + index + '-option');
+					var div = xq.$('file-' + index + '-option');
 					if (!div) return ;
 					div.style.display = "block"
 					div.innerHTML = "";
-					if (document.getElementById('file-' + index + '-progress')) document.getElementById('file-' + index + '-progress').parentNode.style.display ="none";
+					if (xq.$('file-' + index + '-progress')) xq.$('file-' + index + '-progress').parentNode.style.display ="none";
 					var sError = document.createElement("SPAN");
 					sError.className = 'error font-variation';
 					sError.innerHTML = (errorName)? errorName:'Error';
@@ -331,10 +331,10 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			load: function(dialog){
 				if (xed.isSingleFileUpload){
 					dialog.form.action = xed.fileUploadTarget();
-					document.getElementById('searchAttachFile').name = xed.fileUploadFieldName; 
+					xq.$('searchAttachFile').name = xed.fileUploadFieldName; 
 					// iframe onload IE bug
 					/*
-					document.getElementById("uploadTarget").onload = function() {
+					xq.$("uploadTarget").onload = function() {
 						parent.xed.fileUploadListener.onSuccess();
 					}
 					*/ 

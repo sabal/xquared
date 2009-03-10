@@ -342,6 +342,7 @@
 /* foreGroundDialog , backGroundDialog */
 #foregroundColorDialog {
 	width: 216px;
+	z-index: 904;
 }
 #foregroundColorDialog .dialog-content, 
 #backgroundColorDialog .dialog-content {
@@ -451,6 +452,47 @@
 	background: url(../images/dialogs/justify_divider.gif) repeat-x -29px 0;
 }
 #emoticonDialog ul li a:hover {
+	background-color: #f2f7ff;
+	border-color: #b7caec;
+}
+
+/* characterDialog */
+#characterDialog {
+	width: 337px;
+}
+#characterDialog div.dialog-wrapper {
+	position: relative;
+	height: 100%;
+}
+#characterDialog ul {
+	margin: 0 0 0 -3px;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+	overflow: hidden;
+}
+#characterDialog ul li {
+	width: 20px;
+	height: 20px;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+#characterDialog ul li a {
+	width: 18px;
+	height: 18px;
+	display: block;
+	border: 1px solid #fff;
+}
+#characterDialog h6 {
+	font-family: arial, sans-serif;
+	font-size: 9px;
+	color: #6f95d9;
+	margin: 1px 0 -1px 2px;
+	padding: 3px 0 0;
+	background: url(../images/dialogs/justify_divider.gif) repeat-x -29px 0;
+}
+#characterDialog ul li a:hover {
 	background-color: #f2f7ff;
 	border-color: #b7caec;
 }
@@ -647,4 +689,297 @@
 }
 #videoDialog .dialog-buttons {
 	margin: 8px 0 0;
+}
+
+
+/*- tableDialog -------------------------*/
+#tableDialog {
+	width: 321px !important;
+	color: #666;
+}
+
+#tableDialog ul {
+	list-style: none;
+}
+#tableDialog form {
+	margin: 0 18px;
+	width: auto !important;	
+}
+#tableDialog div.dialog-content fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: url(../images/dialogs/dot01.gif) repeat-x 0 0;	
+	/background-position: 0 10px;
+}
+#tableDialog div.dialog-content fieldset.table-type {
+	background: none;
+	margin-bottom: 14px;
+}
+#tableDialog div.dialog-content fieldset.table-border {
+	margin-bottom: -4px;
+	/margin-bottom: 5px;
+}
+#tableDialog div.dialog-content legend {
+	padding: 0 8px 0 0;
+	color: #666;
+	font-family: gulim, sans-serif;	
+	background-color: #fff;
+	font-weight: bold;
+	display: inline !important;
+	/margin-left: -8px;
+}
+#tableDialog div.dialog-content .table-type legend {
+	display: none !important;
+}
+#tableDialog div.dialog-content .table-type ul {
+	height: 100%;
+	overflow: hidden;
+}
+#tableDialog div.dialog-content .table-type li {
+	width: 68px;
+	height: 60px;
+	float: left;
+	margin-right: 2px;
+}
+#tableDialog div.dialog-content .table-type li.last-child {
+	margin-right: 0;
+}
+#tableDialog div.dialog-content .table-type li a {
+	display: block;
+	width: 65px;
+	height: 58px;
+	border: 1px solid #e7e6e6;
+	background-color: #f3f3f3;
+	position: relative;
+}
+#tableDialog div.dialog-content .table-type li a.selected {
+	border-color: #2055a9;
+	background-color: #316ac5;
+}
+#tableDialog div.dialog-content .table-type li a.selected:hover {
+	background-color: #316ac5;
+}
+#tableDialog div.dialog-content .table-type li a:hover {
+	background-color: #eee;
+}
+#tableDialog div.dialog-content .table-type li a img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -14px 0 0 -14px;
+}
+#tableDialog div.dialog-content fieldset * {
+	vertical-align: middle;
+}
+#tableDialog div.dialog-content fieldset a.tableDialog {
+	position: relative;
+}
+#tableDialog div.dialog-content fieldset div.wrapper {
+	margin: 9px 0 17px;
+	/margin: 10px 0 10px;
+}
+#tableDialog div.dialog-content fieldset.table-size div.wrapper {
+	position: relative;
+	width: 100%;
+}
+#tableDialog div.dialog-content fieldset .type-text {
+	border: 1px solid #7f9db9;
+	padding: 2px 0 1px 4px;
+	/padding: 1px 0 1px 4px;
+}
+#tableDialog div.dialog-content fieldset .height-box {
+	width: 33px;
+}
+#tableDialog div.dialog-content fieldset .color-box {
+	width: 49px;
+	float: left;
+	font-size: 11px;
+}
+
+#tableDialog div.dialog-content fieldset select {
+	font-size: 11px;
+	_margin: 0 0 0 -3px;
+	width: 113px;
+	font-family: arial, sans-serif;
+}
+
+#tableDialog div.dialog-content fieldset .type-checkbox {
+	/width: 12px;
+	/height: 12px;
+}
+#tableDialog div.dialog-content fieldset li {
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 1px;
+	margin-bottom: 3px;
+	_margin-bottom: 1px;
+}
+#tableDialog div.dialog-content fieldset li.table-width {
+	margin-top: 8px;
+}
+#tableDialog div.dialog-content fieldset label {
+	float: left;
+	width: 50px;
+	font-size: 11px;
+	text-align: right;
+	margin-right: 8px;
+	/position: relative;
+	/bottom: -2px;
+}
+#tableDialog div.dialog-content fieldset li.table-width label, 
+#tableDialog div.dialog-content fieldset li.table-height label {
+	/bottom: -1px;
+	_bottom: 0;
+}
+#tableDialog div.dialog-content fieldset label.none {
+	float: none;
+	width: auto;
+	text-align: left;
+	color: #999;
+	/bottom: 0;
+	_bottom: -1px;
+}
+#tableDialog div.dialog-content fieldset span.controller {
+	display: block;
+	width: 47px;
+	height: 18px;
+	position: relative;
+	float: left;
+}
+#tableDialog div.dialog-content fieldset.table-border li.weight-li span.controller {
+	top: 0px;
+	/top: -2px;
+}
+#tableDialog div.dialog-content fieldset span.controller .type-text {
+	width: 41px;
+	font-size: 11px;
+	padding-top: 2px;
+	/padding-top: 1px;
+}
+
+#tableDialog div.dialog-content fieldset span.controller span.buttons {
+	display: block;
+	width: 15px;
+	height: 14px;
+	position: absolute;
+	top: 2px;
+	/top: 4px;
+	right: 2px;
+	_right: 1px;
+}
+#tableDialog div.dialog-content span.controller span.buttons img {
+	vertical-align: middle;
+	display: block;
+	cursor: pointer;
+}
+#tableDialog div.dialog-content span.color {
+	display: block;
+	width: 34px;
+	height: 14px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	float: left;
+	padding: 1px;
+	_line-height: 0 !important;
+	_font-size: 0;
+}
+#tableDialog div.dialog-content span.color a {
+	display: block;
+	width: 34px;
+	height: 14px;
+	text-decoration: none;
+}
+#tableDialog div.dialog-content span.color a.border {
+	background-color: #000000;
+}
+#tableDialog div.dialog-content span.color a.background {
+	background-color: #fff;
+}
+#tableDialog div.dialog-content .search-color {
+	vertical-align: middle;
+	margin-top: -2px;
+	_margin-left: -3px;
+}
+#tableDialog div.dialog-content fieldset.table-border ul {
+	width: 100%;
+	overflow: hidden;
+}
+#tableDialog div.dialog-content fieldset.table-border li {
+	float: left;
+}
+#tableDialog div.dialog-content fieldset.table-border li.weight-li {
+	width: 111px;
+}
+
+#tableDialog div.dialog-content fieldset.table-border li.color-li {
+	width: 160px;	
+}
+
+#tableDialog div.dialog-content fieldset.table-border li.color-li label {
+	margin-right: 4px;
+}
+
+#tableDialog div.dialog-content fieldset #previewTable {
+	position: absolute;
+	top: 2px;
+	width: 160px;
+	left: 112px;
+}
+
+#tableDialog div.dialog-content fieldset #previewTable table {
+	border-collapse: collapse;
+	height: 38px;
+	/height: 40px;
+	width: 100%;
+}
+#tableDialog div.dialog-content fieldset #previewTable table th,
+#tableDialog div.dialog-content fieldset #previewTable table td {
+	border: 1px solid #d2e2ec;
+	width: 29px;
+}
+#tableDialog span.search-button {
+	margin-left: 2px;
+}
+#tableDialog span.search-button a {
+	padding: 3px 4px 0 3px;
+	/padding: 2px 4px 1px 3px;
+	_padding: 3px 4px 0 3px;
+	line-height: 12px;
+}
+
+#tableDialog div.commit_buttons {
+	margin-right: 95px;
+	_margin-right: 46px;
+}
+
+#tableDialog .cancel_icon {
+	/top: 9px;
+}
+#tableDialog.table fieldset.table-type,
+#tableDialog.row fieldset.table-type,
+#tableDialog.column fieldset.table-type,
+
+#tableDialog.table fieldset.table-size .new-only,
+#tableDialog.row fieldset.table-size .new-only,
+#tableDialog.column fieldset.table-size .new-only,
+
+#tableDialog.row fieldset.table-size li.table-width,
+#tableDialog.column fieldset.table-size li.table-height,
+
+#tableDialog.row fieldset.table-border,
+#tableDialog.column fieldset.table-border,
+
+#tableDialog.new fieldset.table-alignment,
+#tableDialog.table fieldset.table-alignment {
+	display: none;
+}
+
+
+#tableDialog.new li.table-width,
+#tableDialog.new li.table-height,
+#tableDialog.new fieldset.table-border/*,
+#tableDialog.new fieldset.table-background */
+{
+	display: none;
 }

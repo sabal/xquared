@@ -68,70 +68,70 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config.defaultToolbarButtonGroups = {
 			"color": [
  				{className:"foregroundColor", title:"Foreground color", list:[
-					{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleForegroundColor('#ffd8d8')"},
-					{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleForegroundColor('#ffead9')"},
-					{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleForegroundColor('#fef2dc')"},
-					{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleForegroundColor('#fff5da')"},
-					{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleForegroundColor('#eefed9')"},
-					{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleForegroundColor('#dafeda')"},
-					{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleForegroundColor('#d8ffff')"},
-					{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleForegroundColor('#d9f7ff')"},
-					{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleForegroundColor('#d5ebff')"},
-					{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleForegroundColor('#eed8ff')"},
-					{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleForegroundColor('#fed8ff')"},
-					{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleForegroundColor('#ffffff')"},
+					{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleColorPicker('#ffd8d8')"},
+					{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleColorPicker('#ffead9')"},
+					{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleColorPicker('#fef2dc')"},
+					{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleColorPicker('#fff5da')"},
+					{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleColorPicker('#eefed9')"},
+					{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleColorPicker('#dafeda')"},
+					{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleColorPicker('#d8ffff')"},
+					{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleColorPicker('#d9f7ff')"},
+					{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleColorPicker('#d5ebff')"},
+					{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleColorPicker('#eed8ff')"},
+					{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleColorPicker('#fed8ff')"},
+					{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleColorPicker('#ffffff')"},
 
-					{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleForegroundColor('#fe8c8c')"},
-					{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleForegroundColor('#feba8d')"},
-					{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleForegroundColor('#ffe88b')"},
-					{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleForegroundColor('#ffff8d')"},
-					{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleForegroundColor('#d0fc8d')"},
-					{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleForegroundColor('#8efb8e')"},
-					{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleForegroundColor('#8bffff')"},
-					{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleForegroundColor('#8ce8ff')"},
-					{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleForegroundColor('#8b8cff')"},
-					{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleForegroundColor('#d18cff')"},
-					{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleForegroundColor('#ff8bfe')"},
-					{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleForegroundColor('#cccccc')"},
+					{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleColorPicker('#fe8c8c')"},
+					{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleColorPicker('#feba8d')"},
+					{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleColorPicker('#ffe88b')"},
+					{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleColorPicker('#ffff8d')"},
+					{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleColorPicker('#d0fc8d')"},
+					{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleColorPicker('#8efb8e')"},
+					{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleColorPicker('#8bffff')"},
+					{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleColorPicker('#8ce8ff')"},
+					{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleColorPicker('#8b8cff')"},
+					{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleColorPicker('#d18cff')"},
+					{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleColorPicker('#ff8bfe')"},
+					{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleColorPicker('#cccccc')"},
 
-					{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleForegroundColor('#ff0103')"},
-					{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleForegroundColor('#ff6600')"},
-					{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleForegroundColor('#ffcc01')"},
-					{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleForegroundColor('#ffff01')"},
-					{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleForegroundColor('#96f908')"},
-					{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleForegroundColor('#07f905')"},
-					{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleForegroundColor('#02feff')"},
-					{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleForegroundColor('#00ccff')"},
-					{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleForegroundColor('#0100fe')"},
-					{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleForegroundColor('#9801ff')"},
-					{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleForegroundColor('#fc01fe')"},
-					{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleForegroundColor('#999999')"},
+					{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleColorPicker('#ff0103')"},
+					{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleColorPicker('#ff6600')"},
+					{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleColorPicker('#ffcc01')"},
+					{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleColorPicker('#ffff01')"},
+					{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleColorPicker('#96f908')"},
+					{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleColorPicker('#07f905')"},
+					{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleColorPicker('#02feff')"},
+					{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleColorPicker('#00ccff')"},
+					{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleColorPicker('#0100fe')"},
+					{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleColorPicker('#9801ff')"},
+					{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleColorPicker('#fc01fe')"},
+					{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleColorPicker('#999999')"},
 
-					{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleForegroundColor('#990002')"},
-					{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleForegroundColor('#b65006')"},
-					{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleForegroundColor('#bf7900')"},
-					{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleForegroundColor('#cca500')"},
-					{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleForegroundColor('#5a9603')"},
-					{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleForegroundColor('#059502')"},
-					{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleForegroundColor('#009997')"},
-					{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleForegroundColor('#007998')"},
-					{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleForegroundColor('#095392')"},
-					{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleForegroundColor('#6a19a4')"},
-					{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleForegroundColor('#98019a')"},
-					{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleForegroundColor('#666666')"},
+					{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleColorPicker('#990002')"},
+					{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleColorPicker('#b65006')"},
+					{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleColorPicker('#bf7900')"},
+					{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleColorPicker('#cca500')"},
+					{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleColorPicker('#5a9603')"},
+					{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleColorPicker('#059502')"},
+					{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleColorPicker('#009997')"},
+					{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleColorPicker('#007998')"},
+					{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleColorPicker('#095392')"},
+					{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleColorPicker('#6a19a4')"},
+					{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleColorPicker('#98019a')"},
+					{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleColorPicker('#666666')"},
 
-					{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleForegroundColor('#590100')"},
-					{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleForegroundColor('#773505')"},
-					{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleForegroundColor('#7f5000')"},
-					{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleForegroundColor('#927300')"},
-					{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleForegroundColor('#365802')"},
-					{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleForegroundColor('#035902')"},
-					{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleForegroundColor('#01595a')"},
-					{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleForegroundColor('#00485b')"},
-					{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleForegroundColor('#083765')"},
-					{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleForegroundColor('#370159')"},
-					{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleForegroundColor('#59005a')"},
-					{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleForegroundColor('#000000')"}
+					{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleColorPicker('#590100')"},
+					{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleColorPicker('#773505')"},
+					{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleColorPicker('#7f5000')"},
+					{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleColorPicker('#927300')"},
+					{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleColorPicker('#365802')"},
+					{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleColorPicker('#035902')"},
+					{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleColorPicker('#01595a')"},
+					{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleColorPicker('#00485b')"},
+					{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleColorPicker('#083765')"},
+					{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleColorPicker('#370159')"},
+					{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleColorPicker('#59005a')"},
+					{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleColorPicker('#000000')"}
 				]},
 				
 				{className:"backgroundColor", title:"Background color", list:[
@@ -206,8 +206,168 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				{className:"orderedList", title:"Ordered list", handler:"xed.handleList('OL')"}
   			],
   			"insert": [
-				{className:"table", title:"Table", handler:"xed.handleTable({'rows':4, 'cols':4, 'headerPositions':'tl'})"},
+				{className:"table", title:"Table", handler:"xed.handleTable()"},
 				{className:"separator", title:"Separator", handler:"xed.handleSeparator()"},
+				{className:"character", title:"Character", list: [
+                    {html:"、", handler:"xed.handleCharacter('、')"},
+					{html:"。", handler:"xed.handleCharacter('。')"},
+					{html:"·", handler:"xed.handleCharacter('·')"},
+					{html:"‥", handler:"xed.handleCharacter('‥')"},
+					{html:"…", handler:"xed.handleCharacter('…')"},
+					{html:"¨", handler:"xed.handleCharacter('¨')"},
+					{html:"〃", handler:"xed.handleCharacter('〃')"},
+					{html:"­", handler:"xed.handleCharacter('­')"},
+					{html:"―", handler:"xed.handleCharacter('―')"},
+					{html:"∥", handler:"xed.handleCharacter('∥')"},
+					{html:"＼", handler:"xed.handleCharacter('＼')"},
+					{html:"∼", handler:"xed.handleCharacter('∼')"},
+					{html:"‘", handler:"xed.handleCharacter('‘')"},
+					{html:"’", handler:"xed.handleCharacter('’')"},
+					{html:"“", handler:"xed.handleCharacter('“')"},
+					{html:"”", handler:"xed.handleCharacter('”')"},
+					{html:"〔", handler:"xed.handleCharacter('〔')"},
+					{html:"〕", handler:"xed.handleCharacter('〕')"},
+					{html:"〈", handler:"xed.handleCharacter('〈')"},
+					{html:"〉", handler:"xed.handleCharacter('〉')"},
+					{html:"《", handler:"xed.handleCharacter('《')"},
+					{html:"》", handler:"xed.handleCharacter('》')"},
+					{html:"「", handler:"xed.handleCharacter('「')"},
+					{html:"」", handler:"xed.handleCharacter('」')"},
+					{html:"『", handler:"xed.handleCharacter('『')"},
+					{html:"』", handler:"xed.handleCharacter('』')"},
+					{html:"【", handler:"xed.handleCharacter('【')"},
+					{html:"】", handler:"xed.handleCharacter('】')"},
+					{html:"±", handler:"xed.handleCharacter('±')"},
+					{html:"×", handler:"xed.handleCharacter('×')"},
+					{html:"÷", handler:"xed.handleCharacter('÷')"},
+					{html:"≠", handler:"xed.handleCharacter('≠')"},
+					{html:"≤", handler:"xed.handleCharacter('≤')"},
+					{html:"≥", handler:"xed.handleCharacter('≥')"},
+					{html:"∞", handler:"xed.handleCharacter('∞')"},
+					{html:"∴", handler:"xed.handleCharacter('∴')"},
+					{html:"°", handler:"xed.handleCharacter('°')"},
+					{html:"′", handler:"xed.handleCharacter('′')"},
+					{html:"″", handler:"xed.handleCharacter('″')"},
+					{html:"℃", handler:"xed.handleCharacter('℃')"},
+					{html:"Å", handler:"xed.handleCharacter('Å')"},
+					{html:"￠", handler:"xed.handleCharacter('￠')"},
+					{html:"￡", handler:"xed.handleCharacter('￡')"},
+					{html:"￥", handler:"xed.handleCharacter('￥')"},
+					{html:"♂", handler:"xed.handleCharacter('♂')"},
+					{html:"♀", handler:"xed.handleCharacter('♀')"},
+					{html:"∠", handler:"xed.handleCharacter('∠')"},
+					{html:"⊥", handler:"xed.handleCharacter('⊥')"},
+					{html:"⌒", handler:"xed.handleCharacter('⌒')"},
+					{html:"∂", handler:"xed.handleCharacter('∂')"},
+					{html:"∇", handler:"xed.handleCharacter('∇')"},
+					{html:"≡", handler:"xed.handleCharacter('≡')"},
+					{html:"≒", handler:"xed.handleCharacter('≒')"},
+					{html:"§", handler:"xed.handleCharacter('§')"},
+					{html:"※", handler:"xed.handleCharacter('※')"},
+					{html:"☆", handler:"xed.handleCharacter('☆')"},
+					{html:"★", handler:"xed.handleCharacter('★')"},
+					{html:"○", handler:"xed.handleCharacter('○')"},
+					{html:"●", handler:"xed.handleCharacter('●')"},
+					{html:"◎", handler:"xed.handleCharacter('◎')"},
+					{html:"◇", handler:"xed.handleCharacter('◇')"},
+					{html:"◆", handler:"xed.handleCharacter('◆')"},
+					{html:"□", handler:"xed.handleCharacter('□')"},
+					{html:"■", handler:"xed.handleCharacter('■')"},
+					{html:"△", handler:"xed.handleCharacter('△')"},
+					{html:"▲", handler:"xed.handleCharacter('▲')"},
+					{html:"▽", handler:"xed.handleCharacter('▽')"},
+					{html:"▼", handler:"xed.handleCharacter('▼')"},
+					{html:"→", handler:"xed.handleCharacter('→')"},
+					{html:"←", handler:"xed.handleCharacter('←')"},
+					{html:"↑", handler:"xed.handleCharacter('↑')"},
+					{html:"↓", handler:"xed.handleCharacter('↓')"},
+					{html:"↔", handler:"xed.handleCharacter('↔')"},
+					{html:"〓", handler:"xed.handleCharacter('〓')"},
+					{html:"≪", handler:"xed.handleCharacter('≪')"},
+					{html:"≫", handler:"xed.handleCharacter('≫')"},
+					{html:"√", handler:"xed.handleCharacter('√')"},
+					{html:"∽", handler:"xed.handleCharacter('∽')"},
+					{html:"∝", handler:"xed.handleCharacter('∝')"},
+					{html:"∵", handler:"xed.handleCharacter('∵')"},
+					{html:"∫", handler:"xed.handleCharacter('∫')"},
+					{html:"∬", handler:"xed.handleCharacter('∬')"},
+					{html:"∈", handler:"xed.handleCharacter('∈')"},
+					{html:"∋", handler:"xed.handleCharacter('∋')"},
+					{html:"⊆", handler:"xed.handleCharacter('⊆')"},
+					{html:"⊇", handler:"xed.handleCharacter('⊇')"},
+					{html:"⊂", handler:"xed.handleCharacter('⊂')"},
+					{html:"⊃", handler:"xed.handleCharacter('⊃')"},
+					{html:"∪", handler:"xed.handleCharacter('∪')"},
+					{html:"∩", handler:"xed.handleCharacter('∩')"},
+					{html:"∧", handler:"xed.handleCharacter('∧')"},
+					{html:"∨", handler:"xed.handleCharacter('∨')"},
+					{html:"￢", handler:"xed.handleCharacter('￢')"},
+					{html:"⇒", handler:"xed.handleCharacter('⇒')"},
+					{html:"⇔", handler:"xed.handleCharacter('⇔')"},
+					{html:"∀", handler:"xed.handleCharacter('∀')"},
+					{html:"∃", handler:"xed.handleCharacter('∃')"},
+					{html:"～", handler:"xed.handleCharacter('～')"},
+					{html:"ˇ", handler:"xed.handleCharacter('ˇ')"},
+					{html:"˘", handler:"xed.handleCharacter('˘')"},
+					{html:"¸", handler:"xed.handleCharacter('¸')"},
+					{html:"˛", handler:"xed.handleCharacter('˛')"},
+					{html:"¡", handler:"xed.handleCharacter('¡')"},
+					{html:"¿", handler:"xed.handleCharacter('¿')"},
+					{html:"ː", handler:"xed.handleCharacter('ː')"},
+					{html:"∮", handler:"xed.handleCharacter('∮')"},
+					{html:"∑", handler:"xed.handleCharacter('∑')"},
+					{html:"∏", handler:"xed.handleCharacter('∏')"},
+					{html:"¤", handler:"xed.handleCharacter('¤')"},
+					{html:"℉", handler:"xed.handleCharacter('℉')"},
+					{html:"‰", handler:"xed.handleCharacter('‰')"},
+					{html:"◁", handler:"xed.handleCharacter('◁')"},
+					{html:"◀", handler:"xed.handleCharacter('◀')"},
+					{html:"▷", handler:"xed.handleCharacter('▷')"},
+					{html:"▶", handler:"xed.handleCharacter('▶')"},
+					{html:"♤", handler:"xed.handleCharacter('♤')"},
+					{html:"♠", handler:"xed.handleCharacter('♠')"},
+					{html:"♡", handler:"xed.handleCharacter('♡')"},
+					{html:"♥", handler:"xed.handleCharacter('♥')"},
+					{html:"♧", handler:"xed.handleCharacter('♧')"},
+					{html:"♣", handler:"xed.handleCharacter('♣')"},
+					{html:"⊙", handler:"xed.handleCharacter('⊙')"},
+					{html:"◈", handler:"xed.handleCharacter('◈')"},
+					{html:"▣", handler:"xed.handleCharacter('▣')"},
+					{html:"◐", handler:"xed.handleCharacter('◐')"},
+					{html:"◑", handler:"xed.handleCharacter('◑')"},
+					{html:"▒", handler:"xed.handleCharacter('▒')"},
+					{html:"▤", handler:"xed.handleCharacter('▤')"},
+					{html:"▥", handler:"xed.handleCharacter('▥')"},
+					{html:"▨", handler:"xed.handleCharacter('▨')"},
+					{html:"▧", handler:"xed.handleCharacter('▧')"},
+					{html:"▦", handler:"xed.handleCharacter('▦')"},
+					{html:"▩", handler:"xed.handleCharacter('▩')"},
+					{html:"♨", handler:"xed.handleCharacter('♨')"},
+					{html:"☏", handler:"xed.handleCharacter('☏')"},
+					{html:"☎", handler:"xed.handleCharacter('☎')"},
+					{html:"☜", handler:"xed.handleCharacter('☜')"},
+					{html:"☞", handler:"xed.handleCharacter('☞')"},
+					{html:"¶", handler:"xed.handleCharacter('¶')"},
+					{html:"†", handler:"xed.handleCharacter('†')"},
+					{html:"‡", handler:"xed.handleCharacter('‡')"},
+					{html:"↕", handler:"xed.handleCharacter('↕')"},
+					{html:"↗", handler:"xed.handleCharacter('↗')"},
+					{html:"↙", handler:"xed.handleCharacter('↙')"},
+					{html:"↖", handler:"xed.handleCharacter('↖')"},
+					{html:"↘", handler:"xed.handleCharacter('↘')"},
+					{html:"♭", handler:"xed.handleCharacter('♭')"},
+					{html:"♩", handler:"xed.handleCharacter('♩')"},
+					{html:"♪", handler:"xed.handleCharacter('♪')"},
+					{html:"♬", handler:"xed.handleCharacter('♬')"},
+					{html:"㉿", handler:"xed.handleCharacter('㉿')"},
+					{html:"㈜", handler:"xed.handleCharacter('㈜')"},
+					{html:"№", handler:"xed.handleCharacter('№')"},
+					{html:"㏇", handler:"xed.handleCharacter('㏇')"},
+					{html:"™", handler:"xed.handleCharacter('™')"},
+					{html:"㏂", handler:"xed.handleCharacter('㏂')"},
+					{html:"㏘", handler:"xed.handleCharacter('㏘')"},
+					{html:"℡", handler:"xed.handleCharacter('℡')"}
+				]},
 				{className:"emoticon", title:"Emoticon", list: [
                     {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
                     {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
@@ -1633,7 +1793,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * TODO: Add selenium test
 	 */
 	handleLink: function() {
-		var linkDialog = document.getElementById('linkDialog');
+		var linkDialog = xq.$('linkDialog');
 		if (linkDialog && linkDialog.style.display != 'none') this.lastLinkDialog.close();
 		
 		var text = this.rdom.getSelectionAsText() || '';
@@ -2082,29 +2242,49 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @param {object} [attrs] Attributes of tag. If not provided, it does not modify current attribute, and if empty string is provided, attribute will be removed.
 	 */
 	handleTable: function(attrs) {
-		var cur = this.rdom.getCurrentBlockElement();
-		if (!cur)
-			cur=this.getBody();
-		if(this.rdom.getParentElementOf(cur, ["TABLE"])) return true;
-		
-		var rtable = xq.RichTable.create(this.rdom, attrs);
-		rtable.setTableProperty(attrs);
-		
-		if(this.rdom.tree.isBlockContainer(cur)) {
-			var wrappers = this.rdom.wrapAllInlineOrTextNodesAs("P", cur, true);
-			cur = wrappers.last();
+		if (attrs){
+			var cur = this.rdom.getCurrentBlockElement();
+			if (!cur)
+				cur=this.getBody();
+			if(this.rdom.getParentElementOf(cur, ["TABLE"])) return true;
+			
+			var rtable = xq.RichTable.create(this.rdom, attrs);
+			rtable.setTableProperty(attrs);
+			
+			if(this.rdom.tree.isBlockContainer(cur)) {
+				var wrappers = this.rdom.wrapAllInlineOrTextNodesAs("P", cur, true);
+				cur = wrappers.last();
+			}
+			var tableDom = this.rdom.insertNodeAt(rtable.getDom(), cur, "after");
+			this.rdom.placeCaretAtStartOf(rtable.getCellAt(0, 0));
+			
+			if(this.rdom.isEmptyBlock(cur)) this.rdom.deleteNode(cur, true);
+			
+			var historyAdded = this.editHistory.onCommand();
+			this._fireOnCurrentContentChanged(this);
+			
+		} else {
+			xq.RichTableController.openDialog('new');
 		}
-		var tableDom = this.rdom.insertNodeAt(rtable.getDom(), cur, "after");
-		this.rdom.placeCaretAtStartOf(rtable.getCellAt(0, 0));
-		
-		if(this.rdom.isEmptyBlock(cur)) this.rdom.deleteNode(cur, true);
-		
-		var historyAdded = this.editHistory.onCommand();
-		this._fireOnCurrentContentChanged(this);
 		
 		return true;
 	},
-	
+	handleColorPicker: function(color){
+		var anchor = this.lastAnchor;
+		if (anchor.className.indexOf('foreground') != -1){
+			xed.handleForegroundColor(color);
+		} else if(anchor.className.indexOf('tableDialog') != -1) {
+			var anchors = anchor.parentNode.parentNode.getElementsByTagName('A')
+			for (var i = 0; i < anchors.length; i++){
+				if(anchors[i].id.indexOf('ColorBoard') != -1) anchors[i].style.backgroundColor = color;
+			}
+			
+			var inputs = anchor.parentNode.parentNode.getElementsByTagName('INPUT')
+			for (var j = 0; j < inputs.length; j++){
+				if(inputs[j].id.indexOf('ColorCode') != -1) inputs[j].value = color;
+			}
+		}
+	},
 	handleInsertNewRowAt: function(where) {
 		var cur = this.rdom.getCurrentBlockElement();
 		var tr = this.rdom.getParentElementOf(cur, ["TR"]);
@@ -2611,6 +2791,10 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		var img = this.getDoc().createElement('IMG');
 		img.src = this.config.imagePathForEmoticon + fileName;
 		this.rdom.insertNode(img);
+	},
+	
+	handleCharacter: function(chr){
+		this.rdom.insertHtml(chr);
 	},
 	
 	_handleContextMenu: function(e) {

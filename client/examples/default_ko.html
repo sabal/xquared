@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Xquared example - Default</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/xq_ui.css" />
+	<script type="text/javascript" src="../javascripts/XQuared.js?load_others=1"></script>
+	<script type="text/javascript" src="../javascripts/plugin/SpringnotePlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/EditorResizePlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/MacroPlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/FlashMovieMacroPlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/AC_OETags.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.queue.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/FileUploadPlugin.js"></script>
+	<script type="text/javascript">//<![CDATA[
+	var xed;
+	
+	window.onload = function() {
+		xed = new xq.Editor("xqEditor");
+		xed.config.imagePathForDefaultToolbar = '../images/toolbar/ko/';
+		
+		xed.config.defaultToolbarButtonGroups.font = [
+			{className:"fontFace", title:"글꼴", list:[
+				{html:"굴림", style: {fontFamily:'굴림,Gulim'}, handler:"xed.handleFontFace('굴림,San-Serif')"},
+				{html:"굴림체", style: {fontFamily:'굴림체,Gulimche'}, handler:"xed.handleFontFace('굴림체,San-Serif')"},
+				{html:"궁서", style: {fontFamily:'궁서,Gungseou'}, handler:"xed.handleFontFace('궁서,Serif')"},
+				{html:"궁서체", style: {fontFamily:'궁서체,Gungseouche'}, handler:"xed.handleFontFace('궁서체,Serif')"},
+				{html:"돋움", style: {fontFamily:'돋움,Dotum'}, handler:"xed.handleFontFace('돋움,San-Serif')"},
+				{html:"돋움체", style: {fontFamily:'돋움체,Dotumche'},handler:"xed.handleFontFace('돋움체,San-Serif')"},
+				{html:"바탕", style: {fontFamily:'바탕,Batang'}, handler:"xed.handleFontFace('바탕,Serif')"},
+				{html:"바탕체", style: {fontFamily:'바탕체,Batangche'}, handler:"xed.handleFontFace('바탕체,Serif')"},
+                {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
+                {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
+                {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
+                {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},
+                {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
+                {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},
+                {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
+                {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
+			]},
+
+			{className:"fontSize", title:"글자 크기", list:[
+                {html:"가나다라마바사 (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
+                {html:"가나다라마바사 (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
+                {html:"가나다라마바사 (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
+                {html:"가나다라마바사 (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},
+                {html:"가나다라마바사 (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
+                {html:"가나다라마바사 (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
+			]}
+		];
+		
+		
+		xed.config.defaultToolbarButtonGroups.style = [
+			{className:"strongEmphasis", title:"강한 강조", handler:"xed.handleStrongEmphasis()"},
+			{className:"emphasis", title:"강조", handler:"xed.handleEmphasis()"},
+			{className:"underline", title:"밑줄", handler:"xed.handleUnderline()"},
+			{className:"strike", title:"취소선", handler:"xed.handleStrike()"}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.style.push(xed.config.defaultToolbarButtonGroups.color[0]);
+		xed.config.defaultToolbarButtonGroups.style.push(xed.config.defaultToolbarButtonGroups.color[1]);
+		
+		xed.config.defaultToolbarButtonGroups.justification = [
+			{className:"justifyLeft", title:"왼쪽 정렬", handler:"xed.handleJustify('left')"},
+			{className:"justifyCenter", title:"가운데 정렬", handler:"xed.handleJustify('center')"},
+			{className:"justifyRight", title:"오른쪽 정렬", handler:"xed.handleJustify('right')"}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.indentation = [
+			{className:"indent", title:"들여쓰기", handler:"xed.handleIndent()"},
+			{className:"outdent", title:"내여쓰기", handler:"xed.handleOutdent()"}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.block = [
+			{className:"unorderedList", title:"블릿 목록", handler:"xed.handleList('UL')"},
+			{className:"orderedList", title:"숫자 목록", handler:"xed.handleList('OL')"}
+		];
+		xed.config.defaultToolbarButtonGroups.insert = [
+				{className:"table", title:"테이블", handler:"xed.handleTable()"},
+				{className:"blockquote", title:"인용", handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
+				{className:"link", title:"링크", handler:"xed.handleLink()"},
+				{className:"emoticon", title:"이모티콘", list: [
+                    {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
+                    {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
+                    {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
+                    {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
+                    {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
+                    {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
+                    {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
+                    {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
+                    {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
+                    {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
+                    {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
+                    {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
+                    {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
+                    {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
+                    {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
+                    {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
+                    {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
+                    {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
+                    {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
+                    {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
+                    {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
+                    {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
+                    {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
+				]},
+				{className:"character", title:"특수문자", list: [
+                    {html:"、", handler:"xed.handleCharacter('、')"},
+					{html:"。", handler:"xed.handleCharacter('。')"},
+					{html:"·", handler:"xed.handleCharacter('·')"},
+					{html:"‥", handler:"xed.handleCharacter('‥')"},
+					{html:"…", handler:"xed.handleCharacter('…')"},
+					{html:"¨", handler:"xed.handleCharacter('¨')"},
+					{html:"〃", handler:"xed.handleCharacter('〃')"},
+					{html:"­", handler:"xed.handleCharacter('­')"},
+					{html:"―", handler:"xed.handleCharacter('―')"},
+					{html:"∥", handler:"xed.handleCharacter('∥')"},
+					{html:"＼", handler:"xed.handleCharacter('＼')"},
+					{html:"∼", handler:"xed.handleCharacter('∼')"},
+					{html:"‘", handler:"xed.handleCharacter('‘')"},
+					{html:"’", handler:"xed.handleCharacter('’')"},
+					{html:"“", handler:"xed.handleCharacter('“')"},
+					{html:"”", handler:"xed.handleCharacter('”')"},
+					{html:"〔", handler:"xed.handleCharacter('〔')"},
+					{html:"〕", handler:"xed.handleCharacter('〕')"},
+					{html:"〈", handler:"xed.handleCharacter('〈')"},
+					{html:"〉", handler:"xed.handleCharacter('〉')"},
+					{html:"《", handler:"xed.handleCharacter('《')"},
+					{html:"》", handler:"xed.handleCharacter('》')"},
+					{html:"「", handler:"xed.handleCharacter('「')"},
+					{html:"」", handler:"xed.handleCharacter('」')"},
+					{html:"『", handler:"xed.handleCharacter('『')"},
+					{html:"』", handler:"xed.handleCharacter('』')"},
+					{html:"【", handler:"xed.handleCharacter('【')"},
+					{html:"】", handler:"xed.handleCharacter('】')"},
+					{html:"±", handler:"xed.handleCharacter('±')"},
+					{html:"×", handler:"xed.handleCharacter('×')"},
+					{html:"÷", handler:"xed.handleCharacter('÷')"},
+					{html:"≠", handler:"xed.handleCharacter('≠')"},
+					{html:"≤", handler:"xed.handleCharacter('≤')"},
+					{html:"≥", handler:"xed.handleCharacter('≥')"},
+					{html:"∞", handler:"xed.handleCharacter('∞')"},
+					{html:"∴", handler:"xed.handleCharacter('∴')"},
+					{html:"°", handler:"xed.handleCharacter('°')"},
+					{html:"′", handler:"xed.handleCharacter('′')"},
+					{html:"″", handler:"xed.handleCharacter('″')"},
+					{html:"℃", handler:"xed.handleCharacter('℃')"},
+					{html:"Å", handler:"xed.handleCharacter('Å')"},
+					{html:"￠", handler:"xed.handleCharacter('￠')"},
+					{html:"￡", handler:"xed.handleCharacter('￡')"},
+					{html:"￥", handler:"xed.handleCharacter('￥')"},
+					{html:"♂", handler:"xed.handleCharacter('♂')"},
+					{html:"♀", handler:"xed.handleCharacter('♀')"},
+					{html:"∠", handler:"xed.handleCharacter('∠')"},
+					{html:"⊥", handler:"xed.handleCharacter('⊥')"},
+					{html:"⌒", handler:"xed.handleCharacter('⌒')"},
+					{html:"∂", handler:"xed.handleCharacter('∂')"},
+					{html:"∇", handler:"xed.handleCharacter('∇')"},
+					{html:"≡", handler:"xed.handleCharacter('≡')"},
+					{html:"≒", handler:"xed.handleCharacter('≒')"},
+					{html:"§", handler:"xed.handleCharacter('§')"},
+					{html:"※", handler:"xed.handleCharacter('※')"},
+					{html:"☆", handler:"xed.handleCharacter('☆')"},
+					{html:"★", handler:"xed.handleCharacter('★')"},
+					{html:"○", handler:"xed.handleCharacter('○')"},
+					{html:"●", handler:"xed.handleCharacter('●')"},
+					{html:"◎", handler:"xed.handleCharacter('◎')"},
+					{html:"◇", handler:"xed.handleCharacter('◇')"},
+					{html:"◆", handler:"xed.handleCharacter('◆')"},
+					{html:"□", handler:"xed.handleCharacter('□')"},
+					{html:"■", handler:"xed.handleCharacter('■')"},
+					{html:"△", handler:"xed.handleCharacter('△')"},
+					{html:"▲", handler:"xed.handleCharacter('▲')"},
+					{html:"▽", handler:"xed.handleCharacter('▽')"},
+					{html:"▼", handler:"xed.handleCharacter('▼')"},
+					{html:"→", handler:"xed.handleCharacter('→')"},
+					{html:"←", handler:"xed.handleCharacter('←')"},
+					{html:"↑", handler:"xed.handleCharacter('↑')"},
+					{html:"↓", handler:"xed.handleCharacter('↓')"},
+					{html:"↔", handler:"xed.handleCharacter('↔')"},
+					{html:"〓", handler:"xed.handleCharacter('〓')"},
+					{html:"≪", handler:"xed.handleCharacter('≪')"},
+					{html:"≫", handler:"xed.handleCharacter('≫')"},
+					{html:"√", handler:"xed.handleCharacter('√')"},
+					{html:"∽", handler:"xed.handleCharacter('∽')"},
+					{html:"∝", handler:"xed.handleCharacter('∝')"},
+					{html:"∵", handler:"xed.handleCharacter('∵')"},
+					{html:"∫", handler:"xed.handleCharacter('∫')"},
+					{html:"∬", handler:"xed.handleCharacter('∬')"},
+					{html:"∈", handler:"xed.handleCharacter('∈')"},
+					{html:"∋", handler:"xed.handleCharacter('∋')"},
+					{html:"⊆", handler:"xed.handleCharacter('⊆')"},
+					{html:"⊇", handler:"xed.handleCharacter('⊇')"},
+					{html:"⊂", handler:"xed.handleCharacter('⊂')"},
+					{html:"⊃", handler:"xed.handleCharacter('⊃')"},
+					{html:"∪", handler:"xed.handleCharacter('∪')"},
+					{html:"∩", handler:"xed.handleCharacter('∩')"},
+					{html:"∧", handler:"xed.handleCharacter('∧')"},
+					{html:"∨", handler:"xed.handleCharacter('∨')"},
+					{html:"￢", handler:"xed.handleCharacter('￢')"},
+					{html:"⇒", handler:"xed.handleCharacter('⇒')"},
+					{html:"⇔", handler:"xed.handleCharacter('⇔')"},
+					{html:"∀", handler:"xed.handleCharacter('∀')"},
+					{html:"∃", handler:"xed.handleCharacter('∃')"},
+					{html:"～", handler:"xed.handleCharacter('～')"},
+					{html:"ˇ", handler:"xed.handleCharacter('ˇ')"},
+					{html:"˘", handler:"xed.handleCharacter('˘')"},
+					{html:"¸", handler:"xed.handleCharacter('¸')"},
+					{html:"˛", handler:"xed.handleCharacter('˛')"},
+					{html:"¡", handler:"xed.handleCharacter('¡')"},
+					{html:"¿", handler:"xed.handleCharacter('¿')"},
+					{html:"ː", handler:"xed.handleCharacter('ː')"},
+					{html:"∮", handler:"xed.handleCharacter('∮')"},
+					{html:"∑", handler:"xed.handleCharacter('∑')"},
+					{html:"∏", handler:"xed.handleCharacter('∏')"},
+					{html:"¤", handler:"xed.handleCharacter('¤')"},
+					{html:"℉", handler:"xed.handleCharacter('℉')"},
+					{html:"‰", handler:"xed.handleCharacter('‰')"},
+					{html:"◁", handler:"xed.handleCharacter('◁')"},
+					{html:"◀", handler:"xed.handleCharacter('◀')"},
+					{html:"▷", handler:"xed.handleCharacter('▷')"},
+					{html:"▶", handler:"xed.handleCharacter('▶')"},
+					{html:"♤", handler:"xed.handleCharacter('♤')"},
+					{html:"♠", handler:"xed.handleCharacter('♠')"},
+					{html:"♡", handler:"xed.handleCharacter('♡')"},
+					{html:"♥", handler:"xed.handleCharacter('♥')"},
+					{html:"♧", handler:"xed.handleCharacter('♧')"},
+					{html:"♣", handler:"xed.handleCharacter('♣')"},
+					{html:"⊙", handler:"xed.handleCharacter('⊙')"},
+					{html:"◈", handler:"xed.handleCharacter('◈')"},
+					{html:"▣", handler:"xed.handleCharacter('▣')"},
+					{html:"◐", handler:"xed.handleCharacter('◐')"},
+					{html:"◑", handler:"xed.handleCharacter('◑')"},
+					{html:"▒", handler:"xed.handleCharacter('▒')"},
+					{html:"▤", handler:"xed.handleCharacter('▤')"},
+					{html:"▥", handler:"xed.handleCharacter('▥')"},
+					{html:"▨", handler:"xed.handleCharacter('▨')"},
+					{html:"▧", handler:"xed.handleCharacter('▧')"},
+					{html:"▦", handler:"xed.handleCharacter('▦')"},
+					{html:"▩", handler:"xed.handleCharacter('▩')"},
+					{html:"♨", handler:"xed.handleCharacter('♨')"},
+					{html:"☏", handler:"xed.handleCharacter('☏')"},
+					{html:"☎", handler:"xed.handleCharacter('☎')"},
+					{html:"☜", handler:"xed.handleCharacter('☜')"},
+					{html:"☞", handler:"xed.handleCharacter('☞')"},
+					{html:"¶", handler:"xed.handleCharacter('¶')"},
+					{html:"†", handler:"xed.handleCharacter('†')"},
+					{html:"‡", handler:"xed.handleCharacter('‡')"},
+					{html:"↕", handler:"xed.handleCharacter('↕')"},
+					{html:"↗", handler:"xed.handleCharacter('↗')"},
+					{html:"↙", handler:"xed.handleCharacter('↙')"},
+					{html:"↖", handler:"xed.handleCharacter('↖')"},
+					{html:"↘", handler:"xed.handleCharacter('↘')"},
+					{html:"♭", handler:"xed.handleCharacter('♭')"},
+					{html:"♩", handler:"xed.handleCharacter('♩')"},
+					{html:"♪", handler:"xed.handleCharacter('♪')"},
+					{html:"♬", handler:"xed.handleCharacter('♬')"},
+					{html:"㉿", handler:"xed.handleCharacter('㉿')"},
+					{html:"㈜", handler:"xed.handleCharacter('㈜')"},
+					{html:"№", handler:"xed.handleCharacter('№')"},
+					{html:"㏇", handler:"xed.handleCharacter('㏇')"},
+					{html:"™", handler:"xed.handleCharacter('™')"},
+					{html:"㏂", handler:"xed.handleCharacter('㏂')"},
+					{html:"㏘", handler:"xed.handleCharacter('㏘')"},
+					{html:"℡", handler:"xed.handleCharacter('℡')"}
+				]}
+  			]
+		xed.config.defaultToolbarButtonMap = [
+		    xed.config.defaultToolbarButtonGroups.font,
+		    xed.config.defaultToolbarButtonGroups.style,
+		    xed.config.defaultToolbarButtonGroups.justification,
+		    xed.config.defaultToolbarButtonGroups.indentation,
+		    xed.config.defaultToolbarButtonGroups.block,
+		    xed.config.defaultToolbarButtonGroups.insert,
+			[
+				{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}
+			]
+		];
+		
+		xed.config.autoFocusOnInit = true;
+		xed.config.urlValidationMode = 'host_relative';
+		xed.config.changeCursorOnLink = true;
+		
+		xed.addPlugin('Springnote');
+		xed.addPlugin('EditorResize');
+		xed.addPlugin('Macro');
+		xed.addPlugin('FileUpload');
+		xed.addPlugin('FlashMovieMacro');
+	
+		xed.setFileUploadTarget('/client/examples/single_upload_submit.php', '/client/examples/upload.php');
+	
+		xed.setEditMode('wysiwyg');
+		xed.setWidth("100%");
+	}
+	//]]></script>
+</head>
+
+<body>
+	<textarea id="xqEditor">&lt;p&gt;Hello World&lt;/p&gt;</textarea>
+</body>
+</html>

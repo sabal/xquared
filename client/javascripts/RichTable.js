@@ -227,7 +227,6 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 		}
 	}
 });
-
 xq.RichTable.defaultPropertyValues = {
 	borderColor: '#999999',
 	borderWidth: 1,
@@ -238,7 +237,6 @@ xq.RichTable.defaultPropertyValues = {
 	textAlign: '',
 	verticalAlign: 'top'
 };
-
 xq.RichTable.create = function(rdom, attrs) {
 	if(["t", "tl", "lt"].indexOf(attrs.headerPositions) !== -1) var headingAtTop = true
 	if(["l", "tl", "lt"].indexOf(attrs.headerPositions) !== -1) var headingAtLeft = true
@@ -281,4 +279,324 @@ xq.RichTable.create = function(rdom, attrs) {
 	var rtable = new xq.RichTable(rdom, container.firstChild);
 	rtable.correctEmptyCells();
 	return rtable;
+};
+xq.RichTableController = {
+	dialogType: null,
+	initDialog: function(type, prop){
+		// initial value
+		xq.$("tableDialog").tableTypeField.value = '';
+		this.changeType(xq.$("tableTypeDefaultValue"),'');
+		
+		xq.$("tableRowsField").value = "3";
+		xq.$("tableColsField").value = "3";
+		this.previewTable();
+		
+		var defaultValues = xq.RichTable.defaultPropertyValues;
+		
+		xq.getElementsByClassName(xq.$("tableDialog"), 'tableWidths')[0].selectedIndex = (type == 'new' || type == 'table')? 0 : 1
+		xq.$("tableWidthValue").value = (type == 'new' || type == 'table')? defaultValues.tableWidth : defaultValues.columnWidth;
+		xq.$("tableWidthValue").style.display = "none";
+		xq.$("tableWidthValueUnit").value = "";
+		
+		xq.getElementsByClassName(xq.$("tableDialog"), 'tableHeights')[0].selectedIndex = 0;
+		xq.$("tableHeightValue").value = defaultValues.height;
+		xq.$("tableHeightValue").style.display = "none";
+		xq.$("tableHeightValueUnit").value = "";
+		
+		xq.$("tableDialog").tableHorizontalAlign.selectedIndex = 0;
+		xq.$("tableDialog").tableVerticalAlign.selectedIndex = 1;
+		
+		xq.$("tableDialog").tableBorderColor.parentNode.getElementsByTagName('A')[0].style.backgroundColor = defaultValues.borderColor;
+		xq.$("tableDialog").tableBorderColor.value = defaultValues.borderColor;
+		
+		xq.$("tableDialog").tableBorderSize.value = defaultValues.borderWidth;
+		
+		xq.$("tableDialog").tableBackgroundColor.parentNode.getElementsByTagName('A')[0].style.backgroundColor = defaultValues.backgroundColor;
+		xq.$("tableDialog").tableBackgroundColor.value = defaultValues.backgroundColor;
+
+		if (prop) this.setDialog(prop);
+	},
+	setDialog: function(prop){
+		if(typeof prop.width != 'undefined' || prop.width != null){
+			xq.$("tableWidthValue").value = prop.width;
+			if(prop.width.match(/(\%|px)/)) {
+				xq.getElementsByClassName(xq.$("tableDialog"), 'tableWidths')[0].selectedIndex = (prop.width.indexOf('%') != -1)? 3:2
+				xq.$("tableWidthValue").style.display = "inline";
+				xq.$("tableWidthValueUnit").value = (prop.width.indexOf('%') != -1)? '%':'px';
+			}
+		}
+		if(typeof prop.height != 'undefined' || prop.height != null){
+			if(prop.height.indexOf('px') != -1) {
+				xq.getElementsByClassName(xq.$("tableDialog"), 'tableHeights')[0].selectedIndex = 1
+				xq.$("tableHeightValue").style.display = "inline";
+				xq.$("tableHeightValue").value = prop.height;
+				xq.$("tableHeightValueUnit").value = 'px';
+			}
+		}
+		if(typeof prop.verticalAlign != 'undefined' || prop.verticalAlign != null){
+			var optTextAlign = {
+				'top':0,
+				'middle':1,
+				'bottom':2
+			}
+			xq.$("tableDialog").tableVerticalAlign.selectedIndex = optTextAlign[prop.verticalAlign];
+		}
+		if(typeof prop.textAlign != 'undefined' || prop.textAlign != null){
+			var optVerticalAlign = {
+				'left':0,
+				'center':1,
+				'right':2
+			}
+			xq.$("tableDialog").tableHorizontalAlign.selectedIndex = optVerticalAlign[prop.textAlign];
+		}
+		if(typeof prop.borderColor != 'undefined' || prop.borderColor != null){
+			xq.$("tableDialog").tableBorderColor.parentNode.getElementsByTagName('A')[0].style.backgroundColor = prop.borderColor;
+			xq.$("tableDialog").tableBorderColor.value = prop.borderColor;
+		}
+		if(typeof prop.borderWidth != 'undefined' || prop.borderWidth != null){
+			xq.$("tableDialog").tableBorderSize.value = prop.borderWidth;
+		}
+		if(typeof prop.backgroundColor != 'undefined' || prop.backgroundColor != null){
+			xq.$("tableDialog").tableBackgroundColor.parentNode.getElementsByTagName('A')[0].style.backgroundColor = prop.backgroundColor;
+			xq.$("tableDialog").tableBackgroundColor.value = prop.backgroundColor;
+		}
+	},
+	openDialog: function(type, element){
+		var tableDialog = xq.$('tableDialog');
+		if (tableDialog && tableDialog.style.display != 'none') this.lastTableDialog.close();
+		var text = xed.rdom.getSelectionAsText() || '';
+		var dialog = new xq.ui.FormDialog(
+			xed,
+			xq.ui_templates.basicTableDialog,
+			function(dialog) {
+				var isNewTable = type == 'new';
+				
+				xq.$("tableDialogTitle").innerHTML = (isNewTable)? 'Insert Table' : 'Change ' + type;
+				xq.$("tableDialogSubmit").innerHTML = (isNewTable)? 'Insert' : 'Edit';
+				var prop;
+				if (type != 'new'){
+					switch (type){
+						case 'table':
+							prop = xed.handleTableProperty();
+						break;
+						case 'row':
+							prop = xed.handleRowProperty();
+						break;
+						case 'column':
+							prop = xed.handleColumnProperty();
+						break;
+					}
+				}
+				
+				xq.$("tableDialog").className += " " + type;
+				xq.RichTableController.initDialog(type, prop);
+			},
+			function(data) {
+				xed.focus();
+				
+				if(xq.Browser.isTrident) {
+					var rng = xed.rdom.rng();
+					rng.moveToBookmark(bm);
+					rng.select();
+				}
+				if(!data) return;
+				xq.RichTableController.submit();
+			}
+		);
+		
+		if(xq.Browser.isTrident) var bm = xed.rdom.rng().getBookmark();
+		dialog.show({position: 'centerOfWindow'});
+		this.dialogType = type;
+		this.lastTableDialog = dialog;
+		return true;
+
+	},
+	submit: function(){
+		var type = this.dialogType;
+		
+		var prop = {};
+		
+		if (type == 'new') {
+			if (!xq.$("tableDialog").tableCols.value.replace(/[^0-9]/g,'') || parseInt(xq.$("tableDialog").tableCols.value, 10) > 30) {
+				alert(getText('Please enter column value between 1 to 30.'));
+				xq.$("tableDialog").tableCols.focus();
+				return false;
+			}
+			if (!xq.$("tableDialog").tableRows.value.replace(/[^0-9]/g,'') || parseInt(xq.$("tableDialog").tableRows.value, 10) > 120) {
+				alert(getText('Please enter row value between 1 to 120.'));
+				xq.$("tableDialog").tableRows.focus();
+				return false;
+			}
+			
+			prop['cols'] = xq.$("tableDialog").tableCols.value;
+			prop['rows'] = xq.$("tableDialog").tableRows.value;
+			prop['headerPositions'] = xq.$("tableDialog").tableType.value;
+		}
+		
+		if (type != 'row') {
+			if (xq.$("tableDialog").tableWidth.value > 0) {
+				prop['width'] = {};
+				prop['width'].size = parseInt(xq.$("tableDialog").tableWidth.value, 10);
+				prop['width'].unit = xq.$("tableDialog").tableWidthUnit.value;
+			} else {
+				prop['width'] = xq.$("tableDialog").tableWidth.value;
+			}
+		}
+		
+		if (type != 'column') {
+			if (xq.$("tableDialog").tableHeight.value > 0) {
+				prop['height'] = {};
+				prop['height'].size = parseInt(xq.$("tableDialog").tableHeight.value, 10);
+				prop['height'].unit = xq.$("tableDialog").tableHeightUnit.value;
+			} else {
+				prop['height'] = xq.$("tableDialog").tableHeight.value;
+			}
+		}
+		
+		if (type == 'row' || type == 'column') {
+			prop['verticalAlign'] = xq.$("tableDialog").tableVerticalAlign.value;
+			prop['textAlign'] = xq.$("tableDialog").tableHorizontalAlign.value;
+		}
+		
+		if (type == 'new' || type == 'table') {
+			prop['borderColor'] = xq.$("tableDialog").tableBorderColor.value;
+		}
+		
+		var currentTable = xed.rdom.getParentElementOf(xed.rdom.getCurrentBlockElement(), ["TABLE"]);
+		
+		prop['className'] = (currentTable)? currentTable.className : '';
+		
+		if (prop['className'].indexOf('dataTable2') == -1) {
+			prop['className'] += (currentTable && currentTable.className)? ' datatable2':'datatable2';
+		}
+		
+		if (type == 'new' || type == 'table') {
+			prop['borderWidth'] = xq.$("tableDialog").tableBorderSize.value;
+			
+			if(xq.$("tableDialog").tableBorderSize.value < 1 && prop['className'].indexOf('zeroborder') == -1){
+				prop['className'] += ' zeroborder';
+			} else if (xq.$("tableDialog").tableBorderSize.value > 0){
+				prop['className'] = prop['className'].replace('zeroborder','')
+			}
+		}
+		
+		prop['backgroundColor'] = xq.$("tableDialog").tableBackgroundColor.value;
+		
+		xed.focus();
+		
+		switch (type){
+			case 'new':
+			xed.handleTable(prop);
+			break;
+			case 'table':
+			xed.handleTableProperty(prop);
+			break;
+			case 'row':
+			xed.handleRowProperty(prop);
+			break;
+			case 'column':
+			xed.handleColumnProperty(prop);
+			break;
+		}
+		
+		return false;
+	},
+	insertParagraph: function(where){
+		var cur = xed.rdom.getCurrentBlockElement();
+		if (!cur) return;
+		var table = xed.rdom.getParentElementOf(cur, ["TABLE"]);
+		if(!table) return true;
+		
+		var insert = xed.rdom.insertNodeAt(xed.rdom.makeEmptyParagraph(), table, where);
+		xed.rdom.placeCaretAtStartOf(insert);
+		xed.focus()
+	},
+	changeType: function(element, type){
+		var anchors = element.parentNode.parentNode.getElementsByTagName('A');
+		for(var i = 0; i < anchors.length; i++){
+			anchors[i].className = ""
+		}
+		element.className = "selected"
+		xq.$('tableTypeField').value = type; 
+		return false;
+	},
+	changeSize: function(element){
+		var targetElement = element.parentNode.parentNode.getElementsByTagName('INPUT')[0];
+		if (element.className.indexOf('plus') != -1){
+			targetElement.value++;
+		} else if(targetElement.value > 1 || (targetElement.name == "tableBorderSize" && targetElement.value > 0)) {
+			targetElement.value--;
+		}
+		this.previewTable();
+	},
+	previewTable: function(){
+		var table = xq.$("previewTable").getElementsByTagName('TABLE')[0]
+		if (table.tBodies.length > 0) table = table.tBodies[0];
+
+		var row = parseInt(xq.$("tableRowsField").value, 10);
+		var col = parseInt(xq.$("tableColsField").value, 10);
+		
+		if (row < 1) xq.$("tableRowsField").value = row = 1;
+		if (row > 120) xq.$("tableRowsField").value = row = 120;
+		if (col < 1) xq.$("tableColsField").value = col = 1;
+		if (col > 30) xq.$("tableColsField").value = col = 30;
+		
+		row = Math.min(parseInt(xq.$("tableRowsField").value, 10), 20);
+		
+		var rowsValue = row - table.rows.length;
+		var colsValue = col - table.rows[0].cells.length;
+		
+		for (var i = 0; i < Math.abs(rowsValue); i++){
+			if (rowsValue > 0){
+				table.appendChild(table.rows[0].cloneNode(true))
+			} else {
+				table.deleteRow(0)
+			}
+		}
+		
+		for (var j = 0; j < Math.abs(colsValue); j++){
+			for (var k = 0; k < table.rows.length; k++){
+				var tr = table.rows[k];
+				if (colsValue > 0) {
+					tr.insertCell(0);
+				} else {
+					tr.deleteCell(0);
+				}
+			}
+		}
+	},
+	changeStyle: function(element){
+		var target = (element.className.indexOf('Width') != -1)? 'Width':'Height';
+		switch (element.value){
+			case 'fullsize':
+				xq.$("table" + target + "Value").value = "100";
+				xq.$("table" + target + "ValueUnit").value = "%";
+				xq.$("table" + target + "Value").style.display = "none";
+				break;
+			case 'content':
+				xq.$("table" + target + "Value").value = "";
+				xq.$("table" + target + "ValueUnit").value = "";
+				xq.$("table" + target + "Value").style.display = "none";
+				break;
+			case 'pixel':
+				xq.$("table" + target + "Value").value = "";
+				xq.$("table" + target + "ValueUnit").value = "px";
+				xq.$("table" + target + "Value").style.display = "inline";
+				break;
+			case 'percentage':
+				xq.$("table" + target + "Value").value = "100";
+				xq.$("table" + target + "ValueUnit").value = "%";
+				xq.$("table" + target + "Value").style.display = "inline";
+				break;
+		}
+	},
+	showColorPicker: function(elem){
+		xed.lastAnchor = elem;
+		var dialog = xq.$('foregroundColorDialog');
+		dialog.style.display = 'block';
+		
+		dialog.style.position = 'absolute'
+		dialog.style.top = elem.offsetTop + xq.$('tableDialog').offsetTop + elem.offsetHeight + 2 + 'px';
+		dialog.style.left = elem.offsetLeft + xq.$('tableDialog').offsetLeft + 'px';
+	}
 }

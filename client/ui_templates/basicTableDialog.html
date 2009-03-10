@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Basic Table Dialog</title>
+</head>
+<body>
+	<form id="tableDialog" class="xqFormDialog modal" action="#">
+		<h3 id="tableDialogTitle">Insert Table</h3>
+		<input type="hidden" name="tableDialogType" value="" />
+		<div class="dialog-content">
+			<fieldset class="table-type">
+				<legend>table type</legend>
+				<ul>
+					<li><a href="#" id="tableTypeDefaultValue" class="selected" onclick="xq.RichTableController.changeType(this, \'\'); return false;"><img src="../images/dialogs/iconTable_01.gif?1214533817" alt="Untitled Table" /></a></li>
+					<li><a href="#" onclick="xq.RichTableController.changeType(this, \'t\'); return false;"><img src="../images/dialogs/iconTable_02.gif?1214533817" alt="Column Title on top" /></a></li>
+					<li><a href="#" onclick="xq.RichTableController.changeType(this, \'l\'); return false;"><img src="../images/dialogs/iconTable_03.gif?1214533817" alt="Column Title on left" /></a></li>
+					<li class="last-child"><a href="#" onclick="xq.RichTableController.changeType(this, \'tl\'); return false;"><img src="../images/dialogs/iconTable_04.gif?1214533817" alt="Column Title on top and left" /></a></li>
+				</ul>
+				<input id="tableTypeField" type="hidden" name="tableType" value="" />
+			</fieldset>
+			<fieldset class="table-size">
+				<legend id="tableSizeLabel" class="font-variation">Size</legend>
+				<div class="wrapper">
+					<ul>
+						<li class="new-only">
+							<label>Row(s)</label>
+							<span class="controller"><input type="text" onchange="xq.RichTableController.previewTable(); return false;" id="tableRowsField" name="tableRows" value="3" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="plus" class="plus rows" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="minus" class="minus rows" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>
+						</li>
+						<li class="new-only">
+							<label>Column(s)</label>
+							<span class="controller"><input type="text" onchange="xq.RichTableController.previewTable(); return false;" id="tableColsField" name="tableCols" value="3" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="plus" class="plus cols" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="minus" class="minus cols" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>
+						</li>
+						<li class="table-width">
+							<label>Width</label>
+							<select class="tableWidths" onchange="xq.RichTableController.changeStyle(this); return false;">
+								<option value="fullsize">Full size</option>
+								<option value="content">Size to content</option>
+								<option value="pixel">Fixed size (pixels)</option>
+								<option value="percentage">Fixed percentage (%)</option>
+							</select>			
+							<input type="text" name="tableWidth" id="tableWidthValue" class="type-text height-box" style="display:none;" />				
+							<input type="hidden" name="tableWidthUnit" value="" id="tableWidthValueUnit" />				
+							<!--input type="checkbox" name="tableFixed" class="type-checkbox" /><label class="none font-valiation">Same cell spacing</label-->
+						</li>
+						<li class="table-height">
+							<label>Height</label>
+							<select class="tableHeights" onchange="xq.RichTableController.changeStyle(this); return false;">
+								<option selected value="content">Size to content</option>
+								<option value="pixel">Fixed size (pixels)</option>
+							</select>							
+							<input type="text" name="tableHeight" id="tableHeightValue" class="type-text height-box" style="display:none;" />
+							<input type="hidden" name="tableHeightUnit" id="tableHeightValueUnit" />
+						</li>
+					</ul>
+					<div id="previewTable" class="new-only">
+						<table>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="table-alignment">
+				<legend class="font-variation">Alignment</legend>
+				<div class="wrapper">
+					<ul>
+						<li>
+							<label>Horizontal</label>
+							<select name="tableHorizontalAlign">
+								<option value="left">Left</option>
+								<option value="center">Center</option>
+								<option value="right">Right</option>
+							</select>
+						</li>
+						<li>
+							<label>Vertical</label>
+							<select name="tableVerticalAlign">
+								<option value="top">Top</option>
+								<option value="middle">Middle</option>
+								<option value="bottom">Bottom</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+			</fieldset>
+			<fieldset class="table-border">
+				<legend class="font-variation">Border</legend>
+				<div class="wrapper button-style03">
+					<ul>
+						<li class="weight-li">
+							<label>Size</label><span class="controller"><input type="text" name="tableBorderSize" value="0" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="" class="plus border" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="" class="minus border" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>
+						</li>
+						<li class="color-li">
+							<label>color</label>
+							<span class="color">
+								<a href="#" id="borderColorBoard" class="tableDialog border" onclick="xq.RichTableController.showColorPicker(this); return false;">&nbsp;</a>
+							</span>
+							<a href="#" class="tableDialog" onclick="xq.RichTableController.showColorPicker(this); return false;" title="search"><img src="../images/dialogs/arrow06.gif" alt="search" class="search-color" /></a>
+							<input id="borderColorCode" type="hidden" name="tableBorderColor" value="#000000" />
+						</li>
+					</ul>
+				</div>
+			</fieldset>
+			<fieldset class="table-background">
+				<legend class="font-variation">Background</legend>
+				<div class="wrapper button-style03">
+					<ul>
+						<li>
+							<label>color</label>
+							<span class="color">
+								<a href="#" id="backgroundColorBoard" class="tableDialog background" onclick="xq.RichTableController.showColorPicker(this); return false;">&nbsp;</a>
+							</span>
+							<a href="#" class="tableDialog" onclick="xq.RichTableController.showColorPicker(this); return false;" title="search"><img src="../images/dialogs/arrow06.gif" alt="search" class="search-color" /></a>
+							<input id="backgroundColorCode" type="hidden" name="tableBackgroundColor" value="#ffffff" />
+						</li>
+					</ul>
+				</div>
+			</fieldset>
+			<div class="dialog-buttons">
+				<a href="#" class="button-white cancel">Cancel</a>
+				<a href="#" class="button-gray submit" id="tableDialogSubmit">Insert</a>
+			</div>
+		</div>
+		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>
+	</form>
+</body>
+</html>
