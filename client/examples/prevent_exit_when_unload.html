@@ -12,7 +12,8 @@
 		xed = new xq.Editor("xqEditor");
 		
 		xed.config.enablePreventExit = true;
-			
+		xed.config.PreventExitMessage = "Document is not empty. If you want to leave, click 'Ok' button.";
+
 		xed.setEditMode('wysiwyg');
 		xed.setWidth("100%");
 	}
