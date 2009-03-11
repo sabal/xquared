@@ -261,7 +261,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 					emoticon.src = xed.config.imagePathForEmoticon + item.html;
 					anchor.appendChild(emoticon);				
 				} else {
-					anchor.innerHTML = item.html;
+					anchor.innerHTML = decodeURIComponent(item.html);
 				}
 			}
 			
