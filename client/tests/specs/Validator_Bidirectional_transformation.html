@@ -33,12 +33,12 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 	
 	'should transform between <span> and <em> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="font-style: italic;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="font-style: italic;">Hello</span>';
 		var valid = '<em>Hello</em>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <b> and <strong> [[xq.Browser.isGecko]]': function() {
@@ -51,12 +51,12 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 	
 	'should transform between <span> and <strong> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="font-weight: bold;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="font-weight: bold;">Hello</span>';
 		var valid = '<strong>Hello</strong>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <u> and <em class="underline"> [[xq.Browser.Trident || xq.Browser.isGecko]]': function() {
@@ -69,12 +69,12 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 	
 	'should transform between <span> and <em class="underline"> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="text-decoration: underline;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="text-decoration: underline;">Hello</span>';
 		var valid = '<em class="underline">Hello</em>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <strike> and <span class="strike"> [[xq.Browser.Trident || xq.Browser.isGecko]]': function() {
@@ -87,30 +87,30 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 	
 	'should transform between <span> and <span class="strike"> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="text-decoration: line-through;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="text-decoration: line-through;">Hello</span>';
 		var valid = '<span class="strike">Hello</span>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <span> and <sup> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="vertical-align: super;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="vertical-align: super;">Hello</span>';
 		var valid = '<sup>Hello</sup>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <span> and <sub> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="vertical-align: sub;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="vertical-align: sub;">Hello</span>';
 		var valid = '<sub>Hello</sub>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should transform between <font color> and <span style> [[xq.Browser.isTrident]]': function() {
@@ -150,12 +150,12 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 	
 	'should preserve attributes while transformation [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" id="some_id" style="font-weight: bold;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" id="some_id" style="font-weight: bold;">Hello</span>';
 		var valid = '<strong id="some_id">Hello</strong>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should preserve nested spans [[xq.Browser.isTrident]]': function() {
@@ -209,12 +209,12 @@ describe("Bidirectional transformation - Validation and Invalidation", {
 	},
 
 	'should transform between <span> and <span font-family> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="font-family: arial;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="font-family: arial;">Hello</span>';
 		var valid = '<span style="font-family: arial;">Hello</span>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
+		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 
 	'should transform between <font> and <span> [[xq.Browser.isGecko]]': function() {

@@ -41,46 +41,60 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 	},
 	
 	validateAppleStyleTags: function(element) {
-		var rdom = xq.rdom.Base.createInstance();
-		rdom.setRoot(element);
-		
-		var nodes = xq.getElementsByClassName(rdom.getRoot(), "apple-style-span");
-		for(var i = 0; i < nodes.length; i++) {
-			var node = nodes[i];
+		try {
+			var rdom = xq.rdom.Base.createInstance();
+			rdom.setRoot(element);
 			
-			if(node.style.fontStyle === "italic") {
-				// span -> em
-				node = rdom.replaceTag("em", node);
-				node.removeAttribute("class");
-				node.style.fontStyle = "";
-			} else if(node.style.fontWeight === "bold") {
-				// span -> strong
-				node = rdom.replaceTag("strong", node);
-				node.removeAttribute("class");
-				node.style.fontWeight = "";
-			} else if(node.style.textDecoration === "underline") {
-				// span -> em.underline
-				node = rdom.replaceTag("em", node);
-				node.className = "underline";
-				node.style.textDecoration = "";
-			} else if(node.style.textDecoration === "line-through") {
-				// span -> span.strike
-				node.className = "strike";
-				node.style.textDecoration = "";
-			} else if(node.style.verticalAlign === "super") {
-				// span -> sup
-				node = rdom.replaceTag("sup", node);
-				node.removeAttribute("class");
-				node.style.verticalAlign = "";
-			} else if(node.style.verticalAlign === "sub") {
-				// span -> sup
-				node = rdom.replaceTag("sub", node);
-				node.removeAttribute("class");
-				node.style.verticalAlign = "";
-			} else if(node.style.fontFamily) {
-				// span -> span font-family
-				node.removeAttribute("class");
+			var nodes = xq.getElementsByClassName(rdom.getRoot(), "Apple-style-span");
+			var holder = [];
+			
+			for(var i = 0; i < nodes.length; i++) {
+				var node = nodes[i];
+				if(node.style.fontStyle === "italic") {
+					// span -> em
+					node = rdom.replaceTag("em", node);
+					node.style.fontStyle = "";
+					holder.push({node:node});
+				} else if(node.style.fontWeight === "bold") {
+					// span -> strong
+					node = rdom.replaceTag("strong", node);
+					node.style.fontWeight = "";
+					holder.push({node:node});
+				} else if(node.style.textDecoration === "underline") {
+					// span -> em.underline
+					node = rdom.replaceTag("em", node);
+					node.style.textDecoration = "";
+					holder.push({node:node, className: 'underline'});
+				} else if(node.style.textDecoration === "line-through") {
+					// span -> span.strike
+					node.style.textDecoration = "";
+					holder.push({node:node, className: 'strike'});
+				} else if(node.style.verticalAlign === "super") {
+					// span -> sup
+					node = rdom.replaceTag("sup", node);
+					node.style.verticalAlign = "";
+					holder.push({node:node});
+				} else if(node.style.verticalAlign === "sub") {
+					// span -> sup
+					node = rdom.replaceTag("sub", node);
+					node.style.verticalAlign = "";
+					holder.push({node:node});
+				} else if(node.style.fontFamily) {
+					// span -> span font-family
+					holder.push({node:node});
+				}
 			}
+			
+			for (var j = 0; j < holder.length; j++){
+				if (holder[j].className) {
+					holder[j].node.className = holder[j].className;
+				} else {
+					holder[j].node.removeAttribute("class");
+				}
+			}
+			
+		} catch(e){
+			console.log(e)
 		}
 	},
 	
@@ -88,6 +102,7 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 		var rdom = xq.rdom.Base.createInstance();
 		rdom.setRoot(element);
 		
+		var len;
 		// span.strike -> span, span... -> span
 		var spans = rdom.getRoot().getElementsByTagName("span");
 		for(var i = 0; i < spans.length; i++) {
@@ -103,22 +118,25 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 
 		// em -> span, em.underline -> span
 		var ems = rdom.getRoot().getElementsByTagName("em");
-		for(var i = 0; i < ems.length; i++) {
-			var node = ems[i];
+		len = ems.length;
+		for(var i = 0; i < len; i++) {
+			var node = ems[0];
 			node = rdom.replaceTag("span", node);
 			if(node.className === "underline") {
-				node.className = "apple-style-span";
+				node.className = "Apple-style-span";
 				node.style.textDecoration = "underline";
 			} else {
-				node.className = "apple-style-span";
+				node.className = "Apple-style-span";
 				node.style.fontStyle = "italic";
 			}
 		}
 		
 		// strong -> span
 		var strongs = rdom.getRoot().getElementsByTagName("strong");
-		for(var i = 0; i < strongs.length; i++) {
-			var node = strongs[i];
+		len = strongs.length;
+		
+		for(var i = 0; i < len; i++) {
+			var node = strongs[0];
 			node = rdom.replaceTag("span", node);
 			node.className = "Apple-style-span";
 			node.style.fontWeight = "bold";
@@ -126,8 +144,10 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 		
 		// sup -> span
 		var sups = rdom.getRoot().getElementsByTagName("sup");
-		for(var i = 0; i < sups.length; i++) {
-			var node = sups[i];
+		len = sups.length;
+		
+		for(var i = 0; i < len; i++) {
+			var node = sups[0];
 			node = rdom.replaceTag("span", node);
 			node.className = "Apple-style-span";
 			node.style.verticalAlign = "super";
@@ -135,8 +155,10 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 		
 		// sub -> span
 		var subs = rdom.getRoot().getElementsByTagName("sub");
-		for(var i = 0; i < subs.length; i++) {
-			var node = subs[i];
+		len = subs.length;
+		
+		for(var i = 0; i < len; i++) {
+			var node = subs[0];
 			node = rdom.replaceTag("span", node);
 			node.className = "Apple-style-span";
 			node.style.verticalAlign = "sub";

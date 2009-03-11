@@ -40,12 +40,12 @@ describe("Base",{
 	},
 	
 	'should not affect original element [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="text-decoration: line-through;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="text-decoration: line-through;">Hello</span>';
 		var valid = '<span class="strike">Hello</span>';
 		
 		xq.$('editor').innerHTML = invalid;
 		value_of(v.validate(xq.$('editor')).normalizeHtml()).should_be(valid);
-		value_of(xq.$('editor').innerHTML.normalizeHtml()).should_be(invalid);
+		value_of(xq.$('editor').innerHTML.normalizeHtml()).should_be(invalid.normalizeHtml());
 	},
 	
 	'should clean-up MS Office specific junks': function() {

@@ -90,7 +90,7 @@ describe("Bidirectional", {
 	},
 	
 	'should transform <span> and <em class="underline"> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="text-decoration: underline;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="text-decoration: underline;">Hello</span>';
 		var valid = '<em class="underline">Hello</em>';
 		
 		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
@@ -108,7 +108,7 @@ describe("Bidirectional", {
 	},
 	
 	'should transform <span> and <span class="strike"> [[xq.Browser.isWebkit]]': function() {
-		var invalid = '<span class="apple-style-span" style="text-decoration: line-through;">Hello</span>';
+		var invalid = '<span class="Apple-style-span" style="text-decoration: line-through;">Hello</span>';
 		var valid = '<span class="strike">Hello</span>';
 		
 		value_of(v.invalidate(valid).normalizeHtml()).should_be(invalid);
