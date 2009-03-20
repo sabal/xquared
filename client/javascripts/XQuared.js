@@ -578,7 +578,7 @@ xq.predefinedWhitelist = {
    'li':			xq.commonAttrs.concat(),
    'object':		xq.commonAttrs.concat('align', 'classid', 'codetype', 'archive', 'width', 'type', 'codebase', 'height', 'data', 'name', 'standby', 'declare'),
    'ol':			xq.commonAttrs.concat(),
-   'option':		xq.commonAttrs.concat('disabled', 'selected', 'laabel', 'value'),
+   'option':		xq.commonAttrs.concat('disabled', 'selected', 'label', 'value'),
    'p':				xq.commonAttrs.concat(),
    'param':			xq.commonAttrs.concat('name', 'value', 'valuetype', 'type'),
    'pre':			xq.commonAttrs.concat(),

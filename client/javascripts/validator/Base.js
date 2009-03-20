@@ -239,7 +239,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 				var m = attrs.match(p2);
 				for(var i = 0; i < m.length; i++) {
 					var name = m[i].split('=')[0];
-					if(allowedAttrs.indexOf(name) !== -1) sb.push(m[i]);
+					if(allowedAttrs.indexOf(name.toLowerCase()) !== -1) sb.push(m[i]);
 				}
 				
 				if(sb.length) {

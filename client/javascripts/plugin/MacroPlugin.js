@@ -99,7 +99,7 @@ xq.plugin.MacroPlugin = xq.Class(xq.plugin.Base,
 	
 	onValidatorAfterStringValidation: function(html) {
 		var p1 = /<img\s+[^>]*class="xqlayer"\s+[^>]*\/>/mg;
-		var p2 = /<img\s+[^>]*longdesc="(.+?)"\s+[^>]*\/>/m;
+		var p2 = /<img\s+[^>]*long[D|d]esc="(.+?)"\s+[^>]*\/>/m;
 		
 		html.value = html.value.replace(p1, function(img) {
 			var def = JSON.parse(unescape(img.match(p2)[1]));
