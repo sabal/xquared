@@ -371,8 +371,8 @@ xq.RichTableController = {
 			function(dialog) {
 				var isNewTable = type == 'new';
 				
-				xq.$("tableDialogTitle").innerHTML = (isNewTable)? 'Insert Table' : 'Change ' + type;
-				xq.$("tableDialogSubmit").innerHTML = (isNewTable)? 'Insert' : 'Edit';
+				//xq.$("tableDialogTitle").innerHTML = (isNewTable)? 'Insert Table' : 'Change ' + type;
+				//xq.$("tableDialogSubmit").innerHTML = (isNewTable)? 'Insert' : 'Edit';
 				var prop;
 				if (type != 'new'){
 					switch (type){

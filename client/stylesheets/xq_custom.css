@@ -1,0 +1,110 @@
+
+/* linkDialog */
+#linkDialog {
+	width: 315px;
+	background: #f4f4f4 url(../images/dialogs/link_bg.gif) repeat-x 0 0;
+}
+#linkDialog .dialog-content {
+	padding: 13px 15px;
+}
+#linkDialog .dialog-content p {
+	color: #666;
+	margin: 0 0 4px;
+}
+#linkDialog .dialog-content label {
+	font-weight: bold;
+	color: #666;
+	margin-right: 13px;
+	/position: relative;
+	/top: -2px;
+}
+#linkDialog .dialog-content label.link-name {
+	margin-right: 0;
+}
+#linkDialog .dialog-content .explain {
+	font: 11px dotum, sans-serif;
+	color: #999;
+	margin: 6px 0 7px 74px;
+	letter-spacing: -1px;
+}
+#linkDialog .dialog-content .type-text {
+	border: 1px solid #c0c0c0;
+	padding: 2px 2px 3px;
+	font: 12px arial, sans-serif;
+	color: #666;
+	width: 205px;	
+}
+#scriptDialog .dialog-buttons,
+#iframeDialog .dialog-buttons {
+	margin: 15px 0 0 80px;
+}
+#linkDialog .dialog-buttons {
+	margin-top: 11px;
+}
+
+/* Image Path */
+.xquared div.toolbar {
+	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarBg.gif);
+}
+
+.xquared ul.buttons li {
+	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarButtonBg.gif);
+}
+.xquared ul.buttons li.xq_separator {
+	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarSeparator.gif);
+}
+
+.dialog-buttons a.button-gray {
+	background-image: url(/storyeditor/images/storyeditor/dialogs/btn_gray_bg.gif);
+}
+.dialog-buttons a.button-white {
+	background-image: url(/storyeditor/images/storyeditor/dialogs/btn_white_bg.gif);
+}
+
+#emoticonDialog h6 {
+	background: url(/storyeditor/images/storyeditor/dialogs/justify_divider.gif) repeat-x -29px 0;
+}
+
+
+/* linkDialog */
+#linkDialog {
+	background: #f4f4f4 url(/storyeditor/images/storyeditor/dialogs/link_bg.gif) repeat-x 0 0;
+}
+
+#multiFileUploadDialog .attachment-section p,
+#fileUploadDialog .attachment-section p {
+	background: url(/storyeditor/images/storyeditor/dialogs/multifile.gif) no-repeat 0 0 ;
+}
+
+#multiFileUploadDialog .noti,
+#fileUploadDialog .noti {
+	background: url(/storyeditor/images/storyeditor/dialogs/notice.gif) no-repeat 0 0;
+}
+
+#multiFileUploadDialog #uploadFileList li {
+	background: url(/storyeditor/images/storyeditor/dialogs/bullet_2x2.gif) no-repeat 0 8px;
+}
+
+#multiFileUploadDialog #uploadFileList div.graph {
+	background: url(/storyeditor/images/storyeditor/dialogs/multifile_blank.gif) no-repeat 0 0 ;
+}
+
+#multiFileUploadDialog #uploadFileList span.overTheLimit,
+#multiFileUploadDialog #uploadFileList span.belowTheLimit,
+#multiFileUploadDialog #uploadFileList span.error {
+	background: url(/storyeditor/images/storyeditor/dialogs/check.gif) no-repeat 0 2px;
+}
+
+/* backgroundColorDialog */
+#backgroundColorDialog {
+	width: 216px;
+}
+#backgroundColorDialog .item-list li {
+	margin: 0 0 2px 4px;
+	_margin: 0 0 0 2px !important;
+	width: 12px;
+	height: 12px;
+}
+#backgroundColorDialog .item-list a {
+	border: 1px solid #acacac;
+}

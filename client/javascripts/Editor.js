@@ -2315,12 +2315,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		if (anchor.className.indexOf('foreground') != -1){
 			xed.handleForegroundColor(color);
 		} else if(anchor.className.indexOf('tableDialog') != -1) {
-			var anchors = anchor.parentNode.parentNode.getElementsByTagName('A')
+			var anchors = anchor.parentNode.parentNode.getElementsByTagName('A');
 			for (var i = 0; i < anchors.length; i++){
 				if(anchors[i].id.indexOf('ColorBoard') != -1) anchors[i].style.backgroundColor = color;
 			}
 			
-			var inputs = anchor.parentNode.parentNode.getElementsByTagName('INPUT')
+			var inputs = anchor.parentNode.parentNode.getElementsByTagName('INPUT');
 			for (var j = 0; j < inputs.length; j++){
 				if(inputs[j].id.indexOf('ColorCode') != -1) inputs[j].value = color;
 			}
