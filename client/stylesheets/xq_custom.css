@@ -42,59 +42,6 @@
 	margin-top: 11px;
 }
 
-/* Image Path */
-.xquared div.toolbar {
-	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarBg.gif);
-}
-
-.xquared ul.buttons li {
-	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarButtonBg.gif);
-}
-.xquared ul.buttons li.xq_separator {
-	background-image: url(/storyeditor/images/storyeditor/toolbar/toolbarSeparator.gif);
-}
-
-.dialog-buttons a.button-gray {
-	background-image: url(/storyeditor/images/storyeditor/dialogs/btn_gray_bg.gif);
-}
-.dialog-buttons a.button-white {
-	background-image: url(/storyeditor/images/storyeditor/dialogs/btn_white_bg.gif);
-}
-
-#emoticonDialog h6 {
-	background: url(/storyeditor/images/storyeditor/dialogs/justify_divider.gif) repeat-x -29px 0;
-}
-
-
-/* linkDialog */
-#linkDialog {
-	background: #f4f4f4 url(/storyeditor/images/storyeditor/dialogs/link_bg.gif) repeat-x 0 0;
-}
-
-#multiFileUploadDialog .attachment-section p,
-#fileUploadDialog .attachment-section p {
-	background: url(/storyeditor/images/storyeditor/dialogs/multifile.gif) no-repeat 0 0 ;
-}
-
-#multiFileUploadDialog .noti,
-#fileUploadDialog .noti {
-	background: url(/storyeditor/images/storyeditor/dialogs/notice.gif) no-repeat 0 0;
-}
-
-#multiFileUploadDialog #uploadFileList li {
-	background: url(/storyeditor/images/storyeditor/dialogs/bullet_2x2.gif) no-repeat 0 8px;
-}
-
-#multiFileUploadDialog #uploadFileList div.graph {
-	background: url(/storyeditor/images/storyeditor/dialogs/multifile_blank.gif) no-repeat 0 0 ;
-}
-
-#multiFileUploadDialog #uploadFileList span.overTheLimit,
-#multiFileUploadDialog #uploadFileList span.belowTheLimit,
-#multiFileUploadDialog #uploadFileList span.error {
-	background: url(/storyeditor/images/storyeditor/dialogs/check.gif) no-repeat 0 2px;
-}
-
 /* backgroundColorDialog */
 #backgroundColorDialog {
 	width: 216px;
