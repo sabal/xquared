@@ -418,12 +418,12 @@ xq.RichTableController = {
 		
 		if (type == 'new') {
 			if (!xq.$("tableDialog").tableCols.value.replace(/[^0-9]/g,'') || parseInt(xq.$("tableDialog").tableCols.value, 10) > 30) {
-				alert(getText('Please enter column value between 1 to 30.'));
+				alert('Please enter column value between 1 to 30.');
 				xq.$("tableDialog").tableCols.focus();
 				return false;
 			}
 			if (!xq.$("tableDialog").tableRows.value.replace(/[^0-9]/g,'') || parseInt(xq.$("tableDialog").tableRows.value, 10) > 120) {
-				alert(getText('Please enter row value between 1 to 120.'));
+				alert('Please enter row value between 1 to 120.');
 				xq.$("tableDialog").tableRows.focus();
 				return false;
 			}
