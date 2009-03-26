@@ -340,13 +340,9 @@
 }
 
 /* foreGroundDialog , backGroundDialog */
-#foregroundColorDialog {
-	width: 216px;
-	z-index: 904;
-}
 #foregroundColorDialog .dialog-content, 
 #backgroundColorDialog .dialog-content {
-	padding: 9px;
+	padding: 9px 5px;
 }
 #foregroundColorDialog .item-list,
 #backgroundColorDialog .item-list {
@@ -390,10 +386,84 @@
 	letter-spacing: -1px;
 	margin-top: 4px;
 }
-
+/* foregroundColorDialog */
+#foregroundColorDialog {
+	width: 208px;
+	z-index: 904;
+}
+#foregroundColorDialog .more {
+	text-align: right;
+	margin: 0 5px 0 0;
+}
+#foregroundColorDialog .more a {
+	background: url(../images/dialogs/icon_triangle_down_5x3_b4b4b4.gif) no-repeat 100% 4px;
+	padding: 0 9px 0 0;
+	font: 11px dotum, sans-serif;
+	color: #8e8e8e;
+}
+#foregroundColorDialog .input-section {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+}
+#foregroundColorDialog .input-section * {
+	vertical-align: middle;
+	display: block;
+	margin: 0 0 0 3px;
+}
+#foregroundColorDialog .input-section span {
+	width: 70px;
+	height: 18px;
+	margin: 0;
+	float: left;
+}
+#foregroundColorDialog .input-section .type-text {
+	border: 1px solid #dfdfdf;
+	border-top-color: #acacac;
+	border-left-color: #acacac;
+	padding: 2px 3px 1px;
+	/padding: 1px 3px 1px;
+	color: #333;
+	width: 71px;
+	float: left;
+}
+#foregroundColorDialog .dialog-buttons {
+	float: left;
+	margin: 0;
+}
+#foregroundColorDialog .dialog-buttons a {
+	line-height: 15px;
+	padding: 3px 4px 0;
+	/padding: 1px 4px 2px;
+	_padding: 3px 4px 0px;
+}
+#foregroundColorDialog .input-section .color-preview {
+	border: 1px solid #dfdfdf;
+	background-color: black;	
+}
+#foregroundColorDialog #colorPicker {
+	padding: 10px 9px 10px 8px;
+	border-top: 1px solid #dfdfdf;
+} 
+#foregroundColorDialog #brightness {
+	border: 1px solid #c4cad1;
+	margin: 0 0 5px;
+	font-size: 0;
+	line-height: 0;
+}
+#foregroundColorDialog #brightness img {
+	/position: relative;
+	/top: -1px;
+}
+#foregroundColorDialog #color {
+	border: 1px solid #c4cad1;
+	font-size: 0;
+	line-height: 0;
+}
 /* backgroundColorDialog */
 #backgroundColorDialog {
-	width: 164px;
+	width: 156px;
+	z-index: 904;
 }
 #backgroundColorDialog .item-list li {
 	width: 16px;
