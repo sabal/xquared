@@ -285,7 +285,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	},
 	
 	_openDropdownDialog: function(e){
-		this._closeAllLightweight();
+		this._closeAllLightweight(e);
 		
 		var src = e.target || e.srcElement;
 		xed.lastAnchor = src;
@@ -300,7 +300,16 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		return false;
 	},
 	
-	_closeAllLightweight: function(){
+	_closeAllLightweight: function(e){
+		
+		var src = e.target || e.srcElement;
+
+		if(src.id.indexOf("extForeColor") !== -1 || src.className.indexOf("jscolor") !== -1)
+		{
+			return false;
+		}
+//		while(src.nodeName !== "A") src = src.parentNode;
+		
 		var dialogs = xq.getElementsByClassName(this.dialogContainer, 'lightweight');
 		for (var i = 0; i < dialogs.length; i++){
 			dialogs[i].style.display = "none";
@@ -308,6 +317,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	},
 	_clickHandler: function(e) {
 		var src = e.target || e.srcElement;
+		
 		while(src.nodeName !== "A") src = src.parentNode;
 		
 		if(xq.hasClassName(src.parentNode, 'disabled') || xq.hasClassName(this.container, 'disabled')) {
@@ -350,6 +360,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	},
 	
 	_addStyleRules: function(rules) {
+		
 		if(!this.dynamicStyle) {
 			if(xq.Browser.isTrident) {
 			    this.dynamicStyle = this.doc.createStyleSheet();
@@ -362,7 +373,9 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		
 		for(var i = 0; i < rules.length; i++) {
 			var rule = rules[i];
+					
 			if(xq.Browser.isTrident) {
+				
 				this.dynamicStyle.addRule(rules[i].selector, rules[i].rule);
 			} else {
 		    	this.dynamicStyle.insertRule(rules[i].selector + " {" + rules[i].rule + "}", this.dynamicStyle.cssRules.length);

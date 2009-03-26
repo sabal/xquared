@@ -439,11 +439,14 @@
 }
 #foregroundColorDialog .input-section .color-preview {
 	border: 1px solid #dfdfdf;
-	background-color: black;	
+	background-color: black;
+	width:60px;
+	display:inline;
 }
-#foregroundColorDialog #colorPicker {
+#foregroundColorDialog #extForeColorLayer {
 	padding: 10px 9px 10px 8px;
 	border-top: 1px solid #dfdfdf;
+	display:none;
 } 
 #foregroundColorDialog #brightness {
 	border: 1px solid #c4cad1;
