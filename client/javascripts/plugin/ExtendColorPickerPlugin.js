@@ -21,11 +21,30 @@ xq.plugin.ExtendColorPickerPlugin = xq.Class(xq.plugin.Base,
 			xed.colorPicker = {};
 		}
 		
+		xed.colorPicker.range = null;
+		
+		xed.colorPicker.updateRange = function(e)
+		{
+			if(!xq.Browser.isTrident){
+				return;
+			}
+			
+			var rng = xed.rdom.rng();
+			xed.colorPicker.range = xed.rdom.rng();
+		}
+		
 		xed.colorPicker.applyToForeground = function(e)
 		{
+			if(xq.Browser.isTrident && xed.colorPicker.range)
+			{
+				xed.colorPicker.range.select();
+			}
+			
 			var color =	xq.$('extForeColorValue').value;
 			xed.handleForegroundColor("#" + color);
 			xq.cancelHandler(e);
+			xq.$('foregroundColorDialog').style.display = "none";	
+			
 		}		
 
 		xed.showColorPicker = function(e)
@@ -54,13 +73,14 @@ xq.plugin.ExtendColorPickerPlugin = xq.Class(xq.plugin.Base,
 			onEditorInitialized: function(xed)
 			{
 				var div = document.createElement('div');
-				var innerHTML = '<div>\n		<div class="more"><a href="#" id="extForeColorShowPicker">더보기</a></div>\n		<div id="extForeColorLayer">\n			<div class="input-section">\n				<span class="color-preview" id="extForeColor" >&nbsp;</span>\n				<input id="extForeColorValue" type="text" class="type-text color" />\n				<div class="dialog-buttons"><a id="extForeColorSubmit" class="common-button button-white submit" href="#">입력</a></div>\n			</div>\n		</div>\n	</div>';
+				var innerHTML = '<div>\n		<div class="more"><a href="#" id="extForeColorShowPicker">더보기</a></div>\n		<div id="extForeColorLayer">\n			<div class="input-section">\n				<span class="color-preview" id="extForeColor" >&nbsp;</span>\n				<input id="extForeColorValue" type="text" class="type-text color" />\n				<div class="dialog-buttons"><a id="ForeColorSubmit" class="common-button button-white submit" href="#">입력</a></div>\n			</div>\n		</div>\n	</div>';
 				div.innerHTML = innerHTML;
 				var target = xed.rdom.getLastChild( xq.$('foregroundColorDialog') );
 				target.appendChild(div);
 
-				xq.observe(xq.$('extForeColorShowPicker'), 'click', xed.showColorPicker);
-				xq.observe(xq.$('extForeColorSubmit'), 'click', xed.colorPicker.applyToForeground);
+				xq.observe(xq.$('extForeColorShowPicker'), 'mousedown', xed.showColorPicker);
+				xq.observe(xq.$('ForeColorSubmit'), 'mousedown', xed.colorPicker.applyToForeground);
+				xq.observe(xq.$('foregroundColorDialog'), 'mousedown', xed.colorPicker.updateRange);
 			}
 		});
 	}
@@ -552,6 +572,7 @@ var jscolor = {
 
 		function removePicker() {
 			delete jscolor.picker.owner;
+			
 			if(!THIS.insertNodeAt)
 			{
 				document.getElementsByTagName('body')[0].removeChild(jscolor.picker.boxB);
@@ -561,7 +582,17 @@ var jscolor = {
 //				THIS.insertNodeAt.removeChild(jscolor.picker.boxB);
 //			}
 		}
-
+	
+		this.updateBookmark = function()
+		{
+			if(xq.Browser.isTrident) {
+				var rng = xed.rdom.rng();
+				var bm = rng.getBookmark();
+				rng.moveToBookmark(bm);
+				rng.select();
+			}
+		}
+		
 		function drawPicker(x, y) {
 			
 			if(!jscolor.picker) {
@@ -603,12 +634,13 @@ var jscolor = {
 				y+THIS.pickerBorder+THIS.pickerFace+THIS.pickerInset+THIS.styleMarginY ];
 
 			// controls interaction;
-			p.box.onmouseup = p.box.onmouseout = function() { target.focus() };
-			p.box.onmousedown = function() { abortBlur=true };
-			p.box.onmousemove = function(e) { holdPad && setPad(e); holdSld && setSld(e) };
-			p.padM.onmouseup =	p.padM.onmouseout = function() { if(holdPad) { holdPad=false; jscolor.fireEvent(valueElement,'change') } };
-			p.padM.onmousedown = function(e) { holdPad=true; setPad(e) };
-			p.sldM.onmouseup =	p.sldM.onmouseout = function() { if(holdSld) { holdSld=false; jscolor.fireEvent(valueElement,'change') } };
+			p.box.onmouseup = p.box.onmouseout = function(e) {};
+			p.box.onmousedown = function(e) {  abortBlur=true;};
+			p.box.onmousemove = function(e) {  holdPad && setPad(e); holdSld && setSld(e);};
+			p.padM.onmouseup =	p.padM.onmouseout = function(e) { if(holdPad) { holdPad=false; jscolor.fireEvent(valueElement,'change') }};
+			p.padM.onmousedown = function(e) {holdPad=true; setPad(e); };
+			
+			p.sldM.onmouseup =	p.sldM.onmouseout = function(e) { if(holdSld) { holdSld=false; jscolor.fireEvent(valueElement,'change') } };
 			p.sldM.onmousedown = function(e) { holdSld=true; setSld(e) };
 
 			// picker;

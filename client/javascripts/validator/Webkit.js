@@ -94,7 +94,6 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 			}
 			
 		} catch(e){
-			console.log(e)
 		}
 	},
 	

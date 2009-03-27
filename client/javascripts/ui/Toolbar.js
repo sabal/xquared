@@ -301,14 +301,15 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	},
 	
 	_closeAllLightweight: function(e){
-		
-		var src = e.target || e.srcElement;
-
-		if(src.id.indexOf("extForeColor") !== -1 || src.className.indexOf("jscolor") !== -1)
+		if(e)
 		{
-			return false;
+			var src = e.target || e.srcElement;
+			
+			if(src.id.indexOf("extForeColor") !== -1 || src.className.indexOf("jscolor") !== -1)
+			{
+				return false;
+			}
 		}
-//		while(src.nodeName !== "A") src = src.parentNode;
 		
 		var dialogs = xq.getElementsByClassName(this.dialogContainer, 'lightweight');
 		for (var i = 0; i < dialogs.length; i++){
