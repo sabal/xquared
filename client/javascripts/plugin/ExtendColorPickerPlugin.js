@@ -30,7 +30,11 @@ xq.plugin.ExtendColorPickerPlugin = xq.Class(xq.plugin.Base,
 			}
 			
 			var rng = xed.rdom.rng();
-			xed.colorPicker.range = xed.rdom.rng();
+			
+			if(rng.text !== "" && rng !== xed.colorPicker.range)
+			{
+				xed.colorPicker.range = rng;
+			}
 		}
 		
 		xed.colorPicker.applyToForeground = function(e)
