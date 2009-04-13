@@ -2831,6 +2831,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	handleEmoticon: function(fileName){
 		var img = this.getDoc().createElement('IMG');
 		img.src = this.config.imagePathForEmoticon + fileName;
+		img.alt = fileName;
 		this.rdom.insertNode(img);
 	},
 	

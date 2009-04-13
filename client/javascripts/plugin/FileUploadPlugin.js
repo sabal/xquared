@@ -24,12 +24,13 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 			{className:"image", title:"Upload Image", handler:"xed.handleFileUpload(" + xed.isSingleFileUpload + ")"}
 		)
 
-		xed.insertImageFileToEditor = function(fileName, xed){
+		xed.insertImageFileToEditor = function(filePath, alt, xed){
 			xed = xed || this;
 
 			var img = xed.getDoc().createElement('IMG');
-			img.src = fileName;
-
+			img.src = filePath;
+			img.alt = alt;
+			
 			xed.focus();
 			xed.rdom.insertNode(img) ;
 		}
@@ -204,6 +205,8 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 
 				var img = document.createElement('IMG');
 				img.src = xed.config.imagePathForDialog + 'multifile_fill.gif';
+				img.alt = 'Upload Complete';
+				
 				progressDiv.appendChild(img);
 				graphdiv.style.display = 'none';
 				
@@ -223,10 +226,10 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 					
 				if(data && data.success) {
 					if (xed.isSingleFileUpload){
-						xed.insertImageFileToEditor(data.file_url, window.parent.xed);
+						xed.insertImageFileToEditor(data.file_url, file.name, window.parent.xed);
 						this.onQueueComplete();
 					} else {
-						xed.insertImageFileToEditor(data.file_url);
+						xed.insertImageFileToEditor(data.file_url, file.name);
 						xq.$('file-' + file.id + '-progress').style.width = '100%';
 					}
 				} else {

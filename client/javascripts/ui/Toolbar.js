@@ -223,6 +223,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		a.appendChild(img);
 		img.className = buttonConfig.className;
 		img.src = this.imagePath + buttonConfig.className + '.gif';
+		img.alt = buttonConfig.className;
 		
 		return a;
 	},
@@ -259,6 +260,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				if (buttonConfig.className == 'emoticon') {
 					var emoticon = this.doc.createElement('IMG');
 					emoticon.src = this.xed.config.imagePathForEmoticon + item.html;
+					emoticon.alt = item.html;
 					anchor.appendChild(emoticon);				
 				} else {
 					anchor.innerHTML = decodeURIComponent(item.html);
