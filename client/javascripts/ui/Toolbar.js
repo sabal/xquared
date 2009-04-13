@@ -258,7 +258,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			if (item.html) {
 				if (buttonConfig.className == 'emoticon') {
 					var emoticon = this.doc.createElement('IMG');
-					emoticon.src = xed.config.imagePathForEmoticon + item.html;
+					emoticon.src = this.xed.config.imagePathForEmoticon + item.html;
 					anchor.appendChild(emoticon);				
 				} else {
 					anchor.innerHTML = decodeURIComponent(item.html);
@@ -288,7 +288,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		this._closeAllLightweight(e);
 		
 		var src = e.target || e.srcElement;
-		xed.lastAnchor = src;
+		this.xed.lastAnchor = src;
 		var dialog = xq.$(src.className + "Dialog");
 		
 		if (dialog) {
