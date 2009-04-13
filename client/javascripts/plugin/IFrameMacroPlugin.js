@@ -21,6 +21,18 @@ xq.plugin.IFrameMacroPlugin = xq.Class(xq.plugin.Base,
 			{className:"iframe", title:"IFrame", handler:"xed.handleIFrame()"}
 		)
 		
+		xed.handleInsertIFrame = function(data) {
+			this.focus();
+			
+			var macro = this.macroFactory.createMacroFromDefinition({id:"IFrame", params:data});
+			if(macro) {
+				var placeHolder = macro.createPlaceHolderHtml();
+				this.rdom.insertHtml(placeHolder);
+			} else {
+				alert("Unknown error");
+			}
+		}
+		
 		xed.handleIFrame = function() {
 			var dialog = new xq.ui.FormDialog(
 					this,
@@ -38,13 +50,7 @@ xq.plugin.IFrameMacroPlugin = xq.Class(xq.plugin.Base,
 						// cancel?
 						if(!data) return;
 						
-						var macro = this.macroFactory.createMacroFromDefinition({id:"IFrame", params:data});
-						if(macro) {
-							var placeHolder = macro.createPlaceHolderHtml();
-							this.rdom.insertHtml(placeHolder);
-						} else {
-							alert("Unknown error");
-						}
+						this.handleInsertIFrame(data);
 					}.bind(this)
 			);
 			
