@@ -9,7 +9,7 @@ if(!window.xq) {
 }
 
 xq.majorVersion = '0.8';
-xq.minorVersion = '20090310';
+xq.minorVersion = '20090414';
 
 /**
  * Compiles regular expression pattern if possible.
@@ -92,7 +92,7 @@ xq.stopObserving = function(element, eventName, handler) {
  *
  * @param {Event} e Event to cancel.
  */
-xq.cancelHandler = function(e) {xq.stopEvent(e); return false;};
+xq.cancelHandler = function(e) { xq.stopEvent(e); return false;};
 
 /**
  * Stops event propagation.
@@ -696,7 +696,8 @@ xq.getXquaredScriptFileNames = function() {
 		'ui/_templates.js',
 		'Json2.js',
 		'Shortcut.js',
-		'Editor.js'
+		'Editor.js',
+		'Messages.js'
 	];
 };
 xq.getXquaredScriptBasePath = function() {

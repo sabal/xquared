@@ -31,7 +31,7 @@ xq.plugin.JavascriptMacroPlugin = xq.Class(xq.plugin.Base,
 				var historyAdded = this.editHistory.onCommand();
 				this._fireOnCurrentContentChanged(this);
 			} else {
-				alert("Unknown URL pattern");
+				alert(xed._("Unknown URL pattern"));
 			}
 			return true;
 		};

@@ -42,7 +42,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config = {};
 		
 		/**
-		 * Automatically gives initial focus.
+		 * Show confirm dialog when user close browser
 		 * @type boolean
 		 */
 		this.config.enablePreventExit = false;
@@ -55,6 +55,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 */
 		this.config.autoFocusOnInit = false;
 		
+		/**
+		 * set language for l10n
+		 * @type string
+		 */
+		this.config.lang = 'ko';
 		/**
 		 * Makes links clickable.
 		 * @type boolean
@@ -75,7 +80,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		this.config.defaultToolbarButtonGroups = {
 			"color": [
- 				{className:"foregroundColor", title:"Foreground color", list:[
+ 				{className:"foregroundColor", title:this._("Foreground color"), list:[
 					{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleColorPicker('#ffd8d8')"},
 					{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleColorPicker('#ffead9')"},
 					{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleColorPicker('#fef2dc')"},
@@ -142,7 +147,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleColorPicker('#000000')"}
 				]},
 				
-				{className:"backgroundColor", title:"Background color", list:[
+				{className:"backgroundColor", title:this._("Background color"), list:[
 					{style: {backgroundColor:"#FFF700"}, handler:"xed.handleBackgroundColor('#FFF700')"},
 					{style: {backgroundColor:"#AEFF66"}, handler:"xed.handleBackgroundColor('#AEFF66')"},
 					{style: {backgroundColor:"#FFCC66"}, handler:"xed.handleBackgroundColor('#FFCC66')"},
@@ -154,7 +159,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
  			],
  			
  			"font": [
-				{className:"fontFace", title:"Font face", list:[
+				{className:"fontFace", title:this._("Font face"), list:[
                     {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
                     {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
                     {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
@@ -165,7 +170,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
                     {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
 				]},
 				
-				{className:"fontSize", title:"Font size", list:[
+				{className:"fontSize", title:this._("Font size"), list:[
                     {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
                     {html:"Lorem ipsum dolor (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
                     {html:"Lorem ipsum dolor (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
@@ -175,31 +180,31 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				]}
 			],
 			"link": [
-			    {className:"link", title:"Link", handler:"xed.handleLink()"},
-			    {className:"removeLink", title:"Remove link", handler:"xed.handleRemoveLink()"}
+			    {className:"link", title:this._("Link"), handler:"xed.handleLink()"},
+			    {className:"removeLink", title:this._("Remove link"), handler:"xed.handleRemoveLink()"}
 			],
 			"style": [
-				{className:"strongEmphasis", title:"Strong emphasis", handler:"xed.handleStrongEmphasis()"},
-				{className:"emphasis", title:"Emphasis", handler:"xed.handleEmphasis()"},
-				{className:"underline", title:"Underline", handler:"xed.handleUnderline()"},
-				{className:"strike", title:"Strike", handler:"xed.handleStrike()"},
-				{className:"superscription", title:"Superscription", handler:"xed.handleSuperscription()"},
-				{className:"subscription", title:"Subscription", handler:"xed.handleSubscription()"},
-				{className:"removeFormat", title:"Remove format", handler:"xed.handleRemoveFormat()"}
+				{className:"strongEmphasis", title:this._("Strong emphasis"), handler:"xed.handleStrongEmphasis()"},
+				{className:"emphasis", title:this._("Emphasis"), handler:"xed.handleEmphasis()"},
+				{className:"underline", title:this._("Underline"), handler:"xed.handleUnderline()"},
+				{className:"strike", title:this._("Strike"), handler:"xed.handleStrike()"},
+				{className:"superscription", title:this._("Superscription"), handler:"xed.handleSuperscription()"},
+				{className:"subscription", title:this._("Subscription"), handler:"xed.handleSubscription()"},
+				{className:"removeFormat", title:this._("Remove format"), handler:"xed.handleRemoveFormat()"}
 			],
 			"justification": [
-  				{className:"justifyLeft", title:"Justify left", handler:"xed.handleJustify('left')"},
-				{className:"justifyCenter", title:"Justify center", handler:"xed.handleJustify('center')"},
-				{className:"justifyRight", title:"Justify right", handler:"xed.handleJustify('right')"},
-				{className:"justifyBoth", title:"Justify both", handler:"xed.handleJustify('both')"}
+  				{className:"justifyLeft", title:this._("Justify left"), handler:"xed.handleJustify('left')"},
+				{className:"justifyCenter", title:this._("Justify center"), handler:"xed.handleJustify('center')"},
+				{className:"justifyRight", title:this._("Justify right"), handler:"xed.handleJustify('right')"},
+				{className:"justifyBoth", title:this._("Justify both"), handler:"xed.handleJustify('both')"}
 			],
 			"indentation": [
-				{className:"indent", title:"Indent", handler:"xed.handleIndent()"},
-				{className:"outdent", title:"Outdent", handler:"xed.handleOutdent()"}
+				{className:"indent", title:this._("Indent"), handler:"xed.handleIndent()"},
+				{className:"outdent", title:this._("Outdent"), handler:"xed.handleOutdent()"}
   			],
   			"block": [
-				{className:"paragraph", title:"Paragraph", handler:"xed.handleApplyBlock('P')"},
-				{className:"heading1", title:"Heading 1", list:[
+				{className:"paragraph", title:this._("Paragraph"), handler:"xed.handleApplyBlock('P')"},
+				{className:"heading1", title:this._("Heading"), list:[
 					{html:"Heading1", style: {fontSize: "2.845em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H1')"},
 					{html:"Heading2", style: {fontSize: "2.46em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H2')"},
 					{html:"Heading3", style: {fontSize: "2.153em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H3')"},
@@ -207,16 +212,16 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					{html:"Heading5", style: {fontSize: "1.461em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H5')"},
 					{html:"Heading6", style: {fontSize: "1.23em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H6')"}
 				]},
-				{className:"blockquote", title:"Blockquote", handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
-				{className:"code", title:"Code", handler:"xed.handleList('OL', 'code')"},
-				{className:"division", title:"Division", handler:"xed.handleApplyBlock('DIV')"},
-				{className:"unorderedList", title:"Unordered list", handler:"xed.handleList('UL')"},
-				{className:"orderedList", title:"Ordered list", handler:"xed.handleList('OL')"}
+				{className:"blockquote", title:this._("Blockquote"), handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
+				{className:"code", title:this._("Code"), handler:"xed.handleList('OL', 'code')"},
+				{className:"division", title:this._("Div"), handler:"xed.handleApplyBlock('DIV')"},
+				{className:"unorderedList", title:this._("Unordered list"), handler:"xed.handleList('UL')"},
+				{className:"orderedList", title:this._("Ordered list"), handler:"xed.handleList('OL')"}
   			],
   			"insert": [
-				{className:"table", title:"Table", handler:"xed.handleTable()"},
-				{className:"separator", title:"Separator", handler:"xed.handleSeparator()"},
-				{className:"character", title:"Character", list: [
+				{className:"table", title:this._("Table"), handler:"xed.handleTable()"},
+				{className:"separator", title:this._("Separator"), handler:"xed.handleSeparator()"},
+				{className:"character", title:this._("Character"), list: [
                     {html:"%E3%80%81", handler:"xed.handleCharacter('%E3%80%81')"},
                     {html:"%E3%80%82", handler:"xed.handleCharacter('%E3%80%82')"},
                     {html:"%C2%B7", handler:"xed.handleCharacter('%C2%B7')"},
@@ -375,7 +380,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					{html:"%E3%8F%98", handler:"xed.handleCharacter('%E3%8F%98')"},
 					{html:"%E2%84%A1", handler:"xed.handleCharacter('%E2%84%A1')"}
 				]},
-				{className:"emoticon", title:"Emoticon", list: [
+				{className:"emoticon", title:this._("Emoticon"), list: [
                     {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
                     {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
                     {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
@@ -417,11 +422,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		    this.config.defaultToolbarButtonGroups.link,
 		    this.config.defaultToolbarButtonGroups.insert,
 			[
-				{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}
+				{className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()"}
 			],
 			[
-				{className:"undo", title:"Undo", handler:"xed.handleUndo()"},
-				{className:"redo", title:"Redo", handler:"xed.handleRedo()"}
+				{className:"undo", title:this._("Undo"), handler:"xed.handleUndo()"},
+				{className:"redo", title:this._("Redo"), handler:"xed.handleRedo()"}
 			]
 		];
 		
@@ -1854,7 +1859,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				var urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 				if( !urlRegex.test(data.url) )
 				{
-					alert("Url is invalid");
+					alert( this._("Unknown URL pattern"));
 					dialog.form.url.focus();
 					return;
 				}
@@ -3064,5 +3069,17 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		}
 		this.rdom.getCurrentElement().normalize();
 		this.rdom.popMarker(true);
+	},
+	
+
+	_: function(msg) {
+		if (xq._messages && xq._messages[this.config.lang] && typeof xq._messages[this.config.lang][msg] != 'undefined')
+			msg=xq._messages[this.config.lang][msg];
+
+		if (arguments.length > 1) {
+			for (var i=1; i < arguments.length; i++)
+				msg=msg.replace('$'+i, arguments[i]);
+		}
+		return msg;
 	}
 });

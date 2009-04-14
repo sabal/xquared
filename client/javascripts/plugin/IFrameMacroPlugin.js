@@ -29,7 +29,7 @@ xq.plugin.IFrameMacroPlugin = xq.Class(xq.plugin.Base,
 				var placeHolder = macro.createPlaceHolderHtml();
 				this.rdom.insertHtml(placeHolder);
 			} else {
-				alert("Unknown error");
+				alert(xed._("Unknown error"));
 			}
 		}
 		
