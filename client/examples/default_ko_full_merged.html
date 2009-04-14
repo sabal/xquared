@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Xquared example - Default</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/xq_ui.css" />
+	<link rel="stylesheet" type="text/css" href="../stylesheets/xq_custom.css" />
+	
+	<script type="text/javascript" src="../javascripts/module/Full_merged_min.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/SpringnotePlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/EditorResizePlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/MacroPlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/FlashMovieMacroPlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/AC_OETags.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.queue.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/FileUploadPlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/CustomStylePlugin.js"></script>
+	
+	<script type="text/javascript">//<![CDATA[
+	var xed;
+	
+	window.onload = function() {
+		xed = new xq.Editor("xqEditor");
+		xed.config.imagePathForDefaultToolbar = '../images/toolbar/ko/';
+		
+		xed.config.lang = 'ko';
+		
+		xed.config.defaultToolbarButtonGroups.font = [
+			{className:"fontFace", title:"글꼴", list:[
+				{html:"굴림", style: {fontFamily:'굴림,Gulim'}, handler:"xed.handleFontFace('굴림,San-Serif')"},
+				{html:"굴림체", style: {fontFamily:'굴림체,Gulimche'}, handler:"xed.handleFontFace('굴림체,San-Serif')"},
+				{html:"궁서", style: {fontFamily:'궁서,Gungseou'}, handler:"xed.handleFontFace('궁서,Serif')"},
+				{html:"궁서체", style: {fontFamily:'궁서체,Gungseouche'}, handler:"xed.handleFontFace('궁서체,Serif')"},
+				{html:"돋움", style: {fontFamily:'돋움,Dotum'}, handler:"xed.handleFontFace('돋움,San-Serif')"},
+				{html:"돋움체", style: {fontFamily:'돋움체,Dotumche'},handler:"xed.handleFontFace('돋움체,San-Serif')"},
+				{html:"바탕", style: {fontFamily:'바탕,Batang'}, handler:"xed.handleFontFace('바탕,Serif')"},
+				{html:"바탕체", style: {fontFamily:'바탕체,Batangche'}, handler:"xed.handleFontFace('바탕체,Serif')"},
+                {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
+                {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
+                {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
+                {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},
+                {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
+                {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},
+                {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
+                {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
+			]},
+
+			{className:"fontSize", title:"글자 크기", list:[
+                {html:"가나다라마바사 (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
+                {html:"가나다라마바사 (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
+                {html:"가나다라마바사 (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
+                {html:"가나다라마바사 (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},
+                {html:"가나다라마바사 (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
+                {html:"가나다라마바사 (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
+			]}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.style = [
+			{className:"strongEmphasis", title:"강한 강조", handler:"xed.handleStrongEmphasis()"},
+			{className:"emphasis", title:"강조", handler:"xed.handleEmphasis()"},
+			{className:"underline", title:"밑줄", handler:"xed.handleUnderline()"},
+			{className:"strike", title:"취소선", handler:"xed.handleStrike()"},
+ 				{className:"foregroundColor", title:"글자색", list:[
+					{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleColorPicker('#ffd8d8')"},
+					{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleColorPicker('#ffead9')"},
+					{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleColorPicker('#fef2dc')"},
+					{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleColorPicker('#fff5da')"},
+					{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleColorPicker('#eefed9')"},
+					{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleColorPicker('#dafeda')"},
+					{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleColorPicker('#d8ffff')"},
+					{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleColorPicker('#d9f7ff')"},
+					{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleColorPicker('#d5ebff')"},
+					{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleColorPicker('#eed8ff')"},
+					{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleColorPicker('#fed8ff')"},
+					{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleColorPicker('#ffffff')"},
+
+					{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleColorPicker('#fe8c8c')"},
+					{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleColorPicker('#feba8d')"},
+					{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleColorPicker('#ffe88b')"},
+					{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleColorPicker('#ffff8d')"},
+					{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleColorPicker('#d0fc8d')"},
+					{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleColorPicker('#8efb8e')"},
+					{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleColorPicker('#8bffff')"},
+					{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleColorPicker('#8ce8ff')"},
+					{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleColorPicker('#8b8cff')"},
+					{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleColorPicker('#d18cff')"},
+					{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleColorPicker('#ff8bfe')"},
+					{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleColorPicker('#cccccc')"},
+
+					{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleColorPicker('#ff0103')"},
+					{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleColorPicker('#ff6600')"},
+					{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleColorPicker('#ffcc01')"},
+					{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleColorPicker('#ffff01')"},
+					{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleColorPicker('#96f908')"},
+					{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleColorPicker('#07f905')"},
+					{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleColorPicker('#02feff')"},
+					{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleColorPicker('#00ccff')"},
+					{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleColorPicker('#0100fe')"},
+					{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleColorPicker('#9801ff')"},
+					{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleColorPicker('#fc01fe')"},
+					{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleColorPicker('#999999')"},
+
+					{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleColorPicker('#990002')"},
+					{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleColorPicker('#b65006')"},
+					{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleColorPicker('#bf7900')"},
+					{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleColorPicker('#cca500')"},
+					{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleColorPicker('#5a9603')"},
+					{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleColorPicker('#059502')"},
+					{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleColorPicker('#009997')"},
+					{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleColorPicker('#007998')"},
+					{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleColorPicker('#095392')"},
+					{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleColorPicker('#6a19a4')"},
+					{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleColorPicker('#98019a')"},
+					{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleColorPicker('#666666')"},
+
+					{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleColorPicker('#590100')"},
+					{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleColorPicker('#773505')"},
+					{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleColorPicker('#7f5000')"},
+					{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleColorPicker('#927300')"},
+					{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleColorPicker('#365802')"},
+					{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleColorPicker('#035902')"},
+					{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleColorPicker('#01595a')"},
+					{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleColorPicker('#00485b')"},
+					{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleColorPicker('#083765')"},
+					{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleColorPicker('#370159')"},
+					{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleColorPicker('#59005a')"},
+					{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleColorPicker('#000000')"}
+				]},
+
+			{className:"backgroundColor", title:"배경색", list:[
+				{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleBackgroundColor('#ffd8d8')"},
+				{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleBackgroundColor('#ffead9')"},
+				{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleBackgroundColor('#fef2dc')"},
+				{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleBackgroundColor('#fff5da')"},
+				{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleBackgroundColor('#eefed9')"},
+				{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleBackgroundColor('#dafeda')"},
+				{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleBackgroundColor('#d8ffff')"},
+				{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleBackgroundColor('#d9f7ff')"},
+				{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleBackgroundColor('#d5ebff')"},
+				{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleBackgroundColor('#eed8ff')"},
+				{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleBackgroundColor('#fed8ff')"},
+				{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleBackgroundColor('#ffffff')"},
+				
+				{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleBackgroundColor('#fe8c8c')"},
+				{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleBackgroundColor('#feba8d')"},
+				{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleBackgroundColor('#ffe88b')"},
+				{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleBackgroundColor('#ffff8d')"},
+				{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleBackgroundColor('#d0fc8d')"},
+				{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleBackgroundColor('#8efb8e')"},
+				{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleBackgroundColor('#8bffff')"},
+				{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleBackgroundColor('#8ce8ff')"},
+				{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleBackgroundColor('#8b8cff')"},
+				{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleBackgroundColor('#d18cff')"},
+				{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleBackgroundColor('#ff8bfe')"},
+				{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleBackgroundColor('#cccccc')"},
+				
+				{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleBackgroundColor('#ff0103')"},
+				{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleBackgroundColor('#ff6600')"},
+				{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleBackgroundColor('#ffcc01')"},
+				{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleBackgroundColor('#ffff01')"},
+				{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleBackgroundColor('#96f908')"},
+				{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleBackgroundColor('#07f905')"},
+				{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleBackgroundColor('#02feff')"},
+				{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleBackgroundColor('#00ccff')"},
+				{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleBackgroundColor('#0100fe')"},
+				{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleBackgroundColor('#9801ff')"},
+				{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleBackgroundColor('#fc01fe')"},
+				{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleBackgroundColor('#999999')"},
+				
+				{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleBackgroundColor('#990002')"},
+				{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleBackgroundColor('#b65006')"},
+				{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleBackgroundColor('#bf7900')"},
+				{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleBackgroundColor('#cca500')"},
+				{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleBackgroundColor('#5a9603')"},
+				{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleBackgroundColor('#059502')"},
+				{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleBackgroundColor('#009997')"},
+				{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleBackgroundColor('#007998')"},
+				{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleBackgroundColor('#095392')"},
+				{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleBackgroundColor('#6a19a4')"},
+				{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleBackgroundColor('#98019a')"},
+				{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleBackgroundColor('#666666')"},
+				
+				{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleBackgroundColor('#590100')"},
+				{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleBackgroundColor('#773505')"},
+				{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleBackgroundColor('#7f5000')"},
+				{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleBackgroundColor('#927300')"},
+				{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleBackgroundColor('#365802')"},
+				{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleBackgroundColor('#035902')"},
+				{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleBackgroundColor('#01595a')"},
+				{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleBackgroundColor('#00485b')"},
+				{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleBackgroundColor('#083765')"},
+				{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleBackgroundColor('#370159')"},
+				{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleBackgroundColor('#59005a')"},
+				{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleBackgroundColor('#000000')"}
+			]}
+ 		];
+		
+		xed.config.defaultToolbarButtonGroups.justification = [
+			{className:"justifyLeft", title:"왼쪽 정렬", handler:"xed.handleJustify('left')"},
+			{className:"justifyCenter", title:"가운데 정렬", handler:"xed.handleJustify('center')"},
+			{className:"justifyRight", title:"오른쪽 정렬", handler:"xed.handleJustify('right')"}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.indentation = [
+			{className:"indent", title:"들여쓰기", handler:"xed.handleIndent()"},
+			{className:"outdent", title:"내여쓰기", handler:"xed.handleOutdent()"}
+		];
+		
+		xed.config.defaultToolbarButtonGroups.block = [
+			{className:"unorderedList", title:"블릿 목록", handler:"xed.handleList('UL')"},
+			{className:"orderedList", title:"숫자 목록", handler:"xed.handleList('OL')"}
+		];
+		xed.config.defaultToolbarButtonGroups.insert = [
+				{className:"table", title:"테이블", handler:"xed.handleTable()"},
+				{className:"blockquote", title:"인용", handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
+				{className:"link", title:"링크", handler:"xed.handleLink()"},
+				{className:"emoticon", title:"이모티콘", list: [
+                    {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
+                    {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
+                    {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
+                    {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
+                    {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
+                    {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
+                    {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
+                    {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
+                    {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
+                    {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
+                    {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
+                    {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
+                    {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
+                    {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
+                    {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
+                    {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
+                    {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
+                    {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
+                    {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
+                    {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
+                    {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
+                    {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
+                    {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
+				]},
+				{className:"character", title:"특수문자", list: [
+                    {html:"%E3%80%81", handler:"xed.handleCharacter('%E3%80%81')"},
+                    {html:"%E3%80%82", handler:"xed.handleCharacter('%E3%80%82')"},
+                    {html:"%C2%B7", handler:"xed.handleCharacter('%C2%B7')"},
+					{html:"%E2%80%A5", handler:"xed.handleCharacter('%E2%80%A5')"},
+					{html:"%E2%80%A6", handler:"xed.handleCharacter('%E2%80%A6')"},
+					{html:"%C2%A8", handler:"xed.handleCharacter('%C2%A8')"},
+					{html:"%E3%80%83", handler:"xed.handleCharacter('%E3%80%83')"},
+					{html:"%E2%80%95", handler:"xed.handleCharacter('%E2%80%95')"},
+					{html:"%E2%88%A5", handler:"xed.handleCharacter('%E2%88%A5')"},
+					{html:"%EF%BC%BC", handler:"xed.handleCharacter('%EF%BC%BC')"},
+					{html:"%E2%88%BC", handler:"xed.handleCharacter('%E2%88%BC')"},
+					{html:"%E2%80%98", handler:"xed.handleCharacter('%E2%80%98')"},
+					{html:"%E2%80%99", handler:"xed.handleCharacter('%E2%80%99')"},
+					{html:"%E2%80%9C", handler:"xed.handleCharacter('%E2%80%9C')"},
+					{html:"%E2%80%9D", handler:"xed.handleCharacter('%E2%80%9D')"},
+					{html:"%E3%80%94", handler:"xed.handleCharacter('%E3%80%94')"},
+					{html:"%E3%80%95", handler:"xed.handleCharacter('%E3%80%95')"},
+					{html:"%E3%80%88", handler:"xed.handleCharacter('%E3%80%88')"},
+					{html:"%E3%80%89", handler:"xed.handleCharacter('%E3%80%89')"},
+					{html:"%E3%80%8A", handler:"xed.handleCharacter('%E3%80%8A')"},
+					{html:"%E3%80%8B", handler:"xed.handleCharacter('%E3%80%8B')"},
+					{html:"%E3%80%8C", handler:"xed.handleCharacter('%E3%80%8C')"},
+					{html:"%E3%80%8D", handler:"xed.handleCharacter('%E3%80%8D')"},
+					{html:"%E3%80%8E", handler:"xed.handleCharacter('%E3%80%8E')"},
+					{html:"%E3%80%8F", handler:"xed.handleCharacter('%E3%80%8F')"},
+					{html:"%E3%80%90", handler:"xed.handleCharacter('%E3%80%90')"},
+					{html:"%E3%80%91", handler:"xed.handleCharacter('%E3%80%91')"},
+					{html:"%C2%B1", handler:"xed.handleCharacter('%C2%B1')"},
+					{html:"%C3%97", handler:"xed.handleCharacter('%C3%97')"},
+					{html:"%C3%B7", handler:"xed.handleCharacter('%C3%B7')"},
+					{html:"%E2%89%A0", handler:"xed.handleCharacter('%E2%89%A0')"},
+					{html:"%E2%89%A4", handler:"xed.handleCharacter('%E2%89%A4')"},
+					{html:"%E2%89%A5", handler:"xed.handleCharacter('%E2%89%A5')"},
+					{html:"%E2%88%9E", handler:"xed.handleCharacter('%E2%88%9E')"},
+					{html:"%E2%88%B4", handler:"xed.handleCharacter('%E2%88%B4')"},
+					{html:"%C2%B0", handler:"xed.handleCharacter('%C2%B0')"},
+					{html:"%E2%80%B2", handler:"xed.handleCharacter('%E2%80%B2')"},
+					{html:"%E2%80%B3", handler:"xed.handleCharacter('%E2%80%B3')"},
+					{html:"%E2%84%83", handler:"xed.handleCharacter('%E2%84%83')"},
+					{html:"%E2%84%AB", handler:"xed.handleCharacter('%E2%84%AB')"},
+					{html:"%EF%BF%A0", handler:"xed.handleCharacter('%EF%BF%A0')"},
+					{html:"%EF%BF%A1", handler:"xed.handleCharacter('%EF%BF%A1')"},
+					{html:"%EF%BF%A5", handler:"xed.handleCharacter('%EF%BF%A5')"},
+					{html:"%E2%99%82", handler:"xed.handleCharacter('%E2%99%82')"},
+					{html:"%E2%99%80", handler:"xed.handleCharacter('%E2%99%80')"},
+					{html:"%E2%88%A0", handler:"xed.handleCharacter('%E2%88%A0')"},
+					{html:"%E2%8A%A5", handler:"xed.handleCharacter('%E2%8A%A5')"},
+					{html:"%E2%8C%92", handler:"xed.handleCharacter('%E2%8C%92')"},
+					{html:"%E2%88%82", handler:"xed.handleCharacter('%E2%88%82')"},
+					{html:"%E2%88%87", handler:"xed.handleCharacter('%E2%88%87')"},
+					{html:"%E2%89%A1", handler:"xed.handleCharacter('%E2%89%A1')"},
+					{html:"%E2%89%92", handler:"xed.handleCharacter('%E2%89%92')"},
+					{html:"%C2%A7", handler:"xed.handleCharacter('%C2%A7')"},
+					{html:"%E2%80%BB", handler:"xed.handleCharacter('%E2%80%BB')"},
+					{html:"%E2%98%86", handler:"xed.handleCharacter('%E2%98%86')"},
+					{html:"%E2%98%85", handler:"xed.handleCharacter('%E2%98%85')"},
+					{html:"%E2%97%8B", handler:"xed.handleCharacter('%E2%97%8B')"},
+					{html:"%E2%97%8F", handler:"xed.handleCharacter('%E2%97%8F')"},
+					{html:"%E2%97%8E", handler:"xed.handleCharacter('%E2%97%8E')"},
+					{html:"%E2%97%87", handler:"xed.handleCharacter('%E2%97%87')"},
+					{html:"%E2%97%86", handler:"xed.handleCharacter('%E2%97%86')"},
+					{html:"%E2%96%A1", handler:"xed.handleCharacter('%E2%96%A1')"},
+					{html:"%E2%96%A0", handler:"xed.handleCharacter('%E2%96%A0')"},
+					{html:"%E2%96%B3", handler:"xed.handleCharacter('%E2%96%B3')"},
+					{html:"%E2%96%B2", handler:"xed.handleCharacter('%E2%96%B2')"},
+					{html:"%E2%96%BD", handler:"xed.handleCharacter('%E2%96%BD')"},
+					{html:"%E2%96%BC", handler:"xed.handleCharacter('%E2%96%BC')"},
+					{html:"%E2%86%92", handler:"xed.handleCharacter('%E2%86%92')"},
+					{html:"%E2%86%90", handler:"xed.handleCharacter('%E2%86%90')"},
+					{html:"%E2%86%91", handler:"xed.handleCharacter('%E2%86%91')"},
+					{html:"%E2%86%93", handler:"xed.handleCharacter('%E2%86%93')"},
+					{html:"%E2%86%94", handler:"xed.handleCharacter('%E2%86%94')"},
+					{html:"%E3%80%93", handler:"xed.handleCharacter('%E3%80%93')"},
+					{html:"%E2%89%AA", handler:"xed.handleCharacter('%E2%89%AA')"},
+					{html:"%E2%89%AB", handler:"xed.handleCharacter('%E2%89%AB')"},
+					{html:"%E2%88%9A", handler:"xed.handleCharacter('%E2%88%9A')"},
+					{html:"%E2%88%BD", handler:"xed.handleCharacter('%E2%88%BD')"},
+					{html:"%E2%88%9D", handler:"xed.handleCharacter('%E2%88%9D')"},
+					{html:"%E2%88%B5", handler:"xed.handleCharacter('%E2%88%B5')"},
+					{html:"%E2%88%AB", handler:"xed.handleCharacter('%E2%88%AB')"},
+					{html:"%E2%88%AC", handler:"xed.handleCharacter('%E2%88%AC')"},
+					{html:"%E2%88%88", handler:"xed.handleCharacter('%E2%88%88')"},
+					{html:"%E2%88%8B", handler:"xed.handleCharacter('%E2%88%8B')"},
+					{html:"%E2%8A%86", handler:"xed.handleCharacter('%E2%8A%86')"},
+					{html:"%E2%8A%87", handler:"xed.handleCharacter('%E2%8A%87')"},
+					{html:"%E2%8A%82", handler:"xed.handleCharacter('%E2%8A%82')"},
+					{html:"%E2%8A%83", handler:"xed.handleCharacter('%E2%8A%83')"},
+					{html:"%E2%88%AA", handler:"xed.handleCharacter('%E2%88%AA')"},
+					{html:"%E2%88%A9", handler:"xed.handleCharacter('%E2%88%A9')"},
+					{html:"%E2%88%A7", handler:"xed.handleCharacter('%E2%88%A7')"},
+					{html:"%E2%88%A8", handler:"xed.handleCharacter('%E2%88%A8')"},
+					{html:"%EF%BF%A2", handler:"xed.handleCharacter('%EF%BF%A2')"},
+					{html:"%E2%87%92", handler:"xed.handleCharacter('%E2%87%92')"},
+					{html:"%E2%87%94", handler:"xed.handleCharacter('%E2%87%94')"},
+					{html:"%E2%88%80", handler:"xed.handleCharacter('%E2%88%80')"},
+					{html:"%E2%88%83", handler:"xed.handleCharacter('%E2%88%83')"},
+					{html:"%EF%BD%9E", handler:"xed.handleCharacter('%EF%BD%9E')"},
+					{html:"%CB%87", handler:"xed.handleCharacter('%CB%87')"},
+					{html:"%CB%98", handler:"xed.handleCharacter('%CB%98')"},
+					{html:"%C2%B8", handler:"xed.handleCharacter('%C2%B8')"},
+					{html:"%CB%9B", handler:"xed.handleCharacter('%CB%9B')"},
+					{html:"%C2%A1", handler:"xed.handleCharacter('%C2%A1')"},
+					{html:"%C2%BF", handler:"xed.handleCharacter('%C2%BF')"},
+					{html:"%CB%90", handler:"xed.handleCharacter('%CB%90')"},
+					{html:"%E2%88%AE", handler:"xed.handleCharacter('%E2%88%AE')"},
+					{html:"%E2%88%91", handler:"xed.handleCharacter('%E2%88%91')"},
+					{html:"%E2%88%8F", handler:"xed.handleCharacter('%E2%88%8F')"},
+					{html:"%C2%A4", handler:"xed.handleCharacter('%C2%A4')"},
+					{html:"%E2%84%89", handler:"xed.handleCharacter('%E2%84%89')"},
+					{html:"%E2%80%B0", handler:"xed.handleCharacter('%E2%80%B0')"},
+					{html:"%E2%97%81", handler:"xed.handleCharacter('%E2%97%81')"},
+					{html:"%E2%97%80", handler:"xed.handleCharacter('%E2%97%80')"},
+					{html:"%E2%96%B7", handler:"xed.handleCharacter('%E2%96%B7')"},
+					{html:"%E2%96%B6", handler:"xed.handleCharacter('%E2%96%B6')"},
+					{html:"%E2%99%A4", handler:"xed.handleCharacter('%E2%99%A4')"},
+					{html:"%E2%99%A0", handler:"xed.handleCharacter('%E2%99%A0')"},
+					{html:"%E2%99%A1", handler:"xed.handleCharacter('%E2%99%A1')"},
+					{html:"%E2%99%A5", handler:"xed.handleCharacter('%E2%99%A5')"},
+					{html:"%E2%99%A7", handler:"xed.handleCharacter('%E2%99%A7')"},
+					{html:"%E2%99%A3", handler:"xed.handleCharacter('%E2%99%A3')"},
+					{html:"%E2%8A%99", handler:"xed.handleCharacter('%E2%8A%99')"},
+					{html:"%E2%97%88", handler:"xed.handleCharacter('%E2%97%88')"},
+					{html:"%E2%96%A3", handler:"xed.handleCharacter('%E2%96%A3')"},
+					{html:"%E2%97%90", handler:"xed.handleCharacter('%E2%97%90')"},
+					{html:"%E2%97%91", handler:"xed.handleCharacter('%E2%97%91')"},
+					{html:"%E2%96%92", handler:"xed.handleCharacter('%E2%96%92')"},
+					{html:"%E2%96%A4", handler:"xed.handleCharacter('%E2%96%A4')"},
+					{html:"%E2%96%A5", handler:"xed.handleCharacter('%E2%96%A5')"},
+					{html:"%E2%96%A8", handler:"xed.handleCharacter('%E2%96%A8')"},
+					{html:"%E2%96%A7", handler:"xed.handleCharacter('%E2%96%A7')"},
+					{html:"%E2%96%A6", handler:"xed.handleCharacter('%E2%96%A6')"},
+					{html:"%E2%96%A9", handler:"xed.handleCharacter('%E2%96%A9')"},
+					{html:"%E2%99%A8", handler:"xed.handleCharacter('%E2%99%A8')"},
+					{html:"%E2%98%8F", handler:"xed.handleCharacter('%E2%98%8F')"},
+					{html:"%E2%98%8E", handler:"xed.handleCharacter('%E2%98%8E')"},
+					{html:"%E2%98%9C", handler:"xed.handleCharacter('%E2%98%9C')"},
+					{html:"%E2%98%9E", handler:"xed.handleCharacter('%E2%98%9E')"},
+					{html:"%C2%B6", handler:"xed.handleCharacter('%C2%B6')"},
+					{html:"%E2%80%A0", handler:"xed.handleCharacter('%E2%80%A0')"},
+					{html:"%E2%80%A1", handler:"xed.handleCharacter('%E2%80%A1')"},
+					{html:"%E2%86%95", handler:"xed.handleCharacter('%E2%86%95')"},
+					{html:"%E2%86%97", handler:"xed.handleCharacter('%E2%86%97')"},
+					{html:"%E2%86%99", handler:"xed.handleCharacter('%E2%86%99')"},
+					{html:"%E2%86%96", handler:"xed.handleCharacter('%E2%86%96')"},
+					{html:"%E2%86%98", handler:"xed.handleCharacter('%E2%86%98')"},
+					{html:"%E2%99%AD", handler:"xed.handleCharacter('%E2%99%AD')"},
+					{html:"%E2%99%A9", handler:"xed.handleCharacter('%E2%99%A9')"},
+					{html:"%E2%99%AA", handler:"xed.handleCharacter('%E2%99%AA')"},
+					{html:"%E2%99%AC", handler:"xed.handleCharacter('%E2%99%AC')"},
+					{html:"%E3%89%BF", handler:"xed.handleCharacter('%E3%89%BF')"},
+					{html:"%E3%88%9C", handler:"xed.handleCharacter('%E3%88%9C')"},
+					{html:"%E2%84%96", handler:"xed.handleCharacter('%E2%84%96')"},
+					{html:"%E3%8F%87", handler:"xed.handleCharacter('%E3%8F%87')"},
+					{html:"%E2%84%A2", handler:"xed.handleCharacter('%E2%84%A2')"},
+					{html:"%E3%8F%82", handler:"xed.handleCharacter('%E3%8F%82')"},
+					{html:"%E3%8F%98", handler:"xed.handleCharacter('%E3%8F%98')"},
+					{html:"%E2%84%A1", handler:"xed.handleCharacter('%E2%84%A1')"}
+				]}
+  			]
+		xed.config.defaultToolbarButtonMap = [
+		    xed.config.defaultToolbarButtonGroups.font,
+		    xed.config.defaultToolbarButtonGroups.style,
+		    xed.config.defaultToolbarButtonGroups.justification,
+		    xed.config.defaultToolbarButtonGroups.indentation,
+		    xed.config.defaultToolbarButtonGroups.block,
+		    xed.config.defaultToolbarButtonGroups.insert,
+			[
+				{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}
+			]
+		];
+		
+		// Customize Link and FileUpload Dialog
+		xq.ui_templates.basicLinkDialog= '<form id="linkDialog" class="xqFormDialog lightweight" action="#">\n	<h3>link</h3>\n	<div class="dialog-content">\n		<label class="link-target">링크 대상</label>\n		<input type="text" name="text" class="type-text" value="" />\n		<p class="explain">URL을 입력해주세요.</p>\n		<label class="link-name">표시할 이름</label>\n		<input type="text" name="url" class="type-text" value="http://" />\n		<div class="dialog-buttons">\n			<a href="#" class="button-white cancel">취소</a>\n			<a href="#" class="button-gray submit">생성</a>\n		</div>\n	</div>\n</form>'
+		xq.ui_templates.basicFileUploadDialog='<form id="fileUploadDialog" class="xqFormDialog modal" method="post" enctype="multipart/form-data" target="uploadTarget" action="" >\n		<h3>파일 첨부</h3>\n		<div class="dialog-content">\n			<div class="attachment-section">\n				<label class="label" for="searchAttachFile">파일찾기</label><input type="file" class="type-text" id="searchAttachFile" name="tempFile" />\n			</div>\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">닫기</a>\n				<a href="#" class="button-gray submit">삽입</a>\n			</div>\n		</div>\n		<iframe id="uploadTarget" name="uploadTarget" src="" style="width:0;height:0;border:0px solid #fff;"></iframe>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="Close" /></a>\n<input type="hidden" name="accept" value="application/json" />	</form>';
+		xq.ui_templates.basicMovieDialog='<form id="videoDialog" class="xqFormDialog modal">\n		<h3>동영상 삽입</h3>\n		<div class="dialog-content">\n			<p>동영상의 HTML 소스(object, embed 태그)를 입력하세요. Youtube, naver, 다음, 판도라tv, mncast, mgoon, 만득이네, 앤유등을 지원합니다.</p>\n			<textarea class="initialFocus" name="html"></textarea>\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">닫기</a>\n				<a href="#" class="button-gray submit">삽입</a>\n			</div>\n		</div>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>\n	</form>';
+		xq.ui_templates.basicMultiFileUploadDialog= '<form id="multiFileUploadDialog" class="xqFormDialog modal" method="post" enctype="multipart/form-data">\n		<h3>이미지 삽입</h3>\n		<div class="dialog-content">\n			<div id="fileUploadContainer" class="attachment-section">\n				<p>한 파일당 최대 <strong>20MB</strong>까지 올릴 수 있고,<br/>한 번에 여러 개의 파일을 첨부할 수 있습니다.</p>\n				<div class="dialog-buttons upload-buttons"><div id="MultiFileUploaderDiv"></div></div>\n			</div>\n			<div id="fileListContainer" class="attachment-section">\n			</div>\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">닫기</a>\n				<a href="#" class="button-gray submit">삽입</a>\n			</div>\n			<p class="noti">\n				정상적으로 동작하지 않을 경우에는 기존 방식으로 업로드 하시길 바랍니다.<span><a href="#" onclick="xed.handleFileUpload(true)">기존 방식으로 업로드 하기</a></span>\n			</p>\n		</div>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="Close" /></a>\n		<div id="MultiFileUploader"></div>\n	</form>';
+		xq.ui_templates.basicTableDialog= '<form id="tableDialog" class="xqFormDialog modal" action="#">\n		<h3 id="tableDialogTitle">테이블 삽입</h3>\n		<input type="hidden" name="tableDialogType" value="" />\n		<div class="dialog-content">\n			<fieldset class="table-type">\n				<legend>table type</legend>\n				<ul>\n					<li><a href="#" id="tableTypeDefaultValue" class="selected" onclick="xq.RichTableController.changeType(this, \'\'); return false;"><img src="../images/dialogs/iconTable_01.gif?1214533817" alt="제목 없는 표" /></a></li>\n					<li><a href="#" onclick="xq.RichTableController.changeType(this, \'t\'); return false;"><img src="../images/dialogs/iconTable_02.gif?1214533817" alt="상단에 제목 칼럼" /></a></li>\n					<li><a href="#" onclick="xq.RichTableController.changeType(this, \'l\'); return false;"><img src="../images/dialogs/iconTable_03.gif?1214533817" alt="좌측에 제목 칼럼" /></a></li>\n					<li class="last-child"><a href="#" onclick="xq.RichTableController.changeType(this, \'tl\'); return false;"><img src="../images/dialogs/iconTable_04.gif?1214533817" alt="상단과 좌측에 제목 칼럼" /></a></li>\n				</ul>\n				<input id="tableTypeField" type="hidden" name="tableType" value="" />\n			</fieldset>\n			<fieldset class="table-size">\n				<legend id="tableSizeLabel" class="font-variation">크기</legend>\n				<div class="wrapper">\n					<ul>\n						<li class="new-only">\n							<label>행</label>\n							<span class="controller"><input type="text" onchange="xq.RichTableController.previewTable(); return false;" id="tableRowsField" name="tableRows" value="3" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="plus" class="plus rows" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="minus" class="minus rows" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>\n						</li>\n						<li class="new-only">\n							<label>열</label>\n							<span class="controller"><input type="text" onchange="xq.RichTableController.previewTable(); return false;" id="tableColsField" name="tableCols" value="3" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="plus" class="plus cols" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="minus" class="minus cols" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>\n						</li>\n						<li class="table-width">\n							<label>너비</label>\n							<select class="tableWidths" onchange="xq.RichTableController.changeStyle(this); return false;">\n								<option value="fullsize">페이지에 맞춤</option>\n								<option value="content">내용에 맞춤</option>\n								<option value="pixel">고정 사이즈(px)</option>\n								<option value="percentage">페이지 대비 비율(%)</option>\n							</select>			\n							<input type="text" name="tableWidth" id="tableWidthValue" class="type-text height-box" style="display:none;" />				\n							<input type="hidden" name="tableWidthUnit" value="" id="tableWidthValueUnit" />				\n							<!--input type="checkbox" name="tableFixed" class="type-checkbox" /><label class="none font-valiation">Same cell spacing</label-->\n						</li>\n						<li class="table-height">\n							<label>높이</label>\n							<select class="tableHeights" onchange="xq.RichTableController.changeStyle(this); return false;">\n								<option selected value="content">내용에 맞춤</option>\n								<option value="pixel">고정 사이즈(px)</option>\n							</select>							\n							<input type="text" name="tableHeight" id="tableHeightValue" class="type-text height-box" style="display:none;" />\n							<input type="hidden" name="tableHeightUnit" id="tableHeightValueUnit" />\n						</li>\n					</ul>\n					<div id="previewTable" class="new-only">\n						<table>\n							<tr>\n								<td></td>\n								<td></td>\n								<td></td>\n							</tr>\n							<tr>\n								<td></td>\n								<td></td>\n								<td></td>\n							</tr>\n							<tr>\n								<td></td>\n								<td></td>\n								<td></td>\n							</tr>\n						</table>\n					</div>\n				</div>\n			</fieldset>\n			<fieldset class="table-alignment">\n				<legend class="font-variation">정렬</legend>\n				<div class="wrapper">\n					<ul>\n						<li>\n							<label>가로</label>\n							<select name="tableHorizontalAlign">\n								<option value="left">왼쪽</option>\n								<option value="center">가운데</option>\n								<option value="right">오른쪽</option>\n							</select>\n						</li>\n						<li>\n							<label>세로</label>\n							<select name="tableVerticalAlign">\n								<option value="top">상단</option>\n								<option value="middle">중앙</option>\n								<option value="bottom">하단</option>\n							</select>\n						</li>\n					</ul>\n				</div>\n			</fieldset>\n			<fieldset class="table-border">\n				<legend class="font-variation">테두리</legend>\n				<div class="wrapper button-style03">\n					<ul>\n						<li class="weight-li">\n							<label>크기</label><span class="controller"><input type="text" name="tableBorderSize" value="0" class="type-text" /><span class="buttons"><img src="../images/dialogs/arrow_top.gif" alt="" class="plus border" onclick="xq.RichTableController.changeSize(this); return false;" /><img src="../images/dialogs/arrow_bottom.gif" alt="" class="minus border" onclick="xq.RichTableController.changeSize(this); return false;" /></span></span>\n						</li>\n						<li class="color-li">\n							<label>color</label>\n							<span class="color">\n								<a href="#" id="borderColorBoard" class="tableDialog border" onclick="xq.RichTableController.showColorPicker(this); return false;">&nbsp;</a>\n							</span>\n							<a href="#" class="tableDialog" onclick="xq.RichTableController.showColorPicker(this); return false;" title="search"><img src="../images/dialogs/arrow06.gif" alt="search" class="search-color" /></a>\n							<input id="borderColorCode" type="hidden" name="tableBorderColor" value="#000000" />\n						</li>\n					</ul>\n				</div>\n			</fieldset>\n			<fieldset class="table-background">\n				<legend class="font-variation">배경</legend>\n				<div class="wrapper button-style03">\n					<ul>\n						<li>\n							<label>색상</label>\n							<span class="color">\n								<a href="#" id="backgroundColorBoard" class="tableDialog background" onclick="xq.RichTableController.showColorPicker(this); return false;">&nbsp;</a>\n							</span>\n							<a href="#" class="tableDialog" onclick="xq.RichTableController.showColorPicker(this); return false;" title="search"><img src="../images/dialogs/arrow06.gif" alt="search" class="search-color" /></a>\n							<input id="backgroundColorCode" type="hidden" name="tableBackgroundColor" value="#ffffff" />\n						</li>\n					</ul>\n				</div>\n			</fieldset>\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">취소</a>\n				<a href="#" class="button-gray submit" id="tableDialogSubmit">삽입</a>\n			</div>\n		</div>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>\n	</form>';
+		
+		xed.config.autoFocusOnInit = true;
+		xed.config.urlValidationMode = 'host_relative';
+		xed.config.changeCursorOnLink = true;
+		xed.config.enablePreventExit = true;
+		
+		xed.addPlugin('Springnote');
+		xed.addPlugin('EditorResize');
+		xed.addPlugin('Macro');
+		xed.addPlugin('FileUpload');
+		xed.addPlugin('FlashMovieMacro');
+		xed.addPlugin('CustomStyle');
+		
+		xed.setFileUploadTarget('/client/examples/single_upload_submit.php', '/client/examples/upload.php');
+	
+		xed.setEditMode('wysiwyg');
+		xed.setWidth("100%");
+	}
+	
+	//]]></script>
+</head>
+
+<body>
+	<textarea id="xqEditor">&lt;p&gt;Hello World&lt;/p&gt;</textarea>
+</body>
+</html>
