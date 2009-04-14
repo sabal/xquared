@@ -3081,5 +3081,16 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		}
 		this.rdom.getCurrentElement().normalize();
 		this.rdom.popMarker(true);
+	},
+
+	_: function(msg) {
+		if (xq._messages && xq._messages[this.config.lang] && typeof xq._messages[this.config.lang][msg] != 'undefined')
+			msg=xq._messages[this.config.lang][msg];
+
+		if (arguments.length > 1) {
+			for (var i=1; i < arguments.length; i++)
+				msg=msg.replace('$'+i, arguments[i]);
+		}
+		return msg;
 	}
 });
