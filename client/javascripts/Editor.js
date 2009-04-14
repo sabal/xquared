@@ -59,7 +59,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * set language for l10n
 		 * @type string
 		 */
-		this.config.lang = 'ko';
+		this.config.lang = 'en';
 		/**
 		 * Makes links clickable.
 		 * @type boolean

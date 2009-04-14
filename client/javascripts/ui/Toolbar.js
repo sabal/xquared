@@ -223,8 +223,16 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		a.appendChild(img);
 		img.className = buttonConfig.className;
 		img.src = this.imagePath + buttonConfig.className + '.gif';
-		img.alt = buttonConfig.className;
 		
+		if(buttonConfig.title)
+		{
+			img.alt = buttonConfig.title;
+		}
+		else
+		{
+			img.alt = buttonConfig.className;
+		}
+
 		return a;
 	},
 	
