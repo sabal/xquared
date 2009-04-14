@@ -27,6 +27,17 @@
 	margin: 6px 0 7px 74px;
 	letter-spacing: -1px;
 }
+#linkDialog .option {
+	font: 11px dotum, sans-serif;
+	color: #999;
+	letter-spacing: -1px;
+	position: absolute;
+	margin: 10px;
+	bottom: 5px;
+}
+#linkDialog .option input {
+	vertical-align: middle;
+}
 #linkDialog .dialog-content .type-text {
 	border: 1px solid #c0c0c0;
 	padding: 2px 2px 3px;

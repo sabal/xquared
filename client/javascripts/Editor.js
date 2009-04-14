@@ -1802,6 +1802,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 */
 	handleClick: function(e, target) {
 		var href = decodeURI(target.href);
+		var isNewWindow = target.className.indexOf('newWindow') != -1;
+		if (isNewWindow) {
+			window.open(href, "_blank");
+			return true;
+		}
+		
 		if(!xq.Browser.isTrident) {
 			if(!e.ctrlKey && !e.shiftKey && e.button !== 1) {
 				window.location.href = href;
@@ -1864,7 +1870,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					return;
 				}
 				
-				this.handleInsertLink(false, data.url, data.text, data.text);
+				if (data.newWindow) var className = 'newWindow';
+				
+				this.handleInsertLink(false, data.url, data.text, data.text, className);
 				
 				dialog.close();
 			}.bind(this)
@@ -1888,7 +1896,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 *
 	 * @returns {Element} created element
 	 */
-	handleInsertLink: function(autoSelection, url, title, text) {
+	handleInsertLink: function(autoSelection, url, title, text, className) {
 		if(autoSelection && !this.rdom.hasSelection()) {
 			var marker = this.rdom.pushMarker();
 			var a = this.rdom.smartWrap(marker, "A", function(text) {
@@ -1898,6 +1906,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 							
 			a.href = url;
 			a.title = title;
+			if (className) a.className = className;
+			
 			if(text) {
 				a.innerHTML = ""
 				a.appendChild(this.rdom.createTextNode(text));
@@ -1914,6 +1924,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			var a = this.rdom.createElement('A');
 			a.href = url;
 			a.title = title;
+			if (className) a.className = className;
+			
 			a.appendChild(this.rdom.createTextNode(text));
 			this.rdom.insertNode(a);
 		}
@@ -3069,17 +3081,5 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		}
 		this.rdom.getCurrentElement().normalize();
 		this.rdom.popMarker(true);
-	},
-	
-
-	_: function(msg) {
-		if (xq._messages && xq._messages[this.config.lang] && typeof xq._messages[this.config.lang][msg] != 'undefined')
-			msg=xq._messages[this.config.lang][msg];
-
-		if (arguments.length > 1) {
-			for (var i=1; i < arguments.length; i++)
-				msg=msg.replace('$'+i, arguments[i]);
-		}
-		return msg;
 	}
 });
