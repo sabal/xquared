@@ -33,12 +33,11 @@
 .xed h6 {font-size: 1.230em;}
 
 .xed p {
-	margin: 0.614em 0;
-	line-height: 1.230em;
+	line-height: 2em;
 }
 
-.xed p font {
-	line-height: 1.230em;
+.xed font {
+	line-height: 2em;
 }
 
 .xed hr {
@@ -50,10 +49,10 @@
 .xed ul,
 .xed ol {
 	padding-left: 2em;
-	margin: 0.614em 0;
+	line-height:2.0em;
 }
 .xed li {
-	line-height: 1.306em;
+	line-height: 2em;
 }
 
 
@@ -62,12 +61,11 @@
 .xed ol.code,
 .xed div,
 .xed blockquote {
-	margin: 1em 0;
 	padding-left: 2.460em;
 	padding-right: 1em;
 	border-width: 0 3px;
 	border-style: solid;
-	line-height: 1.306em;
+	line-height: 2em;
 }
 .xed ol.code {
 	font-family: monospace;
