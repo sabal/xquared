@@ -281,9 +281,9 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			for (attr in item.style){
 				anchor.style[attr] = item.style[attr];
 			}
-			xq.observe(anchor, 'mousedown', xq.cancelHandler);
+			xq.observe(anchor, 'click', xq.cancelHandler);
 			xq.observe(anchor, 'mouseup', this._closeAllLightweight.bindAsEventListener(this));
-			xq.observe(anchor, 'click', this._clickHandler.bindAsEventListener(this));
+			xq.observe(anchor, 'mousedown', this._clickHandler.bindAsEventListener(this));
 			
 			ul.appendChild(li);
 		}
