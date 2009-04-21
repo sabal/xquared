@@ -704,7 +704,9 @@ xq.getXquaredScriptBasePath = function() {
 	var script = xq.findXquaredScript();
 	return script.src.match(/(.*\/)xquared\.js.*/i)[1];
 };
-
+xq.getXquaredImageBasePath = function() {
+	return xq.getXquaredScriptBasePath().replace(/[^\/]+\/$/, 'images/');
+};
 xq.loadOthers = function() {
 	var basePath = xq.getXquaredScriptBasePath();
 	var others = xq.getXquaredScriptFileNames();
