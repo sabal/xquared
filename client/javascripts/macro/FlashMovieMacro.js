@@ -40,7 +40,7 @@ xq.macro.FlashMovieMacro.recognize = function(html) {
 		naver: /http:\/\/serviceapi\.nmv\.naver\.com\/flash\/NFPlayer\.swf\?vid\=/,
 		migame: /http:\/\/free\.migame\.tv\/UploadComponent\/FLVPlayer\/player/,
 		scribd: /http:\/\/d\.scribd\.com\/ScribdViewer\.swf\?/,
-		dailymotion: /http:\/\/(?:www\.)?dailymotion\.com\/swf\//,
+		dailymotion: /http:\/\/(?:www\.)?dailymotion\.com\/swf\//
 	};
 	for(var id in providers) {
 		if(html.match(providers[id])) return true;
