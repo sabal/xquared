@@ -47,7 +47,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				var dialogs = this.doc.createElement('div');
 				dialogs.className = 'dialogs';
 				this.dialogContainer = dialogs;
-				document.body.appendChild(dialogs);
+				this.wrapper.appendChild(dialogs);
 			}
 		}
 		xed.addListener({
@@ -178,7 +178,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		var dialogs = this.doc.createElement('div');
 		dialogs.className = 'dialogs';
 		this.dialogContainer = dialogs;
-		document.body.appendChild(dialogs);
+		this.wrapper.appendChild(dialogs);
 		
 		// Generate buttons from map and append it to button container
 		for(var i = 0; i < this.buttonMap.length; i++) {

@@ -72,7 +72,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 			this.dimmed.style.zIndex=902;
 			this.dimmed.style.top='0px';
 			this.dimmed.style.left='0px';
-			document.body.appendChild(this.dimmed);
+			this.xed.outmostWrapper.appendChild(this.dimmed);
 			
 			this.resizeDimmedDiv = function(e) {
 				this.dimmed.style.display='none';
@@ -87,7 +87,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		}
 		
 		// append dialog
-		document.body.appendChild(this.form);
+		this.xed.toolbar.dialogContainer.appendChild(this.form);
 		container.parentNode.removeChild(container);
 		
 		// place dialog to center of window
@@ -143,11 +143,13 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 			top += targetElement.scrollTop;
 		} else if(target === 'centerOfEditor') {
 			targetElement = this.xed.getCurrentEditMode() == 'wysiwyg' ? this.xed.wysiwygEditorDiv : this.xed.sourceEditorDiv;
+			/*
 			var o = targetElement;
 			do {
 				left += o.offsetLeft;
 				top += o.offsetTop;
 			} while(o = o.offsetParent)
+			*/ 
 		} else if(target === 'nearbyCaret') {
 			throw "Not implemented yet";
 		} else {
@@ -162,8 +164,8 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		left += parseInt((targetWidth - dialogWidth) / 2);
 		top += parseInt((targetHeight - dialogHeight) / 2);
 		
-		this.form.style.left = left + "px";
-		this.form.style.top = top + "px";
+		this.form.style.left = Math.max(left, 0) + "px";
+		this.form.style.top = Math.max(top, 0) + "px";
 	}
 })
 

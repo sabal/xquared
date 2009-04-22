@@ -405,7 +405,7 @@ xq.RichTableController = {
 		);
 		
 		if(xq.Browser.isTrident) var bm = xed.rdom.rng().getBookmark();
-		dialog.show({position: 'centerOfWindow'});
+		dialog.show({position: 'centerOfEditor'});
 		this.dialogType = type;
 		this.lastTableDialog = dialog;
 		return true;
