@@ -31,7 +31,7 @@ xq.macro.FlashMovieMacro.recognize = function(html) {
 		mncast: /http:\/\/dory\.mncast\.com\/mncastPlayer\.swf\?/,
 		yahoo: /http:\/\/d\.yimg\.com\//,
 		mgoon: /http:\/\/play\.mgoon\.com\/Video\//,
-		slideshare: /http:\/\/static\.slideshare\.net\/swf\//,
+		slideshare: /http:\/\/static\.slidesharecdn\.com\/swf\//,
 		vimeo: /http:\/\/(?:www\.)?vimeo\.com\/moogaloop\.swf\?/,
 		storyq: /http:\/\/filefarm\.storyq\.net\/SlideView\.swf\?/,
 		mandki: /http:\/\/www\.mandki\.com\/mandki\/viewer\.swf\?/,
@@ -39,9 +39,9 @@ xq.macro.FlashMovieMacro.recognize = function(html) {
 		plaync: /http:\/\/static\.plaync\.co\.kr\/plaza\/pcc\/view\/viewskin\_s\.swf\?movie\_id\=/,
 		naver: /http:\/\/serviceapi\.nmv\.naver\.com\/flash\/NFPlayer\.swf\?vid\=/,
 		migame: /http:\/\/free\.migame\.tv\/UploadComponent\/FLVPlayer\/player/,
-		scribd: /http:\/\/d\.scribd\.com\/ScribdViewer\.swf\?/
+		scribd: /http:\/\/d\.scribd\.com\/ScribdViewer\.swf\?/,
+		dailymotion: /http:\/\/(?:www\.)?dailymotion\.com\/swf\//,
 	};
-	
 	for(var id in providers) {
 		if(html.match(providers[id])) return true;
 	}
