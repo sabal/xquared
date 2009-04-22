@@ -434,25 +434,25 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * Image path for default toolbar.
 		 * @type String
 		 */
-		this.config.imagePathForDefaultToolbar = xq.getXquaredImageBasePath() + 'toolbar/';
+		this.config.imagePathForDefaultToolbar = '../images/toolbar/';
 		
 		/**
 		 * Image path for content.
 		 * @type String
 		 */
-		this.config.imagePathForContent = xq.getXquaredImageBasePath() + 'content/';
+		this.config.imagePathForContent = '../images/content/';
 		
 		/**
 		 * Image path for dialog.
 		 * @type String
 		 */
-		this.config.imagePathForDialog = xq.getXquaredImageBasePath() + 'dialogs/';
+		this.config.imagePathForDialog = '../images/dialogs/';
 		
 		/**
 		 * Image path for emoticon.
 		 * @type String
 		 */
-		this.config.imagePathForEmoticon = xq.getXquaredImageBasePath() + 'dialogs/emoticon/';
+		this.config.imagePathForEmoticon = '../images/dialogs/emoticon/';
 		
 		/**
 		 * Widget Container path.
