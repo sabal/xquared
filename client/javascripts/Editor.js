@@ -1528,6 +1528,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		// create outer DIV
 		this.outmostWrapper = this.doc.createElement('div');
 		this.outmostWrapper.className = "xquared";
+		this.outmostWrapper.style.position = "relative";
 		this.contentElement.parentNode.insertBefore(this.outmostWrapper, this.contentElement);
 		
 		// create toolbar

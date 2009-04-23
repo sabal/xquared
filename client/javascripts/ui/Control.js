@@ -76,8 +76,8 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 			
 			this.resizeDimmedDiv = function(e) {
 				this.dimmed.style.display='none';
-				this.dimmed.style.width=document.documentElement.scrollWidth+'px';
-				this.dimmed.style.height=document.documentElement.scrollHeight+'px';
+				this.dimmed.style.width= this.xed.outmostWrapper.offsetWidth+'px';
+				this.dimmed.style.height= this.xed.outmostWrapper.offsetHeight+'px';
 				this.dimmed.style.display='block';
 			}.bind(this);
 			
