@@ -21,7 +21,7 @@ xq.Layer = xq.Class(/** @lends xq.Layer.prototype */{
 		this.doc = editor._createDoc(
 			this.frame,
 			'<style type="text/css">html, body {margin:0px; padding:0px; background-color: transparent; width: 100%; height: 100%; overflow: hidden;}</style>',
-			[], null, null, html
+			[], [], null, null, html
 		);
 		this.frame.style.position = "absolute";
 		this.updatePosition();

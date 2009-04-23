@@ -467,6 +467,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config.contentCssList = ['../stylesheets/xq_contents.css'];
 		
 		/**
+		 * Array of URL containig JS for WYSIWYG area.
+		 * @type Array
+		 */
+		this.config.contentJsList = [];
+		
+		/**
 		 * URL Validation mode. One or "relative", "host_relative", "absolute", "browser_default"
 		 * @type String
 		 */
@@ -1116,15 +1122,14 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 						this.rdom.getDoc().documentElement.style.overflowY='auto';
 						this.rdom.getDoc().documentElement.style.overflowX='hidden';
 					}
-					
 					this.setEditMode(mode);
+					this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
+					
 					if(this.config.autoFocusOnInit) this.focus();
 					
 					this.timer.start();
 					this._fireOnInitialized(this);
 				}
-
-			this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
 
 			}.bind(this), 10);
 			
@@ -1409,7 +1414,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		return frame;
 	},
 
-	_createDoc: function(frame, head, cssList, bodyId, bodyClass, body) {
+	_createDoc: function(frame, head, cssList, jsList, bodyId, bodyClass, body) {
 		var sb = [];
 		if(!xq.Browser.isTrident) {
 			// @WORKAROUND: IE6/7 has caret movement and scrolling problem if I include following DTD.
@@ -1423,6 +1428,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		if(cssList) for(var i = 0; i < cssList.length; i++) {
 			sb.push('<link rel="Stylesheet" type="text/css" href="' + cssList[i] + '" />');
 		}
+		
+		if(jsList) for(var i = 0; i < jsList.length; i++) {
+			sb.push('<script type="text/javascript" src="' + jsList[i] + '"></script>');
+		}
+		
 		sb.push('</head>');
 		sb.push('<body ' + (bodyClass ? 'class="' + bodyClass + '"' : '') + ' ' + (bodyId ? 'id="' + bodyId + '"' : '') + '>');
 		if(body) sb.push(body);
@@ -1493,6 +1503,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			(!xq.Browser.isTrident ? '<base href="./" />' : '') + // @WORKAROUND: it is needed to force href of pasted content to be an absolute url
 			(this.config.changeCursorOnLink ? '<style>.xed a {cursor: pointer !important;}</style>' : ''),
 			this.config.contentCssList,
+			this.config.contentJsList,
 			this.config.bodyId,
 			this.config.bodyClass,
 			''
