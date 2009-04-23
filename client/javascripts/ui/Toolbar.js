@@ -9,7 +9,8 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	 *
      * @constructs
 	 */
-	initialize: function(xed, container, wrapper, buttonMap, imagePath, structureAndStyleCollector) {
+	initialize: function(xed, container, wrapper, buttonMap, buttonList, imagePath, structureAndStyleCollector) {
+	
 		xq.addToFinalizeQueue(this);
 		
 		this.xed = xed;
@@ -24,6 +25,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		this.wrapper = wrapper;
 		this.doc = this.wrapper.ownerDocument;
 		this.buttonMap = buttonMap;
+		this.buttonList = buttonList;
 		this.imagePath = imagePath;
 		this.structureAndStyleCollector = structureAndStyleCollector;
 		
@@ -155,7 +157,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	 *
 	 * @param {Array} [exceptions] array of string containing classnames to exclude
 	 */
-	disableButtons: function(exceptions) {
+	disableButtons: function(exceptions) { 
 		this._execForAllButtons(exceptions, function(li, exception) {
 			li.firstChild.className = exception ? '' : 'disabled';
 		});
@@ -180,14 +182,25 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		this.dialogContainer = dialogs;
 		this.wrapper.appendChild(dialogs);
 		
-		// Generate buttons from map and append it to button container
-		for(var i = 0; i < this.buttonMap.length; i++) {
-			for(var j = 0; j < this.buttonMap[i].length; j++) {
-				var buttonConfig = this.buttonMap[i][j];
+		if(this.buttonList.length !== 0)
+		{
+			var btnListLen = this.buttonList.length;
+			for(var i = 0; i < btnListLen; i++)
+			{
+				if(this.buttonList[i] == "seperator" )
+				{
+					continue;
+				}
 				
+				var buttonConfig = this.buttonList[i];
 				var li = this.doc.createElement('li');
 				buttons.appendChild(li);
 				li.className = buttonConfig.className;
+				
+				if(typeof this.buttonList[i-1] !== "undefined" && this.buttonList[i-1] == "seperator" )
+				{
+					li.className += ' xq_separator';
+				}
 				
 				var span = this.doc.createElement('span');
 				li.appendChild(span);
@@ -197,8 +210,29 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				} else {
 					this._createButton(buttonConfig, span);
 				}
-
-				if(j === 0 && i !== 0) li.className += ' xq_separator';
+			}
+		}
+		else if(this.buttonMap)
+		{
+			// Generate buttons from map and append it to button container
+			for(var i = 0; i < this.buttonMap.length; i++) {
+				for(var j = 0; j < this.buttonMap[i].length; j++) {
+					var buttonConfig = this.buttonMap[i][j];
+					var li = this.doc.createElement('li');
+					buttons.appendChild(li);
+					li.className = buttonConfig.className;
+					
+					var span = this.doc.createElement('span');
+					li.appendChild(span);
+					
+					if(buttonConfig.list) {
+						this._createDropdown(buttonConfig, span);
+					} else {
+						this._createButton(buttonConfig, span);
+					}
+					
+					if(j === 0 && i !== 0) li.className += ' xq_separator';
+				}
 			}
 		}
 		

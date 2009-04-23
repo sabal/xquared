@@ -20,21 +20,23 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @param {Object} contentElement TEXTAREA to be replaced with editable area, or DOM ID string for TEXTAREA.
 	 * @param {Object} toolbarContainer HTML element which contains toolbar icons, or DOM ID string.
 	 */
-	initialize: function(contentElement, toolbarContainer) {
+	 initialize: function(contentElement, toolbarContainer) {
 		xq.addToFinalizeQueue(this);
-		
-		if(typeof contentElement === 'string') {
+
+		if(typeof contentElement === 'string'){
 			contentElement = xq.$(contentElement);
 		}
+		
 		if(!contentElement) {
 			throw "[contentElement] is null";
 		}
+		
 		if(contentElement.nodeName !== 'TEXTAREA') {
 			throw "[contentElement] is not a TEXTAREA";
 		}
-		
-		xq.asEventSource(this, "Editor", ["StartInitialization", "Initialized", "ElementChanged", "BeforeEvent", "AfterEvent", "CurrentContentChanged", "StaticContentChanged", "CurrentEditModeChanged"]);
-		
+			
+		 xq.asEventSource(this, "Editor", ["StartInitialization", "Initialized", "ElementChanged", "BeforeEvent", "AfterEvent", "CurrentContentChanged", "StaticContentChanged", "CurrentEditModeChanged"]);
+		 
 		/**
 		 * Editor's configuration.
 		 * @type object
@@ -60,6 +62,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * @type string
 		 */
 		this.config.lang = 'en';
+		
+		if(xq.Browser.language)
+		{
+			this.config.lang = xq.Browser.language.substr(0, 2); 
+		}
+		
 		/**
 		 * Makes links clickable.
 		 * @type boolean
@@ -73,369 +81,13 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config.changeCursorOnLink = false;
 		
 		/**
-		 * Table inline style
-		 * @type boolean
-		 */
-		this.config.enableTableInlineStyle = false;
-		
-		/**
 		 * Generates default toolbar if there's no toolbar provided.
 		 * @type boolean
 		 */
 		this.config.generateDefaultToolbar = true;
 		
-		this.config.defaultToolbarButtonGroups = {
-			"color": [
- 				{className:"foregroundColor", title:this._("Foreground color"), list:[
-					{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleColorPicker('#ffd8d8')"},
-					{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleColorPicker('#ffead9')"},
-					{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleColorPicker('#fef2dc')"},
-					{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleColorPicker('#fff5da')"},
-					{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleColorPicker('#eefed9')"},
-					{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleColorPicker('#dafeda')"},
-					{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleColorPicker('#d8ffff')"},
-					{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleColorPicker('#d9f7ff')"},
-					{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleColorPicker('#d5ebff')"},
-					{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleColorPicker('#eed8ff')"},
-					{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleColorPicker('#fed8ff')"},
-					{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleColorPicker('#ffffff')"},
+		this._generateDefaultToolbar();
 
-					{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleColorPicker('#fe8c8c')"},
-					{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleColorPicker('#feba8d')"},
-					{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleColorPicker('#ffe88b')"},
-					{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleColorPicker('#ffff8d')"},
-					{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleColorPicker('#d0fc8d')"},
-					{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleColorPicker('#8efb8e')"},
-					{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleColorPicker('#8bffff')"},
-					{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleColorPicker('#8ce8ff')"},
-					{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleColorPicker('#8b8cff')"},
-					{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleColorPicker('#d18cff')"},
-					{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleColorPicker('#ff8bfe')"},
-					{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleColorPicker('#cccccc')"},
-
-					{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleColorPicker('#ff0103')"},
-					{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleColorPicker('#ff6600')"},
-					{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleColorPicker('#ffcc01')"},
-					{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleColorPicker('#ffff01')"},
-					{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleColorPicker('#96f908')"},
-					{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleColorPicker('#07f905')"},
-					{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleColorPicker('#02feff')"},
-					{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleColorPicker('#00ccff')"},
-					{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleColorPicker('#0100fe')"},
-					{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleColorPicker('#9801ff')"},
-					{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleColorPicker('#fc01fe')"},
-					{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleColorPicker('#999999')"},
-
-					{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleColorPicker('#990002')"},
-					{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleColorPicker('#b65006')"},
-					{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleColorPicker('#bf7900')"},
-					{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleColorPicker('#cca500')"},
-					{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleColorPicker('#5a9603')"},
-					{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleColorPicker('#059502')"},
-					{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleColorPicker('#009997')"},
-					{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleColorPicker('#007998')"},
-					{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleColorPicker('#095392')"},
-					{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleColorPicker('#6a19a4')"},
-					{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleColorPicker('#98019a')"},
-					{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleColorPicker('#666666')"},
-
-					{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleColorPicker('#590100')"},
-					{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleColorPicker('#773505')"},
-					{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleColorPicker('#7f5000')"},
-					{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleColorPicker('#927300')"},
-					{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleColorPicker('#365802')"},
-					{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleColorPicker('#035902')"},
-					{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleColorPicker('#01595a')"},
-					{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleColorPicker('#00485b')"},
-					{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleColorPicker('#083765')"},
-					{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleColorPicker('#370159')"},
-					{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleColorPicker('#59005a')"},
-					{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleColorPicker('#000000')"}
-				]},
-				
-				{className:"backgroundColor", title:this._("Background color"), list:[
-					{style: {backgroundColor:"#FFF700"}, handler:"xed.handleBackgroundColor('#FFF700')"},
-					{style: {backgroundColor:"#AEFF66"}, handler:"xed.handleBackgroundColor('#AEFF66')"},
-					{style: {backgroundColor:"#FFCC66"}, handler:"xed.handleBackgroundColor('#FFCC66')"},
-					{style: {backgroundColor:"#DCB0FB"}, handler:"xed.handleBackgroundColor('#DCB0FB')"},
-					{style: {backgroundColor:"#B0EEFB"}, handler:"xed.handleBackgroundColor('#B0EEFB')"},
-					{style: {backgroundColor:"#FBBDB0"}, handler:"xed.handleBackgroundColor('#FBBDB0')"},
-					{style: {backgroundColor:"#FFFFFF"}, handler:"xed.handleBackgroundColor('#FFFFFF')"}
-				]}
- 			],
- 			
- 			"font": [
-				{className:"fontFace", title:this._("Font face"), list:[
-                    {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
-                    {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
-                    {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
-                    {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},
-                    {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
-                    {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},
-                    {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
-                    {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
-				]},
-				
-				{className:"fontSize", title:this._("Font size"), list:[
-                    {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
-                    {html:"Lorem ipsum dolor (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
-                    {html:"Lorem ipsum dolor (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
-                    {html:"Lorem ipsum dolor (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},
-                    {html:"Lorem ipsum dolor (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
-                    {html:"Lorem ipsum dolor (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
-				]}
-			],
-			"link": [
-			    {className:"link", title:this._("Link"), handler:"xed.handleLink()"},
-			    {className:"removeLink", title:this._("Remove link"), handler:"xed.handleRemoveLink()"}
-			],
-			"style": [
-				{className:"strongEmphasis", title:this._("Strong emphasis"), handler:"xed.handleStrongEmphasis()"},
-				{className:"emphasis", title:this._("Emphasis"), handler:"xed.handleEmphasis()"},
-				{className:"underline", title:this._("Underline"), handler:"xed.handleUnderline()"},
-				{className:"strike", title:this._("Strike"), handler:"xed.handleStrike()"},
-				{className:"superscription", title:this._("Superscription"), handler:"xed.handleSuperscription()"},
-				{className:"subscription", title:this._("Subscription"), handler:"xed.handleSubscription()"},
-				{className:"removeFormat", title:this._("Remove format"), handler:"xed.handleRemoveFormat()"}
-			],
-			"justification": [
-  				{className:"justifyLeft", title:this._("Justify left"), handler:"xed.handleJustify('left')"},
-				{className:"justifyCenter", title:this._("Justify center"), handler:"xed.handleJustify('center')"},
-				{className:"justifyRight", title:this._("Justify right"), handler:"xed.handleJustify('right')"},
-				{className:"justifyBoth", title:this._("Justify both"), handler:"xed.handleJustify('both')"}
-			],
-			"indentation": [
-				{className:"indent", title:this._("Indent"), handler:"xed.handleIndent()"},
-				{className:"outdent", title:this._("Outdent"), handler:"xed.handleOutdent()"}
-  			],
-  			"block": [
-				{className:"paragraph", title:this._("Paragraph"), handler:"xed.handleApplyBlock('P')"},
-				{className:"heading1", title:this._("Heading"), list:[
-					{html:"Heading1", style: {fontSize: "2.845em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H1')"},
-					{html:"Heading2", style: {fontSize: "2.46em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H2')"},
-					{html:"Heading3", style: {fontSize: "2.153em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H3')"},
-					{html:"Heading4", style: {fontSize: "1.922em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H4')"},
-					{html:"Heading5", style: {fontSize: "1.461em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H5')"},
-					{html:"Heading6", style: {fontSize: "1.23em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H6')"}
-				]},
-				{className:"blockquote", title:this._("Blockquote"), handler:"xed.handleApplyBlock('BLOCKQUOTE')"},
-				{className:"code", title:this._("Code"), handler:"xed.handleList('OL', 'code')"},
-				{className:"division", title:this._("Div"), handler:"xed.handleApplyBlock('DIV')"},
-				{className:"unorderedList", title:this._("Unordered list"), handler:"xed.handleList('UL')"},
-				{className:"orderedList", title:this._("Ordered list"), handler:"xed.handleList('OL')"}
-  			],
-  			"insert": [
-				{className:"table", title:this._("Table"), handler:"xed.handleTable()"},
-				{className:"separator", title:this._("Separator"), handler:"xed.handleSeparator()"},
-				{className:"character", title:this._("Character"), list: [
-                    {html:"%E3%80%81", handler:"xed.handleCharacter('%E3%80%81')"},
-                    {html:"%E3%80%82", handler:"xed.handleCharacter('%E3%80%82')"},
-                    {html:"%C2%B7", handler:"xed.handleCharacter('%C2%B7')"},
-					{html:"%E2%80%A5", handler:"xed.handleCharacter('%E2%80%A5')"},
-					{html:"%E2%80%A6", handler:"xed.handleCharacter('%E2%80%A6')"},
-					{html:"%C2%A8", handler:"xed.handleCharacter('%C2%A8')"},
-					{html:"%E3%80%83", handler:"xed.handleCharacter('%E3%80%83')"},
-					{html:"%E2%80%95", handler:"xed.handleCharacter('%E2%80%95')"},
-					{html:"%E2%88%A5", handler:"xed.handleCharacter('%E2%88%A5')"},
-					{html:"%EF%BC%BC", handler:"xed.handleCharacter('%EF%BC%BC')"},
-					{html:"%E2%88%BC", handler:"xed.handleCharacter('%E2%88%BC')"},
-					{html:"%E2%80%98", handler:"xed.handleCharacter('%E2%80%98')"},
-					{html:"%E2%80%99", handler:"xed.handleCharacter('%E2%80%99')"},
-					{html:"%E2%80%9C", handler:"xed.handleCharacter('%E2%80%9C')"},
-					{html:"%E2%80%9D", handler:"xed.handleCharacter('%E2%80%9D')"},
-					{html:"%E3%80%94", handler:"xed.handleCharacter('%E3%80%94')"},
-					{html:"%E3%80%95", handler:"xed.handleCharacter('%E3%80%95')"},
-					{html:"%E3%80%88", handler:"xed.handleCharacter('%E3%80%88')"},
-					{html:"%E3%80%89", handler:"xed.handleCharacter('%E3%80%89')"},
-					{html:"%E3%80%8A", handler:"xed.handleCharacter('%E3%80%8A')"},
-					{html:"%E3%80%8B", handler:"xed.handleCharacter('%E3%80%8B')"},
-					{html:"%E3%80%8C", handler:"xed.handleCharacter('%E3%80%8C')"},
-					{html:"%E3%80%8D", handler:"xed.handleCharacter('%E3%80%8D')"},
-					{html:"%E3%80%8E", handler:"xed.handleCharacter('%E3%80%8E')"},
-					{html:"%E3%80%8F", handler:"xed.handleCharacter('%E3%80%8F')"},
-					{html:"%E3%80%90", handler:"xed.handleCharacter('%E3%80%90')"},
-					{html:"%E3%80%91", handler:"xed.handleCharacter('%E3%80%91')"},
-					{html:"%C2%B1", handler:"xed.handleCharacter('%C2%B1')"},
-					{html:"%C3%97", handler:"xed.handleCharacter('%C3%97')"},
-					{html:"%C3%B7", handler:"xed.handleCharacter('%C3%B7')"},
-					{html:"%E2%89%A0", handler:"xed.handleCharacter('%E2%89%A0')"},
-					{html:"%E2%89%A4", handler:"xed.handleCharacter('%E2%89%A4')"},
-					{html:"%E2%89%A5", handler:"xed.handleCharacter('%E2%89%A5')"},
-					{html:"%E2%88%9E", handler:"xed.handleCharacter('%E2%88%9E')"},
-					{html:"%E2%88%B4", handler:"xed.handleCharacter('%E2%88%B4')"},
-					{html:"%C2%B0", handler:"xed.handleCharacter('%C2%B0')"},
-					{html:"%E2%80%B2", handler:"xed.handleCharacter('%E2%80%B2')"},
-					{html:"%E2%80%B3", handler:"xed.handleCharacter('%E2%80%B3')"},
-					{html:"%E2%84%83", handler:"xed.handleCharacter('%E2%84%83')"},
-					{html:"%E2%84%AB", handler:"xed.handleCharacter('%E2%84%AB')"},
-					{html:"%EF%BF%A0", handler:"xed.handleCharacter('%EF%BF%A0')"},
-					{html:"%EF%BF%A1", handler:"xed.handleCharacter('%EF%BF%A1')"},
-					{html:"%EF%BF%A5", handler:"xed.handleCharacter('%EF%BF%A5')"},
-					{html:"%E2%99%82", handler:"xed.handleCharacter('%E2%99%82')"},
-					{html:"%E2%99%80", handler:"xed.handleCharacter('%E2%99%80')"},
-					{html:"%E2%88%A0", handler:"xed.handleCharacter('%E2%88%A0')"},
-					{html:"%E2%8A%A5", handler:"xed.handleCharacter('%E2%8A%A5')"},
-					{html:"%E2%8C%92", handler:"xed.handleCharacter('%E2%8C%92')"},
-					{html:"%E2%88%82", handler:"xed.handleCharacter('%E2%88%82')"},
-					{html:"%E2%88%87", handler:"xed.handleCharacter('%E2%88%87')"},
-					{html:"%E2%89%A1", handler:"xed.handleCharacter('%E2%89%A1')"},
-					{html:"%E2%89%92", handler:"xed.handleCharacter('%E2%89%92')"},
-					{html:"%C2%A7", handler:"xed.handleCharacter('%C2%A7')"},
-					{html:"%E2%80%BB", handler:"xed.handleCharacter('%E2%80%BB')"},
-					{html:"%E2%98%86", handler:"xed.handleCharacter('%E2%98%86')"},
-					{html:"%E2%98%85", handler:"xed.handleCharacter('%E2%98%85')"},
-					{html:"%E2%97%8B", handler:"xed.handleCharacter('%E2%97%8B')"},
-					{html:"%E2%97%8F", handler:"xed.handleCharacter('%E2%97%8F')"},
-					{html:"%E2%97%8E", handler:"xed.handleCharacter('%E2%97%8E')"},
-					{html:"%E2%97%87", handler:"xed.handleCharacter('%E2%97%87')"},
-					{html:"%E2%97%86", handler:"xed.handleCharacter('%E2%97%86')"},
-					{html:"%E2%96%A1", handler:"xed.handleCharacter('%E2%96%A1')"},
-					{html:"%E2%96%A0", handler:"xed.handleCharacter('%E2%96%A0')"},
-					{html:"%E2%96%B3", handler:"xed.handleCharacter('%E2%96%B3')"},
-					{html:"%E2%96%B2", handler:"xed.handleCharacter('%E2%96%B2')"},
-					{html:"%E2%96%BD", handler:"xed.handleCharacter('%E2%96%BD')"},
-					{html:"%E2%96%BC", handler:"xed.handleCharacter('%E2%96%BC')"},
-					{html:"%E2%86%92", handler:"xed.handleCharacter('%E2%86%92')"},
-					{html:"%E2%86%90", handler:"xed.handleCharacter('%E2%86%90')"},
-					{html:"%E2%86%91", handler:"xed.handleCharacter('%E2%86%91')"},
-					{html:"%E2%86%93", handler:"xed.handleCharacter('%E2%86%93')"},
-					{html:"%E2%86%94", handler:"xed.handleCharacter('%E2%86%94')"},
-					{html:"%E3%80%93", handler:"xed.handleCharacter('%E3%80%93')"},
-					{html:"%E2%89%AA", handler:"xed.handleCharacter('%E2%89%AA')"},
-					{html:"%E2%89%AB", handler:"xed.handleCharacter('%E2%89%AB')"},
-					{html:"%E2%88%9A", handler:"xed.handleCharacter('%E2%88%9A')"},
-					{html:"%E2%88%BD", handler:"xed.handleCharacter('%E2%88%BD')"},
-					{html:"%E2%88%9D", handler:"xed.handleCharacter('%E2%88%9D')"},
-					{html:"%E2%88%B5", handler:"xed.handleCharacter('%E2%88%B5')"},
-					{html:"%E2%88%AB", handler:"xed.handleCharacter('%E2%88%AB')"},
-					{html:"%E2%88%AC", handler:"xed.handleCharacter('%E2%88%AC')"},
-					{html:"%E2%88%88", handler:"xed.handleCharacter('%E2%88%88')"},
-					{html:"%E2%88%8B", handler:"xed.handleCharacter('%E2%88%8B')"},
-					{html:"%E2%8A%86", handler:"xed.handleCharacter('%E2%8A%86')"},
-					{html:"%E2%8A%87", handler:"xed.handleCharacter('%E2%8A%87')"},
-					{html:"%E2%8A%82", handler:"xed.handleCharacter('%E2%8A%82')"},
-					{html:"%E2%8A%83", handler:"xed.handleCharacter('%E2%8A%83')"},
-					{html:"%E2%88%AA", handler:"xed.handleCharacter('%E2%88%AA')"},
-					{html:"%E2%88%A9", handler:"xed.handleCharacter('%E2%88%A9')"},
-					{html:"%E2%88%A7", handler:"xed.handleCharacter('%E2%88%A7')"},
-					{html:"%E2%88%A8", handler:"xed.handleCharacter('%E2%88%A8')"},
-					{html:"%EF%BF%A2", handler:"xed.handleCharacter('%EF%BF%A2')"},
-					{html:"%E2%87%92", handler:"xed.handleCharacter('%E2%87%92')"},
-					{html:"%E2%87%94", handler:"xed.handleCharacter('%E2%87%94')"},
-					{html:"%E2%88%80", handler:"xed.handleCharacter('%E2%88%80')"},
-					{html:"%E2%88%83", handler:"xed.handleCharacter('%E2%88%83')"},
-					{html:"%EF%BD%9E", handler:"xed.handleCharacter('%EF%BD%9E')"},
-					{html:"%CB%87", handler:"xed.handleCharacter('%CB%87')"},
-					{html:"%CB%98", handler:"xed.handleCharacter('%CB%98')"},
-					{html:"%C2%B8", handler:"xed.handleCharacter('%C2%B8')"},
-					{html:"%CB%9B", handler:"xed.handleCharacter('%CB%9B')"},
-					{html:"%C2%A1", handler:"xed.handleCharacter('%C2%A1')"},
-					{html:"%C2%BF", handler:"xed.handleCharacter('%C2%BF')"},
-					{html:"%CB%90", handler:"xed.handleCharacter('%CB%90')"},
-					{html:"%E2%88%AE", handler:"xed.handleCharacter('%E2%88%AE')"},
-					{html:"%E2%88%91", handler:"xed.handleCharacter('%E2%88%91')"},
-					{html:"%E2%88%8F", handler:"xed.handleCharacter('%E2%88%8F')"},
-					{html:"%C2%A4", handler:"xed.handleCharacter('%C2%A4')"},
-					{html:"%E2%84%89", handler:"xed.handleCharacter('%E2%84%89')"},
-					{html:"%E2%80%B0", handler:"xed.handleCharacter('%E2%80%B0')"},
-					{html:"%E2%97%81", handler:"xed.handleCharacter('%E2%97%81')"},
-					{html:"%E2%97%80", handler:"xed.handleCharacter('%E2%97%80')"},
-					{html:"%E2%96%B7", handler:"xed.handleCharacter('%E2%96%B7')"},
-					{html:"%E2%96%B6", handler:"xed.handleCharacter('%E2%96%B6')"},
-					{html:"%E2%99%A4", handler:"xed.handleCharacter('%E2%99%A4')"},
-					{html:"%E2%99%A0", handler:"xed.handleCharacter('%E2%99%A0')"},
-					{html:"%E2%99%A1", handler:"xed.handleCharacter('%E2%99%A1')"},
-					{html:"%E2%99%A5", handler:"xed.handleCharacter('%E2%99%A5')"},
-					{html:"%E2%99%A7", handler:"xed.handleCharacter('%E2%99%A7')"},
-					{html:"%E2%99%A3", handler:"xed.handleCharacter('%E2%99%A3')"},
-					{html:"%E2%8A%99", handler:"xed.handleCharacter('%E2%8A%99')"},
-					{html:"%E2%97%88", handler:"xed.handleCharacter('%E2%97%88')"},
-					{html:"%E2%96%A3", handler:"xed.handleCharacter('%E2%96%A3')"},
-					{html:"%E2%97%90", handler:"xed.handleCharacter('%E2%97%90')"},
-					{html:"%E2%97%91", handler:"xed.handleCharacter('%E2%97%91')"},
-					{html:"%E2%96%92", handler:"xed.handleCharacter('%E2%96%92')"},
-					{html:"%E2%96%A4", handler:"xed.handleCharacter('%E2%96%A4')"},
-					{html:"%E2%96%A5", handler:"xed.handleCharacter('%E2%96%A5')"},
-					{html:"%E2%96%A8", handler:"xed.handleCharacter('%E2%96%A8')"},
-					{html:"%E2%96%A7", handler:"xed.handleCharacter('%E2%96%A7')"},
-					{html:"%E2%96%A6", handler:"xed.handleCharacter('%E2%96%A6')"},
-					{html:"%E2%96%A9", handler:"xed.handleCharacter('%E2%96%A9')"},
-					{html:"%E2%99%A8", handler:"xed.handleCharacter('%E2%99%A8')"},
-					{html:"%E2%98%8F", handler:"xed.handleCharacter('%E2%98%8F')"},
-					{html:"%E2%98%8E", handler:"xed.handleCharacter('%E2%98%8E')"},
-					{html:"%E2%98%9C", handler:"xed.handleCharacter('%E2%98%9C')"},
-					{html:"%E2%98%9E", handler:"xed.handleCharacter('%E2%98%9E')"},
-					{html:"%C2%B6", handler:"xed.handleCharacter('%C2%B6')"},
-					{html:"%E2%80%A0", handler:"xed.handleCharacter('%E2%80%A0')"},
-					{html:"%E2%80%A1", handler:"xed.handleCharacter('%E2%80%A1')"},
-					{html:"%E2%86%95", handler:"xed.handleCharacter('%E2%86%95')"},
-					{html:"%E2%86%97", handler:"xed.handleCharacter('%E2%86%97')"},
-					{html:"%E2%86%99", handler:"xed.handleCharacter('%E2%86%99')"},
-					{html:"%E2%86%96", handler:"xed.handleCharacter('%E2%86%96')"},
-					{html:"%E2%86%98", handler:"xed.handleCharacter('%E2%86%98')"},
-					{html:"%E2%99%AD", handler:"xed.handleCharacter('%E2%99%AD')"},
-					{html:"%E2%99%A9", handler:"xed.handleCharacter('%E2%99%A9')"},
-					{html:"%E2%99%AA", handler:"xed.handleCharacter('%E2%99%AA')"},
-					{html:"%E2%99%AC", handler:"xed.handleCharacter('%E2%99%AC')"},
-					{html:"%E3%89%BF", handler:"xed.handleCharacter('%E3%89%BF')"},
-					{html:"%E3%88%9C", handler:"xed.handleCharacter('%E3%88%9C')"},
-					{html:"%E2%84%96", handler:"xed.handleCharacter('%E2%84%96')"},
-					{html:"%E3%8F%87", handler:"xed.handleCharacter('%E3%8F%87')"},
-					{html:"%E2%84%A2", handler:"xed.handleCharacter('%E2%84%A2')"},
-					{html:"%E3%8F%82", handler:"xed.handleCharacter('%E3%8F%82')"},
-					{html:"%E3%8F%98", handler:"xed.handleCharacter('%E3%8F%98')"},
-					{html:"%E2%84%A1", handler:"xed.handleCharacter('%E2%84%A1')"}
-				]},
-				{className:"emoticon", title:this._("Emoticon"), list: [
-                    {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
-                    {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
-                    {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
-                    {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
-                    {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
-                    {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
-                    {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
-                    {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
-                    {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
-                    {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
-                    {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
-                    {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
-                    {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
-                    {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
-                    {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
-                    {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
-                    {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
-                    {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
-                    {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
-                    {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
-                    {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
-                    {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
-                    {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
-				]}
-  			]
-		};
-		
-		/**
-		 * Button map for default toolbar
-		 * @type Object
-		 */
-		this.config.defaultToolbarButtonMap = [
-		    this.config.defaultToolbarButtonGroups.font,
-		    this.config.defaultToolbarButtonGroups.color,
-		    this.config.defaultToolbarButtonGroups.style,
-		    this.config.defaultToolbarButtonGroups.justification,
-		    this.config.defaultToolbarButtonGroups.indentation,
-		    this.config.defaultToolbarButtonGroups.block,
-		    this.config.defaultToolbarButtonGroups.link,
-		    this.config.defaultToolbarButtonGroups.insert,
-			[
-				{className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()"}
-			],
-			[
-				{className:"undo", title:this._("Undo"), handler:"xed.handleUndo()"},
-				{className:"redo", title:this._("Redo"), handler:"xed.handleRedo()"}
-			]
-		];
-		
 		/**
 		 * Image path for default toolbar.
 		 * @type String
@@ -477,16 +129,18 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		 * @type Array
 		 */
 		this.config.contentJsList = [];
-		
+		 
 		/**
-		 * URL Validation mode. One or "relative", "host_relative", "absolute", "browser_default"
+		 * URL Validation mode. One or "relative", "host_relative", "absolute",
+		 * "browser_default"
 		 * @type String
 		 */
 		this.config.urlValidationMode = 'absolute';
 		
 		/**
 		 * Turns off validation in source editor.<br />
-		 * Note that the validation will be performed regardless of this value when you switching edit mode.
+		 * Note that the validation will be performed regardless of this value
+		 * when you switching edit mode.
 		 * @type boolean
 		 */
 		this.config.noValidationInSourceEditMode = false;
@@ -570,7 +224,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.body = this.doc.body;
 		
 		/**
-		 * False or 'source' means source editing mode, true or 'wysiwyg' means WYSIWYG editing mode.
+		 * False or 'source' means source editing mode, true or 'wysiwyg' means
+		 * WYSIWYG editing mode.
 		 * @type Object
 		 */
 		this.currentEditMode = '';
@@ -589,6 +244,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		/**
 		 * Base instance
+		 * 
 		 * @type xq.validator.Base
 		 */
 		this.validator = null;
@@ -682,28 +338,437 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			}
 		});
 	
-	if(!this.PreventExit)
-	{
-		this.PreventExit = {};
-	}
-	
-	// add PreventExit handler	
-	xq.observe(window, "beforeunload", function(e)
-	{
-		if(xed.config.enablePreventExit === false) return;
-		
-		var content = xed.getCurrentContent().stripTags();
-
-		if(content !== '&nbsp;' && content !== xed.PreventExit.defaultContent)
+		if(!this.PreventExit)
 		{
-			xq.stopEvent(e, xed.config.PreventExitMessage);
+			this.PreventExit = {};
 		}
-	});
+		
+		// add PreventExit handler	
+		xq.observe(window, "beforeunload", function(e)
+		{
+			if(xed.config.enablePreventExit === false) return;
+			
+			var content = xed.getCurrentContent().stripTags();
+	
+			if(content !== '&nbsp;' && content !== xed.PreventExit.defaultContent)
+			{
+				xq.stopEvent(e, xed.config.PreventExitMessage);
+			}
+		});
 	
 	},
 	
 	finalize: function() {
 		for(var key in this.config.plugins) this.config.plugins[key].unload();
+	},
+	
+	/**
+	 * Generate default toolbar buttons, groups and map
+	 * 
+	 * @type Object
+	 */
+	_generateDefaultToolbar: function()
+	{
+		this.config.defaultToolbarButtonList = [];
+		
+		this.config.defaultToolbarButtons = {};
+		
+		this.config.defaultToolbarButtons.foregroundColor =
+		{className:"foregroundColor", title:this._("Foreground color"), list:[
+			{style: {backgroundColor:"#ffd8d8",border: "1px solid #e5d2c4"}, handler:"xed.handleColorPicker('#ffd8d8')"},
+			{style: {backgroundColor:"#ffead9",border: "1px solid #e4d1c3"}, handler:"xed.handleColorPicker('#ffead9')"},
+			{style: {backgroundColor:"#fef2dc",border: "1px solid #e5dac6"}, handler:"xed.handleColorPicker('#fef2dc')"},
+			{style: {backgroundColor:"#fff5da",border: "1px solid #e5ddc6"}, handler:"xed.handleColorPicker('#fff5da')"},
+			{style: {backgroundColor:"#eefed9",border: "1px solid #d5e4c5"}, handler:"xed.handleColorPicker('#eefed9')"},
+			{style: {backgroundColor:"#dafeda",border: "1px solid #c2e4c3"}, handler:"xed.handleColorPicker('#dafeda')"},
+			{style: {backgroundColor:"#d8ffff",border: "1px solid #c2e6e6"}, handler:"xed.handleColorPicker('#d8ffff')"},
+			{style: {backgroundColor:"#d9f7ff",border: "1px solid #c2dfe7"}, handler:"xed.handleColorPicker('#d9f7ff')"},
+			{style: {backgroundColor:"#d5ebff",border: "1px solid #bed3e6"}, handler:"xed.handleColorPicker('#d5ebff')"},
+			{style: {backgroundColor:"#eed8ff",border: "1px solid #d6c3e3"}, handler:"xed.handleColorPicker('#eed8ff')"},
+			{style: {backgroundColor:"#fed8ff",border: "1px solid #e5c1e5"}, handler:"xed.handleColorPicker('#fed8ff')"},
+			{style: {backgroundColor:"#ffffff",border: "1px solid #e5e5e5"}, handler:"xed.handleColorPicker('#ffffff')"},
+
+			{style: {backgroundColor:"#fe8c8c",border: "1px solid #e77f80"}, handler:"xed.handleColorPicker('#fe8c8c')"},
+			{style: {backgroundColor:"#feba8d",border: "1px solid #e7a67c"}, handler:"xed.handleColorPicker('#feba8d')"},
+			{style: {backgroundColor:"#ffe88b",border: "1px solid #e5d07d"}, handler:"xed.handleColorPicker('#ffe88b')"},
+			{style: {backgroundColor:"#ffff8d",border: "1px solid #e6e47d"}, handler:"xed.handleColorPicker('#ffff8d')"},
+			{style: {backgroundColor:"#d0fc8d",border: "1px solid #bbe17e"}, handler:"xed.handleColorPicker('#d0fc8d')"},
+			{style: {backgroundColor:"#8efb8e",border: "1px solid #7ee280"}, handler:"xed.handleColorPicker('#8efb8e')"},
+			{style: {backgroundColor:"#8bffff",border: "1px solid #7ee6e5"}, handler:"xed.handleColorPicker('#8bffff')"},
+			{style: {backgroundColor:"#8ce8ff",border: "1px solid #7fcfe6"}, handler:"xed.handleColorPicker('#8ce8ff')"},
+			{style: {backgroundColor:"#8b8cff",border: "1px solid #7d7fe6"}, handler:"xed.handleColorPicker('#8b8cff')"},
+			{style: {backgroundColor:"#d18cff",border: "1px solid #bc7de5"}, handler:"xed.handleColorPicker('#d18cff')"},
+			{style: {backgroundColor:"#ff8bfe",border: "1px solid #e47fe5"}, handler:"xed.handleColorPicker('#ff8bfe')"},
+			{style: {backgroundColor:"#cccccc",border: "1px solid #aeaeae"}, handler:"xed.handleColorPicker('#cccccc')"},
+
+			{style: {backgroundColor:"#ff0103",border: "1px solid #e40001"}, handler:"xed.handleColorPicker('#ff0103')"},
+			{style: {backgroundColor:"#ff6600",border: "1px solid #e85c00"}, handler:"xed.handleColorPicker('#ff6600')"},
+			{style: {backgroundColor:"#ffcc01",border: "1px solid #e4b600"}, handler:"xed.handleColorPicker('#ffcc01')"},
+			{style: {backgroundColor:"#ffff01",border: "1px solid #e5e400"}, handler:"xed.handleColorPicker('#ffff01')"},
+			{style: {backgroundColor:"#96f908",border: "1px solid #86e004"}, handler:"xed.handleColorPicker('#96f908')"},
+			{style: {backgroundColor:"#07f905",border: "1px solid #03e005"}, handler:"xed.handleColorPicker('#07f905')"},
+			{style: {backgroundColor:"#02feff",border: "1px solid #00e4e3"}, handler:"xed.handleColorPicker('#02feff')"},
+			{style: {backgroundColor:"#00ccff",border: "1px solid #00b8e4"}, handler:"xed.handleColorPicker('#00ccff')"},
+			{style: {backgroundColor:"#0100fe",border: "1px solid #0000e6"}, handler:"xed.handleColorPicker('#0100fe')"},
+			{style: {backgroundColor:"#9801ff",border: "1px solid #8900e6"}, handler:"xed.handleColorPicker('#9801ff')"},
+			{style: {backgroundColor:"#fc01fe",border: "1px solid #e700e6"}, handler:"xed.handleColorPicker('#fc01fe')"},
+			{style: {backgroundColor:"#999999",border: "1px solid #808080"}, handler:"xed.handleColorPicker('#999999')"},
+
+			{style: {backgroundColor:"#990002",border: "1px solid #890101"}, handler:"xed.handleColorPicker('#990002')"},
+			{style: {backgroundColor:"#b65006",border: "1px solid #ad6d00"}, handler:"xed.handleColorPicker('#b65006')"},
+			{style: {backgroundColor:"#bf7900",border: "1px solid #ac6e01"}, handler:"xed.handleColorPicker('#bf7900')"},
+			{style: {backgroundColor:"#cca500",border: "1px solid #b89200"}, handler:"xed.handleColorPicker('#cca500')"},
+			{style: {backgroundColor:"#5a9603",border: "1px solid #518604"}, handler:"xed.handleColorPicker('#5a9603')"},
+			{style: {backgroundColor:"#059502",border: "1px solid #048504"}, handler:"xed.handleColorPicker('#059502')"},
+			{style: {backgroundColor:"#009997",border: "1px solid #008886"}, handler:"xed.handleColorPicker('#009997')"},
+			{style: {backgroundColor:"#007998",border: "1px solid #006d89"}, handler:"xed.handleColorPicker('#007998')"},
+			{style: {backgroundColor:"#095392",border: "1px solid #084a84"}, handler:"xed.handleColorPicker('#095392')"},
+			{style: {backgroundColor:"#6a19a4",border: "1px solid #601693"}, handler:"xed.handleColorPicker('#6a19a4')"},
+			{style: {backgroundColor:"#98019a",border: "1px solid #8a008b"}, handler:"xed.handleColorPicker('#98019a')"},
+			{style: {backgroundColor:"#666666",border: "1px solid #555555"}, handler:"xed.handleColorPicker('#666666')"},
+
+			{style: {backgroundColor:"#590100",border: "1px solid #510000"}, handler:"xed.handleColorPicker('#590100')"},
+			{style: {backgroundColor:"#773505",border: "1px solid #714901"}, handler:"xed.handleColorPicker('#773505')"},
+			{style: {backgroundColor:"#7f5000",border: "1px solid #734901"}, handler:"xed.handleColorPicker('#7f5000')"},
+			{style: {backgroundColor:"#927300",border: "1px solid #836600"}, handler:"xed.handleColorPicker('#927300')"},
+			{style: {backgroundColor:"#365802",border: "1px solid #304f03"}, handler:"xed.handleColorPicker('#365802')"},
+			{style: {backgroundColor:"#035902",border: "1px solid #025102"}, handler:"xed.handleColorPicker('#035902')"},
+			{style: {backgroundColor:"#01595a",border: "1px solid #00504f"}, handler:"xed.handleColorPicker('#01595a')"},
+			{style: {backgroundColor:"#00485b",border: "1px solid #004252"}, handler:"xed.handleColorPicker('#00485b')"},
+			{style: {backgroundColor:"#083765",border: "1px solid #06315b"}, handler:"xed.handleColorPicker('#083765')"},
+			{style: {backgroundColor:"#370159",border: "1px solid #300151"}, handler:"xed.handleColorPicker('#370159')"},
+			{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleColorPicker('#59005a')"},
+			{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleColorPicker('#000000')"}
+		]};
+		
+		this.config.defaultToolbarButtons.backgroundColor = 		
+		{className:"backgroundColor", title:this._("Background color"), list:[
+			{style: {backgroundColor:"#FFF700"}, handler:"xed.handleBackgroundColor('#FFF700')"},
+			{style: {backgroundColor:"#AEFF66"}, handler:"xed.handleBackgroundColor('#AEFF66')"},
+			{style: {backgroundColor:"#FFCC66"}, handler:"xed.handleBackgroundColor('#FFCC66')"},
+			{style: {backgroundColor:"#DCB0FB"}, handler:"xed.handleBackgroundColor('#DCB0FB')"},
+			{style: {backgroundColor:"#B0EEFB"}, handler:"xed.handleBackgroundColor('#B0EEFB')"},
+			{style: {backgroundColor:"#FBBDB0"}, handler:"xed.handleBackgroundColor('#FBBDB0')"},
+			{style: {backgroundColor:"#FFFFFF"}, handler:"xed.handleBackgroundColor('#FFFFFF')"}
+		]};
+		
+		this.config.defaultToolbarButtons.fontFace = 
+			{className:"fontFace", title:this._("Font face"), list:[
+	            {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},
+	            {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},
+	            {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},
+	            {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},
+	            {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},
+	            {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},
+	            {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},
+	            {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
+            ]};
+
+		this.config.defaultToolbarButtons.fontSize = 
+		{className:"fontSize", title:this._("Font size"), list:[
+            {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
+            {html:"Lorem ipsum dolor (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},
+            {html:"Lorem ipsum dolor (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},
+            {html:"Lorem ipsum dolor (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},
+            {html:"Lorem ipsum dolor (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
+            {html:"Lorem ipsum dolor (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
+		]};
+		
+		// link
+		this.config.defaultToolbarButtons.link = {className:"link", title:this._("Link"), handler:"xed.handleLink()"};
+		this.config.defaultToolbarButtons.removeLink = {className:"removeLink", title:this._("Remove link"), handler:"xed.handleRemoveLink()"};
+		
+		// style
+		this.config.defaultToolbarButtons.strongEmphasis = {className:"strongEmphasis", title:this._("Strong emphasis"), handler:"xed.handleStrongEmphasis()"};
+		this.config.defaultToolbarButtons.emphasis = {className:"emphasis", title:this._("Emphasis"), handler:"xed.handleEmphasis()"};
+		this.config.defaultToolbarButtons.underline = {className:"underline", title:this._("Underline"), handler:"xed.handleUnderline()"};
+		this.config.defaultToolbarButtons.strike = {className:"strike", title:this._("Strike"), handler:"xed.handleStrike()"};
+		this.config.defaultToolbarButtons.superscription = {className:"superscription", title:this._("Superscription"), handler:"xed.handleSuperscription()"};
+		this.config.defaultToolbarButtons.subscription = {className:"subscription", title:this._("Subscription"), handler:"xed.handleSubscription()"};
+		this.config.defaultToolbarButtons.removeFormat = {className:"removeFormat", title:this._("Remove format"), handler:"xed.handleRemoveFormat()"};
+		
+		// justification
+		this.config.defaultToolbarButtons.justifyLeft = {className:"justifyLeft", title:this._("Justify left"), handler:"xed.handleJustify('left')"};
+		this.config.defaultToolbarButtons.justifyCenter = {className:"justifyCenter", title:this._("Justify center"), handler:"xed.handleJustify('center')"};
+		this.config.defaultToolbarButtons.justifyRight = {className:"justifyRight", title:this._("Justify right"), handler:"xed.handleJustify('right')"};
+		this.config.defaultToolbarButtons.justifyBoth = {className:"justifyBoth", title:this._("Justify both"), handler:"xed.handleJustify('both')"};
+
+		// indentation
+		this.config.defaultToolbarButtons.indent = {className:"indent", title:this._("Indent"), handler:"xed.handleIndent()"};
+		this.config.defaultToolbarButtons.outdent = {className:"outdent", title:this._("Outdent"), handler:"xed.handleOutdent()"};
+		
+		// block
+		this.config.defaultToolbarButtons.paragraph = {className:"paragraph", title:this._("Paragraph"), handler:"xed.handleApplyBlock('P')"};
+		this.config.defaultToolbarButtons.heading1 = {className:"heading1", title:this._("Heading"), list:[
+			{html:"Heading1", style: {fontSize: "2.845em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H1')"},
+			{html:"Heading2", style: {fontSize: "2.46em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H2')"},
+			{html:"Heading3", style: {fontSize: "2.153em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H3')"},
+			{html:"Heading4", style: {fontSize: "1.922em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H4')"},
+			{html:"Heading5", style: {fontSize: "1.461em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H5')"},
+			{html:"Heading6", style: {fontSize: "1.23em", marginBottom: "3px"}, handler:"xed.handleApplyBlock('H6')"}
+		]};
+		
+		this.config.defaultToolbarButtons.blockquote = {className:"blockquote", title:this._("Blockquote"), handler:"xed.handleApplyBlock('BLOCKQUOTE')"};
+		this.config.defaultToolbarButtons.code = {className:"code", title:this._("Code"), handler:"xed.handleList('OL', 'code')"};
+		this.config.defaultToolbarButtons.division = {className:"division", title:this._("Div"), handler:"xed.handleApplyBlock('DIV')"};
+		this.config.defaultToolbarButtons.unorderedList = {className:"unorderedList", title:this._("Unordered list"), handler:"xed.handleList('UL')"};
+		this.config.defaultToolbarButtons.orderedList = {className:"orderedList", title:this._("Ordered list"), handler:"xed.handleList('OL')"};
+
+		this.config.defaultToolbarButtons.table =  {className:"table", title:this._("Table"), handler:"xed.handleTable()"};
+		this.config.defaultToolbarButtons.separator =  {className:"separator", title:this._("Separator"), handler:"xed.handleSeparator()"};
+		this.config.defaultToolbarButtons.character =  {className:"character", title:this._("Character"), list: [
+            {html:"%E3%80%81", handler:"xed.handleCharacter('%E3%80%81')"},
+            {html:"%E3%80%82", handler:"xed.handleCharacter('%E3%80%82')"},
+            {html:"%C2%B7", handler:"xed.handleCharacter('%C2%B7')"},
+			{html:"%E2%80%A5", handler:"xed.handleCharacter('%E2%80%A5')"},
+			{html:"%E2%80%A6", handler:"xed.handleCharacter('%E2%80%A6')"},
+			{html:"%C2%A8", handler:"xed.handleCharacter('%C2%A8')"},
+			{html:"%E3%80%83", handler:"xed.handleCharacter('%E3%80%83')"},
+			{html:"%E2%80%95", handler:"xed.handleCharacter('%E2%80%95')"},
+			{html:"%E2%88%A5", handler:"xed.handleCharacter('%E2%88%A5')"},
+			{html:"%EF%BC%BC", handler:"xed.handleCharacter('%EF%BC%BC')"},
+			{html:"%E2%88%BC", handler:"xed.handleCharacter('%E2%88%BC')"},
+			{html:"%E2%80%98", handler:"xed.handleCharacter('%E2%80%98')"},
+			{html:"%E2%80%99", handler:"xed.handleCharacter('%E2%80%99')"},
+			{html:"%E2%80%9C", handler:"xed.handleCharacter('%E2%80%9C')"},
+			{html:"%E2%80%9D", handler:"xed.handleCharacter('%E2%80%9D')"},
+			{html:"%E3%80%94", handler:"xed.handleCharacter('%E3%80%94')"},
+			{html:"%E3%80%95", handler:"xed.handleCharacter('%E3%80%95')"},
+			{html:"%E3%80%88", handler:"xed.handleCharacter('%E3%80%88')"},
+			{html:"%E3%80%89", handler:"xed.handleCharacter('%E3%80%89')"},
+			{html:"%E3%80%8A", handler:"xed.handleCharacter('%E3%80%8A')"},
+			{html:"%E3%80%8B", handler:"xed.handleCharacter('%E3%80%8B')"},
+			{html:"%E3%80%8C", handler:"xed.handleCharacter('%E3%80%8C')"},
+			{html:"%E3%80%8D", handler:"xed.handleCharacter('%E3%80%8D')"},
+			{html:"%E3%80%8E", handler:"xed.handleCharacter('%E3%80%8E')"},
+			{html:"%E3%80%8F", handler:"xed.handleCharacter('%E3%80%8F')"},
+			{html:"%E3%80%90", handler:"xed.handleCharacter('%E3%80%90')"},
+			{html:"%E3%80%91", handler:"xed.handleCharacter('%E3%80%91')"},
+			{html:"%C2%B1", handler:"xed.handleCharacter('%C2%B1')"},
+			{html:"%C3%97", handler:"xed.handleCharacter('%C3%97')"},
+			{html:"%C3%B7", handler:"xed.handleCharacter('%C3%B7')"},
+			{html:"%E2%89%A0", handler:"xed.handleCharacter('%E2%89%A0')"},
+			{html:"%E2%89%A4", handler:"xed.handleCharacter('%E2%89%A4')"},
+			{html:"%E2%89%A5", handler:"xed.handleCharacter('%E2%89%A5')"},
+			{html:"%E2%88%9E", handler:"xed.handleCharacter('%E2%88%9E')"},
+			{html:"%E2%88%B4", handler:"xed.handleCharacter('%E2%88%B4')"},
+			{html:"%C2%B0", handler:"xed.handleCharacter('%C2%B0')"},
+			{html:"%E2%80%B2", handler:"xed.handleCharacter('%E2%80%B2')"},
+			{html:"%E2%80%B3", handler:"xed.handleCharacter('%E2%80%B3')"},
+			{html:"%E2%84%83", handler:"xed.handleCharacter('%E2%84%83')"},
+			{html:"%E2%84%AB", handler:"xed.handleCharacter('%E2%84%AB')"},
+			{html:"%EF%BF%A0", handler:"xed.handleCharacter('%EF%BF%A0')"},
+			{html:"%EF%BF%A1", handler:"xed.handleCharacter('%EF%BF%A1')"},
+			{html:"%EF%BF%A5", handler:"xed.handleCharacter('%EF%BF%A5')"},
+			{html:"%E2%99%82", handler:"xed.handleCharacter('%E2%99%82')"},
+			{html:"%E2%99%80", handler:"xed.handleCharacter('%E2%99%80')"},
+			{html:"%E2%88%A0", handler:"xed.handleCharacter('%E2%88%A0')"},
+			{html:"%E2%8A%A5", handler:"xed.handleCharacter('%E2%8A%A5')"},
+			{html:"%E2%8C%92", handler:"xed.handleCharacter('%E2%8C%92')"},
+			{html:"%E2%88%82", handler:"xed.handleCharacter('%E2%88%82')"},
+			{html:"%E2%88%87", handler:"xed.handleCharacter('%E2%88%87')"},
+			{html:"%E2%89%A1", handler:"xed.handleCharacter('%E2%89%A1')"},
+			{html:"%E2%89%92", handler:"xed.handleCharacter('%E2%89%92')"},
+			{html:"%C2%A7", handler:"xed.handleCharacter('%C2%A7')"},
+			{html:"%E2%80%BB", handler:"xed.handleCharacter('%E2%80%BB')"},
+			{html:"%E2%98%86", handler:"xed.handleCharacter('%E2%98%86')"},
+			{html:"%E2%98%85", handler:"xed.handleCharacter('%E2%98%85')"},
+			{html:"%E2%97%8B", handler:"xed.handleCharacter('%E2%97%8B')"},
+			{html:"%E2%97%8F", handler:"xed.handleCharacter('%E2%97%8F')"},
+			{html:"%E2%97%8E", handler:"xed.handleCharacter('%E2%97%8E')"},
+			{html:"%E2%97%87", handler:"xed.handleCharacter('%E2%97%87')"},
+			{html:"%E2%97%86", handler:"xed.handleCharacter('%E2%97%86')"},
+			{html:"%E2%96%A1", handler:"xed.handleCharacter('%E2%96%A1')"},
+			{html:"%E2%96%A0", handler:"xed.handleCharacter('%E2%96%A0')"},
+			{html:"%E2%96%B3", handler:"xed.handleCharacter('%E2%96%B3')"},
+			{html:"%E2%96%B2", handler:"xed.handleCharacter('%E2%96%B2')"},
+			{html:"%E2%96%BD", handler:"xed.handleCharacter('%E2%96%BD')"},
+			{html:"%E2%96%BC", handler:"xed.handleCharacter('%E2%96%BC')"},
+			{html:"%E2%86%92", handler:"xed.handleCharacter('%E2%86%92')"},
+			{html:"%E2%86%90", handler:"xed.handleCharacter('%E2%86%90')"},
+			{html:"%E2%86%91", handler:"xed.handleCharacter('%E2%86%91')"},
+			{html:"%E2%86%93", handler:"xed.handleCharacter('%E2%86%93')"},
+			{html:"%E2%86%94", handler:"xed.handleCharacter('%E2%86%94')"},
+			{html:"%E3%80%93", handler:"xed.handleCharacter('%E3%80%93')"},
+			{html:"%E2%89%AA", handler:"xed.handleCharacter('%E2%89%AA')"},
+			{html:"%E2%89%AB", handler:"xed.handleCharacter('%E2%89%AB')"},
+			{html:"%E2%88%9A", handler:"xed.handleCharacter('%E2%88%9A')"},
+			{html:"%E2%88%BD", handler:"xed.handleCharacter('%E2%88%BD')"},
+			{html:"%E2%88%9D", handler:"xed.handleCharacter('%E2%88%9D')"},
+			{html:"%E2%88%B5", handler:"xed.handleCharacter('%E2%88%B5')"},
+			{html:"%E2%88%AB", handler:"xed.handleCharacter('%E2%88%AB')"},
+			{html:"%E2%88%AC", handler:"xed.handleCharacter('%E2%88%AC')"},
+			{html:"%E2%88%88", handler:"xed.handleCharacter('%E2%88%88')"},
+			{html:"%E2%88%8B", handler:"xed.handleCharacter('%E2%88%8B')"},
+			{html:"%E2%8A%86", handler:"xed.handleCharacter('%E2%8A%86')"},
+			{html:"%E2%8A%87", handler:"xed.handleCharacter('%E2%8A%87')"},
+			{html:"%E2%8A%82", handler:"xed.handleCharacter('%E2%8A%82')"},
+			{html:"%E2%8A%83", handler:"xed.handleCharacter('%E2%8A%83')"},
+			{html:"%E2%88%AA", handler:"xed.handleCharacter('%E2%88%AA')"},
+			{html:"%E2%88%A9", handler:"xed.handleCharacter('%E2%88%A9')"},
+			{html:"%E2%88%A7", handler:"xed.handleCharacter('%E2%88%A7')"},
+			{html:"%E2%88%A8", handler:"xed.handleCharacter('%E2%88%A8')"},
+			{html:"%EF%BF%A2", handler:"xed.handleCharacter('%EF%BF%A2')"},
+			{html:"%E2%87%92", handler:"xed.handleCharacter('%E2%87%92')"},
+			{html:"%E2%87%94", handler:"xed.handleCharacter('%E2%87%94')"},
+			{html:"%E2%88%80", handler:"xed.handleCharacter('%E2%88%80')"},
+			{html:"%E2%88%83", handler:"xed.handleCharacter('%E2%88%83')"},
+			{html:"%EF%BD%9E", handler:"xed.handleCharacter('%EF%BD%9E')"},
+			{html:"%CB%87", handler:"xed.handleCharacter('%CB%87')"},
+			{html:"%CB%98", handler:"xed.handleCharacter('%CB%98')"},
+			{html:"%C2%B8", handler:"xed.handleCharacter('%C2%B8')"},
+			{html:"%CB%9B", handler:"xed.handleCharacter('%CB%9B')"},
+			{html:"%C2%A1", handler:"xed.handleCharacter('%C2%A1')"},
+			{html:"%C2%BF", handler:"xed.handleCharacter('%C2%BF')"},
+			{html:"%CB%90", handler:"xed.handleCharacter('%CB%90')"},
+			{html:"%E2%88%AE", handler:"xed.handleCharacter('%E2%88%AE')"},
+			{html:"%E2%88%91", handler:"xed.handleCharacter('%E2%88%91')"},
+			{html:"%E2%88%8F", handler:"xed.handleCharacter('%E2%88%8F')"},
+			{html:"%C2%A4", handler:"xed.handleCharacter('%C2%A4')"},
+			{html:"%E2%84%89", handler:"xed.handleCharacter('%E2%84%89')"},
+			{html:"%E2%80%B0", handler:"xed.handleCharacter('%E2%80%B0')"},
+			{html:"%E2%97%81", handler:"xed.handleCharacter('%E2%97%81')"},
+			{html:"%E2%97%80", handler:"xed.handleCharacter('%E2%97%80')"},
+			{html:"%E2%96%B7", handler:"xed.handleCharacter('%E2%96%B7')"},
+			{html:"%E2%96%B6", handler:"xed.handleCharacter('%E2%96%B6')"},
+			{html:"%E2%99%A4", handler:"xed.handleCharacter('%E2%99%A4')"},
+			{html:"%E2%99%A0", handler:"xed.handleCharacter('%E2%99%A0')"},
+			{html:"%E2%99%A1", handler:"xed.handleCharacter('%E2%99%A1')"},
+			{html:"%E2%99%A5", handler:"xed.handleCharacter('%E2%99%A5')"},
+			{html:"%E2%99%A7", handler:"xed.handleCharacter('%E2%99%A7')"},
+			{html:"%E2%99%A3", handler:"xed.handleCharacter('%E2%99%A3')"},
+			{html:"%E2%8A%99", handler:"xed.handleCharacter('%E2%8A%99')"},
+			{html:"%E2%97%88", handler:"xed.handleCharacter('%E2%97%88')"},
+			{html:"%E2%96%A3", handler:"xed.handleCharacter('%E2%96%A3')"},
+			{html:"%E2%97%90", handler:"xed.handleCharacter('%E2%97%90')"},
+			{html:"%E2%97%91", handler:"xed.handleCharacter('%E2%97%91')"},
+			{html:"%E2%96%92", handler:"xed.handleCharacter('%E2%96%92')"},
+			{html:"%E2%96%A4", handler:"xed.handleCharacter('%E2%96%A4')"},
+			{html:"%E2%96%A5", handler:"xed.handleCharacter('%E2%96%A5')"},
+			{html:"%E2%96%A8", handler:"xed.handleCharacter('%E2%96%A8')"},
+			{html:"%E2%96%A7", handler:"xed.handleCharacter('%E2%96%A7')"},
+			{html:"%E2%96%A6", handler:"xed.handleCharacter('%E2%96%A6')"},
+			{html:"%E2%96%A9", handler:"xed.handleCharacter('%E2%96%A9')"},
+			{html:"%E2%99%A8", handler:"xed.handleCharacter('%E2%99%A8')"},
+			{html:"%E2%98%8F", handler:"xed.handleCharacter('%E2%98%8F')"},
+			{html:"%E2%98%8E", handler:"xed.handleCharacter('%E2%98%8E')"},
+			{html:"%E2%98%9C", handler:"xed.handleCharacter('%E2%98%9C')"},
+			{html:"%E2%98%9E", handler:"xed.handleCharacter('%E2%98%9E')"},
+			{html:"%C2%B6", handler:"xed.handleCharacter('%C2%B6')"},
+			{html:"%E2%80%A0", handler:"xed.handleCharacter('%E2%80%A0')"},
+			{html:"%E2%80%A1", handler:"xed.handleCharacter('%E2%80%A1')"},
+			{html:"%E2%86%95", handler:"xed.handleCharacter('%E2%86%95')"},
+			{html:"%E2%86%97", handler:"xed.handleCharacter('%E2%86%97')"},
+			{html:"%E2%86%99", handler:"xed.handleCharacter('%E2%86%99')"},
+			{html:"%E2%86%96", handler:"xed.handleCharacter('%E2%86%96')"},
+			{html:"%E2%86%98", handler:"xed.handleCharacter('%E2%86%98')"},
+			{html:"%E2%99%AD", handler:"xed.handleCharacter('%E2%99%AD')"},
+			{html:"%E2%99%A9", handler:"xed.handleCharacter('%E2%99%A9')"},
+			{html:"%E2%99%AA", handler:"xed.handleCharacter('%E2%99%AA')"},
+			{html:"%E2%99%AC", handler:"xed.handleCharacter('%E2%99%AC')"},
+			{html:"%E3%89%BF", handler:"xed.handleCharacter('%E3%89%BF')"},
+			{html:"%E3%88%9C", handler:"xed.handleCharacter('%E3%88%9C')"},
+			{html:"%E2%84%96", handler:"xed.handleCharacter('%E2%84%96')"},
+			{html:"%E3%8F%87", handler:"xed.handleCharacter('%E3%8F%87')"},
+			{html:"%E2%84%A2", handler:"xed.handleCharacter('%E2%84%A2')"},
+			{html:"%E3%8F%82", handler:"xed.handleCharacter('%E3%8F%82')"},
+			{html:"%E3%8F%98", handler:"xed.handleCharacter('%E3%8F%98')"},
+			{html:"%E2%84%A1", handler:"xed.handleCharacter('%E2%84%A1')"}
+		]};
+		
+		this.config.defaultToolbarButtons.emoticon = {className:"emoticon", title:this._("Emoticon"), list: [
+            {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
+            {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
+            {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
+            {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
+            {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
+            {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
+            {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
+            {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
+            {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
+            {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
+            {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
+            {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
+            {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
+            {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
+            {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
+            {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
+            {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
+            {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
+            {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
+            {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
+            {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
+            {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
+            {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
+		]};
+
+		this.config.defaultToolbarButtonGroups = {
+			"color": [
+			          this.config.defaultToolbarButtons.foregroundColor,
+			          this.config.defaultToolbarButtons.backgroundColor
+ 			],
+ 			"font": [
+ 					this.config.defaultToolbarButtons.fontFace,
+ 					this.config.defaultToolbarButtons.fontSize
+			],
+			"link": [
+				this.config.defaultToolbarButtons.link,
+				this.config.defaultToolbarButtons.removeLink
+			],
+			"style": [
+		  		this.config.defaultToolbarButtons.strongEmphasis,
+				this.config.defaultToolbarButtons.emphasis,
+				this.config.defaultToolbarButtons.underline,
+				this.config.defaultToolbarButtons.strike,
+				this.config.defaultToolbarButtons.superscription,
+				this.config.defaultToolbarButtons.subscription,
+				this.config.defaultToolbarButtons.removeFormat
+			],
+			"justification": [
+          		this.config.defaultToolbarButtons.justifyLeft,
+        		this.config.defaultToolbarButtons.justifyCenter,
+        		this.config.defaultToolbarButtons.justifyRight,
+        		this.config.defaultToolbarButtons.justifyBoth
+			],
+			"indentation": [
+        		this.config.defaultToolbarButtons.indent,
+        		this.config.defaultToolbarButtons.outdent
+  			],
+  			"block": [
+				this.config.defaultToolbarButtons.blockquote,
+				this.config.defaultToolbarButtons.code,
+				this.config.defaultToolbarButtons.division,
+				this.config.defaultToolbarButtons.unorderedList,
+				this.config.defaultToolbarButtons.orderedList
+  			],
+  			"insert": [
+	           this.config.defaultToolbarButtons.character,
+	           this.config.defaultToolbarButtons.emoticon
+  			]
+		};
+		
+		/**
+		 * Button map for default toolbar
+		 * 
+		 * @type Object
+		 */
+		this.config.defaultToolbarButtonMap = [
+		    this.config.defaultToolbarButtonGroups.font,
+		    this.config.defaultToolbarButtonGroups.color,
+		    this.config.defaultToolbarButtonGroups.style,
+		    this.config.defaultToolbarButtonGroups.justification,
+		    this.config.defaultToolbarButtonGroups.indentation,
+		    this.config.defaultToolbarButtonGroups.block,
+		    this.config.defaultToolbarButtonGroups.link,
+		    this.config.defaultToolbarButtonGroups.insert,
+			[
+				{className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()"}
+			],
+			[
+				{className:"undo", title:this._("Undo"), handler:"xed.handleUndo()"},
+				{className:"redo", title:this._("Redo"), handler:"xed.handleRedo()"}
+			]
+		];
 	},
 	
 	/////////////////////////////////////////////
@@ -1128,6 +1193,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 						this.rdom.getDoc().documentElement.style.overflowY='auto';
 						this.rdom.getDoc().documentElement.style.overflowX='hidden';
 					}
+					
 					this.setEditMode(mode);
 					this.PreventExit.defaultContent = this.getCurrentContent().stripTags();
 					
@@ -1136,6 +1202,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					this.timer.start();
 					this._fireOnInitialized(this);
 				}
+
 
 			}.bind(this), 10);
 			
@@ -1462,12 +1529,14 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.contentElement.parentNode.insertBefore(this.outmostWrapper, this.contentElement);
 		
 		// create toolbar
-		if(this.toolbarContainer || this.config.generateDefaultToolbar) {
+		
+		if(this.toolbarContainer || this.config.generateDefaultToolbar || this.config.defaultToolbarButtonList.length > 0) {
 			this.toolbar = new xq.ui.Toolbar(
 				this,
 				this.toolbarContainer,
 				this.outmostWrapper,
 				this.config.defaultToolbarButtonMap,
+				this.config.defaultToolbarButtonList,
 				this.config.imagePathForDefaultToolbar,
 				function() {
 					var element = this.getCurrentEditMode() === 'wysiwyg' ? this.lastFocusElement : null;
@@ -3102,7 +3171,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 
 	_: function(msg) {
 		if (xq._messages && xq._messages[this.config.lang] && typeof xq._messages[this.config.lang][msg] != 'undefined')
+		{
 			msg=xq._messages[this.config.lang][msg];
+		}
 
 		if (arguments.length > 1) {
 			for (var i=1; i < arguments.length; i++)

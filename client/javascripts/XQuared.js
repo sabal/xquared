@@ -8,8 +8,8 @@ if(!window.xq) {
 	var xq = {};
 }
 
-xq.majorVersion = '0.8';
-xq.minorVersion = '20090414';
+xq.majorVersion = '0.82';
+xq.minorVersion = '20090423';
 
 /**
  * Compiles regular expression pattern if possible.
@@ -24,8 +24,6 @@ xq.compilePattern = function(p, f) {
 	r.compile(p, f);
 	return r;
 }
-
-
 
 /**
  * @class Simple class based OOP framework

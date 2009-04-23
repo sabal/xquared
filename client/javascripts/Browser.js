@@ -4,6 +4,9 @@
  * @requires XQuared.js
  */
 xq.Browser = new function() {
+	
+	this.language = (navigator.appName == 'Netscape') ? navigator.language : navigator.browserLanguage;
+	
 	// By Rendering Engines
 	
 	/** 
