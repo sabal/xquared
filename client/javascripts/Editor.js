@@ -742,6 +742,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				this.config.defaultToolbarButtons.orderedList
   			],
   			"insert": [
+  			    this.config.defaultToolbarButtons.table,
+  				this.config.defaultToolbarButtons.separator,
 	           this.config.defaultToolbarButtons.character,
 	           this.config.defaultToolbarButtons.emoticon
   			]
