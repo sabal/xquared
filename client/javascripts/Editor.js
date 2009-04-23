@@ -73,6 +73,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config.changeCursorOnLink = false;
 		
 		/**
+		 * Table inline style
+		 * @type boolean
+		 */
+		this.config.enableTableInlineStyle = false;
+		
+		/**
 		 * Generates default toolbar if there's no toolbar provided.
 		 * @type boolean
 		 */

@@ -177,9 +177,9 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 				
 				if (propName == 'className') {
 					el.className = prop.className || '';					
-				} else {
+				} else if (propName != 'headerPositions'){
 					var defaultPropName = (propName == 'width')? el.nodeName.toLowerCase() + 'Width' : propName;
-					el.style[propName] = (value.length == 0 || value == xq.RichTable.defaultPropertyValues[defaultPropName])? '' : value;
+					el.style[propName] = (xed.config.enableTableInlineStyle || (value.length != 0 && value != xq.RichTable.defaultPropertyValues[defaultPropName]))? value : '';
 				}
 			}
 		}
@@ -228,7 +228,7 @@ xq.RichTable = xq.Class(/** @lends xq.RichTable.prototype */{
 	}
 });
 xq.RichTable.defaultPropertyValues = {
-	borderColor: '#999999',
+	borderColor: '#000000',
 	borderWidth: 1,
 	backgroundColor: '#FFFFFF',
 	tableWidth: '100%',
