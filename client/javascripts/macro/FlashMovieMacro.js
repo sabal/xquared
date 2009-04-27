@@ -15,12 +15,15 @@ xq.macro.FlashMovieMacro = xq.Class(xq.macro.Base,
 		this.params.html = this.html;
 	},
 	initFromParams: function() {
+		if(xq.macro.FlashMovieMacro.skipProviderValidation) return true;
 		if(!xq.macro.FlashMovieMacro.recognize(this.params.html)) throw "Unknown src";
 	},
 	createHtml: function() {
 		return this.params.html;
 	}
 });
+
+xq.macro.FlashMovieMacro.skipProviderValidation = false;
 
 xq.macro.FlashMovieMacro.whiteList = {
 	tvpot: /http:\/\/flvs\.daum\.net\/flvPlayer\.swf\?/,
@@ -44,6 +47,8 @@ xq.macro.FlashMovieMacro.whiteList = {
 };
 
 xq.macro.FlashMovieMacro.recognize = function(html) {
+	if(xq.macro.FlashMovieMacro.skipProviderValidation) return true;
+	
 	var providers = xq.macro.FlashMovieMacro.whiteList;
 	
 	for(var id in providers) {
