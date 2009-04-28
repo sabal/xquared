@@ -313,8 +313,9 @@ if(!window.Prototype) {
 	};
 	String.prototype.unescapeHTML = function() {
 		xq.divNode.innerHTML = this;
-		return xq.textNode.data;
+		return xq.divNode.childNodes[0] ? xq.divNode.childNodes[0].nodeValue : '';
 	};
+	
 	xq.textNode = document.createTextNode('');
 	xq.divNode = document.createElement('div');
 	xq.divNode.appendChild(xq.textNode);
