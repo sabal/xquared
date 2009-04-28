@@ -42,6 +42,7 @@
                 {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}
 			]};
 
+
 		xed.config.defaultToolbarButtons.fontSize =
 			{className:"fontSize", title:"글자 크기", list:[
                 {html:"가나다라마바사 (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},
@@ -51,42 +52,6 @@
                 {html:"가나다라마바사 (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},
                 {html:"가나다라마바사 (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
 			]};
-
-		xed.config.defaultToolbarButtonList = [
-			xed.config.defaultToolbarButtons.foregroundColor,
-			xed.config.defaultToolbarButtons.backgroundColor,
-			"seperator",
-			xed.config.defaultToolbarButtons.fontFace,
-			xed.config.defaultToolbarButtons.fontSize,
-			"seperator",
-			xed.config.defaultToolbarButtons.link,
-			xed.config.defaultToolbarButtons.removeLink,
-			 "seperator",
-			xed.config.defaultToolbarButtons.strongEmphasis,
-			xed.config.defaultToolbarButtons.emphasis,
-			xed.config.defaultToolbarButtons.underline,
-			xed.config.defaultToolbarButtons.strike,
-			xed.config.defaultToolbarButtons.superscription,
-			xed.config.defaultToolbarButtons.subscription,
-			xed.config.defaultToolbarButtons.removeFormat,
-			 "seperator",
-			xed.config.defaultToolbarButtons.justifyLeft,
-			xed.config.defaultToolbarButtons.justifyCenter,
-			xed.config.defaultToolbarButtons.justifyRight,
-			xed.config.defaultToolbarButtons.justifyBoth,
-			 "seperator",
-			xed.config.defaultToolbarButtons.indent,
-			xed.config.defaultToolbarButtons.outdent,
-			 "seperator",
-			xed.config.defaultToolbarButtons.blockquote,
-			xed.config.defaultToolbarButtons.code,
-			xed.config.defaultToolbarButtons.division,
-			xed.config.defaultToolbarButtons.unorderedList,
-			xed.config.defaultToolbarButtons.orderedList,
-			 "seperator",
-			xed.config.defaultToolbarButtons.character,
-			xed.config.defaultToolbarButtons.emoticon
-		];
 
 		// Customize Link and FileUpload Dialog
 		xq.ui_templates.basicLinkDialog= '<form id="linkDialog" class="xqFormDialog lightweight" action="#">\n	<h3>link</h3>\n	<div class="dialog-content">\n		<label class="link-target">링크 대상</label>\n		<input type="text" name="text" class="type-text" value="" />\n		<p class="explain">URL을 입력해주세요.</p>\n		<label class="link-name">표시할 이름</label>\n		<input type="text" name="url" class="type-text" value="http://" />\n		<div class="dialog-buttons">\n			<a href="#" class="button-white cancel">취소</a>\n			<a href="#" class="button-gray submit">생성</a>\n		</div>\n	</div>\n<p class="option"><label><input type="checkbox" class="type-checkbox" name="newWindow"/>새 창으로 열립니다.</label></p>\n</form>'

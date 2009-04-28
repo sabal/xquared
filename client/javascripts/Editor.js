@@ -701,6 +701,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
             {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
             {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
 		]};
+		
+		this.config.defaultToolbarButtons.html = {className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()" };
+		
+		this.config.defaultToolbarButtons.undo = {className:"undo", title:this._("Undo"), handler:"xed.handleUndo()" };
+		this.config.defaultToolbarButtons.redo = {className:"redo", title:this._("Redo"), handler:"xed.handleRedo()" };
 
 		this.config.defaultToolbarButtonGroups = {
 			"color": [
@@ -744,8 +749,15 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
   			"insert": [
   			    this.config.defaultToolbarButtons.table,
   				this.config.defaultToolbarButtons.separator,
-	           this.config.defaultToolbarButtons.character,
-	           this.config.defaultToolbarButtons.emoticon
+  				this.config.defaultToolbarButtons.character,
+  				this.config.defaultToolbarButtons.emoticon
+  			],
+  			"html": [
+  				this.config.defaultToolbarButtons.html
+	        ],
+	        "undo": [
+  				this.config.defaultToolbarButtons.undo,
+  				this.config.defaultToolbarButtons.redo
   			]
 		};
 		
@@ -763,13 +775,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		    this.config.defaultToolbarButtonGroups.block,
 		    this.config.defaultToolbarButtonGroups.link,
 		    this.config.defaultToolbarButtonGroups.insert,
-			[
-				{className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()"}
-			],
-			[
-				{className:"undo", title:this._("Undo"), handler:"xed.handleUndo()"},
-				{className:"redo", title:this._("Redo"), handler:"xed.handleRedo()"}
-			]
+		    this.config.defaultToolbarButtonGroups.html,
+		    this.config.defaultToolbarButtonGroups.undo
 		];
 	},
 	
