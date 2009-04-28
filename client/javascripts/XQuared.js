@@ -538,7 +538,7 @@ String.prototype.parseURL = function() {
 
 
 
-xq.commonAttrs = ['title', 'class', 'id', 'style'];;
+xq.commonAttrs = ['title', 'class', 'id', 'style'];
 
 /**
  * Pre-defined whitelist
