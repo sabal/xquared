@@ -16,7 +16,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 	 */
 	initialize: function(xed, html, onLoadHandler, onCloseHandler) {
 		xq.addToFinalizeQueue(this);
-
+		
 		this.xed = xed;
 		this.html = html;
 		this.onLoadHandler = onLoadHandler || function() {};
@@ -35,6 +35,21 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		options.mode = options.mode || 'modal';
 		options.cancelOnEsc = options.cancelOnEsc || true;
 		
+		if( typeof options.dialogId === 'undefined' )
+		{
+			this._createDialog(options);
+		}
+		else
+		{
+			if(!xq.$(options.dialogId))
+				this._createDialog(options);
+			else
+				xq.$(options.dialogId).style.display = '';				
+		}
+	},
+	
+	_createDialog: function(options)
+	{
 		var self = this;
 		
 		// create and append container
@@ -50,7 +65,10 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		for (var i = 0; i < submitButtons.length; i++) {
 			submitButtons[i].onclick = function() {
 				self.onCloseHandler(xq.serializeForm(this.form));
-				if(!options.notSelfClose) self.close();
+				if(!options.notSelfClose)
+				{
+					self.close();
+				}
 				return false;
 			}.bind(this);
 		}
@@ -113,7 +131,6 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		
 		this.onLoadHandler(this);
 	},
-	
 	/**
 	 * Closes dialog
 	 */

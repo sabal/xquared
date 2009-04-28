@@ -1976,7 +1976,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 		
-		dialog.show({position: 'centerOfEditor', mode: 'lightweight', notSelfClose: true});
+		dialog.show({position: 'centerOfEditor', mode: 'lightweight', notSelfClose: true, dialogId:'linkDialog'});
 		this.lastLinkDialog = dialog;
 		return true;
 	},

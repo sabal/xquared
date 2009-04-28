@@ -349,7 +349,9 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		{
 			var src = e.target || e.srcElement;
 			
-			if(src.id.indexOf("extForeColor") !== -1 || src.className.indexOf("jscolor") !== -1)
+			var linkDlg = xq.$('linkDialog');
+			
+			if( (linkDlg !== null && linkDlg.style.display !== 'none') || src.id.indexOf("extForeColor") !== -1 || src.className.indexOf("jscolor") !== -1)
 			{
 				return false;
 			}
