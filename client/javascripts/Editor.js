@@ -1762,6 +1762,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		var stop = false;
 		for(var key in acs) {
 			var ac = acs[key];
+			
 			if(ac.criteria(text)) {
 				try {
 					this.editHistory.onCommand();
@@ -2891,7 +2892,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	},
 	
 	/**
-	 * Inserts seperator (HR)
+	 * Inserts separator (HR)
 	 * @TODO: Add selenium test
 	 */
 	handleSeparator: function() {

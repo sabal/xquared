@@ -187,7 +187,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			var btnListLen = this.buttonList.length;
 			for(var i = 0; i < btnListLen; i++)
 			{
-				if(this.buttonList[i] == "seperator" )
+				if(this.buttonList[i] == "separator" )
 				{
 					continue;
 				}
@@ -197,7 +197,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				buttons.appendChild(li);
 				li.className = buttonConfig.className;
 				
-				if(typeof this.buttonList[i-1] !== "undefined" && this.buttonList[i-1] == "seperator" )
+				if(typeof this.buttonList[i-1] !== "undefined" && this.buttonList[i-1] == "separator" )
 				{
 					li.className += ' xq_separator';
 				}
