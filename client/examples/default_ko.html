@@ -53,6 +53,49 @@
                 {html:"가나다라마바사 (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}
 			]};
 
+		xed.config.defaultToolbarButtonList = [
+			xed.config.defaultToolbarButtons.fontFace,
+			xed.config.defaultToolbarButtons.fontSize,
+			"seperator",
+			xed.config.defaultToolbarButtons.foregroundColor,
+			xed.config.defaultToolbarButtons.backgroundColor,
+			"seperator",
+			xed.config.defaultToolbarButtons.link,
+			xed.config.defaultToolbarButtons.removeLink,
+			"seperator",
+			xed.config.defaultToolbarButtons.strongEmphasis,
+			xed.config.defaultToolbarButtons.emphasis,
+			xed.config.defaultToolbarButtons.underline,
+			xed.config.defaultToolbarButtons.strike,
+			xed.config.defaultToolbarButtons.superscription,
+			xed.config.defaultToolbarButtons.subscription,
+			xed.config.defaultToolbarButtons.removeFormat,
+			"seperator",
+			xed.config.defaultToolbarButtons.justifyLeft,
+			xed.config.defaultToolbarButtons.justifyCenter,
+			xed.config.defaultToolbarButtons.justifyRight,
+			xed.config.defaultToolbarButtons.justifyBoth,
+			"seperator",
+			xed.config.defaultToolbarButtons.indent,
+			xed.config.defaultToolbarButtons.outdent,
+			"seperator",
+			xed.config.defaultToolbarButtons.blockquote,
+			xed.config.defaultToolbarButtons.code,
+			xed.config.defaultToolbarButtons.division,
+			xed.config.defaultToolbarButtons.unorderedList,
+			xed.config.defaultToolbarButtons.orderedList,
+			"seperator",
+			xed.config.defaultToolbarButtons.table,
+			xed.config.defaultToolbarButtons.separator,
+			xed.config.defaultToolbarButtons.character,
+			xed.config.defaultToolbarButtons.emoticon,
+			"seperator",
+			xed.config.defaultToolbarButtons.html,
+			"seperator",
+			xed.config.defaultToolbarButtons.undo,
+			xed.config.defaultToolbarButtons.redo
+		];
+
 		// Customize Link and FileUpload Dialog
 		xq.ui_templates.basicLinkDialog= '<form id="linkDialog" class="xqFormDialog lightweight" action="#">\n	<h3>link</h3>\n	<div class="dialog-content">\n		<label class="link-target">링크 대상</label>\n		<input type="text" name="text" class="type-text" value="" />\n		<p class="explain">URL을 입력해주세요.</p>\n		<label class="link-name">표시할 이름</label>\n		<input type="text" name="url" class="type-text" value="http://" />\n		<div class="dialog-buttons">\n			<a href="#" class="button-white cancel">취소</a>\n			<a href="#" class="button-gray submit">생성</a>\n		</div>\n	</div>\n<p class="option"><label><input type="checkbox" class="type-checkbox" name="newWindow"/>새 창으로 열립니다.</label></p>\n</form>'
 		xq.ui_templates.basicFileUploadDialog='<form id="fileUploadDialog" class="xqFormDialog modal" method="post" enctype="multipart/form-data" target="uploadTarget" action="" >\n		<h3>파일 첨부</h3>\n		<div class="dialog-content">\n			<div class="attachment-section">\n				<label class="label" for="searchAttachFile">파일찾기</label><input type="file" class="type-text" id="searchAttachFile" name="tempFile" />\n			</div>\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">닫기</a>\n				<a href="#" class="button-gray submit">삽입</a>\n			</div>\n		</div>\n		<iframe id="uploadTarget" name="uploadTarget" src="" style="width:0;height:0;border:0px solid #fff;"></iframe>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="Close" /></a>\n<input type="hidden" name="accept" value="application/json" />	</form>';
