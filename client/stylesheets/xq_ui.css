@@ -51,6 +51,7 @@
 	height: 100%;
 	_height: auto;
 	z-index: 0;
+	cursor: pointer;
 }
 .xquared ul.buttons li a img {
 	height: 15px;
@@ -260,6 +261,7 @@
 /* lightweight base */
 .lightweight a {
 	color: #333;
+	cursor: pointer;
 }
 .lightweight h3 {
 	display: none;
