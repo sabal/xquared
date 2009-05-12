@@ -510,8 +510,6 @@
 	overflow: hidden;
 }
 #emoticonDialog ul li {
-	width: 26px;
-	height: 26px;
 	float: left;
 	text-align: center;
 	position: relative;
@@ -551,8 +549,6 @@
 	overflow: hidden;
 }
 #characterDialog ul li {
-	width: 20px;
-	height: 20px;
 	float: left;
 	text-align: center;
 	position: relative;

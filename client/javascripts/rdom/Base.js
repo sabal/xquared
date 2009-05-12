@@ -1643,7 +1643,64 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 		
 		return blocks;
 	},
+	
+	/**
+     * Applies inline style to selected area
+	 *
+	 * @param {prop} property name
+	 * @param {String} type property value
+	 * @param {element} element target element
+	 * @returns {Element} affected element
+	 */
+	
+	applyInlineStyle: function(prop, value, element){
+		element = element || this.getCurrentBlockElement();
+		
+		var root = this.getRoot();
+		if(!element || element === root) return null;
+		
+		var ret;
+		var markers = xq.getElementsByClassName(element, "xquared_marker", "SPAN");
+		
+		if (markers.length > 1){
+			var nodes = this.tree.collectNodesBetween(markers[0], markers[1]);
+			for (var i = 0; i < nodes.length; i++){
+				if (nodes[i] !== markers[0] && nodes[i] !==  markers[1]){
+					ret = this.wrapElement('SPAN',nodes[i]);
+					ret.style[prop] = value;
+				}
+			} 
+		} else if (markers.length > 0 && markers[0].id == 'xquared_selection_start') {
+			var span = this.createElement('SPAN');
+			this.insertNodeAt(span, element.lastChild, 'after');
+			markers[0].innerHTML = "xquared_selection_start";
+			ret = this.smartWrap(span, 'SPAN', function(text){
+				var index = text.lastIndexOf("xquared_selection_start");
+				return index === -1 ? index : index + 23;
+			});
+			ret.style[prop] = value;
+		} else if (markers.length > 0 && markers[0].id == 'xquared_selection_end'){
+			ret = this.smartWrap(markers[0], 'SPAN');
+			ret.style[prop] = value;
+		} else {
+			element.style[prop] = value;
+		}
+		
+		return ret || element;
+	},
 
+	applyInlineStyles: function(from, to, prop, value){
+		var blocks = this.getBlockElementsBetween(from, to);
+		
+		for (var i = 0; i < blocks.length; i++) {
+			if (this.tree._blockContainerTags.indexOf(blocks[i].nodeName) === -1 && this.tree._blockTags.indexOf(blocks[i].nodeName) !== -1) {
+				blocks[i] = this.applyInlineStyle(prop, value, blocks[i]);
+			}
+		}
+		
+		return blocks;
+	},
+	
 	/**
 	 * Insert place-holder for given empty element. Empty element does not displayed and causes many editing problems.
 	 *

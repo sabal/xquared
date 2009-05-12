@@ -78,6 +78,7 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 			cancelButtons[j].onclick = function() {
 				self.onCloseHandler();
 				self.close();
+				return false;
 			};
 		}
 		

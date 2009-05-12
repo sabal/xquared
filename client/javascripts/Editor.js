@@ -676,30 +676,30 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			{html:"%E2%84%A1", handler:"xed.handleCharacter('%E2%84%A1')"}
 		]};
 		
-		this.config.defaultToolbarButtons.emoticon = {className:"emoticon", title:this._("Emoticon"), list: [
-            {html:"num1.gif", handler:"xed.handleEmoticon('num1.gif')"},
-            {html:"num2.gif", handler:"xed.handleEmoticon('num2.gif')"},
-            {html:"num3.gif", handler:"xed.handleEmoticon('num3.gif')"},
-            {html:"num4.gif", handler:"xed.handleEmoticon('num4.gif')"},
-            {html:"num5.gif", handler:"xed.handleEmoticon('num5.gif')"},
-            {html:"question.gif", handler:"xed.handleEmoticon('question.gif')"},
-            {html:"disk.gif", handler:"xed.handleEmoticon('disk.gif')"},
-            {html:"play.gif", handler:"xed.handleEmoticon('play.gif')"},
-            {html:"flag1.gif", handler:"xed.handleEmoticon('flag1.gif')"},
-            {html:"flag2.gif", handler:"xed.handleEmoticon('flag2.gif')"},
-            {html:"flag3.gif", handler:"xed.handleEmoticon('flag3.gif')"},
-            {html:"flag4.gif", handler:"xed.handleEmoticon('flag4.gif')"},
-            {html:"arrow_left.gif", handler:"xed.handleEmoticon('arrow_left.gif')"},
-            {html:"arrow_right.gif", handler:"xed.handleEmoticon('arrow_right.gif')"},
-            {html:"arrow_up.gif", handler:"xed.handleEmoticon('arrow_up.gif')"},
-            {html:"arrow_down.gif", handler:"xed.handleEmoticon('arrow_down.gif')"},
-            {html:"step1.gif", handler:"xed.handleEmoticon('step1.gif')"},
-            {html:"step2.gif", handler:"xed.handleEmoticon('step2.gif')"},
-            {html:"step3.gif", handler:"xed.handleEmoticon('step3.gif')"},
-            {html:"note.gif", handler:"xed.handleEmoticon('note.gif')"},
-            {html:"heart.gif", handler:"xed.handleEmoticon('heart.gif')"},
-            {html:"good.gif", handler:"xed.handleEmoticon('good.gif')"},
-            {html:"bad.gif", handler:"xed.handleEmoticon('bad.gif')"}
+		this.config.defaultToolbarButtons.emoticon = {className:"emoticon", style: {width: "224px"}, title:this._("Emoticon"), list: [
+            {html:"num1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num1.gif')"},
+            {html:"num2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num2.gif')"},
+            {html:"num3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num3.gif')"},
+            {html:"num4.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num4.gif')"},
+            {html:"num5.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num5.gif')"},
+            {html:"question.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('question.gif')"},
+            {html:"disk.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('disk.gif')"},
+            {html:"play.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('play.gif')"},
+            {html:"flag1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag1.gif')"},
+            {html:"flag2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag2.gif')"},
+            {html:"flag3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag3.gif')"},
+            {html:"flag4.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag4.gif')"},
+            {html:"arrow_left.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_left.gif')"},
+            {html:"arrow_right.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_right.gif')"},
+            {html:"arrow_up.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_up.gif')"},
+            {html:"arrow_down.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_down.gif')"},
+            {html:"step1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step1.gif')"},
+            {html:"step2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step2.gif')"},
+            {html:"step3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step3.gif')"},
+            {html:"note.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('note.gif')"},
+            {html:"heart.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('heart.gif')"},
+            {html:"good.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('good.gif')"},
+            {html:"bad.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('bad.gif')"}
 		]};
 		
 		this.config.defaultToolbarButtons.html = {className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()" };
@@ -2653,6 +2653,49 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		}
 		var historyAdded = this.editHistory.onCommand();
 		this._fireOnCurrentContentChanged(this);
+		
+		return true;
+	},
+	
+	handleInlineStyle: function(prop, value){
+		if(this.rdom.hasSelection(true)) {
+			var bm = this.rdom.saveSelection();
+			
+			var spanStart = this.rdom.createElement('SPAN');
+			spanStart.id = 'xquared_selection_start';
+			spanStart.className = 'xquared_marker';
+			
+			this.rdom.collapseSelection(true);
+			this.rdom.insertNode(spanStart);
+			
+			var spanEnd = this.rdom.createElement('SPAN');
+			spanEnd.id = 'xquared_selection_end';
+			spanEnd.className = 'xquared_marker';
+			
+			this.rdom.restoreSelection(bm);
+			this.rdom.collapseSelection(false);
+			this.rdom.insertNode(spanEnd);
+			
+			this.rdom.restoreSelection(bm);
+			
+			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
+			
+			if(blocks.first() !== blocks.last()) {
+				var affected = this.rdom.applyInlineStyles(blocks.first(), blocks.last(), prop, value);
+			} else {
+				var affected = this.rdom.applyInlineStyle(prop, value);
+			}
+			
+			setTimeout(function(){
+				xed.rdom.deleteNode(spanStart);
+				xed.rdom.deleteNode(spanEnd);
+			},0)
+		}
+		
+		if(affected && !this.rdom.tree.isAtomic(this.rdom.getCurrentElement())) {
+			var historyAdded = this.editHistory.onCommand();
+			this._fireOnCurrentContentChanged(this);
+		}
 		
 		return true;
 	},

@@ -12,13 +12,15 @@
 		xed = new xq.Editor("xqEditor");
 		xed.setEditMode('wysiwyg');
 		xed.setWidth("100%");
+		
+		document.getElementById("subject").focus();
 	}
 	//]]></script>
 </head>
 
 <body>
 	<form action="#" method="post" onsubmit="alert(xq.$('xqEditor').value); return false;">
-		<label>Subject: <input type="text" name="subject" /></label>
+		<label>Subject: <input type="text" name="subject" id="subject" /></label>
 		<label>Content:
 		<textarea name="content" id="xqEditor">&lt;p&gt;Hello &lt;a href="#"&gt;World&lt;/a&gt;!&lt;/p&gt;</textarea>
 		</label>

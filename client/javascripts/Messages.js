@@ -40,5 +40,6 @@ xq._messages['ko']={
 	"Unknown error":"알수없는 에러가 발생했습니다",
 	'Please enter column value between 1 to 30.':'1부터 30 이내의 값을 입력해주세요',
 	'Please enter row value between 1 to 120.':'1부터 20 이내의 값을 입력해주세요',
-	"Unknown URL pattern":"잘못된 형식의 URL입니다"	
+	"Unknown URL pattern":"잘못된 형식의 URL입니다",
+	"Line height":"줄간격"
 };

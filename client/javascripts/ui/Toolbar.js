@@ -284,6 +284,12 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		dialog.className = "xqFormDialog lightweight";
 		dialog.style.display = 'none';
 		
+		if (buttonConfig.style) {
+			for (attr in buttonConfig.style){
+				dialog.style[attr] = buttonConfig.style[attr];
+			}
+		}
+		
 		var title = this.doc.createElement('H3');
 		title.innerHTML = buttonConfig.title;
 		dialog.appendChild(title);
@@ -339,7 +345,11 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		if (dialog) {
 			dialog.style.display = 'block';
 			dialog.style.top = this.container.offsetTop + this.container.offsetHeight + 'px';
-			dialog.style.left = this.container.offsetLeft + src.parentNode.offsetLeft + 'px';
+			
+			var dialogLeft = this.container.offsetLeft + src.parentNode.offsetLeft;
+			var isOverflow = this.xed.outmostWrapper.offsetWidth < dialogLeft + dialog.offsetWidth;
+			
+			dialog.style.left = (isOverflow)? (dialogLeft - dialog.offsetWidth + src.parentNode.offsetWidth) + 'px' : dialogLeft + 'px'
 		} 
 		xq.stopEvent(e);
 		return false;
