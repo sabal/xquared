@@ -242,6 +242,8 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 	_createButton: function(buttonConfig, span) {
 		var a = this.doc.createElement('a');
 		span.appendChild(a);
+		
+		a.href = "#";
 		a.title = buttonConfig.title;
 		if (buttonConfig.handler){
 			a.handler = buttonConfig.handler;
@@ -308,6 +310,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				}
 			}
 			
+			anchor.href = "#";
 			anchor.handler = item.handler;
 			
 			for (attr in item.style){
