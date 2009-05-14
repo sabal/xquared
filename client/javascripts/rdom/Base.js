@@ -379,6 +379,32 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 		return wrapper;
 	},
 	
+	wrapElements: function(tag, startElement, endElement){
+		// split inline elements up to parent block if necessary
+		var family = this.tree.findCommonAncestorAndImmediateChildrenOf(startElement, endElement);
+		var ca = family.parent;
+		if(ca) {
+			if(startElement.parentNode !== ca) startElement = this.splitElementUpto(startElement, ca, true);
+			if(endElement.parentNode !== ca) endElement = this.splitElementUpto(endElement, ca, true);
+			
+			var prevStart = startElement.previousSibling;
+			var nextEnd = endElement.nextSibling;
+			
+			// remove empty inline elements
+			if(prevStart && prevStart.nodeType === 1 && this.isEmptyBlock(prevStart)) this.deleteNode(prevStart);
+			if(nextEnd && nextEnd.nodeType === 1 && this.isEmptyBlock(nextEnd)) this.deleteNode(nextEnd);
+			
+			// wrap
+			var wrapper = this.insertNodeAt(this.createElement(tag), startElement, "before");
+			while(wrapper.nextSibling !== endElement) wrapper.appendChild(wrapper.nextSibling);
+			return wrapper;
+		} else {
+			// wrap
+			var wrapper = this.insertNodeAt(this.createElement(tag), endElement, "before");
+			return wrapper;
+		}
+	},
+	
 	/**
 	 * Tests #smartWrap with given criteria but doesn't change anything
 	 */
@@ -418,7 +444,7 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 			nodeValues.push(textNodes[i].nodeValue);
 		}
 		var textToWrap = nodeValues.join("");
-		var textIndex = criteria(textToWrap)
+		var textIndex = criteria(textToWrap);
 		var breakPoint = textIndex;
 		
 		if(breakPoint === -1) {
@@ -446,29 +472,7 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 		}
 		var startElement = textNodes[nodeIndex] || block.firstChild;
 		
-		// split inline elements up to parent block if necessary
-		var family = this.tree.findCommonAncestorAndImmediateChildrenOf(startElement, endElement);
-		var ca = family.parent;
-		if(ca) {
-			if(startElement.parentNode !== ca) startElement = this.splitElementUpto(startElement, ca, true);
-			if(endElement.parentNode !== ca) endElement = this.splitElementUpto(endElement, ca, true);
-			
-			var prevStart = startElement.previousSibling;
-			var nextEnd = endElement.nextSibling;
-			
-			// remove empty inline elements
-			if(prevStart && prevStart.nodeType === 1 && this.isEmptyBlock(prevStart)) this.deleteNode(prevStart);
-			if(nextEnd && nextEnd.nodeType === 1 && this.isEmptyBlock(nextEnd)) this.deleteNode(nextEnd);
-			
-			// wrap
-			var wrapper = this.insertNodeAt(this.createElement(tag), startElement, "before");
-			while(wrapper.nextSibling !== endElement) wrapper.appendChild(wrapper.nextSibling);
-			return wrapper;
-		} else {
-			// wrap
-			var wrapper = this.insertNodeAt(this.createElement(tag), endElement, "before");
-			return wrapper;
-		}
+		return this.wrapElements(tag, startElement, endElement);
 	},
 	
 	/**
@@ -1653,16 +1657,16 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 	 * @returns {Element} affected element
 	 */
 	
-	applyInlineStyle: function(prop, value, element){
+	applyInlineStyle: function(prop, value, element, isPartial){
 		element = element || this.getCurrentBlockElement();
-		
+
 		var root = this.getRoot();
 		if(!element || element === root) return null;
 		
 		var ret;
 		var markers = xq.getElementsByClassName(element, "xquared_marker", "SPAN");
 		
-		if (markers.length > 1){
+		if (isPartial && markers.length > 1){
 			var nodes = this.tree.collectNodesBetween(markers[0], markers[1]);
 			for (var i = 0; i < nodes.length; i++){
 				if (nodes[i] !== markers[0] && nodes[i] !==  markers[1]){
@@ -1670,16 +1674,12 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 					ret.style[prop] = value;
 				}
 			} 
-		} else if (markers.length > 0 && markers[0].id == 'xquared_selection_start') {
+		} else if (isPartial && markers.length > 0 && markers[0].id == 'xquared_selection_start') {
 			var span = this.createElement('SPAN');
-			this.insertNodeAt(span, element.lastChild, 'after');
-			markers[0].innerHTML = "xquared_selection_start";
-			ret = this.smartWrap(span, 'SPAN', function(text){
-				var index = text.lastIndexOf("xquared_selection_start");
-				return index === -1 ? index : index + 23;
-			});
+			element.appendChild(span);
+			ret = this.wrapElements('SPAN', markers[0], span);
 			ret.style[prop] = value;
-		} else if (markers.length > 0 && markers[0].id == 'xquared_selection_end'){
+		} else if (isPartial && markers.length > 0 && markers[0].id == 'xquared_selection_end'){
 			ret = this.smartWrap(markers[0], 'SPAN');
 			ret.style[prop] = value;
 		} else {
@@ -1688,13 +1688,15 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 		
 		return ret || element;
 	},
+	
+	
 
-	applyInlineStyles: function(from, to, prop, value){
+	applyInlineStyles: function(from, to, prop, value, isPartial){
 		var blocks = this.getBlockElementsBetween(from, to);
 		
 		for (var i = 0; i < blocks.length; i++) {
 			if (this.tree._blockContainerTags.indexOf(blocks[i].nodeName) === -1 && this.tree._blockTags.indexOf(blocks[i].nodeName) !== -1) {
-				blocks[i] = this.applyInlineStyle(prop, value, blocks[i]);
+				blocks[i] = this.applyInlineStyle(prop, value, blocks[i], isPartial);
 			}
 		}
 		
@@ -1958,6 +1960,13 @@ xq.rdom.Base = xq.Class(/** @lends xq.rdom.Base.prototype */{
 	 * @param {Element} element Target element
 	 */
 	placeCaretAtStartOf: function(element) {throw "Not implemented"},
+	
+	/**
+	 * Places caret at end of the element
+	 *
+	 * @param {Element} element Target element
+	 */
+	placeCaretAtEndOf: function(element) {throw "Not implemented"},
 
 	
 	/**

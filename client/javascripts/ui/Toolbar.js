@@ -309,7 +309,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				if (buttonConfig.className == 'emoticon') {
 					var emoticon = this.doc.createElement('IMG');
 					emoticon.src = this.xed.config.imagePathForEmoticon + item.html;
-					emoticon.alt = item.html;
+					emoticon.alt = item.alt || item.html;
 					anchor.appendChild(emoticon);				
 				} else {
 					anchor.innerHTML = decodeURIComponent(item.html);
@@ -349,7 +349,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			var dialogLeft = this.container.offsetLeft + src.parentNode.offsetLeft;
 			var isOverflow = this.xed.outmostWrapper.offsetWidth < dialogLeft + dialog.offsetWidth;
 			
-			dialog.style.left = (isOverflow)? (dialogLeft - dialog.offsetWidth + src.parentNode.offsetWidth) + 'px' : dialogLeft + 'px'
+			dialog.style.left = (isOverflow)? (dialogLeft - dialog.offsetWidth + src.parentNode.offsetWidth) + 'px' : dialogLeft + 'px';
 		} 
 		xq.stopEvent(e);
 		return false;

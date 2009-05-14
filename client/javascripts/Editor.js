@@ -677,29 +677,29 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		]};
 		
 		this.config.defaultToolbarButtons.emoticon = {className:"emoticon", style: {width: "224px"}, title:this._("Emoticon"), list: [
-            {html:"num1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num1.gif')"},
-            {html:"num2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num2.gif')"},
-            {html:"num3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num3.gif')"},
-            {html:"num4.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num4.gif')"},
-            {html:"num5.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num5.gif')"},
-            {html:"question.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('question.gif')"},
-            {html:"disk.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('disk.gif')"},
-            {html:"play.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('play.gif')"},
-            {html:"flag1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag1.gif')"},
-            {html:"flag2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag2.gif')"},
-            {html:"flag3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag3.gif')"},
-            {html:"flag4.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag4.gif')"},
-            {html:"arrow_left.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_left.gif')"},
-            {html:"arrow_right.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_right.gif')"},
-            {html:"arrow_up.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_up.gif')"},
-            {html:"arrow_down.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_down.gif')"},
-            {html:"step1.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step1.gif')"},
-            {html:"step2.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step2.gif')"},
-            {html:"step3.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step3.gif')"},
-            {html:"note.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('note.gif')"},
-            {html:"heart.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('heart.gif')"},
-            {html:"good.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('good.gif')"},
-            {html:"bad.gif", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('bad.gif')"}
+            {html:"num1.gif", alt: "Number 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num1.gif')"},
+            {html:"num2.gif", alt: "Number 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num2.gif')"},
+            {html:"num3.gif", alt: "Number 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num3.gif')"},
+            {html:"num4.gif", alt: "Number 4", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num4.gif')"},
+            {html:"num5.gif", alt: "Number 5", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num5.gif')"},
+            {html:"question.gif", alt: "Question Mark", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('question.gif')"},
+            {html:"disk.gif", alt: "Disk", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('disk.gif')"},
+            {html:"play.gif", alt: "Play!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('play.gif')"},
+            {html:"flag1.gif", alt: "Red Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag1.gif')"},
+            {html:"flag2.gif", alt: "Yellow Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag2.gif')"},
+            {html:"flag3.gif", alt: "Green Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag3.gif')"},
+            {html:"flag4.gif", alt: "Blue Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag4.gif')"},
+            {html:"arrow_left.gif", alt: "Left Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_left.gif')"},
+            {html:"arrow_right.gif", alt: "Right Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_right.gif')"},
+            {html:"arrow_up.gif", alt: "Up Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_up.gif')"},
+            {html:"arrow_down.gif", alt: "Down Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_down.gif')"},
+            {html:"step1.gif", alt: "Step 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step1.gif')"},
+            {html:"step2.gif", alt: "Step 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step2.gif')"},
+            {html:"step3.gif", alt: "Step 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step3.gif')"},
+            {html:"note.gif", alt: "Note", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('note.gif')"},
+            {html:"heart.gif", alt: "Heart", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('heart.gif')"},
+            {html:"good.gif", alt: "Good!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('good.gif')"},
+            {html:"bad.gif", alt: "Bad", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('bad.gif')"}
 		]};
 		
 		this.config.defaultToolbarButtons.html = {className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()" };
@@ -2657,8 +2657,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		return true;
 	},
 	
-	handleInlineStyle: function(prop, value){
+	handleInlineStyle: function(prop, value, isPartial){
 		if(this.rdom.hasSelection(true)) {
+			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
 			var bm = this.rdom.saveSelection();
 			
 			var spanStart = this.rdom.createElement('SPAN');
@@ -2676,20 +2677,23 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			this.rdom.collapseSelection(false);
 			this.rdom.insertNode(spanEnd);
 			
-			this.rdom.restoreSelection(bm);
-			
-			var blocks = this.rdom.getBlockElementsAtSelectionEdge(true, true);
-			
 			if(blocks.first() !== blocks.last()) {
-				var affected = this.rdom.applyInlineStyles(blocks.first(), blocks.last(), prop, value);
+				var affected = this.rdom.applyInlineStyles(blocks.first(), blocks.last(), prop, value, isPartial);
 			} else {
-				var affected = this.rdom.applyInlineStyle(prop, value);
+				var affected = this.rdom.applyInlineStyle(prop, value, blocks.first(), isPartial);
 			}
 			
 			setTimeout(function(){
 				xed.rdom.deleteNode(spanStart);
 				xed.rdom.deleteNode(spanEnd);
-			},0)
+			}, 0);
+			
+		} else {
+			if (isPartial) {
+				// Todo
+			} else {
+				var affected = this.rdom.applyInlineStyle(prop, value, this.rdom.getCurrentBlockElement(), isPartial);
+			}
 		}
 		
 		if(affected && !this.rdom.tree.isAtomic(this.rdom.getCurrentElement())) {

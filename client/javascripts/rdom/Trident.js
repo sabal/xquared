@@ -247,6 +247,14 @@ xq.rdom.Trident = xq.Class(xq.rdom.Base,
 		this.collapseSelection(false);
 		this.deleteNode(ph);
 	},
+		
+	placeCaretAtEndOf: function(element) {
+		// If there's no empty span, caret sometimes moves into a previous node.
+		var ph = this.insertNodeAt(this.createElement("SPAN"), element, "end");
+		this.selectElement(ph);
+		this.collapseSelection(false);
+		this.deleteNode(ph);
+	},
 	
 	selectElement: function(element, entireElement, forceTextSelection) {
 		if(!element) throw "[element] is null";
