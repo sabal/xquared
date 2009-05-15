@@ -923,14 +923,14 @@
 	float: left;
 }
 #tableDialog div.dialog-content fieldset.table-border li.weight-li span.controller {
-	top: 0px;
+	top: -1px;
 	/top: -2px;
 }
 #tableDialog div.dialog-content fieldset span.controller .type-text {
-	width: 41px;
+	width: 22px;
 	font-size: 11px;
-	padding-top: 2px;
-	/padding-top: 1px;
+	padding: 1px 19px 3px 4px;
+	/padding-top: 0;
 }
 
 #tableDialog div.dialog-content fieldset span.controller span.buttons {
@@ -938,7 +938,7 @@
 	width: 15px;
 	height: 14px;
 	position: absolute;
-	top: 2px;
+	top: 3px;
 	/top: 4px;
 	right: 2px;
 	_right: 1px;

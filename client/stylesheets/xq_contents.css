@@ -111,12 +111,15 @@
 	border-bottom: 1px solid #000;
 	border-right: 1px solid #000;	
 	width: auto;
+	text-align: left;
+	font-size: 12px;
 }
 .xed table.datatable2 td {
 	padding: 0.25em 0.307em;
 	border-bottom: 1px solid #000;
 	border-right: 1px solid #000;	
 	width: auto;
+	font-size: 12px;
 }
 
 .xed img {

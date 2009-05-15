@@ -677,29 +677,29 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		]};
 		
 		this.config.defaultToolbarButtons.emoticon = {className:"emoticon", style: {width: "224px"}, title:this._("Emoticon"), list: [
-            {html:"num1.gif", alt: "Number 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num1.gif')"},
-            {html:"num2.gif", alt: "Number 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num2.gif')"},
-            {html:"num3.gif", alt: "Number 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num3.gif')"},
-            {html:"num4.gif", alt: "Number 4", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num4.gif')"},
-            {html:"num5.gif", alt: "Number 5", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num5.gif')"},
-            {html:"question.gif", alt: "Question Mark", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('question.gif')"},
-            {html:"disk.gif", alt: "Disk", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('disk.gif')"},
-            {html:"play.gif", alt: "Play!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('play.gif')"},
-            {html:"flag1.gif", alt: "Red Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag1.gif')"},
-            {html:"flag2.gif", alt: "Yellow Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag2.gif')"},
-            {html:"flag3.gif", alt: "Green Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag3.gif')"},
-            {html:"flag4.gif", alt: "Blue Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag4.gif')"},
-            {html:"arrow_left.gif", alt: "Left Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_left.gif')"},
-            {html:"arrow_right.gif", alt: "Right Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_right.gif')"},
-            {html:"arrow_up.gif", alt: "Up Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_up.gif')"},
-            {html:"arrow_down.gif", alt: "Down Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_down.gif')"},
-            {html:"step1.gif", alt: "Step 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step1.gif')"},
-            {html:"step2.gif", alt: "Step 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step2.gif')"},
-            {html:"step3.gif", alt: "Step 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step3.gif')"},
-            {html:"note.gif", alt: "Note", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('note.gif')"},
-            {html:"heart.gif", alt: "Heart", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('heart.gif')"},
-            {html:"good.gif", alt: "Good!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('good.gif')"},
-            {html:"bad.gif", alt: "Bad", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('bad.gif')"}
+            {html:"num1.gif", alt: "Number 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num1.gif', 'Number 1')"},
+            {html:"num2.gif", alt: "Number 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num2.gif', 'Number 2')"},
+            {html:"num3.gif", alt: "Number 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num3.gif', 'Number 3')"},
+            {html:"num4.gif", alt: "Number 4", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num4.gif', 'Number 4')"},
+            {html:"num5.gif", alt: "Number 5", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('num5.gif', 'Number 5')"},
+            {html:"question.gif", alt: "Question Mark", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('question.gif', 'Question Mark')"},
+            {html:"disk.gif", alt: "Disk", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('disk.gif', 'Disk')"},
+            {html:"play.gif", alt: "Play!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('play.gif', 'Play!')"},
+            {html:"flag1.gif", alt: "Red Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag1.gif', 'Red Flag')"},
+            {html:"flag2.gif", alt: "Yellow Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag2.gif', 'Yellow Flag')"},
+            {html:"flag3.gif", alt: "Green Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag3.gif', 'Green Flag')"},
+            {html:"flag4.gif", alt: "Blue Flag", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('flag4.gif', 'Blue Flag')"},
+            {html:"arrow_left.gif", alt: "Left Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_left.gif', 'Left Arrow')"},
+            {html:"arrow_right.gif", alt: "Right Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_right.gif', 'Right Arrow')"},
+            {html:"arrow_up.gif", alt: "Up Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_up.gif', 'Up Arrow')"},
+            {html:"arrow_down.gif", alt: "Down Arrow", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('arrow_down.gif', 'Down Arrow')"},
+            {html:"step1.gif", alt: "Step 1", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step1.gif', 'Step 1')"},
+            {html:"step2.gif", alt: "Step 2", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step2.gif', 'Step 2')"},
+            {html:"step3.gif", alt: "Step 3", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('step3.gif', 'Step 3')"},
+            {html:"note.gif", alt: "Note", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('note.gif', 'Note')"},
+            {html:"heart.gif", alt: "Heart", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('heart.gif', 'Heart')"},
+            {html:"good.gif", alt: "Good!", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('good.gif', 'Good!')"},
+            {html:"bad.gif", alt: "Bad", style: {width: "24px", height: "24px"}, handler:"xed.handleEmoticon('bad.gif', 'Bad')"}
 		]};
 		
 		this.config.defaultToolbarButtons.html = {className:"html", title:this._("Edit source"), handler:"xed.toggleSourceAndWysiwygMode()" };
@@ -2989,10 +2989,10 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		return true;
 	},
 	
-	handleEmoticon: function(fileName){
+	handleEmoticon: function(fileName, alt){
 		var img = this.getDoc().createElement('IMG');
 		img.src = this.config.imagePathForEmoticon + fileName;
-		img.alt = fileName;
+		img.alt = alt || fileName;
 		this.rdom.insertNode(img);
 	},
 	
