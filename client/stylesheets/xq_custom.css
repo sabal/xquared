@@ -2,7 +2,6 @@
 /* linkDialog */
 #linkDialog {
 	width: 315px;
-	background: #f4f4f4 url(../images/dialogs/link_bg.gif) repeat-x 0 0;
 }
 #linkDialog .dialog-content {
 	padding: 13px 15px;

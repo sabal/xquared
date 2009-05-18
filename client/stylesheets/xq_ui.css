@@ -575,7 +575,6 @@
 /* linkDialog */
 #linkDialog {
 	width: 339px;
-	background: #f4f4f4 url(../images/dialogs/link_bg.gif) repeat-x 0 0;
 }
 #linkDialog .dialog-content {
 	padding: 13px 15px;
@@ -929,8 +928,8 @@
 #tableDialog div.dialog-content fieldset span.controller .type-text {
 	width: 22px;
 	font-size: 11px;
-	padding: 1px 19px 3px 4px;
-	/padding-top: 0;
+	padding: 2px 19px 3px 4px;
+	height: 12px;
 }
 
 #tableDialog div.dialog-content fieldset span.controller span.buttons {

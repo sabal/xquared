@@ -1958,7 +1958,19 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				}
 				
 				if(!data) return;
-					
+				
+				if (data.text.length === 0){
+					alert( this._("Please enter link text."));
+					dialog.form.text.focus();
+					return;
+				}
+				
+				if (data.url.length === 0){
+					alert( this._("Please enter link url."));
+					dialog.form.url.focus();
+					return;
+				}
+				
 				var urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 				if( !urlRegex.test(data.url) )
 				{
@@ -1977,7 +1989,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		
 		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
 		
-		dialog.show({position: 'centerOfEditor', mode: 'lightweight', notSelfClose: true, dialogId:'linkDialog'});
+		dialog.show({position: 'centerOfEditor', mode: 'modal', notSelfClose: true, dialogId:'linkDialog'});
 		this.lastLinkDialog = dialog;
 		return true;
 	},
@@ -2021,7 +2033,11 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			var a = this.rdom.createElement('A');
 			a.href = url;
 			a.title = title;
-			if (className) a.className = className;
+			if (className) {
+				a.className = className;
+				if (className == 'newWindow' && xq.predefinedWhitelist.a.indexOf('target') != -1) a.target = "_blank";
+			}
+			
 			
 			a.appendChild(this.rdom.createTextNode(text));
 			this.rdom.insertNode(a);
