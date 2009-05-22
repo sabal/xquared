@@ -1940,11 +1940,10 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				setTimeout(function(){
 					if(text) {
 						dialog.form.text.value = text;
-						dialog.form.url.focus();
-						dialog.form.url.select();
-					} else {
-						dialog.form.text.focus();
 					}
+					var temp = dialog.form.url.value;
+					dialog.form.url.focus();
+					dialog.form.url.value = temp;
 					
 				}, 0);
 			},

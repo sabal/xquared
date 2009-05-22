@@ -13,7 +13,7 @@ xq.ui_templates.basicIFrameDialog='<form id="iframeDialog" class="xqFormDialog m
 if(!xq) xq = {};
 if(!xq.ui_templates) xq.ui_templates = {};
 
-xq.ui_templates.basicLinkDialog='<form id="linkDialog" class="xqFormDialog modal" action="#">\n		<h3>Insert Link</h3>\n		<div class="dialog-content">\n			<p>Please enter the URL and label.</p>\n			<input type="text" name="text" class="type-text" value="" />\n			<input type="text" name="url" class="type-text" value="http://" />\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">Cancel</a>\n				<a href="#" class="button-gray submit">Create</a>\n			</div>\n		</div>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>\n	</form>';
+xq.ui_templates.basicLinkDialog='<form id="linkDialog" class="xqFormDialog modal" action="#">\n		<h3>Insert Link</h3>\n		<div class="dialog-content">\n			<p>Please enter the URL and label.</p>\n			<input type="text" name="url" class="type-text" value="http://" />\n			<input type="text" name="text" class="type-text" value="" />\n			<div class="dialog-buttons">\n				<a href="#" class="button-white cancel">Cancel</a>\n				<a href="#" class="button-gray submit">Create</a>\n			</div>\n		</div>\n		<a href="#" class="cancel close-dialog"><img src="../images/dialogs/icon_close.gif" alt="close" /></a>\n	</form>';
 if(!xq) xq = {};
 if(!xq.ui_templates) xq.ui_templates = {};
 

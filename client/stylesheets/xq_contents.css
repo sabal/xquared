@@ -4,6 +4,7 @@
 	padding: 0.3em;
 	font-size: 12px;
 	font-family: Arial, dotum, sans-serif;
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 .xed * {
 	margin: 0;
@@ -37,6 +38,10 @@
 }
 
 .xed font {
+	line-height: 2em;
+}
+
+.xed span {
 	line-height: 2em;
 }
 
@@ -98,7 +103,7 @@
 /* table */
 .xed table.datatable2 {
 	width: 100%;
-	/width: auto;
+	/width: auto !important;
 	border-collapse: collapse;
 	table-layout: fixed;
 	border-left: 1px solid #000;
