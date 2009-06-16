@@ -37,8 +37,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			this.create();
 			this._addStyleRules([
 				{selector:".xquared div.toolbar", rule:"background-image: url(" + imagePath + "toolbarBg.gif)"},
-				{selector:".xquared ul.buttons li", rule:"background-image: url(" + imagePath + "toolbarButtonBg.gif)"},
-				{selector:".xquared ul.buttons li.xq_separator", rule:"background-image: url(" + imagePath + "toolbarSeparator.gif)"}
+				{selector:".xquared ul.buttons li", rule:"background-image: url(" + imagePath + "toolbarButtonBg.gif)"}
 			]);
 		} else {
 			this.container = container;
