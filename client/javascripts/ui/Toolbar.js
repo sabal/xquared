@@ -345,7 +345,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 			dialog.style.display = 'block';
 			dialog.style.top = this.container.offsetTop + this.container.offsetHeight + 'px';
 			
-			var dialogLeft = this.container.offsetLeft + src.parentNode.offsetLeft;
+			var dialogLeft = this.container.offsetLeft + src.parentNode.offsetLeft + 1;
 			var isOverflow = this.xed.outmostWrapper.offsetWidth < dialogLeft + dialog.offsetWidth;
 			
 			dialog.style.left = (isOverflow)? (dialogLeft - dialog.offsetWidth + src.parentNode.offsetWidth) + 'px' : dialogLeft + 'px';
