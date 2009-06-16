@@ -32,6 +32,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 * @returns {String} Validated HTML string
 	 */
 	validate: function(element, dontClone) {
+		if (xed.config.noValidationInWholeMode) return element.innerHTML;
 		// DOM validation
 		element = dontClone ? element : element.cloneNode(true);
 		this._fireOnBeforeDomValidation(element);
@@ -57,6 +58,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 * @returns {String} Invalidated HTML string
 	 */
 	invalidate: function(html) {
+		if (xed.config.noValidationInWholeMode) return html;
 		// Preprocessing
 		var html = {value: html};
 		this._fireOnPreprocessing(html);

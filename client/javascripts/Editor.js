@@ -146,6 +146,12 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this.config.noValidationInSourceEditMode = false;
 		
 		/**
+		 * Turns off validation.<br />
+		 * @type boolean
+		 */
+		this.config.noValidationInWholeMode = false;
+		
+		/**
 		 * Automatically hooks onsubmit event.
 		 * @type boolean
 		 */
