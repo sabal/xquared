@@ -94,6 +94,12 @@
 	font-style: normal;
 	text-decoration: underline;
 }
+
+.xed em em.underline {
+	font-style: italic;
+	text-decoration: underline;
+}
+
 .xed span.strike {
 	text-decoration: line-through;
 }
