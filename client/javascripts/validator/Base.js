@@ -32,17 +32,21 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 * @returns {String} Validated HTML string
 	 */
 	validate: function(element, dontClone) {
-		if (xed.config.noValidationInWholeMode) return element.innerHTML;
 		// DOM validation
 		element = dontClone ? element : element.cloneNode(true);
 		this._fireOnBeforeDomValidation(element);
-		this.validateDom(element);
+		if (!xed.config.noValidationInWholeMode) this.validateDom(element);
 		this._fireOnAfterDomValidation(element);
 		
 		// String validation
 		var html = {value: element.innerHTML};
 		this._fireOnBeforeStringValidation(html);
-		html.value = this.validateString(html.value);
+		if (xed.config.noValidationInWholeMode) {
+			if (xq.Browser.isTrident) html.value = this.lowerTagNamesAndUniformizeQuotation(html.value);
+			html.value = this.validateSelfClosingTags(html.value);
+		} else {
+			html.value = this.validateString(html.value);
+		}
 		this._fireOnAfterStringValidation(html);
 		
 		return html.value;
@@ -58,7 +62,6 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 * @returns {String} Invalidated HTML string
 	 */
 	invalidate: function(html) {
-		if (xed.config.noValidationInWholeMode) return html;
 		// Preprocessing
 		var html = {value: html};
 		this._fireOnPreprocessing(html);
@@ -67,13 +70,13 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 		var element = document.createElement("DIV");
 		element.innerHTML = html.value;
 		this._fireOnBeforeDomInvalidation(element);
-		this.invalidateDom(element);
+		if (!xed.config.noValidationInWholeMode) this.invalidateDom(element);
 		this._fireOnAfterDomInvalidation(element);
 		
 		// String invalidation
 		html.value = element.innerHTML;
 		this._fireOnBeforeStringInvalidation(html);
-		html.value = this.invalidateString(html.value);
+		if (!xed.config.noValidationInWholeMode) html.value = this.invalidateString(html.value);
 		this._fireOnAfterStringInvalidation(html);
 		
 		return html.value;
