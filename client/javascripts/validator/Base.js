@@ -31,17 +31,28 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 *
 	 * @returns {String} Validated HTML string
 	 */
-	validate: function(element, dontClone) {
+	validate: function(element, noValidation, dontClone) {
 		// DOM validation
-		element = dontClone ? element : element.cloneNode(true);
+		if (!dontClone) {
+			if (xq.Browser.isTrident){
+				// IE CloneNode Problem
+				var tempHtml = element.innerHTML;
+				element = document.createElement("DIV");
+				element.innerHTML = tempHtml;
+			} else {
+				element = element.cloneNode(true);
+			}
+		}
+		
+		//element = dontClone ? element : element.cloneNode(true);
 		this._fireOnBeforeDomValidation(element);
-		if (!xed.config.noValidationInWholeMode) this.validateDom(element);
+		if (!noValidation) this.validateDom(element);
 		this._fireOnAfterDomValidation(element);
 		
 		// String validation
 		var html = {value: element.innerHTML};
 		this._fireOnBeforeStringValidation(html);
-		if (xed.config.noValidationInWholeMode) {
+		if (noValidation) {
 			if (xq.Browser.isTrident) html.value = this.lowerTagNamesAndUniformizeQuotation(html.value);
 			html.value = this.validateSelfClosingTags(html.value);
 		} else {
@@ -61,7 +72,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	 * @param {String} html HTML string.
 	 * @returns {String} Invalidated HTML string
 	 */
-	invalidate: function(html) {
+	invalidate: function(html, noValidation) {
 		// Preprocessing
 		var html = {value: html};
 		this._fireOnPreprocessing(html);
@@ -70,13 +81,13 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 		var element = document.createElement("DIV");
 		element.innerHTML = html.value;
 		this._fireOnBeforeDomInvalidation(element);
-		if (!xed.config.noValidationInWholeMode) this.invalidateDom(element);
+		if (!noValidation) this.invalidateDom(element);
 		this._fireOnAfterDomInvalidation(element);
 		
 		// String invalidation
 		html.value = element.innerHTML;
 		this._fireOnBeforeStringInvalidation(html);
-		if (!xed.config.noValidationInWholeMode) html.value = this.invalidateString(html.value);
+		if (!noValidation) html.value = this.invalidateString(html.value);
 		this._fireOnAfterStringInvalidation(html);
 		
 		return html.value;
