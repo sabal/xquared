@@ -1249,7 +1249,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			var html = this.getSourceContent(true);
 			
 			// invalidate it and load it into wysiwyg editor
-			var invalidHtml = this.validator.invalidate(html);
+			var invalidHtml = this.validator.invalidate(html, this.config.noValidationInWholeMode);
 			invalidHtml = this.removeUnnecessarySpaces(invalidHtml);
 			if(invalidHtml.isBlank()) {
 				this.rdom.clearRoot();
@@ -1259,7 +1259,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			}
 		} else {
 			// invalidate static html and load it into wysiwyg editor
-			var invalidHtml = this.validator.invalidate(this.getStaticContent());
+			var invalidHtml = this.validator.invalidate(this.getStaticContent(), this.config.noValidationInWholeMode);
 			invalidHtml = this.removeUnnecessarySpaces(invalidHtml);
 			if(invalidHtml.isBlank()) {
 				this.rdom.clearRoot();
@@ -1319,7 +1319,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	loadCurrentContentFromStaticContent: function() {
 		if(this.getCurrentEditMode() == 'wysiwyg') {
 			// update WYSIWYG editor
-			var html = this.validator.invalidate(this.getStaticContent());
+			var html = this.validator.invalidate(this.getStaticContent(), this.config.noValidationInWholeMode);
 			html = this.removeUnnecessarySpaces(html);
 			
 			if(html.isBlank()) {
@@ -1366,7 +1366,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * @return {Object} HTML String
 	 */
 	getWysiwygContent: function() {
-		return this.validator.validate(this.rdom.getRoot());
+		return this.validator.validate(this.rdom.getRoot(), this.config.noValidationInWholeMode);
 	},
 	
 	/**
@@ -1384,7 +1384,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		var rdom = xq.rdom.Base.createInstance();
 		rdom.wrapAllInlineOrTextNodesAs("P", tempDiv, true);
 		
-		return this.validator.validate(tempDiv, true);
+		return this.validator.validate(tempDiv, this.config.noValidationInWholeMode, true);
 	},
 	
 	/**
