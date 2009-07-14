@@ -20,6 +20,9 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 	
 	validateString: function(html) {
 		try {
+			html = this.replaceTag(html, "b", "strong");
+			html = this.replaceTag(html, "i", "em");
+			
 			html = this.addNbspToEmptyBlocks(html);
 			html = this.performFullValidation(html);
 			html = this.insertNewlineBetweenBlockElements(html);
