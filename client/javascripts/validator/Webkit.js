@@ -15,6 +15,7 @@ xq.validator.Webkit = xq.Class(xq.validator.W3,
 		rdom.setRoot(element);
 		this.removeDangerousElements(element);
 		rdom.removePlaceHoldersAndEmptyNodes(element);
+		this.validateFont(element);
 		this.validateAppleStyleTags(element);
 	},
 	
