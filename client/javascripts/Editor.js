@@ -2054,6 +2054,15 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		return true;
 	},
 	
+	linkToImage: function(editor, element){
+		var url = window.prompt('Please type a web address. ex) http://www.springnote.com', 'http://');
+		if(url) {
+			var a = editor.rdom.wrapElement("a", element);
+			if(!url.match(/^(http|https|ftp|mailto):\/\//)) url = "http://" + url;
+			a.href = url;
+		}
+	},
+	
 	/**
 	 * @TODO Add selenium test
 	 */

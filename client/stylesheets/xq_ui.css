@@ -134,7 +134,7 @@
 .xqContextMenu {
 	position:absolute;
 	z-index: 902;
-	font-size: medium;
+	font-size: 12px;
 	font-family: arial, "돋움";
 	width:auto;
 	margin:0;
@@ -149,7 +149,7 @@
 	background-repeat:no-repeat;
 	color:#aaa;
 	display:block;
-	width:200px;
+	width:auto;
 }
 .xqContextMenu a {
 	color:#000;
