@@ -43,5 +43,10 @@ xq._messages['ko']={
 	"Unknown URL pattern":"잘못된 형식의 URL입니다",
 	"Line height":"줄간격",
 	"Please enter link text.":"링크 대상을 입력해주세요.",
-	"Please enter link url.":"URL 주소를 입력해주세요."
+	"Please enter link url.":"URL 주소를 입력해주세요.",
+	"Link to image":"이미지에 링크 걸기",
+	"Make text to flow around image":"이미지 배치",
+	"No flow":"흐름 없음",
+	"Place image left":"이미지를 왼쪽으로",
+	"Place image right":"이미지를 오른쪽으로"
 };

@@ -1934,7 +1934,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	 * TODO: should support modify/unlink
 	 * TODO: Add selenium test
 	 */
-	handleLink: function() {
+	handleLink: function(targetElement) {
 		var linkDialog = xq.$('linkDialog');
 		if (linkDialog && linkDialog.style.display != 'none') this.lastLinkDialog.close();
 		
@@ -1944,27 +1944,41 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			xq.ui_templates.basicLinkDialog,
 			function(dialog) {
 				setTimeout(function(){
-					if(text) {
-						dialog.form.text.value = text;
+					if (targetElement && targetElement.nodeName == 'IMG'){
+						if (targetElement.parentNode && targetElement.parentNode.nodeName == 'A'){
+							dialog.form.url.value = targetElement.parentNode.href;
+							dialog.form.url.focus();
+						}
+						dialog.form.text.disabled = true;
+						xq.addClassName(dialog.form.text, 'disabled');
+					} else {
+						dialog.form.text.disabled = false;
+						xq.removeClassName(dialog.form.text, 'disabled');
+						
+						if(text) {
+							dialog.form.text.value = text;
+						}
+						var temp = dialog.form.url.value;
+						dialog.form.url.focus();
+						dialog.form.url.value = temp;
 					}
-					var temp = dialog.form.url.value;
-					dialog.form.url.focus();
-					dialog.form.url.value = temp;
 					
 				}, 0);
 			},
 			function(data) {
-				this.focus();
-				
-				if(xq.Browser.isTrident) {
-					var rng = this.rdom.rng();
-					rng.moveToBookmark(bm);
-					rng.select();
+				if (!dialog.form.text.disabled){
+					this.focus();
+					
+					if(xq.Browser.isTrident) {
+						var rng = this.rdom.rng();
+						rng.moveToBookmark(bm);
+						rng.select();
+					}
 				}
 				
 				if(!data) return;
 				
-				if (data.text.length === 0){
+				if (!dialog.form.text.disabled && data.text.length === 0){
 					alert( this._("Please enter link text."));
 					dialog.form.text.focus();
 					return;
@@ -1977,8 +1991,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				}
 				
 				var urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-				if( !urlRegex.test(data.url) )
-				{
+				if(!urlRegex.test(data.url)){
 					alert( this._("Unknown URL pattern"));
 					dialog.form.url.focus();
 					return;
@@ -1986,13 +1999,17 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				
 				if (data.newWindow) var className = 'newWindow';
 				
-				this.handleInsertLink(false, data.url, data.text, data.text, className);
+				if (dialog.form.text.disabled){
+					this.linkToImage.insert(data.url, className);
+				} else {
+					this.handleInsertLink(false, data.url, data.text, data.text, className);
+				}
 				
 				dialog.close();
 			}.bind(this)
 		);
 		
-		if(xq.Browser.isTrident) var bm = this.rdom.rng().getBookmark();
+		if(xq.Browser.isTrident && !targetElement) var bm = this.rdom.rng().getBookmark();
 		
 		dialog.show({position: 'centerOfEditor', mode: 'modal', notSelfClose: true, dialogId:'linkDialog'});
 		this.lastLinkDialog = dialog;
@@ -2052,15 +2069,6 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		this._fireOnCurrentContentChanged(this);
 		
 		return true;
-	},
-	
-	linkToImage: function(editor, element){
-		var url = window.prompt('Please type a web address. ex) http://www.springnote.com', 'http://');
-		if(url) {
-			var a = editor.rdom.wrapElement("a", element);
-			if(!url.match(/^(http|https|ftp|mailto):\/\//)) url = "http://" + url;
-			a.href = url;
-		}
 	},
 	
 	/**
@@ -3112,9 +3120,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			node.className = 'separator';
 		} else {
 			if(item.handler) {
-				node.innerHTML = '<a href="#" onclick="return false;">'+(item.title.toString().escapeHTML())+'</a>';
+				node.innerHTML = '<a href="#" onclick="return false;">'+(item.title.toString())+'</a>';
 			} else {
-				node.innerHTML = (item.title.toString().escapeHTML());
+				node.innerHTML = (item.title.toString());
 			}
 		}
 		
@@ -3268,5 +3276,30 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				msg=msg.replace('$'+i, arguments[i]);
 		}
 		return msg;
+	},
+
+	makeImageAlignToDefault: function(editor, element) {
+		this.makeImageAlignTo(element, 'none');
+	},
+	makeImageAlignToLeft: function(editor, element) {
+		this.makeImageAlignTo(element, 'left');
+	},
+	makeImageAlignToRight: function(editor, element) {
+		this.makeImageAlignTo(element, 'right');
+	},
+	makeImageAlignTo: function(element, floating) {
+		if(element.style.styleFloat === undefined) {
+			element.style.cssFloat = floating;
+		} else {
+			element.style.styleFloat = floating;
+		}
+		
+		if(floating == 'left') {
+			element.style.margin = "0 1em 0 0";
+		} else if(floating == 'right') {
+			element.style.margin = "0 0 0 1em";
+		} else {
+			element.style.margin = "0";
+		}
 	}
 });

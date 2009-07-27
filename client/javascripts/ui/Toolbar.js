@@ -146,8 +146,8 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 
 		// @WORKAROUND: Image icon disappears without following code:
 		if(xq.Browser.isIE6) {
-			this.container.style.display = 'none';
-			setTimeout(function() {this.container.style.display = 'block';}.bind(this), 0);
+			this.container.style.visibility = 'hidden';
+			setTimeout(function() {this.container.style.visibility = 'visible';}.bind(this), 0);
 		}
 	},
 	

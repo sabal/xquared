@@ -151,6 +151,17 @@
 	display:block;
 	width:auto;
 }
+.xqContextMenu li.imgDecoration {
+	color:#000000;
+	font-weight:bold;
+	padding-left:0;
+}
+
+.xqContextMenu li.imgLinkEdit {background-image:url(../images/dialogs/icon_imgLink_01.gif);}
+.xqContextMenu li.imgFloatBlock {background-image:url(../images/dialogs/icon_imgLink_02.gif);}
+.xqContextMenu li.imgFloatLeft {background-image:url(../images/dialogs/icon_imgLink_03.gif);}
+.xqContextMenu li.imgFloatRight {background-image:url(../images/dialogs/icon_imgLink_04.gif);}
+
 .xqContextMenu a {
 	color:#000;
 	text-decoration:none;
@@ -589,6 +600,9 @@
 	font: 12px arial, sans-serif;
 	color: #666;
 	width: 146px;
+}
+#linkDialog .dialog-content .disabled {
+	background-color: #dddddd;
 }
 #linkDialog .dialog-buttons a {
 	font: 11px dotum,sans-serif;

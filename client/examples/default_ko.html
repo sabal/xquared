@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.queue.js"></script>
 	<script type="text/javascript" src="../javascripts/plugin/FileUploadPlugin.js"></script>
 	<script type="text/javascript" src="../javascripts/plugin/CustomStylePlugin.js"></script>
+	<script type="text/javascript" src="../javascripts/plugin/LinkToImagePlugin.js"></script>
 	<script type="text/javascript">//<![CDATA[
 	var xed;
 	
@@ -121,47 +122,72 @@
 				{style: {backgroundColor:"#59005a",border: "1px solid #520052"}, handler:"xed.handleBackgroundColor('#59005a')"},
 				{style: {backgroundColor:"#000000",border: "1px solid #000000"}, handler:"xed.handleBackgroundColor('#000000')"}
 			]}
-		xed.config.defaultToolbarButtonList = [
-			xed.config.defaultToolbarButtons.fontFace,
-			xed.config.defaultToolbarButtons.fontSize,
-			"separator",
-			xed.config.defaultToolbarButtons.foregroundColor,
-			xed.config.defaultToolbarButtons.backgroundColor,
-			"separator",
-			xed.config.defaultToolbarButtons.link,
-			xed.config.defaultToolbarButtons.removeLink,
-			"separator",
-			xed.config.defaultToolbarButtons.strongEmphasis,
-			xed.config.defaultToolbarButtons.emphasis,
-			xed.config.defaultToolbarButtons.underline,
-			xed.config.defaultToolbarButtons.strike,
-			xed.config.defaultToolbarButtons.superscription,
-			xed.config.defaultToolbarButtons.subscription,
-			xed.config.defaultToolbarButtons.removeFormat,
-			"separator",
-			xed.config.defaultToolbarButtons.justifyLeft,
-			xed.config.defaultToolbarButtons.justifyCenter,
-			xed.config.defaultToolbarButtons.justifyRight,
-			xed.config.defaultToolbarButtons.justifyBoth,
-			"separator",
-			xed.config.defaultToolbarButtons.indent,
-			xed.config.defaultToolbarButtons.outdent,
-			"separator",
-			xed.config.defaultToolbarButtons.blockquote,
-			xed.config.defaultToolbarButtons.code,
-			xed.config.defaultToolbarButtons.division,
-			xed.config.defaultToolbarButtons.unorderedList,
-			xed.config.defaultToolbarButtons.orderedList,
-			"separator",
-			xed.config.defaultToolbarButtons.table,
-			xed.config.defaultToolbarButtons.separator,
-			xed.config.defaultToolbarButtons.character,
-			xed.config.defaultToolbarButtons.emoticon,
-			"separator",
-			xed.config.defaultToolbarButtons.html,
-			"separator",
-			xed.config.defaultToolbarButtons.undo,
-			xed.config.defaultToolbarButtons.redo
+			
+		xed.config.defaultToolbarButtonGroups = {
+			"color": [
+			          xed.config.defaultToolbarButtons.foregroundColor,
+			          xed.config.defaultToolbarButtons.backgroundColor
+ 			],
+ 			"font": [
+ 					xed.config.defaultToolbarButtons.fontFace,
+ 					xed.config.defaultToolbarButtons.fontSize
+			],
+			"link": [
+				xed.config.defaultToolbarButtons.link,
+				xed.config.defaultToolbarButtons.removeLink
+			],
+			"style": [
+		  		xed.config.defaultToolbarButtons.strongEmphasis,
+				xed.config.defaultToolbarButtons.emphasis,
+				xed.config.defaultToolbarButtons.underline,
+				xed.config.defaultToolbarButtons.strike,
+				xed.config.defaultToolbarButtons.superscription,
+				xed.config.defaultToolbarButtons.subscription,
+				xed.config.defaultToolbarButtons.removeFormat
+			],
+			"justification": [
+          		xed.config.defaultToolbarButtons.justifyLeft,
+        		xed.config.defaultToolbarButtons.justifyCenter,
+        		xed.config.defaultToolbarButtons.justifyRight,
+        		xed.config.defaultToolbarButtons.justifyBoth
+			],
+			"indentation": [
+        		xed.config.defaultToolbarButtons.indent,
+        		xed.config.defaultToolbarButtons.outdent
+  			],
+  			"block": [
+				xed.config.defaultToolbarButtons.blockquote,
+				xed.config.defaultToolbarButtons.code,
+				xed.config.defaultToolbarButtons.division,
+				xed.config.defaultToolbarButtons.unorderedList,
+				xed.config.defaultToolbarButtons.orderedList
+  			],
+  			"insert": [
+  			    xed.config.defaultToolbarButtons.table,
+  				xed.config.defaultToolbarButtons.separator,
+  				xed.config.defaultToolbarButtons.character,
+  				xed.config.defaultToolbarButtons.emoticon
+  			],
+  			"html": [
+  				xed.config.defaultToolbarButtons.html
+	        ],
+	        "undo": [
+  				xed.config.defaultToolbarButtons.undo,
+  				xed.config.defaultToolbarButtons.redo
+  			]
+		};
+		
+		xed.config.defaultToolbarButtonMap = [
+		    xed.config.defaultToolbarButtonGroups.font,
+		    xed.config.defaultToolbarButtonGroups.color,
+		    xed.config.defaultToolbarButtonGroups.style,
+		    xed.config.defaultToolbarButtonGroups.justification,
+		    xed.config.defaultToolbarButtonGroups.indentation,
+		    xed.config.defaultToolbarButtonGroups.block,
+		    xed.config.defaultToolbarButtonGroups.link,
+		    xed.config.defaultToolbarButtonGroups.insert,
+		    xed.config.defaultToolbarButtonGroups.html,
+		    xed.config.defaultToolbarButtonGroups.undo
 		];
 
 		// Customize Link and FileUpload Dialog
@@ -173,11 +199,47 @@
 		
 		xed.config.autoFocusOnInit = true;
 		xed.config.urlValidationMode = 'host_relative';
-		xed.config.changeCursorOnLink = true;
 		xed.config.enablePreventExit = true;
-		xed.config.enableLinkClick = true;
 		
 		xq.predefinedWhitelist.a = xq.commonAttrs.concat('href', 'charset', 'rev', 'rel', 'type', 'hreflang', 'tabindex', 'target');
+		
+		var contextMenuHandler = function(editor, element, x, y) {
+			if(element.nodeName == "IMG") {
+				editor.showContextMenu([
+					{
+						title: editor._('Link to image'),
+						className: 'imgLinkEdit',
+						handler: editor.linkToImage.execute.bind(editor)
+					},
+					{
+						title: '----'
+					},
+					{
+						title: editor._('Make text to flow around image'), 
+						className: 'imgDecoration'
+					},
+					{
+						title: editor._('No flow'), 
+						className: 'imgFloatBlock', 
+						handler: editor.makeImageAlignToDefault.bind(editor)
+					},
+					{
+						title: editor._('Place image left'), 
+						className: 'imgFloatLeft', 
+						handler: editor.makeImageAlignToLeft.bind(editor)
+					},
+					{
+						title: editor._('Place image right'), 
+						className: 'imgFloatRight', 
+						handler: editor.makeImageAlignToRight.bind(editor)
+					}
+				], x, y);
+				
+				return true;
+			}
+		}
+			
+		xed.addContextMenuHandler('imageMenu', contextMenuHandler);
 		
 		xed.addPlugin('Springnote');
 		xed.addPlugin('EditorResize');
@@ -185,6 +247,7 @@
 		xed.addPlugin('FileUpload');
 		xed.addPlugin('FlashMovieMacro');
 		xed.addPlugin('CustomStyle');
+		xed.addPlugin('LinkToImage');
 		
 		xed.setFileUploadTarget('/client/examples/single_upload_submit.php', '/client/examples/upload.php');
 	
@@ -197,6 +260,6 @@
 </head>
 
 <body>
-	<textarea id="xqEditor">&lt;p&gt;Hello World&lt;/p&gt;</textarea>
+	<textarea id="xqEditor">&lt;img src="http://xquared.springnote.com/pages/451172/attachments/199221" /&gt;&lt;p&gt;Hello World&lt;/p&gt;</textarea>
 </body>
 </html>

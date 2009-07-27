@@ -5,82 +5,61 @@
 <title>Xquared example - Extension point</title>
 	<link rel="stylesheet" type="text/css" href="../stylesheets/xq_ui.css" />
 	<script type="text/javascript" src="../javascripts/XQuared.js?load_others=1"></script>
+	<script type="text/javascript" src="../javascripts/plugin/LinkToImagePlugin.js"></script>
 	<script type="text/javascript">//<![CDATA[
 		var xed;
 	
 		window.onload = function() {
 			xed = new xq.Editor("xqEditor");
 			xed.config.changeCursorOnLink = true;
+			
+			xed.addPlugin('LinkToImage');
+			
+			var contextMenuHandler = function(editor, element, x, y) {
+				if(element.nodeName == "IMG") {
+					editor.showContextMenu([
+						{
+							title: xed._('Link to image'),
+							className: 'imgLinkEdit',
+							handler: editor.linkToImage.execute.bind(editor)
+						},
+						{
+							title: '----'
+						},
+						{
+							title: xed._('Make text to flow around image'), 
+							className: 'imgDecoration'
+						},
+						{
+							title: xed._('No flow'), 
+							className: 'imgFloatBlock', 
+							handler: editor.makeImageAlignToDefault.bind(editor)
+						},
+						{
+							title: xed._('Place image left'), 
+							className: 'imgFloatLeft', 
+							handler: editor.makeImageAlignToLeft.bind(editor)
+						},
+						{
+							title: xed._('Place image right'), 
+							className: 'imgFloatRight', 
+							handler: editor.makeImageAlignToRight.bind(editor)
+						}
+					], x, y);
+					
+					return true;
+				}
+			}
+			
 			xed.addContextMenuHandler('imageMenu', contextMenuHandler);
 			
 			xed.setEditMode('wysiwyg');
 			xed.setWidth("100%");
 		}
-			
-		var contextMenuHandler = function(editor, element, x, y) {
-			if(element.nodeName == "IMG") {
-				editor.showContextMenu([
-					{
-						title: 'Link to image',
-						handler: editor.linkToImage.bind(this)
-					},
-					{
-						title: '----'
-					},
-					{
-						title: 'Make text to flow around image', 
-						className: 'imgDecoration'
-					},
-					{
-						title: 'No flow', 
-						className: 'imgFloatBlock', 
-						handler: makeImageAlignToDefault.bind(this)
-					},
-					{
-						title: 'Place image left', 
-						className: 'imgFloatLeft', 
-						handler: makeImageAlignToLeft.bind(this)
-					},
-					{
-						title: 'Place image right', 
-						className: 'imgFloatRight', 
-						handler: makeImageAlignToRight.bind(this)
-					}
-				], x, y);
-				
-				return true;
-			}
-		}
-		
-		function makeImageAlignToDefault(editor, element) {
-			makeImageAlignTo(element, 'none');
-		}
-		function makeImageAlignToLeft(editor, element) {
-			makeImageAlignTo(element, 'left');
-		}
-		function makeImageAlignToRight(editor, element) {
-			makeImageAlignTo(element, 'right');
-		}
-		function makeImageAlignTo(element, floating) {
-			if(element.style.styleFloat === undefined) {
-				element.style.cssFloat = floating;
-			} else {
-				element.style.styleFloat = floating;
-			}
-			
-			if(floating == 'left') {
-				element.style.margin = "0 1em 0 0";
-			} else if(floating == 'right') {
-				element.style.margin = "0 0 0 1em";
-			} else {
-				element.style.margin = "0";
-			}
-		}
-
 	//]]></script>
 </head>
 
 <body>
-	<textarea id="xqEditor">&lt;img src="http://xquared.springnote.com/pages/451172/attachments/199221" /&gt;&lt;p&gt;Hello World&lt;/img&gt;</textarea>
+	<textarea id="xqEditor">&lt;img src="http://xquared.springnote.com/pages/451172/attachments/199221" /&gt;&lt;p&gt;Hello World&lt;/p&gt;</textarea>
 </body>
 </html>
