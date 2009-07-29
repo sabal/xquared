@@ -1945,28 +1945,24 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			function(dialog) {
 				setTimeout(function(){
 					if (targetElement && targetElement.nodeName == 'IMG'){
-						if (targetElement.parentNode && targetElement.parentNode.nodeName == 'A'){
-							dialog.form.url.value = targetElement.parentNode.href;
-							dialog.form.url.focus();
-						}
-						dialog.form.text.disabled = true;
-						xq.addClassName(dialog.form.text, 'disabled');
-					} else {
-						dialog.form.text.disabled = false;
-						xq.removeClassName(dialog.form.text, 'disabled');
+						xq.addClassName(dialog.form, 'imageLink');
 						
-						if(text) {
-							dialog.form.text.value = text;
+						if (targetElement.parentNode && targetElement.parentNode.nodeName == 'A'){
+							dialog.form.url.value = targetElement.parentNode.href || '';
+							dialog.form.text.value = targetElement.parentNode.title || '';
 						}
-						var temp = dialog.form.url.value;
-						dialog.form.url.focus();
-						dialog.form.url.value = temp;
 					}
+					var linkText = text || targetElement.alt;
+					if (linkText) dialog.form.text.value = linkText;
+					
+					var temp = dialog.form.url.value;
+					dialog.form.url.focus();
+					dialog.form.url.value = temp;
 					
 				}, 0);
 			},
 			function(data) {
-				if (!dialog.form.text.disabled){
+				if (!xq.hasClassName(dialog.form, 'imageLink')){
 					this.focus();
 					
 					if(xq.Browser.isTrident) {
@@ -1978,7 +1974,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				
 				if(!data) return;
 				
-				if (!dialog.form.text.disabled && data.text.length === 0){
+				if (!xq.hasClassName(dialog.form, 'imageLink') && data.text.length === 0){
 					alert( this._("Please enter link text."));
 					dialog.form.text.focus();
 					return;
@@ -1999,8 +1995,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 				
 				if (data.newWindow) var className = 'newWindow';
 				
-				if (dialog.form.text.disabled){
-					this.linkToImage.insert(data.url, className);
+				if (xq.hasClassName(dialog.form, 'imageLink')){
+					this.linkToImage.insert(data.url, data.text, className);
 				} else {
 					this.handleInsertLink(false, data.url, data.text, data.text, className);
 				}
@@ -3045,26 +3041,24 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			return false;
 		}
 		
-		var point = xq.getEventPoint(e);
+		var point = xq.getEventPoint(e, this.getDoc());
 		var x = point.x;
 		var y = point.y;
-
-		var pos = xq.getCumulativeOffset(this.wysiwygEditorDiv);
-		x += pos.left;
-		y += pos.top;
+		
+		x += this.wysiwygEditorDiv.offsetLeft;
+		y += this.wysiwygEditorDiv.offsetTop;
+		
 		this._contextMenuTargetElement = e.target || e.srcElement;
+
+		var doc = this.getDoc();
+		var body = this.getBody();
+
+		x -= doc.documentElement.scrollLeft;
+		y -= doc.documentElement.scrollTop;
 		
-		if (!xq.Browser.isTrident) {
-			var doc = this.getDoc();
-			var body = this.getBody();
-			
-			x -= doc.documentElement.scrollLeft;
-			y -= doc.documentElement.scrollTop;
-			
-			x -= body.scrollLeft;
-			y -= body.scrollTop;
-		}
-		
+		x -= body.scrollLeft;
+		y -= body.scrollTop;
+
 		for(var cmh in this.config.contextMenuHandlers) {
 			var stop = this.config.contextMenuHandlers[cmh].handler(this, this._contextMenuTargetElement, x, y);
 			if(stop) {
@@ -3087,7 +3081,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			xq.observe(this.doc, 'click', this._contextMenuClicked.bindAsEventListener(this));
 			xq.observe(this.rdom.getDoc(), 'click', this.hideContextMenu.bindAsEventListener(this));
 			
-			this.body.appendChild(this.contextMenuContainer);
+			this.toolbar.dialogContainer.appendChild(this.contextMenuContainer);
 		} else {
 			while (this.contextMenuContainer.childNodes.length > 0)
 				this.contextMenuContainer.removeChild(this.contextMenuContainer.childNodes[0]);

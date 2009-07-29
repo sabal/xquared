@@ -125,10 +125,10 @@ xq.isLeftClick = function(event) {return xq.isButton(event, 0);};
 xq.isMiddleClick = function(event) {return xq.isButton(event, 1);};
 xq.isRightClick = function(event) {return xq.isButton(event, 2);};
 
-xq.getEventPoint = function(event) {
+xq.getEventPoint = function(event, doc) {
 	return {
-		x: event.pageX || (event.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)),
-		y: event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop))
+		x: event.pageX || (event.clientX + (doc.documentElement.scrollLeft || doc.body.scrollLeft)),
+		y: event.pageY || (event.clientY + (doc.documentElement.scrollTop || doc.body.scrollTop))
 	};
 };
 

@@ -29,6 +29,7 @@ xq.macro.FlashMovieMacro.whiteList = {
 	tvpot: /http:\/\/flvs\.daum\.net\/flvPlayer\.swf\?/,
 	youtube: /http:\/\/(?:www\.)?youtube\.com\/v\//,
 	youtube2: /http:\/\/(?:www\.)?youtube\.com\/p\//,
+	googleVideo: /http:\/\/video\.google\.com\/googleplayer\.swf\?/,
 	pandoratv: /http:\/\/flvr\.pandora\.tv\/flv2pan\/flvmovie\.dll/,
 	pandoratv2: /http:\/\/imgcdn\.pandora\.tv\/gplayer\/pandora\_EGplayer\.swf\?/,
 	mncast: /http:\/\/dory\.mncast\.com\/mncastPlayer\.swf\?/,

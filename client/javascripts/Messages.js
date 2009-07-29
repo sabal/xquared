@@ -42,7 +42,7 @@ xq._messages['ko']={
 	'Please enter row value between 1 to 120.':'1부터 20 이내의 값을 입력해주세요',
 	"Unknown URL pattern":"잘못된 형식의 URL입니다",
 	"Line height":"줄간격",
-	"Please enter link text.":"링크 대상을 입력해주세요.",
+	"Please enter link text.":"표시할 이름을 입력해주세요.",
 	"Please enter link url.":"URL 주소를 입력해주세요.",
 	"Link to image":"이미지에 링크 걸기",
 	"Make text to flow around image":"이미지 배치",

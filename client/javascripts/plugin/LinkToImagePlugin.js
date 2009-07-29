@@ -46,7 +46,7 @@ xq.plugin.LinkToImagePlugin = xq.Class(xq.plugin.Base,
 				xed.handleLink(image);
 				
 			},
-			insert: function(url, className){
+			insert: function(url, text, className){
 				var image = xed.linkToImage.currentImage;
 				if (!image || image.nodeName != 'IMG') return;
 				
@@ -59,6 +59,8 @@ xq.plugin.LinkToImagePlugin = xq.Class(xq.plugin.Base,
 					}
 					if(!url.match(/^(http|https|ftp|mailto):\/\//)) url = "http://" + url;
 					a.href = url;
+					
+					if (text) image.alt = text;
 					if(image.alt) a.title = image.alt;
 					if (className) a.className = className;
 				}
