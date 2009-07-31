@@ -340,7 +340,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 					xed.lastFocusElement = curFocusElement;
 				}
 				
-				xed.toolbar.triggerUpdate();
+				if(xed.toolbar) xed.toolbar.triggerUpdate();
 			}
 		});
 	
