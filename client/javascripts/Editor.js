@@ -1624,8 +1624,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 		// hook onsubmit of form
 		if(this.config.automaticallyHookSubmitEvent && this.contentElement.form) {
 			var original = this.contentElement.form.onsubmit;
+			var xed = this;
 			this.contentElement.form.onsubmit = function() {
-				xed.config.enablePreventExit === false;
+				xed.config.enablePreventExit = false;
 				this.contentElement.value = this.getCurrentContent();
 				return original ? original.bind(this.contentElement.form)() : true;
 			}.bind(this);
