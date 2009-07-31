@@ -349,7 +349,8 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			this.PreventExit = {};
 		}
 		
-		// add PreventExit handler	
+		// add PreventExit handler
+		var xed = this;
 		xq.observe(window, "beforeunload", function(e)
 		{
 			if(xed.config.enablePreventExit === false) return;
