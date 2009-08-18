@@ -339,30 +339,30 @@
 }
 
 /* fontFamily Dialog */
-#fontFaceDialog {
+.fontFaceDialog {
 	width: 101px;
 }
 
 /* fontSize Dialog */
-#fontSizeDialog {
+.fontSizeDialog {
 	width: 400px;
 }
-#fontSizeDialog li {
+.fontSizeDialog li {
 	padding: 0 0 5px 0;
 }
 
 /* foreGroundDialog , backGroundDialog */
-#foregroundColorDialog .dialog-content, 
-#backgroundColorDialog .dialog-content {
+.foregroundColorDialog .dialog-content, 
+.backgroundColorDialog .dialog-content {
 	padding: 9px 5px;
 }
-#foregroundColorDialog .item-list,
-#backgroundColorDialog .item-list {
+.foregroundColorDialog .item-list,
+.backgroundColorDialog .item-list {
 	height: 100%;
 	overflow: hidden;
 }
-#foregroundColorDialog .item-list li,
-#backgroundColorDialog .item-list li {
+.foregroundColorDialog .item-list li,
+.backgroundColorDialog .item-list li {
 	margin: 0 0 2px 4px;
 	_margin: 0 0 0 2px !important;
 	padding: 0 0 2px !important;
@@ -373,21 +373,21 @@
 	width: 12px;
 	height: 12px;
 }
-#foregroundColorDialog .item-list li a,
-#backgroundColorDialog .item-list li a {
+.foregroundColorDialog .item-list li a,
+.backgroundColorDialog .item-list li a {
 	display: block;
 	width: 100%;
 	height: 100%;
 }
-#foregroundColorDialog .item-list li.first-child,
-#backgroundColorDialog .item-list li.first-child {
+.foregroundColorDialog .item-list li.first-child,
+.backgroundColorDialog .item-list li.first-child {
 	margin: 0;
 }
-#foregroundColorDialog .item-list li a:hover,
-#backgroundColorDialog .item-list li a:hover {
+.foregroundColorDialog .item-list li a:hover,
+.backgroundColorDialog .item-list li a:hover {
 	border-color: #000 !important;
 }
-#foregroundColorDialog a.remove-color {
+.foregroundColorDialog a.remove-color {
 	font-family: Arial, Dotum;
 	font-size: 0.916em;
 	color: #8e8e8e;
@@ -399,39 +399,39 @@
 	margin-top: 4px;
 }
 /* foregroundColorDialog */
-#foregroundColorDialog {
+.foregroundColorDialog {
 	width: 208px;
 	z-index: 904;
 }
-#foregroundColorDialog .more {
+.foregroundColorDialog .more {
 	text-align: right;
 	margin: 0 5px 0 0;
 	/margin-top: 5px;
 	/margin-bottom: 5px;
 }
-#foregroundColorDialog .more a {
+.foregroundColorDialog .more a {
 	background: url(../images/dialogs/icon_triangle_down_5x3_b4b4b4.gif) no-repeat 100% 4px;
 	padding: 0 9px 0 0;
 	font: 11px dotum, sans-serif;
 	color: #8e8e8e;
 }
-#foregroundColorDialog .input-section {
+.foregroundColorDialog .input-section {
 	_width: 181px;
 	overflow: hidden;
 	margin: 0 0 10px;
 }
-#foregroundColorDialog .input-section * {
+.foregroundColorDialog .input-section * {
 	vertical-align: middle;
 	display: block;
 	margin: 0 0 0 3px;
 }
-#foregroundColorDialog .input-section span {
+.foregroundColorDialog .input-section span {
 	width: 70px;
 	height: 18px;
 	margin: 0;
 	float: left;
 }
-#foregroundColorDialog .input-section .type-text {
+.foregroundColorDialog .input-section .type-text {
 	border: 1px solid #dfdfdf;
 	border-top-color: #acacac;
 	border-left-color: #acacac;
@@ -441,23 +441,23 @@
 	width: 71px;
 	float: left;
 }
-#foregroundColorDialog .dialog-buttons {
+.foregroundColorDialog .dialog-buttons {
 	float: left;
 	margin: 0;
 }
-#foregroundColorDialog .dialog-buttons a {
+.foregroundColorDialog .dialog-buttons a {
 	line-height: 15px;
 	padding: 3px 4px 0;
 	/padding: 1px 4px 2px;
 	_padding: 3px 4px 0px;
 }
-#foregroundColorDialog .input-section .color-preview {
+.foregroundColorDialog .input-section .color-preview {
 	border: 1px solid #dfdfdf;
 	background-color: black;
 	width:60px;
 	display:inline;
 }
-#foregroundColorDialog #extForeColorLayer {
+.foregroundColorDialog #extForeColorLayer {
 	padding: 10px 9px 10px 8px;
 	width: 181px;
 	_width: 173px;
@@ -465,40 +465,40 @@
 	border-top: 1px solid #dfdfdf;
 	display:none;
 } 
-#foregroundColorDialog #brightness {
+.foregroundColorDialog #brightness {
 	border: 1px solid #c4cad1;
 	margin: 0 0 5px;
 	font-size: 0;
 	line-height: 0;
 }
-#foregroundColorDialog #brightness img {
+.foregroundColorDialog #brightness img {
 	/position: relative;
 	/top: -1px;
 }
-#foregroundColorDialog #color {
+.foregroundColorDialog #color {
 	border: 1px solid #c4cad1;
 	font-size: 0;
 	line-height: 0;
 }
 /* backgroundColorDialog */
-#backgroundColorDialog {
+.backgroundColorDialog {
 	width: 156px;
 	z-index: 904;
 }
-#backgroundColorDialog .item-list li {
+.backgroundColorDialog .item-list li {
 	width: 16px;
 	height: 16px;
 	margin-left: 4px;
 }
-#backgroundColorDialog .item-list a {
+.backgroundColorDialog .item-list a {
 	border: 1px solid #acacac;
 }
 
 /* headingDialog */
-#heading1Dialog li {
+.heading1Dialog li {
 	padding: 0 0 8px 0;
 }
-#heading1Dialog a {
+.heading1Dialog a {
 	border-bottom:2px solid #425E89;
 	line-height:1em;
 	margin:0.2em 0;
@@ -506,32 +506,32 @@
 	text-decoration: none !important;
 }
 /* emoticonDialog */
-#emoticonDialog {
+.emoticonDialog {
 	width: 224px;
 }
-#emoticonDialog div.dialog-wrapper {
+.emoticonDialog div.dialog-wrapper {
 	position: relative;
 	height: 100%;
 }
-#emoticonDialog ul {
+.emoticonDialog ul {
 	margin: 0 0 0 -3px;
 	padding: 0;
 	list-style: none;
 	width: 100%;
 	overflow: hidden;
 }
-#emoticonDialog ul li {
+.emoticonDialog ul li {
 	float: left;
 	text-align: center;
 	position: relative;
 }
-#emoticonDialog ul li a {
+.emoticonDialog ul li a {
 	width: 24px;
 	height: 24px;
 	display: block;
 	border: 1px solid #fff;
 }
-#emoticonDialog h6 {
+.emoticonDialog h6 {
 	font-family: arial, sans-serif;
 	font-size: 9px;
 	color: #6f95d9;
@@ -539,38 +539,38 @@
 	padding: 3px 0 0;
 	background: url(../images/dialogs/justify_divider.gif) repeat-x -29px 0;
 }
-#emoticonDialog ul li a:hover {
+.emoticonDialog ul li a:hover {
 	background-color: #f2f7ff;
 	border-color: #b7caec;
 }
 
 /* characterDialog */
-#characterDialog {
+.characterDialog {
 	width: 337px;
 }
-#characterDialog div.dialog-wrapper {
+.characterDialog div.dialog-wrapper {
 	position: relative;
 	height: 100%;
 }
-#characterDialog ul {
+.characterDialog ul {
 	margin: 0 0 0 -3px;
 	padding: 0;
 	list-style: none;
 	width: 100%;
 	overflow: hidden;
 }
-#characterDialog ul li {
+.characterDialog ul li {
 	float: left;
 	text-align: center;
 	position: relative;
 }
-#characterDialog ul li a {
+.characterDialog ul li a {
 	width: 18px;
 	height: 18px;
 	display: block;
 	border: 1px solid #fff;
 }
-#characterDialog h6 {
+.characterDialog h6 {
 	font-family: arial, sans-serif;
 	font-size: 9px;
 	color: #6f95d9;
@@ -578,7 +578,7 @@
 	padding: 3px 0 0;
 	background: url(../images/dialogs/justify_divider.gif) repeat-x -29px 0;
 }
-#characterDialog ul li a:hover {
+.characterDialog ul li a:hover {
 	background-color: #f2f7ff;
 	border-color: #b7caec;
 }

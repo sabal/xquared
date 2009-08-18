@@ -35,16 +35,14 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		options.mode = options.mode || 'modal';
 		options.cancelOnEsc = options.cancelOnEsc || true;
 		
-		if( typeof options.dialogId === 'undefined' )
-		{
+		if( typeof options.dialogId === 'undefined' ) {
 			this._createDialog(options);
-		}
-		else
-		{
-			if(!xq.$(options.dialogId))
+		} else {
+			if (!this.xed.toolbar.findDialog(options.dialogId)){
 				this._createDialog(options);
-			else
-				xq.$(options.dialogId).style.display = '';				
+			} else {
+				this.xed.toolbar.findDialog(options.dialogId).style.display = '';				
+			}
 		}
 	},
 	

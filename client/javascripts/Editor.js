@@ -1954,7 +1954,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 							dialog.form.text.value = targetElement.parentNode.title || '';
 						}
 					}
-					var linkText = text || targetElement.alt;
+					var linkText = text || (targetElement && targetElement.alt);
 					if (linkText) dialog.form.text.value = linkText;
 					
 					var temp = dialog.form.url.value;
@@ -2463,7 +2463,7 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 	handleColorPicker: function(color){
 		var anchor = this.lastAnchor;
 		if (anchor.className.indexOf('foreground') != -1){
-			xed.handleForegroundColor(color);
+			this.handleForegroundColor(color);
 		} else if(anchor.className.indexOf('tableDialog') != -1) {
 			var anchors = anchor.parentNode.parentNode.getElementsByTagName('A');
 			for (var i = 0; i < anchors.length; i++){
@@ -2720,9 +2720,9 @@ xq.Editor = xq.Class(/** @lends xq.Editor.prototype */{
 			}
 			
 			setTimeout(function(){
-				xed.rdom.deleteNode(spanStart);
-				xed.rdom.deleteNode(spanEnd);
-			}, 0);
+				this.rdom.deleteNode(spanStart);
+				this.rdom.deleteNode(spanEnd);
+			}.bind(this), 0);
 			
 		} else {
 			if (isPartial) {

@@ -51,9 +51,9 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 				this.wrapper.appendChild(dialogs);
 			}
 		}
-		xed.addListener({
+		this.xed.addListener({
 			onEditorInitialized: function() {
-				xq.observe(xed.getDoc(), 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
+				xq.observe(this.xed.getDoc(), 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
 				xq.observe(document, 'mousedown', this._closeAllLightweight.bindAsEventListener(this));
 			}.bind(this)
 		});
@@ -279,8 +279,7 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		
 		// Create dialog
 		var dialog = this.doc.createElement('DIV');
-		dialog.id = buttonConfig.className + "Dialog";
-		dialog.className = "xqFormDialog lightweight";
+		dialog.className = "xqFormDialog lightweight " + buttonConfig.className + "Dialog";
 		dialog.style.display = 'none';
 		
 		if (buttonConfig.style) {
@@ -333,13 +332,15 @@ xq.ui.Toolbar = xq.Class(/** @lends xq.ui.Toolbar.prototype */{
 		this.dialogContainer.appendChild(dialog);
 		span.appendChild(btn);
 	},
-	
+	findDialog: function(dialogId){
+		return xq.getElementsByClassName(this.dialogContainer, dialogId)[0];
+	},
 	_openDropdownDialog: function(e){
 		this._closeAllLightweight(e);
 		
 		var src = e.target || e.srcElement;
 		this.xed.lastAnchor = src;
-		var dialog = xq.$(src.className + "Dialog");
+		var dialog = this.findDialog(src.className + "Dialog");
 		
 		if (dialog) {
 			dialog.style.display = 'block';

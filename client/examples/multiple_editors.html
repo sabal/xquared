@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Xquared example - Default</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/xq_ui.css" />
+	<script type="text/javascript" src="../javascripts/XQuared.js?load_others=1"></script>
+	<script type="text/javascript">//<![CDATA[
+	var xed_a;
+	var xed_b;
+	
+	window.onload = function() {
+		xed_a = new xq.Editor("xqEditor_a");
+		xed_a.config.imagePathForDefaultToolbar = '../images/toolbar/ko/';
+		xed_a.setEditMode('wysiwyg');
+		xed_a.setWidth("100%");
+		
+		xed_b = new xq.Editor("xqEditor_b");
+		xed_b.config.imagePathForDefaultToolbar = '../images/toolbar/ko/';
+		xed_b.setEditMode('wysiwyg');
+		xed_b.setWidth("100%");
+	}
+	//]]></script>
+</head>
+<body>
+	<div class="top">
+		<textarea id="xqEditor_a">&lt;img src="http://xquared.springnote.com/pages/451172/attachments/199221" /&gt;&lt;p&gt;Hello, this is editor_a&lt;/p&gt;</textarea>
+	</div>
+	<div class="bottom">
+		<textarea id="xqEditor_b">&lt;img src="http://xquared.springnote.com/pages/451172/attachments/199221" /&gt;&lt;p&gt;Hello, this is editor_b&lt;/p&gt;</textarea>
+	</div>
+</body>
+</html>
