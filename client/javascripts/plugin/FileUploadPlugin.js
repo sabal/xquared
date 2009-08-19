@@ -223,14 +223,16 @@ xq.plugin.FileUploadPlugin = xq.Class(xq.plugin.Base,
 				}
 				if (!serverData) return;
 				eval("var data = " + serverData);
-					
+				
+				var uploadedFile = file || {name: 'xqFile'}
+				
 				if(data && data.success) {
 					if (xed.isSingleFileUpload){
-						xed.insertImageFileToEditor(data.file_url, file.name, window.parent.xed);
+						xed.insertImageFileToEditor(data.file_url, uploadedFile.name, window.parent.xed);
 						this.onQueueComplete();
 					} else {
-						xed.insertImageFileToEditor(data.file_url, file.name);
-						xq.$('file-' + file.id + '-progress').style.width = '100%';
+						xed.insertImageFileToEditor(data.file_url, uploadedFile.name);
+						xq.$('file-' + uploadedFile.id + '-progress').style.width = '100%';
 					}
 				} else {
 					alert(data.message);
