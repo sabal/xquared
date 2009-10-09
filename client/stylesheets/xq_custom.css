@@ -52,15 +52,18 @@
 }
 
 /* backgroundColorDialog */
-#backgroundColorDialog {
+#backgroundColorDialog,
+.backgroundColorDialog {
 	width: 216px;
 }
-#backgroundColorDialog .item-list li {
+#backgroundColorDialog .item-list li,
+.backgroundColorDialog .item-list li {
 	margin: 0 0 2px 4px;
 	_margin: 0 0 0 2px !important;
 	width: 12px;
 	height: 12px;
 }
-#backgroundColorDialog .item-list a {
+#backgroundColorDialog .item-list a,
+.backgroundColorDialog .item-list a {
 	border: 1px solid #acacac;
 }
