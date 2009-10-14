@@ -44,7 +44,8 @@ xq.macro.FlashMovieMacro.whiteList = {
 	naver: /http:\/\/serviceapi\.nmv\.naver\.com\/flash\/NFPlayer\.swf\?vid\=/,
 	migame: /http:\/\/free\.migame\.tv\/UploadComponent\/FLVPlayer\/player/,
 	scribd: /http:\/\/d\.scribd\.com\/ScribdViewer\.swf\?/,
-	dailymotion: /http:\/\/(?:www\.)?dailymotion\.com\/swf\//
+	dailymotion: /http:\/\/(?:www\.)?dailymotion\.com\/swf\//,
+	flickr: /http:\/\/www\.flickr\.com\/apps\/slideshow\/show\.swf\?v\=/
 };
 
 xq.macro.FlashMovieMacro.recognize = function(html) {
