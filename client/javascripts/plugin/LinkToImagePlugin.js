@@ -64,6 +64,16 @@ xq.plugin.LinkToImagePlugin = xq.Class(xq.plugin.Base,
 					if(image.alt) a.title = image.alt;
 					if (className) a.className = className;
 				}
+			},
+			editAttr: function(){
+				var image = xed.linkToImage.currentImage;
+				if (!image || image.nodeName != 'IMG') return;
+				
+				var alt = image.alt || 'image';
+			    var input = prompt(xed._("Enter image alt value"), alt);
+			    if (input != null) {
+					image.alt = input;
+				}
 			}
 		}
 	}

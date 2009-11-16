@@ -48,5 +48,7 @@ xq._messages['ko']={
 	"Make text to flow around image":"이미지 배치",
 	"No flow":"흐름 없음",
 	"Place image left":"이미지를 왼쪽으로",
-	"Place image right":"이미지를 오른쪽으로"
+	"Place image right":"이미지를 오른쪽으로",
+	"Change image attribute":"이미지 속성 변경하기",
+	"Enter image alt value":"이미지 alt 값을 입력하세요."
 };
