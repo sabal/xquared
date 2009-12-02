@@ -103,13 +103,6 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 			this.resizeDimmedDiv();
 		}
 		
-		// append dialog
-		this.xed.toolbar.dialogContainer.appendChild(this.form);
-		container.parentNode.removeChild(container);
-		
-		// place dialog to center of window
-		this.setPosition(options.position);
-		
 		// give focus
 		var elementToFocus = xq.getElementsByClassName(this.form, 'initialFocus');
 		if(elementToFocus.length > 0) {
@@ -129,6 +122,13 @@ xq.ui.FormDialog = xq.Class(/** @lends xq.ui.FormDialog.prototype */ {
 		}
 		
 		this.onLoadHandler(this);
+		
+		// append dialog
+		this.xed.toolbar.dialogContainer.appendChild(this.form);
+		container.parentNode.removeChild(container);
+		
+		// place dialog to center of window
+		this.setPosition(options.position);
 	},
 	/**
 	 * Closes dialog
