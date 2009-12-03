@@ -592,7 +592,7 @@ xq.RichTableController = {
 	},
 	showColorPicker: function(elem){
 		xed.lastAnchor = elem;
-		var dialog = xq.$('foregroundColorDialog');
+		var dialog = xq.$('foregroundColorDialog') || xq.getElementsByClassName(xed.toolbar.dialogContainer, 'foregroundColorDialog')[0];
 		dialog.style.display = 'block';
 		
 		dialog.style.position = 'absolute'
