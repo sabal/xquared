@@ -1,0 +1,252 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>튜토리얼</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>이 문서는 Xquared에 익숙하지 않은 개발자를 위해 작성되었으며, 프로그램 설치부터 시작해서 기능을 단계적으로 추가하는 과정을 보여주는 "따라하기" 스타일의 자습서 입니다.</p>
+<p> </p>
+<p>전체 기능에 대한 참조 문서는 <a href="469597.xhtml" title="문서" class="wiki">문서</a> 페이지를 참고하세요.</p>
+<p> </p>
+<div id="toc" style="border: 1px solid tan; padding: 2px 10px 0px; background-color: rgb(255, 255, 250);">
+<p><strong>목차</strong></p>
+<hr/><ol><li><a href="#toc_0" title="toc_0" class="external">설치하기</a></li>
+<li><a href="#toc_1" title="toc_1" class="external">디렉토리 내용 확인하기</a></li>
+<li><a href="#toc_2" title="toc_2" class="external">웹 페이지에 Xquared 넣기</a></li>
+<li><a href="#toc_3" title="toc_3" class="external">편집 결과를 FORM으로 전송하기</a></li>
+<li>
+<p><a href="#toc_4" title="toc_4" class="external">기능 확장</a></p>
+<ol><li><a href="#toc_5" title="toc_5" class="external">단축키 추가하기</a></li>
+<li><a href="#toc_6" title="toc_6" class="external">자동 변환(autocorrection) 추가하기</a></li>
+<li><a href="#toc_7" title="toc_7" class="external">자동 완성(autocompletion) 추가하기</a></li>
+<li><a href="#toc_8" title="toc_8" class="external">컨텍스트 메뉴 추가하기</a></li>
+<li><a href="#toc_9" title="toc_9" class="external">템플릿 처리기 추가하기</a></li>
+<li><a href="#toc_10" title="toc_10" class="external">Quick Search Dialog</a></li>
+</ol></li>
+<li><a href="#toc_11" title="toc_11" class="external">기여하기</a></li>
+</ol></div>
+<p> </p>
+<h3>설치하기<sup class="tocAnchorContainer"><a href="#toc_0" title="toc_0" class="anchor" id="toc_0">#</a></sup></h3>
+<p><a href="475268.xhtml" title="설치하기" class="wiki">설치하기</a>를 참고하세요.</p>
+<h3>디렉토리 내용 확인하기<sup class="tocAnchorContainer"><a href="#toc_1" title="toc_1" class="anchor" id="toc_1">#</a></sup></h3>
+<p>2008년 4월 이후의 Xquared 배포판은 다음 파일들을 담고 있습니다(이전 버전을 사용하고 계시다면 <a href="469596.xhtml" class="wiki" title="내려받기">내려받기</a> 페이지에서 최신 버전을 받으시기 바랍니다):</p>
+<ol class="code"><li>/docs</li>
+<li>/examples</li>
+<li>/images</li>
+<li style="margin-left: 2em;">/content</li>
+<li style="margin-left: 2em;">/toolbar</li>
+<li>/javascripts</li>
+<li style="margin-left: 2em;">/module</li>
+<li style="margin-left: 2em;">*.js</li>
+<li>/stylesheets</li>
+<li style="margin-left: 2em;">
+<p>xq_contents.css</p>
+<p>xq_ui.css</p>
+</li>
+<li>/tests</li>
+<li>index.html</li>
+<li>test.html</li>
+<li>README</li>
+<li>LICENSE</li>
+</ol><p> </p>
+<ul><li>/docs: Xquared 자바스크립트 API 문서가 들어 있습니다.</li>
+<li>/examples: 각종 예제가 들어 있습니다. 이 예제들을 브라우저에서 열거나 <a href="732853.xhtml" class="wiki" title="예제">예제</a> 페이지의 링크를 클릭하시면 Xquared를 사용해볼 수 있습니다.</li>
+<li>
+<p>/images: Xquared에서 사용하는 이미지 파일들이 들어 있습니다.</p>
+<ul><li>/contents: Xquared 편집기 내부에서 사용되는 이미지들이 모여 있는 곳입니다.</li>
+<li>/toolbar: Xquared 기본 툴바에서 사용되는 이미지들이 모여 있는 곳입니다.</li>
+</ul></li>
+<li>/javascripts: Xquared 실행에 필요한 자바스크립트 파일들이 들어 있는 곳입니다. 이 중 modules 디랙토리에는 초기 로딩 속도를 빠르게 하기 위해 모든 자바스크립트 파일을 하나로 합쳐 놓은 파일들이 들어 있습니다. 예를 들어 Full_merged.js 는 Xquared의 모든 기능이 포함된 하나의 js 파일입니다. 동영상 삽입 등의 기능이 필요 없을 경우 최소한의 기능만을 포함하고 있는 Minimal_merged.js 를 사용하시면 됩니다. 파일 이름이 _min.js로 끝나는 파일은 스크립트 파일의 크기를 줄이기 위해 공백이나 주석 등을 제거한 파일이며, 기능은 동일합니다.</li>
+<li>/stylesheets: Xquared에서 사용하는 스타일시트 파일이 들어 있습니다. xq_contents.css는 편집기 내부에서 사용되는 CSS 파일이고, xq_ui.css는 툴바 등 편집기 외부에서 사용되는 파일입니다.</li>
+<li>/tests: <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec" class="external" title="http://jania.pe.kr/aw/moin.cgi/JSSpec">JSSpec</a>과 <a href="http://openqa.org/" class="external" title="http://openqa.org/">Selenium</a>을 이용한 자동 테스트 모음입니다.</li>
+<li>index.html</li>
+<li>test.html: 이 파일을 브라우저에서 열면 자동 테스트가 실행됩니다.</li>
+</ul><h3>웹 페이지에 Xquared 넣기<sup class="tocAnchorContainer"><a href="#toc_2" title="toc_2" class="anchor" id="toc_2">#</a></sup></h3>
+<p>우선 다음 HTML 파일을 생성 합니다:</p>
+<ol class="code"><li>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;</li>
+<li>&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"&gt;</li>
+<li>&lt;head&gt;</li>
+<li>    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /&gt;</li>
+<li>    &lt;title&gt;Xquared Demo&lt;/title&gt;</li>
+<li>&lt;/head&gt;</li>
+<li>&lt;body&gt;</li>
+<li>    &lt;textarea id="editor"&gt;&amp;lt;p&amp;gt;Hello from Xquared&amp;lt;/p&amp;gt;&lt;/textarea&gt;</li>
+<li>&lt;/body&gt;</li>
+<li>&lt;/html&gt;</li>
+</ol><p> </p>
+<p>위 HTML 파일이 저장된 디렉터리에 다음 파일을 복사합니다:</p>
+<ul><li>/images</li>
+<li>/javascripts</li>
+<li>/stylesheets</li>
+</ul><p> </p>
+<p>이제, HTML 파일을 수정하여 다음 자바스크립트 및 CSS를 삽입합니다:</p>
+<ol class="code"><li>...</li>
+<li>&lt;head&gt;</li>
+<li>    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /&gt;</li>
+<li>    <strong>&lt;link rel="stylesheet" type="text/css" href="stylesheets/xq_ui.css" /&gt;</strong></li>
+<li style="margin-left: 2em;"> <strong>&lt;script src="javascripts/module/Full_merged.js" type="text/javascript&gt;&lt;/script&gt;</strong></li>
+<li>    <strong>&lt;script type="text/javascript"&gt;//&lt;![CDATA[</strong><br/>
+    <strong>var xed;</strong><br/>
+   <br/>
+    <strong>window.onload = function() {</strong><br/>
+        <strong>xed = new xq.Editor("editor");</strong><br/><strong>       xed.config.contentCssList = ["stylesheets/xq_contents.css"];</strong></li>
+<li>        <strong>xed.setEditMode('wysiwyg');</strong><br/>
+    <strong>}</strong><br/>
+    <strong>//]]&gt;&lt;/script&gt;</strong><br/>
+    &lt;title&gt;Xquared Demo&lt;/title&gt;</li>
+<li>&lt;/head&gt;</li>
+<li>...</li>
+</ol><p> </p>
+<p>위 코드를 간력히 분석해보겠습니다.</p>
+<p> </p>
+<ol class="code"><li>xed = new xq.Editor("editor");</li>
+</ol><p>이 코드는 편집기 인스턴스를 생성하여 xed 라는 글로벌 변수에 대입합니다. 편집 모드로 전환할 HTML 요소는 id가 editor인 DIV 입니다. Xquared는 DIV 대신 TEXTAREA와도 연결될 수 있습니다.</p>
+<p> </p>
+<ol class="code"><li>xed.config.contentCssList = ["stylesheets/xq_contents.css"];</li>
+</ol><p>이 코드는 편집기 내부(WYSIWYG 모드)에서 사용할 CSS를 지정하기 위해 사용됩니다.</p>
+<p> </p>
+<ol class="code"><li>xed.setEditMode('wysiwyg');</li>
+</ol><p>이 코드가 실행되면 DIV#editor 엘리먼트가 WYSIWYG 편집모드로 전환됩니다. 실제로 해당 엘리먼트가 편집모드로 전환되는 것은 아니고, 사실은 다음과 같이 작동됩니다:</p>
+<ol><li>CSS를 변경(display:none)하여 TEXTAREA#editor 를 화면에서 감춥니다.</li>
+<li>편집 영역으로 사용할 IFRAME을 생성하여 TEXTAREA#editor 바로 밑에 삽입합니다.</li>
+<li>TEXTAREA#editor 의 내용(value)을 복사하여 편집 모드에 맞게 변환<span class="wiki">(</span><a href="471370.xhtml" class="wiki" title="편집기 문서 포멧">편집기 문서 포멧</a> 참고)한 후 IFRAME의 내부에 대입합니다.</li>
+</ol><p>소스 편집 모드로 전환하려면 'wysiwyg' 대신 'source'를 넣어주시면 됩니다.</p>
+<h3>편집 결과를 FORM으로 전송하기<sup class="tocAnchorContainer"><a href="#toc_3" title="toc_3" class="anchor" id="toc_3">#</a></sup></h3>
+<p>위와 동일한 코드를 사용하되, 아래와 같이 FORM 태그를 추가하시면 됩니다:</p>
+<ol class="code"><li>&lt;body&gt;<br/>
+    &lt;form action="your_path" method="post"&gt;<br/>
+        &lt;textarea name="content" <strong>id="editor"</strong>&gt;<br/>
+            &amp;lt;p&amp;gt;Hello &amp;lt;a href="#"&amp;gt;World&amp;lt;/a&amp;gt;!&amp;lt;/p&amp;gt;<br/>
+        &lt;/textarea&gt;<br/>
+        &lt;input type="submit" /&gt;<br/>
+    &lt;/form&gt;<br/>
+&lt;/body&gt;</li>
+</ol><p> </p>
+<h3>기능 확장<sup class="tocAnchorContainer"><a href="#toc_4" title="toc_4" class="anchor" id="toc_4">#</a></sup></h3>
+<h5>단축키 추가하기<sup class="tocAnchorContainer"><a href="#toc_5" title="toc_5" class="anchor" id="toc_5">#</a></sup></h5>
+<p>Xquared는 널리 쓰이는 몇 가지 단축키를 기본으로 지원하고 있습니다. 예를 들어 Ctrl+B를 누르면 강한 강조(strong) 태그가 적용됩니다. 물론 기본 단축키를 제거하거나, 재정의하거나, 새로운 단축키를 추가할 수도 있습니다.</p>
+<p> </p>
+<ol class="code"><li>xed.addShortcut("Alt+UP", "xed.handleMoveBlock(true)");</li>
+<li>xed.addShortcut("Alt+DOWN", "xed.handleMoveBlock(false)");</li>
+</ol><p>이제 Alt 키와 위/아래 방향키를 통해 현재 줄을 위/아래로 옮길 수 있습니다(Eclipse 처럼). 아, Mac에서는 Alt 보다는 Meta가 더 적절하겠죠?</p>
+<p> </p>
+<ol class="code"><li>if(xq.Browser.isMac) {</li>
+<li>     xed.addShortcut("Meta+UP", "...");</li>
+<li>} else {</li>
+<li>     xed.addShortcut("Alt+UP", "...");</li>
+<li>}</li>
+</ol><p> </p>
+<p>단축키를 제거하려면 아래와 같이 하시면 됩니다:</p>
+<ol class="code"><li>xed.removeShortcut("Alt+UP");</li>
+</ol><p> </p>
+<h5>자동 변환(autocorrection) 추가하기<sup class="tocAnchorContainer"><a href="#toc_6" title="toc_6" class="anchor" id="toc_6">#</a></sup></h5>
+<p>엔터를 칠 때 현재 줄의 내용을 자동으로 변환해주는 기능을 자동 변환(autocorrection)이라고 합니다. 예를 들어 스프링노트에서는</p>
+<blockquote>
+<p>* 가나다</p>
+</blockquote>
+<p>라고 입력한 후에 엔터를 누르면</p>
+<blockquote>
+<ul><li>가나다</li>
+</ul></blockquote>
+<p>와 같이 변환됩니다.</p>
+<p> </p>
+<p>Xquared는 이와 같은 자동 변환 기능을 기본적으로 제공하지 않고 있는데, API를 통해 원하는 변환 기능을 쉽게 추가하실 수 있습니다. 예를 들어,</p>
+<blockquote>
+<p>----</p>
+</blockquote>
+<p>라고 입력하고 엔터를 누르면 가로선(HR)이 삽입되도록 하려면 아래와 같은 코드를 넣으면 됩니다:</p>
+<ol class="code"><li>xed.addAutocorrection('separator', /^----*$/,</li>
+<li>    function(xed, rdom, block, text) {</li>
+<li style="margin-left: 6em;">if(rdom.tree.isBlockContainer(block)) block = rdom.wrapAllInlineOrTextNodesAs("P", block, true)[0];</li>
+<li style="margin-left: 6em;">rdom.insertNodeAt(rdom.createElement("HR"), block, "before");</li>
+<li style="margin-left: 6em;">block.innerHTML = "";</li>
+<li style="margin-left: 6em;">rdom.placeCaretAtStartOf(block);</li>
+<li style="margin-left: 6em;">return true;</li>
+<li>    }</li>
+<li>);</li>
+</ol><p> </p>
+<p>TBD: 코드 설명 추가하기</p>
+<h5>자동 완성(autocompletion) 추가하기<sup class="tocAnchorContainer"><a href="#toc_7" title="toc_7" class="anchor" id="toc_7">#</a></sup></h5>
+<p>글을 입력하다가 Ctrl+Space를 누르면 나머지 부분을 자동으로 완성해주는 기능을 자동 완성(autocompletion)이라고 합니다. 예를 들어 스프링노트에서는 단어 입력 후 Ctrl+Space를 누르면 자동으로 링크를 걸어주거나, @calc:1+2 를 입력한 후 Ctrl+Space를 누르면 계산 결과인 3을 출력하는 등 다양한 자동 완성 기능을 제공하고 있습니다.</p>
+<p> </p>
+<p>Xquared는 이와 같은 자동 완성 기능이 기본적으로 제공하지 않고 있는데, API를 통해 원하는 기능을 쉽게 추가하실 수 있습니다. 예를 들어,</p>
+<blockquote>
+<p>@isbn:9780520243835</p>
+</blockquote>
+<p>라고 입력하고 Ctrl+Space를 누르면</p>
+<blockquote>
+<p><a href="http://www.amazon.com/exec/obidos/ISBN=9780520243835" class="external" title="ISBN:9780520243835">ISBN:9780520243835</a></p>
+</blockquote>
+<p>와 같이 아마존으로 가는 링크가 자동으로 걸리도록 만들려면 다음 코드를 추가하시면 됩니다:</p>
+<ol class="code"><li>xed.addAutocompletion('isbn', /@ISBN:\d+$/i,</li>
+<li style="margin-left: 2em;">function(xed, rdom, block, wrapper, text) {</li>
+<li>          var isbn = text.split(":")[1];</li>
+<li>          var href = <span class="external">"http://amazon.com/exec/obidos/ISBN="</span> + isbn;</li>
+<li>          var node = rdom.createElement('A');</li>
+<li>          node.innerHTML = 'ISBN:' + isbn;</li>
+<li>          node.href = href</li>
+<li>          node.title = 'ISBN:' + isbn;</li>
+<li>          wrapper.innerHTML = "";</li>
+<li>          wrapper.appendChild(node);</li>
+<li>     }</li>
+<li>);</li>
+</ol><h5>컨텍스트 메뉴 추가하기<sup class="tocAnchorContainer"><a href="#toc_8" title="toc_8" class="anchor" id="toc_8">#</a></sup></h5>
+<p>TBD. 오른쪽 버튼 누르면 나타날 메뉴를 사용자 정의 하는 방법. 설명 추가할 것</p>
+<ol class="code"><li>xed.addContextMenuHandler('test', function(xed, element, x, y) {<br/>
+    if(element.nodeName != "P") return false;<br/>
+    xed.showContextMenu([<br/>
+        {<br/>
+            title: '볼드',<br/>
+            handler: xed.handleStrongEmphasis.bind(xed),<br/>
+            className: "cssClassName"<br/>
+        },<br/>
+        {<br/>
+            title: '----'<br/>
+        },<br/>
+        {<br/>
+            title: '언더라인',<br/>
+            handler: xed.handleUnderline.bind(xed)<br/>
+        }<br/>
+    ], x, y);<br/>
+  <br/>
+    return true;<br/>
+});</li>
+</ol><h5>템플릿 처리기 추가하기<sup class="tocAnchorContainer"><a href="#toc_9" title="toc_9" class="anchor" id="toc_9">#</a></sup></h5>
+<p>Xquared는 미리 정의된 HTML 문자열 조각을 편집 중인 문서에 삽입하는 기능을 제공하는데, 이를 템플릿(template)이라고 합니다. 예를 들어</p>
+<ol class="code"><li>xed.insertTemplate('&lt;p&gt;오늘은 {xq:year}년 {xq:month}월 {xq:date}일 입니다.&lt;/p&gt;');</li>
+</ol><p>라는 코드를 실행하면</p>
+<blockquote>
+<p>&lt;p&gt;오늘은 2007년 9월 15일 입니다&lt;/p&gt;</p>
+</blockquote>
+<p>와 같은 HTML 코드가 삽입됩니다.</p>
+<p> </p>
+<p>이와 같이 템플릿의 문자열 일부를 적절한 값으로 치환하기 위해 템플릿 처리기(template processor)가 실행되는데, Xquared는 미리 등록되어 있는 템플릿 처리기 이외에 개발자가 쉽게 템플릿 처리기를 추가하여 다양하고 지능적인 템플릿을 지원할 수 있도록 하는 API를 제공하고 있습니다.</p>
+<p> </p>
+<p>예를 들어,</p>
+<ol class="code"><li>xed.addTemplateProcessor(</li>
+<li>     'userAgent',</li>
+<li>     function(html) {</li>
+<li>          return html.replace(/{xq:userAgent}/img, navigator.userAgent);</li>
+<li>     }</li>
+<li>);</li>
+</ol><p>위 코드를 실행한 후 다음과 같이 템플릿을 삽입하면</p>
+<ol class="code"><li>xed.insertTemplate('&lt;p&gt;User agent: {xq:userAgent}&lt;/p&gt;');</li>
+</ol><p>다음과 같은 HTML 코드가 삽입됩니다:</p>
+<ol class="code"><li>&lt;p&gt;User agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6&lt;/p&gt;</li>
+</ol><h5>Quick Search Dialog<sup class="tocAnchorContainer"><a href="#toc_10" title="toc_10" class="anchor" id="toc_10">#</a></sup></h5>
+<p>TBD.</p>
+<ol class="code"><li>
+<p> var dialog = new xq.controls.QuickSearchDialog(xed, {<br/>
+     listProvider: function(query, xed, callback) {<br/>
+         var headings = xed.rdom.searchHeadings();<br/>
+         var matched = headings.findAll(function(h) {<br/>
+             return xed.rdom.getInnerText(h).toLowerCase().indexOf(query.toLowerCase()) != -1;<br/>
+         });<br/>
+         callback(matched);<br/>
+     },<br/>
+     onSelect: function(xed, selected) {<br/>
+         xed.focus();<br/>
+         xed.rdom.scrollIntoView(selected, true, true);<br/>
+     }<br/>
+});<br/>
+dialog.show();</p>
+</li>
+</ol><h3>기여하기<sup class="tocAnchorContainer"><a href="#toc_11" title="toc_11" class="anchor" id="toc_11">#</a></sup></h3>
+<p><a href="471767.xhtml" title="기여방법" class="wiki">기여방법</a>을 참고하세요.</p>
+
+  </body></html>

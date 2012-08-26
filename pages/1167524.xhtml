@@ -1,0 +1,42 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Building</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h1><span style="font-size: x-large;"><strong>Building</strong></span></h1>
+<p>This document explains how to create Xquared's distribution version from the source code.</p>
+<p> </p>
+<h5>Receiving the source code from storage</h5>
+<p>Xquared uses <a href="http://code.google.com/p/xquared/" class="external" title="http://code.google.com/p/xquared/">GoogleCode(SVN)</a> as a repository. If you are new to SVN, please read <a href="http://en.wikipedia.org/wiki/Subversion_%28software%29" title="http://en.wikipedia.org/wiki/Subversion_(software)" class="external">this article</a> and enter the following command to get the source code:</p>
+<p> </p>
+<ol class="code"><li>svn checkout <a href="http://xquared.googlecode.com/svn/trunk/">http://xquared.googlecode.com/svn/trunk/</a> xquared-read-only</li>
+</ol><p> </p>
+<h5>Installing necessary libraries/programs for building: Installing Ant</h5>
+<p>The Xquared build process has been written through Apachi Ant ( <a href="http://ant.apache.org/" class="external" title="http://ant.apache.org/">http://ant.apache.org/</a> ). Thus, you must go to <a href="http://ant.apache.org/" class="external" title="http://ant.apache.org/">http://ant.apache.org/</a>  and download the latest distribution version and install it.</p>
+<p> </p>
+<p> </p>
+<h5>Installing JSDoc_toolkit</h5>
+<p>in Xquared, JSDoc_toolkit is used to automatically generate API documents from the JavaScript source. You must install the latest release version from <a href="http://code.google.com/p/jsdoc-toolkit/" class="external" title="http://code.google.com/p/jsdoc-toolkit/">http://code.google.com/p/jsdoc-toolkit/</a></p>
+<p> </p>
+<p> </p>
+<h5>Building</h5>
+<p>The complete build process is as follows:</p>
+<ol><li>Restoring the distribution directory (dist)</li>
+<li>
+<p>Merging(utlize Ant's tar task) JavaScript files in order to generate xquared.js</p>
+</li>
+<li>Compress merged files and delete comments to generate xquared-min.js</li>
+<li>Extract comments from files that have not been merged to generate an API document (use jsdoc_toolkit)</li>
+<li>Compress all content in the distribution directory to generate xquared.tar.gz</li>
+</ol><p> </p>
+<p>To execute the build, first open build.properties and after  properly edit the jsdoc_home path input</p>
+<p> </p>
+<ol class="code"><li>&gt; ant</li>
+</ol><p> </p>
+<p>to automatically start building. When building has been completed, the following directories will be generated:</p>
+<ul><li>dist/doc/api - automaitcally generated API documents</li>
+<li>dist/css - provided CSS files by default</li>
+<li>dist/js - xquared.js (includes all scripts into one) and xquared-min.js (compressed version)</li>
+<li>dist/examples - example files that can be executed locally</li>
+<li>README, LICENSE</li>
+<li>xquared.tar.gz - compressed files for redistribution. This file includes all files in the dist directory.</li>
+</ul><p> </p>
+<p> </p>
+
+  </body></html>

@@ -1,0 +1,255 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>03. 다운로드</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h2>최신 릴리즈</h2>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071114.tar.gz" title="xquared20071114.tar.gz" class="external"/></p>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071121.tar.gz" title="xquared20071121.tar.gz" class="external"/></p>
+<ul><li><a href="http://code.google.com/p/xquared/downloads/list">http://code.google.com/p/xquared/downloads/list</a>  에서 최신 릴리즈를 받을 수 있습니다.<a href="http://xquared.googlecode.com/files/xquared_client_20090206.tar.gz" title="http://xquared.googlecode.com/files/xquared_client_20090206.tar.gz" class="external"/></li>
+</ul><h2>최신 코드 Checkout 하기</h2>
+<p><a href="965352.xhtml" title="02. 개발" class="wiki">개발 페이지</a>를 참조해 주세요.</p>
+<p> </p>
+<h2>사용하기</h2>
+<p><a href="472344.xhtml" class="wiki" title="튜토리얼">튜토리얼</a> 페이지를 따라해보세요.</p>
+<p> </p>
+<h2>변경 이력</h2>
+<h3>2009/02/16</h3>
+<ul><li>추가 : 파일업로드 플러그인 추가</li>
+<li>추가 : 툴바 커스터마이징 예제 추가</li>
+<li>수정 : IE7에서 setWidth()를 하지 않았을 때, Element가 선택되지 않던 버그 수정</li>
+<li>수정 : linux에서 build할 때 case-sensitive문제로 빌드 실패하던 버그 수정</li>
+</ul><p> </p>
+<h3>2009/02/06</h3>
+<ul><li>개선: Toolbar, Dialog 디자인 변경</li>
+<li>개선 : Font Color/Size, Heading Dropdown List CSS 적용</li>
+<li>추가 : 이모티콘 삽입 기능 추가</li>
+</ul><h3>2009/02/05</h3>
+<ul><li><strong>개선: 스프링노트 편집기의 개선사항들을 Xquared에 반영</strong></li>
+<li>개선 : Toolbar의 Color Picker를 기존 8색에서 60색의 컬러피커로 개선</li>
+<li>개선 : Toolbar의 dropdown button 방식을 Select -&gt; lightweight dialog 방식으로 변경</li>
+<li>추가 : 아이콘 추가</li>
+<li>추가 : PlayNC의 동영상을 삽입할 수 있도록 추가</li>
+<li>수정 : Chrome에서 커서를 잃어버리는 버그를 수정</li>
+<li>수정 : ResizePlugin을 사용해 편집기를 높이 0으로 리사이징할 때,마우스 커서를 컨트롤 할 수 없게 되던 버그 수정</li>
+<li>수정 : 빈 리스트에서 내여쓰기 했을 때 생기는 오류 수정</li>
+<li>수정 : IE의 스크롤 버그 수정</li>
+<li>수정 : IE에서 이미지 선택 후 rdom.deleteSelection() 하면 지워지지 않던 문제 수정</li>
+<li>수정 : IE에서 rdom.collectStructureAndStyle()을 사용할 시, fontSize 외에 foregroundColor, fontName도 CSS 영향을 받는 현상 반영</li>
+</ul><h3>2008/04/23</h3>
+<p> </p>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080423.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080423.tar.gz" class="external"/></p>
+<ul><li><strong>개선: 소스 코드의 구조를 전체적으로 수정하였습니다. 패키지 개념을 도입하고 모듈 간 의존성을 낮추어 동영상 등 부가적인 기능을 Plugin 형태로 분리하였습니다.</strong></li>
+<li><span style="color: rgb(214, 26, 0);"><strong>수정: TEXTAREA가 아닌 엘리먼트를 Xquared와 연결할 수 없도록 제한하였습니다.</strong></span></li>
+<li>추가: 마우스로 편집기 하단을 드래그하여 크기를 조절할 수 있게 해주는 플러그인(EditorResizePlugin.js)이 추가되었습니다. examples 디렉터리의 resize.html을 참고하세요. (<a href="http://ecus.openmaru.com/issues/7575?project=Xquared" class="external" title="http://ecus.openmaru.com/issues/7575?project=Xquared">zenguy님과 지나감님이 제안하신 기능입니다.</a> 감사합니다.)</li>
+<li>추가: 야후! 비디오를 삽입할 수 있도록 하였습니다.</li>
+<li>추가: 새 버전의 판도라TV 플래이어를 삽입할 수 있도록 하였습니다.</li>
+<li>수정: 동영상 삽입 시 URL을 입력하지 못하도록 제한하였습니다. OBJECT 혹은 EMBED만 사용 가능합니다.</li>
+<li>수정: 편집 모드 BODY에 margin과 padding이 없을 때 동영상이 재생되지 않던 문제를 수정하였습니다.</li>
+<li>수정: 잘라내기(Ctrl+X)로 동영상을 제거하는 경우 화면에서 동영상이 사라지지 않던 문제를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2008/03/27</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080327.tar.gz" class="external" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080327.tar.gz">xquared_client_20080327.tar.gz</a></p>
+<ul><li><strong>추가: 다음 tv팟 (<a href="http://tvpot.daum.net%29,"/><a href="http://tvpot.daum.net%29"/><a href="http://tvpot.daum.net">http://tvpot.daum.net</a>), 판도라TV(<a href="http://www.pandora.tv%29,"/><a href="http://www.pandora.tv%29"/><a href="http://www.pandora.tv%29"/><a href="http://www.pandora.tv">http://www.pandora.tv</a>), 엠엔케스트(<a href="http://mncast.com">http://mncast.com</a>) 동영상을 추가할 수 있게 되었습니다. 툴바의 동영상 버튼 <img src="http://jania.pe.kr/xquared/client/images/toolbar/movie.gif" alt="The image “http://jania.pe.kr/xquared/client/images/toolbar/movie.gif” cannot be displayed, because it contains errors."/> 을 누르세요.</strong></li>
+<li><strong>추가: 동영상 삽입 시 URL 대신 OBJECT 코드를 입력해도 인식할 수 있도록 하였습니다.</strong></li>
+<li><strong>추가: IFRAME을 넣을 수 있습니다.</strong></li>
+<li>추가: config.autoFocusOnInit을 true로 설정하면 에디터가 실행될 때 자동으로 포커스를 갖도록 할 수 있습니다.</li>
+<li><strong>개선: 배포판에 API 문서를 포함시켰습니다. docs 디렉터리를 참고하세요.</strong></li>
+<li>개선: Mac 용 기본 단축키 몇 가지를 추가하였습니다. Meta+B, Meta+I, Meta+K, Meta+U가 각각 <strong>강한 강조</strong>, <em>강조</em>, <span class="strike">취소선</span>, <em class="underline">밑줄</em>을 실행합니다. 기존 단축키인 Ctrl+B, Ctrl+I, Ctrl+K, Ctrl+U도 그대로 유지됩니다. 단축키를 제거하거나 추가하는 방법은 <a href="471371.xhtml" class="wiki" title="기능 확장하기">기능 확장하기</a>를 참고해주세요.</li>
+<li>수정: IE에서 HTTPS 페이지 상에 Xquared를 띄울 경우 보안 경고가 나오던 문제를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2008/03/20</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080320.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080320.tar.gz" class="external">xquared_client_20080320.tar.gz</a></p>
+<ul><li><strong>개선: 배포 파일의 구조를 크게 수정하였습니다. 자세한 내용은 변경된 <a href="472344.xhtml" title="튜토리얼" class="wiki">튜토리얼</a>을 참고하세요.</strong></li>
+<li>개선: xq.Editor와 xq.Toolbar를 분리하였습니다.</li>
+<li>수정: 동영상이 다이얼로그를 통해서는 삽입되지 않고, HTML 소스를 직접 수정하는 방법으로만 삽입될 수 있었던 버그를 수정하였습니다.</li>
+<li>수정: FF와 IE에서 한 문서에 여러 개의 동영상이 있는 경우 첫번째 동영상만 제대로 로딩되는 문제를 수정하였습니다.</li>
+<li>수정: Safari에서 줄바꿈 및 블럭 단위 이동 등이 제대로 수행되지 않던 문제를 수정하였습니다.</li>
+<li>수정: FF에서 초기에 xq.Editor.focus()나 xq.RichDom.focus()를 호출해도 포커스가 잡히지 않던 문제를 수정하였습니다.</li>
+<li>수정: IE6/7에서 CSS를 수정하여 소스 편집 창에 border를 준 경우 브라우저가 멈추는 버그를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7405?project=Xquared" class="external" title="http://ecus.openmaru.com/issues/7405?project=Xquared">gEEkInsIdE님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: 글자 크기 및 글꼴 메뉴에서 특정 항목이 아닌 제목 부분을 선택하면 에러가 발생하던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7481?project=Xquared" class="external" title="http://ecus.openmaru.com/issues/7481?project=Xquared">zenguy님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: FF에서  HTML 속성이 '=' 문자로 끝나는 경우(예를 들면 &lt;a href='http://x.com?y='&gt;), Validator가 오작동하는 문제를 수정하였습니다.</li>
+<li>수정: FF에서 한글을 입력하던 중간에 편집기에서 포커스가 사라지면 동일한 글자가 하나 더 생기던 문제를 수정하였습니다.</li>
+<li>수정: FF에서 빈 블럭을 위/아래로 옮길 때 캐럿이 사라지는 문제를 수정하였습니다.</li>
+<li>수정: 긴 문서에서 다이얼로그를 창의 중앙(centerOfWindow)에 띄울 때 스크롤바의 위치가 계산되지 않아서 위치가 틀어지던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7538?project=Xquared" title="http://ecus.openmaru.com/issues/7538?project=Xquared" class="external">zenguy님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+</ul><p> </p>
+<h3>2008/03/14</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080314.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080314.tar.gz" class="external">xquared20080314.tar.gz</a></p>
+<ul><li><strong>추가: YouTube 동영상을 삽입하는 기능이 추가되었습니다. WYSIWYG 편집 중에도 재생이 가능합니다. 툴바의 Movie 아이콘을 클릭하면 새 동영상을 삽입할 수 있습니다. 곧 다음 TVPot 등 다른 동영상들도 추가할 수 있도록 할 예정입니다.</strong></li>
+<li>추가: Xquared의 기능을 더 쉽게 확장할 수 있도록 하기 위해 플러그인 API를 추가했습니다.</li>
+<li><strong>개선: Validation 로직이 개선되었습니다. 태그 별로 허용되는 속성 집합을 정의할 수 있게 되었습니다. 이에 따라 Validation 설정 변경 로직이 바뀌었습니다. 기존에 Validation 설정을 수정하여 사용하고 계셨다면 <a href="542950.xhtml" title="설정하기" class="wiki">설정하기</a> 페이지를 참고하여 해당 코드를 고쳐주시기 바랍니다.</strong></li>
+<li>개선: 초기 로딩 속도 및 편집 모드 전환 속도가 향상되었습니다.</li>
+<li>수정: 중첩된 리스트 편집 중 DEL, BS 누를 때 리스트가 엉키는 문제 일부를 수정하였습니다.</li>
+<li>수정: IE6,7 에서 자동으로 생성되는 공백 문자가 제거되지 않던 상황 일부를 수정하였습니다.</li>
+<li>수정: xq.Editor.onEditorElementChanged에 인자를 추가하였습니다(editor instance).</li>
+<li>수정: 서식 제거(removeFormat)를 할 때 링크는 삭제되지 않도록 하였습니다.</li>
+</ul><p> </p>
+<h3>2008/03/06</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080306.tar.gz" title="xquared20080306.tar.gz" class="external">xquared20080306.tar.gz</a></p>
+<ul><li>개선: Windows 및 Mac용 Safari에서 일부 단축키가 인식되지 않던 문제를 수정하였습니다.</li>
+<li>개선: Windows 및 Mac용 Safari에서 Validation/Invalidation이 제대로 되지 않던 문제를 수정하였습니다.</li>
+<li>개선: 큰 문서를 읽어올 때의 성능이 약간 향상 되었습니다. (자주 쓰는 Regular Expression을 미리 컴파일하도록 하였습니다)</li>
+<li>수정: Firefox에서 xq.RichDom.collectStructureAndStyle()이 간혹 오작동하여 툴바 갱신 중 예외가 발생하는 문제를 수정하였습니다.</li>
+<li>수정: xq.RichDom.hasFocus() 함수가 제대로 작동하지 않던 문제를 수정하였습니다.</li>
+<li>수정: prototype.js 가 xquared.js 보다 먼저 로딩될 경우에 발생하는 문제를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2008/03/03</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080303.tar.gz" title="xquared20080303.tar.gz" class="external">xquared20080303.tar.gz</a></p>
+<ul><li>추가: Selenium 기능 테스트를 보강하였습니다.</li>
+<li>수정: IE 6/7에서 캐럿이 간혹 튀거나 제대로 움직이지 않던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/6953" title="한상진님이 알려주신 문제입니다" class="external">한상진님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: IE 6/7에서 HR 주변에서 캐럿 이동이 원활하지 않던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/6953" title="한상진님이 알려주신 문제입니다" class="external">한상진님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: FORM에 Xquared를 연동한 경우, 기존 onsubmit 핸들러의 인자가 유지되지 않던 버그를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7292" class="external" title="wizkwon님이 알려주신 문제입니다">wizkwon님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: 윈도 FF2에서 FORM에 label이 있는 경우, 브라우저가 죽는 문제가 간혹 발생하는 버그를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7299" title="byeongseon님이 알려주신 문제입니다" class="external">byeongseon님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+</ul><p> </p>
+<h3>2008/02/28</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080228.tar.gz" title="xquared20080228.tar.gz" class="external">xquared20080228.tar.gz</a></p>
+<ul><li>추가: Selenium을 이용한 기능 테스트가 추가되어 기존 단위 테스트(JSSpec)로 자동화하지 못한 테스트를 일부 자동화하였습니다.</li>
+<li>추가: Selenium 기능 테스트에서 모든 단위 테스트를 자동 실행하도록 하였습니다.</li>
+<li>추가: IE 이외의 브라우저에서도 본문 중에 URL이 나오면 자동으로 링크로 치환되도록 하였습니다.</li>
+<li>추가: xq.Editor.setWidth() 와 xq.Editor.setHeight() 함수가 추가 되었습니다.</li>
+<li>개선: Validation 및 단축키 처리 로직 등의 성능을 개선하였습니다.</li>
+<li>개선: 안쓰이는 코드들을 모두 삭제하고 중복을 일부 제거하여 스크립트 크기를 줄였습니다.</li>
+<li>개선: 자바스크립트 압축기(YUI-Compressor) 최신 버전(2.3.5)을 적용하여 xquared_min.js 파일의 크기를 줄였습니다.</li>
+<li>개선: xq.Editor.handleApplyBlock 함수에서 className을 인자로 받을 수 있도록 하였습니다. DIV나 H1 등을 적용하면서 클래스 이름을 지정할 수 있습니다. (<a href="http://ecus.openmaru.com/issues/7266" title="byeongseon님이 제안하신 기능입니다" class="external">byeongseon님이 제안하신 기능입니다</a>. 감사합니다.)</li>
+<li>수정: 편집기가 소스 편집 모드에서 시작될 경우 초기 컨텐츠를 제대로 로딩하지 못했던 버그를 수정하였습니다.</li>
+<li>수정: Firefox에서 xq.Editor.focus()가 간혹 문제를 일으키는 경우를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7235" title="zenguy님이 알려주신 문제입니다" class="external">zenguy님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+<li>수정: 소스 편집 모드에서 validation 기능을 꺼도(config.noValidationInSourceEditor) 일부 validation이 수행되던 문제를 수정하였습니다.</li>
+<li>수정: Prototype 1.5.x와 Xquared를 함께 로딩하면 Xquared가 작동하지 않던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7188" class="external" title="지누님이 알려주신 문제입니다.">지누님이 알려주신 문제입니다.</a> 감사합니다.)</li>
+<li>수정: 각종 다이얼로그와 컨텍스트 메뉴가 잘못된 위치에 나타나는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/7239" title="zenguy님이 알려주신 문제입니다" class="external">zenguy님이 알려주신 문제입니다</a>. 감사합니다.)</li>
+</ul><p> </p>
+<h3>2008/02/11</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080211.tar.gz" title="xquared20080211.tar.gz" class="external">xquared20080211.tar.gz</a></p>
+<ul><li>추가: 글꼴과 글자 크기를 지정하는 기능이 추가되었습니다.</li>
+<li>추가: 툴바에 Drop-down list를 사용할 수 있습니다.</li>
+<li>추가: Editor.setEditMode에 두 번째 인자(dontGiveFocus)가 추가되었습니다. true를 주면 모드 전환시 포커스를 주지 않습니다.</li>
+<li>추가: Ctrl+Shift+Z로 다시하기(redo)를 수행할 수 있도록 새 단축키를 추가하였습니다.</li>
+<li>추가: Validator에 네 개의 콜백 함수를 추가하여 유효화 과정을 더 유연하게 재정의할 수 있도록 하였습니다.</li>
+<li>추가: xq.Editor.config.noValidationInSourceEditMode 설정을 추가하였습니다. true로 설정하면 소스를 직접 편집하고 저장하는 경우에 Validation을 수행하지 않습니다.</li>
+<li>수정: 목록에서 BS 및 DEL 키 작동이 더 자연스럽게 되도록 수정하였습니다.</li>
+<li>수 정: xq.Editor.handleList, xq.RichDom.turnElementIntoListItem, xq.RichDom.changeListTypeTo, xq.RichDom.applyList, xq.RichDom.applyLists의 인자(className)가 추가되었습니다. OL/UL을 생성할 때 class 속성을 부여하기 위해 사용됩니다.</li>
+<li>수정: 빈 블록에서 DEL이나 ENTER를 누를 때 더 자연스럽게 되도록 수정하였습니다.</li>
+<li>수정: xq.Controls.FormDialog에서 키입력이 제대로 되지 않던 버그를 수정하였습니다. (IE6/7)</li>
+<li>수정: Mootools와의 이름충돌을 피하기 위해 Array.prototype.include를 Array.prototype.includeElement로 바꾸었습니다.</li>
+<li>수정: xq.RichDom.correctStructureAndStyle 메서드가 전경색/배경색 정보도 반환하도록 하였습니다.</li>
+<li>수정: 표 편집시 간혹 표가 둘로 나뉘어지던 버그를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2007/12/05</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071205.tar.gz" class="external" title="xquared20071205.tar.gz">xquared20071205.tar.gz</a></p>
+<ul><li>소식: <a href="http://bb.openmaru.com/baseboard/board/20071130165223312" class="external" title="자유게시판">자유게시판</a>과 <a href="http://bb.openmaru.com/baseboard/board/20071130165200872" class="external" title="질문답변 게시판">질문답변 게시판</a>이 신설되었습니다.</li>
+<li><strong>수정: Prototype.js 라이브러리를 사용하지 않도록 수정하였습니다. 이제 jQuery나 MooTools 등을 쓰는 사이트에서도 Xquared를 수정 없이 바로 쓰실 수 있습니다.</strong></li>
+<li><strong>수정: IE6에서 페이지 전환시 발생하던 메모리 릭을 모두 제거하였습니다.</strong></li>
+<li>수정: 각종 다이얼로그가 편집창 가운데에 제대로 나오지 않던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/2140" class="external" title="haneul님이 패치를 보내주셨습니다">haneul님이 패치를 보내주셨습니다</a>. 감사합니다)</li>
+</ul><p> </p>
+<h3>2007/11/21</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071121.tar.gz" title="xquared20071121.tar.gz" class="external">xquared20071121.tar.gz</a></p>
+<ul><li><strong>소식: 오픈마루 프로젝트 버그 신고 센터인 <a href="http://ecus.openmaru.com/" title="ECUS" class="external">ECUS</a>의 글 편집기에 Xquared가 적용되었습니다.</strong></li>
+<li><strong>소식</strong><strong>: 智熏님께서 <a href="http://meiclamo.net/2007/11/wordpress-plugin-wp-xquared/" title="WordPress 용 Xquared 플러그인" class="external">WordPress 용 Xquared 플러그인</a>을 만들어주셨습니다.</strong></li>
+<li><strong>추가: 글자색 및 배경색을 선택할 수 있도록 기본적인 Dialog가 추가 되었습니다.</strong></li>
+<li><strong>수정: 블럭 단위 엘리먼트인 HR을 인라인 단위 엘리먼트로 취급하여 발생하던 여러가지 문제들을 수정하였습니다.</strong></li>
+<li>수정: 소스 편집 모드에서 툴바가 비활성화 되도록 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1828" title="Secrice님의 제안" class="external">Secrice님의 제안</a>)</li>
+<li>수정: 클래스 정의 및 상속 관련 코드를 Prototype 1.6에 맞도록 수정하였습니다.</li>
+<li>수정: FF에서 여러 인라인 엘리먼트가 겹쳐 있을 때 문단 끝에 줄바꿈(br) 태그가 저절로 삽입되던 문제를 수정하였습니다.</li>
+<li>수정: 각종 다이얼로그가 화면 가운데가 아닌 편집창 가운데에 나오도록  수정하였습니다.</li>
+<li>수정: xq.Editor.handleLink 에서 부적절하게 전역 변수에 의존하고 있는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1833" title="haneul님이 알려주신 버그" class="external">haneul님이 알려주신 버그</a>)</li>
+<li>수정: xq.Editor.focus() 를 호출하지 않아도 저절로 초기에 focus가 주어지던 문제를 수정하였습니다.</li>
+<li>수정: UNDO/REDO가 잘 되지 않던 문제를 수정하였습니다.</li>
+<li>수정: 사파리(Webkit)에서 편집 모드가 실행되지 않던 문제를 수정하였습니다.</li>
+<li>수정: IE에서 줄이 들썩 거리던 CSS 문제를 수정하였습니다. xq_content.css 를 다시 복사해주시기 바랍니다.</li>
+<li>수정: FF에서 간혹 빈 줄이 마구 삽입되던 문제를 수정하였습니다.</li>
+<li>수정: IE에서 테이블 가로폭이 너무 길어 스크롤바가 생기던 문제를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2007/11/14</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071114.tar.gz" title="xquared20071114.tar.gz" class="external">xquared20071114.tar.gz</a></p>
+<ul><li><strong>추가: Prototype.js를 1.5.1에서 1.6으로 업그래이드 하였습니다.</strong></li>
+<li><strong>추가: 본문 CSS를 갱신하였습니다. examples 디렉터리의 css 및 img 폴더의 내용을 다시 복사하시면 새 스타일이 적용됩니다. 새 본문은 <a href="http://jania.pe.kr/xquared/examples/default.html" title="데모 사이트" class="external">데모 사이트</a>를 참고하세요.</strong></li>
+<li><strong>추가: <a href="http://alankang.tistory.com/7" class="external" title="글 작성시 자동으로 현재 작성 중인 문단에서 핵심 단어를 추출">글 작성시 자동으로 현재 작성 중인 문단에서 핵심 단어를 추출</a>해주는 <a href="http://jania.pe.kr/xwriter" class="external" title="XWriter">XWriter</a>의 소스 코드를 살펴보세요. Xquared의 확장점을 활용하는 다양한 방법을 보실 수 있습니다.</strong></li>
+<li>추가: Validator를 사용자 정의할 수 있도록 하였습니다. 허용되는 태그 목록과 허용되는 속성 목록을 쉽게 재정의할 수 있습니다. <a href="542950.xhtml" class="wiki" title="설정하기">설정하기</a>의 allowedTags 및 allowedAttributes를 참고하세요. 디자인은 <a href="http://jfactory.tistory.com/" title="jfactory" class="external">jfactory</a>님, CSS 작업은 wpeofh님이 해주셨습니다. :)</li>
+<li>추가: xq.majorVerion 및 xq.minorVersion 을 추가하였습니다. (<a href="http://ecus.openmaru.com/issues/1663" title="ias님의 제안" class="external">ias님의 제안</a>)</li>
+<li>수정: xq_ui.css 가 Rails가 제공하는 CSS와 충돌하는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1665" title="ias님이 알려주신 버그" class="external">ias님이 알려주신 버그</a>)</li>
+<li>수정: IE6, IE7에서 마우스로 본문을 드래그하여 선택하는 중 링크 위를 지나갈 때 선택이 사라지는 문제를 수정하였습니다.</li>
+<li>수정: FF에서 setEditMode를 처음 호출하면서 'wysiwyg'이 아니라 'source'를 인자로 넘길 경우 예외가 발생하던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1664" title="ias님이 알려주신 버그" class="external">ias님이 알려주신 버그</a>)</li>
+<li>수정: xq.Editor.config.imagePathForDefaultToobar의 값이 xq_ui.css의 규칙에 지정된 이미지 경로를 덮어쓰도록 하였습니다. (<a href="http://ecus.openmaru.com/issues/1719" title="ias님의 제안" class="external">ias님의 제안</a>)</li>
+<li>수정: 기본 툴바의 구분자 이미지(toolbarSeparator.gif)를 투명 GIF로 변경하였습니다.</li>
+<li>수정: IE에서 WYSIWYG 편집기 내부만 새로고침을 할 수 있도록 허용되는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1629" class="external" title="하하님께서 알려주신 버그">하하님께서 알려주신 버그</a>)</li>
+<li>수정: 본문의 제일 첫 줄의 시작 부분에서 엔터키를 치면 빈 줄이 현재 문장 위에 삽입되도록 하였습니다(MS-Word와 비슷하게 작동하도록).</li>
+<li>수정: Undo/Redo 문제를 일부 수정하였습니다.</li>
+<li>수정: xq.Editor.handleLink 에서 "xed"라는 전역 변수를 가정하고 코딩된 부분을 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2007/11/08</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071108.tar.gz" class="external" title="xquared20071108.tar.gz">xquared20071108.tar.gz</a></p>
+<ul><li><strong>추가: 링크 걸기 기능이 추가되었습니다. 기본 예제의 툴바를 보시면 링크 버튼을 확인하실 수 있습니다. xq.Editor.handleLink() 함수입니다.</strong></li>
+<li><strong>추가: Form을 Dialog로 바꿔주는 FormDialog가 추가되었습니다. 자세한 내용은 <a href="580417.xhtml" class="wiki" title="FormDialog">FormDialog</a>를 참고하시기 바랍니다.</strong></li>
+<li>수정: 우분투 리눅스 판별 코드가 작동하지 않던 문제(오타로 인해)를 수정하였습니다.</li>
+<li>수정: 소스 보기 모드에서 블럭 엘리먼트에 간 줄바꿈 문자가 삽입되도록 하여 소스 수정이 용이하도록 하였습니다.</li>
+<li>수정: Firefox에서 QuickSearchDialog의 캐럿이 나타나지 않던 버그를 수정하였습니다.</li>
+<li>예제: 글을 쓸 때 자동으로 현재 단락의 키워드를 보여주는 기능, QuickSearchDialog를 이용하여 현재 단어를 구글, 위키피디아, 사전 등에서 검색할 수 있게 해주는 기능 등을 구현한 예제를 <a href="http://jania.pe.kr/xwriter" title="이곳에서 확인해보실 수 있습니다" class="external">이곳에서 확인해보실 수 있습니다</a>.</li>
+</ul><p> </p>
+<h3>2007/11/01</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071101_2.tar.gz" title="xquared20071101_2.tar.gz" class="external">xquared20071101_2.tar.gz</a></p>
+<ul><li><strong>추 가: 기본적인 HTML 소스 편집 기능이 추가되었습니다. 툴바의 "HTML" 아이콘을 누르면 소스 편집 모드와 WYSIWYG 모드가 토글됩니다. 소스 편집 모드에서 편집된 소스는 저장시 혹은 WYSIWYG 모드로 전환 시 자동으로 Validation 됩니다.</strong>(<a href="http://ecus.openmaru.com/issues/1494" class="external" title="EP님">EP님</a> 및 <a href="http://secrice.com/writing/2007/10/22/Xquared+EC9790EB9494_1193049144.php" class="external" title="Secrice님">Secrice님</a>께서 제안하신 기능)</li>
+<li>추가: Editor.config.changeCursorOnLink 설정을 추가하였습니다. 설정값이 true 이면 링크 위에 마우스를 올렸을 때 마우스 커서 모양이 손가락으로 바뀝니다.</li>
+<li>추 가: 합쳐지지 않은 자바스크립트 파일을 HTML에 쉽게 로딩할 수 있도록 동적 로딩 기능을 추가하였습니다. 개발 및 디버깅 시 유용한 기능입니다. script src에 'Xquared.js?load_others=1'로 설정하면 나머지 스크립트를 순서에 맞게 자동으로 읽어옵니다. 단, 실제 사이트에서는 합쳐진 자바스크립트 파일(xquared.js 혹은 xquared_min.js)을 사용하실 것을 권장합니다.</li>
+<li><strong>수정: 소스 편집 모드 추가에 따라 Editor.setEditMode의 인자가 true, false에서 'wysiwyg', 'source', 'readonly'로 바뀌었습니다.</strong></li>
+<li>수정: Firefox에서 DEL 혹은 BS 키를 누를 때 간혹 현재 편집 위치 이후의 모든 빈 줄이 사라지던 버그를 수정하였습니다.</li>
+<li>수정: DEL 키나 BS 키로 빈 엘리먼트를 삭제하려고 할 때 간혹 원하는 동작이 수행되지 않던 버그를 수정하였습니다.</li>
+</ul><p> </p>
+<h3>2007/10/28</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071028.tar.gz" title="xquared20071028.tar.gz" class="external">xquared20071028.tar.gz</a></p>
+<ul><li>추가: 편집기가 DIV 뿐 아니라 TEXTAREA와도 연결될 수 있도록 하였습니다. 예제는 examples/form_and_textarea.html 을 참고하세요.</li>
+<li>추 가: Editor.config.automaticallyHookSubmitEvent 설정이 추가되었습니다. 편집기가 TEXTAREA와 연결되어 있는 경우 TEXTAREA를 포함하는 FORM이 submit 될 때 자동으로 TEXTAREA의 값이 현재 편집기의 내용으로 채워지도록 할 수 있습니다.</li>
+<li>수정: Editor.setEditMode(false) 명령으로 편집 모드에서 읽기 모드로 전환할 때 화면에 공백 영역이 생기는 버그를 수정하였습니다.</li>
+<li>수정: 툴바의 클릭 가능한 영역이 아이콘 이미지와 어긋나서 툴바 클릭이 잘 안되던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1450" class="external" title="삼지니님꼐서 지적해주신 문제">삼지니님께서 지적해주신 문제</a>)</li>
+</ul><p> </p>
+<h3>2007/10/26</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071026.tar.gz" title="xquared20071026.tar.gz" class="external">xquared20071026.tar.gz</a></p>
+<ul><li><strong>수정: URL Validation 기능이 완료되었습니다. 기존의 config.useRelativeUrlWheneverPossible이 urlValidationMode로 바뀌었습니다. 자세한 내용은 <a href="542950.xhtml" class="wiki" title="설정하기">설정하기</a>의 urlValidationMode 항목을 참고하세요.</strong> (<a href="http://ecus.openmaru.com/issues/1307" title="Secrice님께서 지적해주신 문제" class="external">Secrice님께서 지적해주신 문제</a>)</li>
+<li><strong>수정: 툴바 HTML 및 CSS, 이미지가 수정되었습니다.</strong></li>
+<li>수정: Firefox에서 작성된 문서의 place-holder(br) 일부가 validation 이후에도 사라지지 않는 문제 수정.</li>
+<li>수정: Editor.insertTemplateAt 이 삽입된 Node를 반환하도록 수정하였습니다.</li>
+<li>수정: JSSpec을 최신 버전으로 업데이트 하였습니다.</li>
+<li>수정: IE6, IE7 에서 자동으로 삽입되는 공백 문자를 적절히 제거하도록 수정하였습니다.</li>
+<li>수정: IE6에서 툴바 이미지가 계속 reload 되는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1361" title="삼지니님께서 지적해주신 문제" class="external">삼지니님께서 지적해주신 문제</a>)</li>
+</ul><p> </p>
+<h3>2007/10/17</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071017.tar.gz" class="external" title="xquared20071017.tar.gz">xquared20071017.tar.gz</a></p>
+<ul><li>추가: Editor.handleInsertLink 추가</li>
+<li>
+<p>추가: 다양한 예제가 추가되었습니다.</p>
+<ul><li>default.html - 기본 기능, 기본 UI</li>
+<li>toolbar_disabled.html - 툴바 제거한 UI</li>
+<li>toolbar_customized1.html - 기본 툴바에서 요소 제거 및 재배치</li>
+<li>toolbar_customized2.html - 사용자 정의 툴바</li>
+<li>extensionpoint.html - 단축키, 자동완성, 자동변환, 컨텍스트메뉴 등 다양한 확장점 사용예</li>
+</ul></li>
+<li>추가: 툴바 API 추가. 이제 툴바가 기본으로 제공됩니다. 설정을 통해 기본 툴바를 제거하거나, 기본 툴바의 아이콘 순서나 그루핑을 재배치/삭제하거나, HTML로 직접 툴바를 만들 수 있습니다.</li>
+<li>수정: Validation 수정. Firefox에서 작성된 문서를 IE에서 열면 &lt;br /&gt; 때문에 빈 줄이 생겨보이는 문제 수정. (<a href="http://ecus.openmaru.com/issues/1161" title="경민님께서 지적해주신 문제" class="external">경민님께서 지적해주신 문제</a>)</li>
+<li>수정: Firefox에서 DEL 혹은 BS로 두 줄을 하나로 합칠 때 &lt;br /&gt;이 남아서 DEL/BS를 한 번 더 눌러야 했던 문제 수정 (<a href="http://ecus.openmaru.com/issues/1161" title="경민님께서 지적해주신 문제" class="external">경민님께서 지적해주신 문제</a>)</li>
+<li>수정: IE6에서 Toolbar 이미지가 제대로 나오지 않던 문제 수정 (<a href="http://ecus.openmaru.com/issues/1231" title="경민님께서 지적해주신 문제" class="external">경민님께서 지적해주신 문제</a>)</li>
+<li>수정: Validator whitelist에 rel, rev 속성 추가 (<a href="http://ecus.openmaru.com/issues/1240" title="Secrice님께서 지적해주신 문제" class="external">Secrice님께서 지적해주신 문제</a>)</li>
+<li>수정: Firefox에서 base href가 설정된 웹 페이지의 내용을 복사하여 붙일 때 상대 경로로 붙는 문제 수정 (<a href="http://ecus.openmaru.com/issues/1240" title="Secrice님께서 지적해주신 문제)" class="external">Secrice님께서 지적해주신 문제</a>)</li>
+<li>수정: IE6에서 세로 스크롤바가 생기면 가로 스크롤바도 생기는 문제 수정</li>
+</ul><p> </p>
+<h3>2007/10/12</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071012_2.tar.gz" title="xquared20071012_2.tar.gz" class="external">xquared20071012_2.tar.gz</a></p>
+<ul><li>추가: 기본 툴바 지원</li>
+<li>향상: 기본 본문 CSS 향상</li>
+<li>향상: 기본 편집기 디자인 향상</li>
+</ul><p> </p>
+<h3>2007/10/10</h3>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071010.tar.gz" class="external" title="xquared20071010.tar.gz">xquared20071010.tar.gz</a></p>
+<ul><li>수정: TAB/Shift+TAB이 "data table"에서만 셀 이동으로 작동하고 "layout table"에서는 들여쓰기/내어쓰기로 작동하도록</li>
+<li>수정: Firefox에서 블럭 단위 엘리먼트가 인라인/텍스트노드와 인접한 상황에서 DEL/BS를 누르면 예외가 발생하던 문제 수정</li>
+<li>수정: 중첩된 FONT 태그의 Validation 로직 수정</li>
+<li>수정: IE에서 배경색, 글자색이 서식제거로 제거되지 않던 문제 수정</li>
+<li>수정: Validation 시 SCRIPT 태그의 제거할 때, 태그만 제거하는 것이 아니라 안의 내용까지도 함께 제거하도록 수정.</li>
+</ul><p> </p>
+<h3>2007/10/09</h3>
+<ul><li>추가: 컨텍스트 메뉴 API</li>
+<li>추가: 빌드에 Apache Ant를 도입</li>
+<li>추가: 템플릿 프로세서 API</li>
+<li>추가: Quick Search 다이얼로그</li>
+<li>수정: 글 중간에서 TAB을 누르면 공백 문자 세 개가 추가되도록</li>
+<li>향상: XHTML Validation 성능 향상</li>
+<li>향상: 테이블 열/행 추가/삭제 기능</li>
+<li>향상: 사파리3 지원 향상. 캐럿 및 Selection 제어, 빈 블럭 검사 로직 향상</li>
+</ul><p> </p>
+<h3>2007/09/18</h3>
+<p>최초 릴리즈.</p>
+
+  </body></html>

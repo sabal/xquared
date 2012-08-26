@@ -1,0 +1,32 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>FormDialog Instances</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>FormDialog takes general HTML FORMs and changes them into Dialogs. Values inputted by users in Forms is converted into JavaScript objects (Dictionary or Hash).</p>
+<p> </p>
+<h3>Generating FormDialog Instances</h3>
+<p>You can create instances through the code shown below:</p>
+<ol class="code"><li>var dialog = new xq.Control.FormDialog(xed, html, onLoadHandler, onCloseHandler);</li>
+</ol><p> </p>
+<p>The first argument (xed) is an instance of xq.Editor. The second argument is an HTML string that will be shown on the screen. You can just use the following format "&lt;form ...&gt; ... &lt;/form&gt;". Or for nonvisible domains or in other words, DIV that is set as style="display: none;", put that into the FORM. You can obtain the corresponding innerHTML and leave it as an argument. The third argument, when you are ready to have the FORM appear on the screen, this becomes the called callback function which can be shortened by leaving it as null. The function onCloseHandler occurs when the user submits or cancels the FORM. If the FORM is submitted, the callback function's argument will be carried over as a JavaScripot object.</p>
+<p> </p>
+<p>For example, when FORM is the same as the following:</p>
+<ol class="code"><li>&lt;form&gt;</li>
+<li style="margin-left: 2em;">&lt;input type="text" name="field1" /&gt;</li>
+<li style="margin-left: 2em;">&lt;input type="text" name="field2" /&gt;</li>
+<li>&lt;/form&gt;</li>
+</ol><p>if the user inputs "hello" in field1 and "world" in field2 and then submits, the callback function's first argument will be as follows:</p>
+<ol class="code"><li>{field1: "hello", field2: "world"}</li>
+</ol><p>thus, using the code shown below, you can obtain form values:</p>
+<ol class="code"><li>var onCloseHandler = function(data) {</li>
+<li style="margin-left: 2em;">alert(data.field1 + " " + data.field2);</li>
+<li>}</li>
+</ol><p> </p>
+<h3>Displaying FormDialog on the screen</h3>
+<p>If you have generated FormDialog, using the following code will allow you to display a dialog on the screen:</p>
+<ol class="code"><li>dialog.show();</li>
+</ol><p>Take note that, if you want to give automatic Focus to a certain field you must set class="initialFocus" at the corresponding field:</p>
+<ol class="code"><li>&lt;input type="text" name="url" class="initialFocus" /&gt;</li>
+</ol><p> </p>
+<h3>Example</h3>
+<p>From the xq.Editor.handleLink function, refer to the embodied code for basic link dialog by using the FormDialog API.</p>
+<p> </p>
+
+  </body></html>

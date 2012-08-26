@@ -1,0 +1,91 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>설정하기</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>다음과 같이 설정 값을 지정하면 Xquared의 작동 방식을 손쉽게 변경할 수 있습니다:</p>
+<ol class="code"><li>xed.config.enableLinkClick = true;</li>
+</ol><p> </p>
+<p>사용할 수 있는 설정 값 목록은 다음 표를 참고하세요(알파벳 순):</p>
+<table class="datatable"><thead><tr><th>설정이름</th>
+<th>기본값</th>
+<th>설명</th>
+</tr></thead><tbody><tr><td>autoFocusOnInit</td>
+<td>false</td>
+<td>true로 설정하면 편집 모드가 실행될 때 자동으로 focus를 갖게 됩니다.</td>
+</tr><tr><td>automaticallyHookSubmitEvent</td>
+<td>true</td>
+<td>Xquared에 연결된 엘리먼트가 textarea 이며, 해당 textarea가 form 안에 담겨 있는 경우, 이 값을 true로 설정하면 form이 submit 되기 전에 textarea의 값이 자동으로 갱싱됩니다.</td>
+</tr><tr><td>bodyId</td>
+<td>''</td>
+<td>WYSIWYG 편집기의 body 태그에 적용될 ID 값.</td>
+</tr><tr><td>bodyClass</td>
+<td>'xed'</td>
+<td>WYSIWYG 편집기의 body 태그에 적용될 class 값.</td>
+</tr><tr><td>changeCursorOnLink</td>
+<td>false</td>
+<td>true로 설정하면 편집 모드의 링크 위에 마우스를 올렸을 때 마우스 커서가 손가락 모양으로 바뀝니다. 링크가 클릭 가능하게 만들려면 enableLinkClick 설정을 변경하셔야 합니다.</td>
+</tr><tr><td>contentCssList</td>
+<td>['css/xq_contents.css']</td>
+<td>WYSIWYG 모드에서 쓰일 CSS의 목록. 이후에 xq.Editor.loadStylesheet() 함수를 통해 동적으로 추가할 수도 있습니다. 하지만 이 설정값을 통해 미리 CSS를 지정하면 초기 로딩시 화면 깜빡임을 줄일 수 있습니다.</td>
+</tr><tr><td>defaultToolbarButtonMap</td>
+<td>[...]</td>
+<td>Xquared 기본 툴바에 들어갈 버튼들에 대한 정보를 담고 있는 배열. 이 값을 바꾸면 기본 툴바에 들어갈 버튼의 종류나 위치 등을 변경할 수 있습니다. 자세한 내용은 <a href="542989.xhtml" class="wiki" title="툴바 사용자 정의">툴바 사용자 정의</a>를 참고하세요.</td>
+</tr><tr><td>enableLinkClick</td>
+<td>false</td>
+<td>true인 경우 링크를 클릭하면 해당 URL로 이동하게 됩니다. 링크 위에 마우스를 올렸을 때 커서가 손가락 모양으로 바뀌게 하려면 changeCursorOnLink 설정을 변경하셔야 합니다.</td>
+</tr><tr><td>enablePreventExit</td>
+<td>false</td>
+<td>true인 경우, textarea에 내용이 있고, form submit을 하지 않고 페이지를 이동하려고 하면, 사용자에게 경고창을 보여줍니다. textarea의 초기값 (예: 내용을 입력해 주세요)을 기억하고, 내용이 수정되었을 때 메시지를 보여줍니다. 메시지 내용을 변경하려면 config.PreventExitMessage 에 메시지를 정의합니다.</td>
+</tr><tr><td>PreventExitMessage</td>
+<td>"Document is empty ..."</td>
+<td>enablePreventExit이 true로 설정되었고, 페이지를 이동하려고 할 때 보여주는 경고창의 메시지 내용입니다. 초기 메시지는 Document is not empty. If you want to leave, click 'Ok' button. 입니다.</td>
+</tr><tr><td>generateDefaultToolbar</td>
+<td>true</td>
+<td>Xquared에서 제공하는 기본 툴바를 보여줄 것인지 여부를 설정합니다. 사용자 정의 툴바를 쓰려면 false로 설정하세요.</td>
+</tr><tr><td>imagePathForContent</td>
+<td>'img/content/'</td>
+<td>편집기 내부에서 쓰일 이미지들의 경로.</td>
+</tr><tr><td>imagePathForDefaultToolbar</td>
+<td>'img/toolbar/'</td>
+<td>툴바 버튼 및 배경, 구분자 이미들이 있는 경로.</td>
+</tr><tr><td>noValidationInSourceEditMode</td>
+<td>false</td>
+<td>true로 설정하면 소스 편집 모드에서 getCurrentContent()를 호출하거나 폼이 submit 될 때 Validation을 수행하지 않습니다. 하지만 소스 편집 모드에서 WYSIWYG 모드로 전환하거나 하면 이 옵션에 상관 없이 Validation이 수행됩니다.</td>
+</tr><tr><td>urlValidationMode</td>
+<td>'absolute'</td>
+<td>
+<p>URL 유효화 방식을 설정합니다. 예를 들어 현재 URL이 "http://a.com/b/c.html?d=1" 일 때 문서 내의 링크(href 등)는 모드에 따라 다음과 같이 바뀝니다:</p>
+<p> </p>
+<p>'relative' (최대한 짧은 상대경로로 변환합니다):</p>
+<ul><li>http://a.com/b/c.html?d=1 --&gt; #</li>
+<li>c.html?d=2 --&gt; ?d=2</li>
+<li>http://a.com/b/d.html --&gt; d.html</li>
+<li>http://x.com/b.html --&gt; http://x.com/b.html</li>
+</ul><p> </p>
+<p>'host_relative' (호스트가 다른 경우는 absolute, 호스트가 동일하면 path 이후 부분만 보존합니다):</p>
+<ul><li>http://a.com/b/c.html?d=1 --&gt; /b/c.html?d=1</li>
+<li>c.html?d=2 --&gt; /b/c.html?d=2</li>
+<li>http://a.com/b/d.html --&gt; /b/d.html</li>
+<li>http://x.com/b.html --&gt; http://x.com/b.html</li>
+</ul><p> </p>
+<p>'absolute' (무조건 절대경로로 변환합니다):</p>
+<ul><li>http://a.com/b/c.html?d=1 --&gt; http://a.com/b/c.html?d=1</li>
+<li>c.html?d=2 --&gt; http://a.com/b/c.html?d=2</li>
+<li>http://a.com/b/d.html --&gt; http://a.com/b/d.html</li>
+<li>http://x.com/b.html --&gt; http://x.com/b.html</li>
+</ul><p> </p>
+<p>'browser_default' (브라우저 기본 설정을 따릅니다):</p>
+<ul><li>브라우저별로 다름.</li>
+</ul></td>
+</tr><tr><td>widgetContainerPath</td>
+<td>'widget_container.html'</td>
+<td>위젯 컨테이너 HTML 파일의 경로.</td>
+</tr><tr><td>whitelist</td>
+<td>{...}</td>
+<td>
+<p>Validator가 허용할 태그 목록 및 태그 별로 허용되는 속성 목록을 담고 있는 객체입니다. 다음과 같은 형식을 따릅니다:</p>
+<p>{ 'a': ['href', 'id', 'class', ...],<br/>
+   'blockquote': ['id', 'class', 'cite', ...],<br/>
+   ....<br/>
+}</p>
+</td>
+</tr></tbody></table><p>단축키, 자동완성, 자동변환 등 다양한 확장점을 사용하여 Xquared에 기능을 추가하는 방법에 대해서는 <a href="471371.xhtml" title="기능 확장하기" class="wiki">기능 확장하기</a>를 참고하세요.</p>
+
+  </body></html>

@@ -1,0 +1,50 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Ways to contribute</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h1><span style="FONT-SIZE: x-large"><strong>Create and look over specifications</strong></span></h1>
+<p>One of the main goals in Xquared is to have harmonious execution and functionality in all browsers. Automatic tests (or specs) are very important. Xquared makes use of <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec" title="JSSpec" class="external"><span style="COLOR: #0000ff">JSSpec</span></a> and it executes automated tests. Currently there are hundrends of different automated test situations that have been created.</p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"> </p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px">Therefore, you don't have to be worried about something that may have went wrong during code editing. This is because If you open the HTML files inside the Xquared source code directory, an automated test will be executed to see if there are any problems.</p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"><br/></p>
+<ol class="code"><li>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px">/xquared/specs/specs/<br/></p>
+</li>
+</ol><p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"><br/></p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px">Using the tab browsing feature in your browser will allow simultaneous execution of all specs. Also, bookmarking all open tags will allow you to run tests more easier in the future.</p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"> </p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"><br/></p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px; TEXT-ALIGN: center"><img title="jsspec.JPG" class="attachment" src="http://xquared.springbook.playmaru.net/pages/471767/attachments/230130" alt="jsspec.JPG"/><br/></p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px; TEXT-ALIGN: center">[A sccrenshot when running all specs on Firefox 2.0]<br/></p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"><br/></p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px">Before you start editing and fixing bugs, first you should get into the habit of adding the "will fail if the corresponding bug is not fixed" test and start working on editing the bug. By doing this, you can easily detect errors of the corresponding bug that was fixed through automated tests. Please refer to the <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec/UserGuide" title="JSSpec 사용자 가이드" class="external"><span style="COLOR: #0000ff">JSSpec User Guide</span></a> on basic test creation.</p>
+<p style="PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 2em; MARGIN-RIGHT: 0px; PADDING-TOP: 0px"> </p>
+<h5>Finished editing?</h5>
+<p>Now it's time to create a patch. Before creating patches, do not forget to receive and combine the latest code from Xquared's homepage. From where you have stored your files use<br class="khtml-block-placeholder"/></p>
+<ol class="code"><li>hg pull</li>
+</ol><p><br class="khtml-block-placeholder"/></p>
+<p>to bring the most recent source, then use</p>
+<p><br class="khtml-block-placeholder"/></p>
+<ol class="code"><li>hg update</li>
+</ol><p><br class="khtml-block-placeholder"/></p>
+<p>to renew your storage area. Next use</p>
+<p><br class="khtml-block-placeholder"/></p>
+<ol class="code"><li>hg export &gt; patch.diff</li>
+</ol><p><br class="khtml-block-placeholder"/></p>
+<p>to create a patch file.  If you receive a confliction problem after you hg update please refer to the <a href="http://www.selenic.com/mercurial/wiki/index.cgi/KoreanTutorialConflict" title="충돌하는 변경을 병합하기 입문서" class="external"><span style="COLOR: #0000ff">merging confliction modification manual</span></a>.</p>
+<p><br class="khtml-block-placeholder"/></p>
+<h5>Upload it to ECUS</h5>
+<p>ECUS is the place where you and the Xquared team communicates. Everything that you upload here is public and shared so that your contributions are progressed.</p>
+<p><br class="khtml-block-placeholder"/></p>
+<p>First, log in to <a href="http://ecus.openmaru.com/" title="http://ecus.openmaru.com" class="external"><span style="COLOR: #0000ff">http://ecus.openmaru.com</span></a>. After that, select Xquared from the project menu on the left side, and select 'Write'. On the title field, input [PATCH], and in the content field write a description on the purpose of patch and what it does. Attach the patch and then upload. The below is a simple example.</p>
+<p><br class="khtml-block-placeholder"/></p>
+<blockquote>
+<p>Title: [PATCH] It's not 'webkit', but it's 'WebKit'.</p>
+<p>Content: I know it's something small, but I thought it needed to be corrected.</p>
+</blockquote>
+<p><br/></p>
+<h5>Reflection</h5>
+<p>The patch you have submitted will be received and reviewed by a member of Xquared. We will notify you on the status of how it is being reflected. If it becomes reflected, then you will see a blue colored "Resolved" mark.</p>
+<p><br/></p>
+<p>Now you have contributed your work! Everyone that has made contributions is greatly appreciated and will be recognized in our <a href="1168216.xhtml" title="Contribution" class="wiki">Contribution Temple</a>.</p>
+<p> </p>
+<p> </p>
+
+  </body></html>

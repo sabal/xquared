@@ -1,0 +1,124 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>파일 업로드 플러그인</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <div id="toc" style="border: 1px solid tan; padding: 2px 10px 0px; background-color: rgb(255, 255, 250);">
+<p><strong>목차</strong></p>
+<hr/><ol><li><a href="#toc_0" class="external" title="toc_0">관련 파일</a></li>
+<li><a href="#toc_1" class="external" title="toc_1">사용법</a>
+<ol><li><a href="#toc_2" class="external" title="toc_2">1. 플러그인 및 관련 소스코드 추가</a></li>
+<li><a href="#toc_3" class="external" title="toc_3">2. Xquared에 플러그인 추가하기</a></li>
+<li><a href="#toc_4" class="external" title="toc_4">3. 플러그인 설정하기</a>
+<ol><li><a href="#toc_5" class="external" title="toc_5">업로드 Target URL 설정하기</a></li>
+<li><a href="#toc_6" class="external" title="toc_6">싱글파일 업로드만 사용하고 싶을 때 : 설정하기</a></li>
+</ol></li>
+<li><a href="#toc_7" class="external" title="toc_7">4. 서버 : 결과 메시지 구성하기</a></li>
+<li><a href="#toc_8" class="external" title="toc_8">5. 서버 : 업로드가 성공하면, 자바스크립트 콜백 함수를 호출하기</a>
+<ol><li><a href="#toc_9" class="external" title="toc_9">싱글파일 업로드</a></li>
+<li><a href="#toc_10" class="external" title="toc_10">멀티파일 업로드</a></li>
+</ol></li>
+<li><a href="#toc_11" class="external" title="toc_11">플러그인 커스터마이징</a></li>
+</ol></li>
+</ol><p> </p>
+</div>
+<p> </p>
+<p>이 플러그인은 1개의 파일만을 전송하는 싱글 파일 업로드 기능과, 여러개의 파일을 한번에 전송하는 멀티파일 업로드 기능을 갖고 있습니다.</p>
+<p> </p>
+<p>HTML Input element를 사용하면 한번에 하나의 파일밖에 선택할 수 없습니다. 따라서, 이 플러그인은 멀티파일 선택을 위해 플래시기반 오픈소스 업로드 컴포넌트인 <a href="http://swfupload.org/" title="http://swfupload.org" class="external">SWFUpload</a>을 사용합니다. SWFUpload은 다양한 기능과 설정 요소들을 갖고 있습니다. 이 문서는 SWFUpload의 요소 중 멀티파일 업로드 플러그인을 사용하기 위한  최소한의 정보만을 기술하고 있으며, 나머지 자세한 정보는 <a href="http://demo.swfupload.org/Documentation/" title="http://demo.swfupload.org/Documentation/" class="external">SWFUpload 공식 문서</a>를 참고하십시요.</p>
+<p> </p>
+<h2>관련 파일<sup class="tocAnchorContainer"><a href="#toc_0" class="anchor" title="toc_0" id="toc_0">#</a></sup></h2>
+<p>배포본에는 다음과 같은 파일들이 포함되어 있습니다.</p>
+<p> </p>
+<ul><li>
+<p><strong>플러그인</strong></p>
+<ul><li>javascripts/plugin/FileUploadPlugin.js : 파일업로드 플러그인</li>
+</ul></li>
+<li>
+<p><strong>SWFUpload (멀티파일 전송을 위한)</strong></p>
+<ul><li>javascripts/plugin/swfupload/AC_OETags.js : SWFUpload 관련 파일 (Flash Version Check)</li>
+<li>javascripts/plugin/swfupload/swfupload.js : SWFUpload 관련 파일</li>
+<li>javascripts/plugin/swfupload/swfupload.queue.js : SWFUpload 관련 파일</li>
+<li>javascripts/plugin/swfupload/swfupload.swf : SWFUpload 관련 파일</li>
+</ul></li>
+<li>
+<p><strong>예제</strong></p>
+<ul><li>examples/plugin_singlefile_upload.html : 싱글파일 업로드 예제</li>
+<li>examples/plugin_multifile_upload.html : 싱글파일 업로드 예제</li>
+<li>examples/single_upload_submit.html : 서버 역할을 대행하는 html</li>
+<li>examples/single_upload_submit.php : 싱글파일 업로드를 처리하는 PHP 예제 파일</li>
+<li>examples/upload.php : 멀티파일 업로드를 처리하는 PHP 예제 파일</li>
+</ul></li>
+</ul><p> </p>
+<h2>사용법<sup class="tocAnchorContainer"><a href="#toc_1" class="anchor" title="toc_1" id="toc_1">#</a></sup></h2>
+<ul><li>examples/plugin_multifile_upload.html 을 보시면 사용법을 쉽게 이해할 수 있습니다.</li>
+<li><a href="http://xq.springnote.com/examples/plugin_multifile_upload.html"/><a href="http://xq.springnote.com/examples/plugin_multifile_upload.html">http://xq.springnote.com/examples/plugin_multifile_upload.html</a> 에서 테스트할 수 있습니다.</li>
+</ul><p> </p>
+<h3>1. 플러그인 및 관련 소스코드 추가<sup class="tocAnchorContainer"><a href="#toc_2" class="anchor" title="toc_2" id="toc_2">#</a></sup></h3>
+<p> </p>
+<ol class="code"><li>&lt;script type="text/javascript" src="../javascripts/plugin/swfupload/AC_OETags.js"&gt;&lt;/script&gt;<br/>
+&lt;script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.js"&gt;&lt;/script&gt;<br/>
+&lt;script type="text/javascript" src="../javascripts/plugin/swfupload/swfupload.queue.js"&gt;&lt;/script&gt;<br/>
+&lt;script type="text/javascript" src="../javascripts/plugin/FileUploadPlugin.js"&gt;&lt;/script&gt;</li>
+</ol><p> </p>
+<p>와 같이 해당 플러그인을 include하시고,</p>
+<p> </p>
+<h3>2. Xquared에 플러그인 추가하기<sup class="tocAnchorContainer"><a href="#toc_3" class="anchor" title="toc_3" id="toc_3">#</a></sup></h3>
+<p>xed.addPlugin() 메소드를 사용해서 Xquared에 플러그인을 추가할 수 있습니다.</p>
+<p> </p>
+<ol class="code"><li>window.onload = function() {<br/>
+ xed = new xq.Editor("xqEditor");<br/><strong> xed.addPlugin('FileUpload');<br/>
+ xed.setFileUploadTarget('/examples/single_upload_submit.php', '/examples/upload.php');</strong> xed.setEditMode('wysiwyg');<br/>
+ xed.setWidth("100%");<br/>
+};</li>
+</ol><p> </p>
+<p><strong>xed.addPlugin('FileUpload');</strong> 를 써주면, FileUpload 플러그인을 로딩합니다.</p>
+<p> </p>
+<h3>3. 플러그인 설정하기<sup class="tocAnchorContainer"><a href="#toc_4" class="anchor" title="toc_4" id="toc_4">#</a></sup></h3>
+<h4>업로드 Target URL 설정하기<sup class="tocAnchorContainer"><a href="#toc_5" class="anchor" title="toc_5" id="toc_5">#</a></sup></h4>
+<p>파일을 전송할 서버의 FORM ACTION URL을 <strong>setFileUploadTarget</strong> 메소드를 이용해서 설정해줍니다.</p>
+<p><strong>setFileUploadTarget</strong> 의 첫번째 인자는 싱글 파일 업로드를 받을 타겟 URL이고, 두번째 인자는 멀티 파일 업로드를 받을 타겟 URL 입니다.</p>
+<p> </p>
+<p>두 타겟 URL을 분리한 이유는 싱글 파일 업로드를 처리한 후에는 자바스크립트 콜백 함수를 호출해야 하기 때문입니다. 멀티파일 업로드에서는 SWFUpload.swf가 이를 대신 호출해줍니다.</p>
+<p> </p>
+<h4>싱글파일 업로드만 사용하고 싶을 때 : 설정하기<sup class="tocAnchorContainer"><a href="#toc_6" class="anchor" title="toc_6" id="toc_6">#</a></sup></h4>
+<p> </p>
+<p>멀티파일 업로드를 사용하지 않고, 싱글 파일 업로드만 사용할 때에는 addPlugin을 하기 전에 <strong>xed.isSingleFileUpload = true; </strong>라고 선언해줍니다.</p>
+<p> </p>
+<ol class="code"><li>window.onload = function() {<br/>
+    xed = new xq.Editor("xqEditor");<br/><strong>    xed.isSingleFileUpload = true;</strong><br/>
+    xed.addPlugin('FileUpload');<br/>
+    xed.setFileUploadTarget('/examples/single_upload_submit.php', null);<br/>
+    xed.setEditMode('wysiwyg');<br/>
+    xed.setWidth("100%");<br/>
+};</li>
+</ol><p> </p>
+<h3>4. 서버 : 결과 메시지 구성하기<sup class="tocAnchorContainer"><a href="#toc_7" class="anchor" title="toc_7" id="toc_7">#</a></sup></h3>
+<p>FileUploadPlugin.js의 fileUploadListener.onComplete();에서는 action target url에서 반환한 값(body의 내용, body.innerHTML) 을 읽어서 적절한 처리를 합니다.</p>
+<p> </p>
+<p>형식은 아래와 같습니다.</p>
+<p> </p>
+<ol class="code"><li>{<br/>
+success: true,<br/>
+file_url: '../images/dialogs/multifile.gif',<br/>
+message: ''<br/>
+}</li>
+</ol><p> </p>
+<ul><li>success : 성공 여부</li>
+<li>file_url : 업로드한 이미지의 서버 URL. 이 파일URL이 quared 에디터 내부에 img.src로 사용됩니다.</li>
+<li>mesage : 오류 등에 대한 메시지</li>
+</ul><p> </p>
+<h3>5. 서버 : 업로드가 성공하면, 자바스크립트 콜백 함수를 호출하기<sup class="tocAnchorContainer"><a href="#toc_8" class="anchor" title="toc_8" id="toc_8">#</a></sup></h3>
+<h4>싱글파일 업로드<sup class="tocAnchorContainer"><a href="#toc_9" class="anchor" title="toc_9" id="toc_9">#</a></sup></h4>
+<p>파일 업로드를 처리하는 서버 페이지에서는, 파일이 업로드된 후에 window.parent.xed.fileUploadListener.onSuccess();를 호출해줘야 합니다. (single_upload_submit.html, single_upload_submit.php 참고)</p>
+<p> </p>
+<ol class="code"><li>if (window.parent.xed)<br/>
+{<br/>
+window.parent.xed.fileUploadListener.onSuccess();<br/>
+}</li>
+</ol><p> </p>
+<h4>멀티파일 업로드<sup class="tocAnchorContainer"><a href="#toc_10" class="anchor" title="toc_10" id="toc_10">#</a></sup></h4>
+<p>멀티파일 업로드에서는 swfupload.swf가 xed.fileUploadListener.onSuccess();를 호출해줍니다. 따라서 별도의 처리를 할 필요가 없습니다.</p>
+<p> </p>
+<h3>플러그인 커스터마이징<sup class="tocAnchorContainer"><a href="#toc_11" class="anchor" title="toc_11" id="toc_11">#</a></sup></h3>
+<p>파일 업로드가 끝난 뒤의 처리를 변경하고 싶으면, 별도의 함수를 만들거나, FileUploadPlugin.js의 fileUploaderListener.onSuccess() 메소드를 변경하면 됩니다.</p>
+<p> </p>
+<p>이 파일 업로드 플러그인은 하나의 예제이기 때문에, 필요하시다면 적절히 수정하셔서 사용하시면 됩니다.</p>
+
+  </body></html>

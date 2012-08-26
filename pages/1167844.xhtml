@@ -1,0 +1,256 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Tutorial</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h1><span style="FONT-SIZE: x-large;"><strong>Tutorial</strong></span></h1>
+<p>This tutorial is for developers who are not familiar with Xquared. This tutorial explains all steps starting from program installation.</p>
+<p>For document reference on all features, please refer to the documentation page.</p>
+<p> </p>
+<p><span style="FONT-SIZE: medium;">Table of contents</span></p>
+<ol><li><a href="#toc_1" class="external" title="toc_1"><span style="COLOR: #0000ff;">Installation</span></a></li>
+<li><a href="#toc_2" class="external" title="toc_2"><span style="COLOR: #0000ff;">Inserting Xquared on a webpage</span></a></li>
+<li><a href="#toc_3" class="external" title="toc_3"><span style="COLOR: #0000ff;">Trnasferring edit results through a FORM</span></a></li>
+<li><a href="#toc_5" class="external" title="toc_5"><span style="COLOR: #0000ff;">Adding keyboard shortcuts</span></a></li>
+<li><a href="#toc_6" class="external" title="toc_6"><span style="COLOR: #0000ff;">Adding autocorrection</span></a></li>
+<li><a href="#toc_7" class="external" title="toc_7"><span style="COLOR: #0000ff;">Adding autocompletion</span></a></li>
+<li><a href="#toc_8" class="external" title="toc_8"><span style="COLOR: #0000ff;">Adding a context menu</span></a></li>
+<li><a href="#toc_9" class="external" title="toc_9"><span style="COLOR: #0000ff;">Adding a template processor</span></a></li>
+<li><a href="#toc_10" class="external" title="toc_10"><span style="COLOR: #0000ff;">Quick Search Dialog</span></a></li>
+<li><a href="#toc_11" class="external" title="toc_11"><span style="COLOR: #0000ff;">Contribution</span></a></li>
+</ol><p> </p>
+<h5>Installation<sup class="tocAnchorContainer"><a href="#toc_1" class="anchor" title="toc_1" id="toc_1">#</a></sup></h5>
+<p>Please refer to the <a href="3485545.xhtml" class="wiki" title="installation">installation</a> page</p>
+<p> </p>
+<p>Starting from April 2008, the dustribution version of Xquared incldes the following files. (If you are using a previous version, please go to <a href="1042564.xhtml" class="wiki" title="Download">Download</a> and download the latest version.)</p>
+<p> </p>
+<div>
+<p>/docs</p>
+<p>/examples<br/>
+/images <br/>
+   /content <br/>
+   /toolbar<br/>
+/javascripts <br/>
+   *.js<br/>
+/stylesheets <br/>
+   xq_contents.css</p>
+<p style="MARGIN-LEFT: 2em;">xq_ui.css</p>
+<p>/tests <br/>
+   index.html <br/>
+   test.html <br/>
+   README <br/>
+   LICENSE<br/></p>
+</div>
+<p> </p>
+<ul><li>/docs: contains Xquared JavaScript API documentation</li>
+<li>/examples: Includes various types of examples. You can either view these examples through your browser or by clicking the examples page while using Xquared.</li>
+<li>/images: Contains images that are used in Xquared</li>
+<li>/Contents: Area that contains used images that are used within Xquared's editor.</li>
+<li> /javascripts: Area that contains JavaScript files required to run Xquared. The file xquared_merged.js includes all JavaScript files into one so that the initial loading speed of Xquared is quick. Thus, if you have this file you can run Xquared. xquared_merged_min.js is used to shrink the total script file size by removing blank spaces and comments. This file is exactly the same as Xquared_merged.js. For those using a previous version, please use xquared_merged.js (or Xquared_merged_min.js) instead.</li>
+<li> /stylesheet: Contains style sheet files that are used in Xquated. xq_content.css is the CSS files that is used in the editor and xq_ui.css is the file used for the toolbar and items ourside of the editor.</li>
+<li>/test: Collection of automated tests that utilize <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec" title="http://jania.pe.kr/aw/moin.cgi/JSSpec"><span style="COLOR: #0000ff;">JSSpec</span></a> and <a href="http://openqa.org/" title="http://openqa.org/"><span style="COLOR: #0000ff;">Selenium</span></a>.</li>
+<li>index.html</li>
+<li>test.html: A test will be executed if you run this in your browser.</li>
+</ul><p> </p>
+<h5>Inserting Xquared on a webpage<sup class="tocAnchorContainer"><a href="#toc_2" class="anchor" title="toc_2" id="toc_2">#</a></sup></h5>
+<p>First, the following HTML is generated.</p>
+<p> </p>
+<ol class="code"><li>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "<a href="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd</a>"&gt;<br/>
+&lt;html xmlns="<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>" xml:lang="ko"&gt;<br/>
+&lt;head&gt;<br/>
+    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /&gt;<br/>
+    &lt;title&gt;Xquared Demo&lt;/title&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+    &lt;textarea id="editor"&gt;&amp;lt;p&amp;gt;Hello from Xquared&amp;lt;/p&amp;gt;&lt;/textarea&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</li>
+</ol><p> </p>
+<p>Copy the following files to the directory where the above HTML was saved to.</p>
+<p>/images</p>
+<p>/javascripts</p>
+<p>/stylesheets</p>
+<p> </p>
+<p>Now, edit the HTML file and insert the following JavaScript and CSS:</p>
+<p> </p>
+<ol class="code"><li> ...<br/>
+&lt;head&gt;<br/>
+    &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /&gt;<br/>
+    <strong>&lt;link rel="stylesheet" type="text/css" href="stylesheets/xq_ui.css" /&gt;<br/>
+ &lt;script src="javascripts/xquared_merged.js" type="text/javascript&gt;&lt;/script&gt;<br/>
+    &lt;script type="text/javascript"&gt;//&lt;![CDATA[<br/>
+    var xed;<br/>
+  <br/>
+    window.onload = function() {<br/>
+        xed = new xq.Editor("editor");<br/>
+       xed.config.contentCssList = ["stylesheets/xq_contents.css"];<br/>
+        xed.setEditMode('wysiwyg');<br/>
+    }<br/>
+    //]]&gt;&lt;/script&gt;<br/></strong>    &lt;title&gt;Xquared Demo&lt;/title&gt;<br/>
+&lt;/head&gt;<br/>
+... <br/></li>
+</ol><p> </p>
+<p>Let's analyze the above code.</p>
+<p> </p>
+<ol class="code"><li>xed = new xq.Editor("editor");</li>
+</ol><p> </p>
+<p>This code generates an instance for the editor and is a substitute for the global variable 'xed.' The HTML element ID that converts to editing mode is DIV which is the editor. Xquared can also connect to the TEXTAREA instead of the DIV.</p>
+<p> </p>
+<ol class="code"><li>xed.config.contentCssList = ["stylesheets/xq_contents.css"];</li>
+</ol><p> </p>
+<p>This code is used within the editor (WYSIWYG mode) to appoint the used CSS</p>
+<p> </p>
+<ol class="code"><li>xed.setEditMode('wysiwyg');</li>
+</ol><p> </p>
+<p>When this is executed, the DIV#editor element is converted to WYSIWYG editing mode. In actuality the corresponding element is not converted to editing mode, but the following becomes operated:</p>
+<ol><li>CSS is modified (display:none) and DIV#editor is hidden in the screen.</li>
+<li>An IFRAME is generated through the editing domain and DIV#editor is inserted below it.</li>
+<li>DIV#editor's contents (innerHTML) is copied and after it is matched to convert to editing mode (refer to editor document format) it is substituted internally.</li>
+</ol><p>To convert to source editing mode, put 'source' instead of 'wysiwyg'</p>
+<p> </p>
+<p> </p>
+<h5>Trnasferring edit results through a FORM<sup class="tocAnchorContainer"><a href="#toc_3" class="anchor" title="toc_3" id="toc_3">#</a></sup></h5>
+<p>As shown above, use the exact same code along with the adding FORM tag as shown below.</p>
+<p> </p>
+<ol class="code"><li> &lt;body&gt;<br/>
+    &lt;form action="your_path" method="post"&gt;<br/>
+        &lt;textarea name="content" id="editor"&gt;<br/>
+            &amp;lt;p&amp;gt;Hello &amp;lt;a href="#"&amp;gt;World&amp;lt;/a&amp;gt;!&amp;lt;/p&amp;gt;<br/>
+        &lt;/textarea&gt;<br/>
+        &lt;input type="submit" /&gt;<br/>
+    &lt;/form&gt;<br/>
+&lt;/body&gt;</li>
+</ol><p> </p>
+<h4>Feature Expansion</h4>
+<h5>Adding keyboard shortcuts<sup class="tocAnchorContainer"><a href="#toc_5" class="anchor" title="toc_5" id="toc_5">#</a></sup></h5>
+<p>Xquared uses widely used keyboard shortcuts. For example, CTrl+B will apply a strong tag (bold). Of course, you can remove keyboard shortcuts, refine keyboard shortcuts and add new keyboard shortcuts.</p>
+<p> </p>
+<ol class="code"><li> xed.addShortcut("Alt+UP", "xed.handleMoveBlock(true)");<br/>
+xed.addShortcut("Alt+DOWN", "xed.handleMoveBlock(false)");<br/></li>
+</ol><p> </p>
+<p>With the Alt key and up and down arrow keys you can know move lines up and down (as in Eclipse). For the Mac The Meta key would probably be mroe appropriate. right?</p>
+<p> </p>
+<ol class="code"><li>if(xq.Browser.isMac) {<br/>
+     xed.addShortcut("Meta+UP", "...");<br/>
+} else {<br/>
+     xed.addShortcut("Alt+UP", "...");<br/>
+} </li>
+</ol><p> </p>
+<p> To remove a keyboard shortcut, just do the following</p>
+<p> </p>
+<ol class="code"><li>xed.removeShortcut("Alt+UP");</li>
+</ol><p> </p>
+<p> </p>
+<h5>Adding autocorrection<sup class="tocAnchorContainer"><a href="#toc_6" class="anchor" title="toc_6" id="toc_6">#</a></sup></h5>
+<p>When pushing Enter, the function that automatically converts the current line’s content is called autocorrection. For example, in Springnote when typing</p>
+<p> * abc</p>
+<p>and then pressing Enter will convert it to</p>
+<ul><li>abc</li>
+</ul><p>with a bullet format</p>
+<p> </p>
+<p>Xquared doesn’t support this autocorrection feature by default, but through API we can easily add conversion functions that we want. For example, to make typing four dash marks</p>
+<p>---</p>
+<p>and and pushing enter insert a horizontal line (HR), just insert the following code:</p>
+<p> </p>
+<ol class="code"><li>xed.addAutocorrection('separator', /^----*$/,<br/>
+    function(xed, rdom, block, text) {<br/>
+if(rdom.tree.isBlockContainer(block)) block = rdom.wrapAllInlineOrTextNodesAs("P", block, true)[0];<br/>
+rdom.insertNodeAt(rdom.createElement("HR"), block, "before");<br/>
+block.innerHTML = "";<br/>
+rdom.placeCaretAtStartOf(block);<br/>
+return true;<br/>
+    }<br/>
+);</li>
+</ol><p> </p>
+<p>TBD: Addition of code descrioption.</p>
+<p> </p>
+<p> </p>
+<h5>Adding autocompletion<sup class="tocAnchorContainer"><a href="#toc_7" class="anchor" title="toc_7" id="toc_7">#</a></sup></h5>
+<p>Having automated completion when pushing Ctrl+Space after you input text is called autocompletion. For example, in Springnote, after you input a word and press Ctrl+Space it will automatically add a link, pushing Ctrl+Space after inputting @calc:1+2 will output the calculation of 1+2 and display the result 3. We provide various types auto completion features.</p>
+<p><br/>
+Xquared doesn’t support this autocompletion feature by default, but through API we can easily add conversion functions that we want. For example, to make typing</p>
+<p>@isbn:9780520243835</p>
+<p>and pushing Ctrl+Space to convert to</p>
+<p><a href="http://www.amazon.com/exec/obidos/ISBN=9780520243835" title="ISBN:9780520243835"><span style="COLOR: #0000ff;"><span style="FONT-SIZE: x-small; FONT-FAMILY: Arial;">ISBN:9780520243835</span></span></a></p>
+<p>which links the ISBN to Amazon, just add the following code:</p>
+<p> </p>
+<ol class="code"><li>xed.addAutocompletion('isbn', <a>/@ISBN:\d+$/i</a>,<br/>
+function(xed, rdom, block, wrapper, text) {<br/>
+          var isbn = text.split(":")[1];<br/>
+          var href = "<a href="http://amazon.com/exec/obidos/ISBN">http://amazon.com/exec/obidos/ISBN</a>=" + isbn;<br/>
+          var node = rdom.createElement('A');<br/>
+          node.innerHTML = 'ISBN:' + isbn;<br/>
+          node.href = href<br/>
+          node.title = 'ISBN:' + isbn;<br/>
+          wrapper.innerHTML = "";<br/>
+          wrapper.appendChild(node);<br/>
+     }<br/>
+);</li>
+</ol><p> </p>
+<h5>Adding a context menu<sup class="tocAnchorContainer"><a href="#toc_8" class="anchor" title="toc_8" id="toc_8">#</a></sup></h5>
+<p>TBD. Show how users can define the menu that appears when clicking the button on the right. Will add description.</p>
+<p> </p>
+<ol class="code"><li>xed.addContextMenuHandler('test', function(xed, element, x, y) {<br/>
+    if(element.nodeName != "P") return false;<br/>
+    xed.showContextMenu([<br/>
+        {<br/>
+            title: 'Bold',<br/>
+            handler: xed.handleStrongEmphasis.bind(xed),<br/>
+            className: "cssClassName"<br/>
+        },<br/>
+        {<br/>
+            title: '----'<br/>
+        },<br/>
+        {<br/>
+            title: 'Underline',<br/>
+            handler: xed.handleUnderline.bind(xed)<br/>
+        }<br/>
+    ], x, y);<br/>
+ <br/>
+    return true;<br/>
+}); <br/></li>
+</ol><p> </p>
+<h5>Adding a template processor<sup class="tocAnchorContainer"><a href="#toc_9" class="anchor" title="toc_9" id="toc_9">#</a></sup></h5>
+<p>Xquared supports a feature that allows insertion of predefined HTML text row formation during document editing, which is called a template. For example, executing</p>
+<p> </p>
+<ol class="code"><li>xed.insertTemplate('&lt;p&gt;Today is {xq:month}-{xq:date}-{xq:year}.&lt;/p&gt;');</li>
+</ol><p> </p>
+<p>will insert the HTML code</p>
+<div>&lt;p&gt;Today is 9-15-2007.&lt;/p&gt;</div>
+<p> </p>
+<p> As shown above, parts of the template’s text lines are replaced with appropriate values with the execution of the template processor. Xquared provides an API so that developers can easily add intelligent additional template processors to the preexisting template processors available.</p>
+<p> </p>
+<ol class="code"><li>For example,</li>
+<li>xed.addTemplateProcessor(<br/>
+     'userAgent',<br/>
+     function(html) {<br/>
+          return html.replace(/{xq:userAgent}/img, navigator.userAgent);<br/>
+     }<br/>
+);</li>
+</ol><p> </p>
+<p>After executing the above code, inserting the following template</p>
+<p> </p>
+<ol class="code"><li>xed.insertTemplate('&lt;p&gt;User agent: {xq:userAgent}&lt;/p&gt;');</li>
+</ol><p> </p>
+<p>will insert the following HTML code:</p>
+<p> </p>
+<div>&lt;p&gt;User agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6&lt;/p&gt;</div>
+<p> </p>
+<h5>Quick Search Dialog<sup class="tocAnchorContainer"><a href="#toc_10" class="anchor" title="toc_10" id="toc_10">#</a></sup></h5>
+<p>TBD</p>
+<ol class="code"><li>var dialog = new xq.controls.QuickSearchDialog(xed, {<br/>
+     listProvider: function(query, xed, callback) {<br/>
+         var headings = xed.rdom.searchHeadings();<br/>
+         var matched = headings.findAll(function(h) {<br/>
+             return xed.rdom.getInnerText(h).toLowerCase().indexOf(query.toLowerCase()) != -1;<br/>
+         });<br/>
+         callback(matched);<br/>
+     },<br/>
+     onSelect: function(xed, selected) {<br/>
+         xed.focus();<br/>
+         xed.rdom.scrollIntoView(selected, true, true);<br/>
+     }<br/>
+});<br/>
+dialog.show();</li>
+</ol><p> </p>
+<p> </p>
+<h5>Contribution<sup class="tocAnchorContainer"><a href="#toc_11" class="anchor" title="toc_11" id="toc_11">#</a></sup></h5>
+<p>Please refer to <a href="1168162.xhtml" class="wiki" title="Ways to contribute">how to contribute</a></p>
+
+  </body></html>

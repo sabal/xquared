@@ -1,0 +1,56 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>기여방법</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>Xquared를 가져다 쓰는 개발자는 누구나 Xquared를 수정할 수 있습니다. 자신이 발견한 버그를 직접 고치거나, 자신이 원하는 기능을 직접 추가하는 등 모든 것이 가능합니다. 등이죠. 그런데 그런 소중한 경험과 그 산물을 혼자만 누리기에는 너무 아깝죠?</p>
+<p> </p>
+<p>그래서 "기여"라는 것이 있습니다. 기여된 코드는 Xquared의 메인 소스에 통합되며, 이는 Xquared가 지속적으로 발전하는데에 큰 도움이 될 것입니다.</p>
+<p> </p>
+<p>이제부터 그 기여의 방법을 안내해드리려 합니다.</p>
+<p> </p>
+<h2>소스를 가져오세요!</h2>
+<p>배포판에 수정을 하신 경우라도, 자신이 바꾼 부분을 더욱 가치 있게 하는 첫걸음이 바로 Xquared 소스를 바탕으로 작업하는 것입니다. <a href="451172.xhtml" title="Xquared" class="wiki">Xquared</a> 홈페이지에 안내된 대로 소스 코드를 받아 오신 다음 자신의 저장소에서 작업을 하기를 바랍니다.</p>
+<p> </p>
+<h2 style="margin: 0px; padding: 0px; line-height: 2em;"><span class="Apple-style-span" style="line-height: 18px;">스펙을 만들고 돌려봅시다~</span></h2>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;">다양한 웹 브라우저에서 원활하게 실행되는 것은 Xquared의 기본적인 목표 중 하나입니다. 이런 환경일수록 자동화된 테스트(혹은 스팩)가 중요하죠. Xquared는 <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec" class="external" title="JSSpec">JSSpec</a>을 이용하여 자동화된 테스트를 수행하고 있으며, 현재 수 백 가지 상황에 대한 자동화된 테스트가 작성되어 있습니다.</p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;">따라서, 코드를 수정하는 과정에서 뭔가 잘못되었을까봐 불안해하시지 않아도 됩니다. Xquared 소스 코드의 다음 디렉토리에 있는 HTML 파일들을 브라우저에서 열어보면 코드에 이상이 없는지 자동으로 검사하는 테스트들이 실행되기 때문이죠:</p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<ol class="code"><li>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;">/xquared/specs/specs/</p>
+</li>
+</ol><p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;">탭 브라우징 기능을 이용해서 모든 스팩을 동시에 실행할 수도 있고, 열려 있는 모든 탭을 북마크에 추가해놓으면 나중에 쉽게 다시 모든 테스트를 돌릴 수도 있습니다:</p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em; text-align: center;"><img title="jsspec.JPG" class="attachment" src="471767.attachments/230130/jsspec.JPG" alt="jsspec.JPG"/></p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em; text-align: center;">[Firefox 2.0에서 모든 스팩이 실행되는 모습]</p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;">버그를 수정하시기 전에 "해당 버그가 고쳐지지 않으면 실패하는" 테스트(혹은 스팩)를 먼저 추가해놓은 다음, 버그 수정 작업을 시작하는 것은 매우 좋은 습관입니다. 이렇게 하면 한 번 고쳐졌던 버그가 나중에 다시 발생하는 경우에도 해당 버그에 대한 자동화된 테스트 덕분에 쉽게 알아낼 수 있게 되니까요. JSSpec으로 테스트를 작성하는 기본적인 방법은 <a href="http://jania.pe.kr/aw/moin.cgi/JSSpec/UserGuide" class="external" title="JSSpec 사용자 가이드">JSSpec 사용자 가이드</a>를 참고하시기 바랍니다.</p>
+<p style="padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; line-height: 2em;"> </p>
+<h2><span class="Apple-style-span" style="line-height: 18px;">다 고치셨다구요?</span></h2>
+<p>그럼 이제 패치를 만들 차례입니다. 패치를 만들기 전에, Xquared 공식 저장소의 최신 코드를 가져와서 합치는 것을 잊지 맙시다. </p>
+<p> </p>
+<ol class="code"><li>svn update</li>
+</ol><p> </p>
+<p>로 자신의 저장소를 갱신합니다. 그 다음</p>
+<p> </p>
+<ol class="code"><li>svn diff &gt; patch.diff</li>
+</ol><p> </p>
+<p>와 같이 하면 변경 사항들이 저장된 파일이 생깁니다.  혹시 svn update 후 충돌 문제가 생기면 <a href="http://www.selenic.com/mercurial/wiki/index.cgi/KoreanTutorialConflict" title="충돌하는 변경을 병합하기 입문서" class="external">충돌하는 변경을 병합하기 입문서</a>를 참고하여 충돌을 해결해보세요.</p>
+<p> </p>
+<h2>에쿠스(ECUS)에 올립시다~</h2>
+<p>에쿠스는 여러분과 Xquared 팀을 이어주는 만남의 장입니다. 여기에 올리는 모든 정보는 공개 공유되므로, 자신의 기여가 더욱 투명하게 진행되는 것을 보장합니다.</p>
+<p> </p>
+<p>먼저 <a href="http://ecus.openmaru.com" class="external" title="http://ecus.openmaru.com">http://ecus.openmaru.com</a> 에 접속하여 로그인합니다. 그리고 나서 왼쪽에 있는 프로젝트 메뉴중 Xquared를 선택한 다음 새 글 쓰기를 합니다. 제목에는 [PATCH]라는 머릿말을 붙이시고, 내용에 패치에 대한 취지와 설명을 하시고, 패치 파일을 첨부로 올리면 됩니다. 아래는 제목과 내용의 간단한 예입니다.</p>
+<p> </p>
+<blockquote>
+<p>제목: [PATCH]webkit가 아니고 WebKit에요.</p>
+<p>내용: 사소하지만 수정해보았습니다.</p>
+</blockquote>
+<p> </p>
+<p>또는, skyizblue@ncsoft.net 으로 패치 파일과 내역을 보내주셔도 됩니다.</p>
+<h2>반영이 됩니다~</h2>
+<p>올리신 패치는 Xquared 팀에 전달되어 담당자를 할당 받게 되고, 그 담당자는 패치를 검토하며 반영에 이르기까지의 상태를 알려드릴 것입니다. 반영이 되었다면 “해결”이라는 파란 상태 표시가 나올 거에요.</p>
+<p> </p>
+<p>짝짝짝~ 이로서 Xquared에 멋진 기여를 해주셨네요! 기여를 해주신 분은 <a href="476775.xhtml" title="기여자의 전당" class="wiki">기여의 전당</a>에 소중히 기억되실 것입니다.</p>
+<p> </p>
+<p>고맙습니다~</p>
+
+  </body></html>

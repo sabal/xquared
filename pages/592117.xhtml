@@ -1,0 +1,17 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Xquared 20071114 버전</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071114.tar.gz" title="xquared20071114.tar.gz" class="external">xquared20071114.tar.gz</a></p>
+<ul><li><strong>추가: Prototype.js를 1.5.1에서 1.6으로 업그래이드 하였습니다.</strong></li>
+<li><strong>추가: 본문 CSS를 갱신하였습니다. examples 디렉터리의 css 및 img 폴더의 내용을 다시 복사하시면 새 스타일이 적용됩니다. 새 본문은 <a href="http://jania.pe.kr/xquared/examples/default.html" title="데모 사이트" class="external">데모 사이트</a>를 참고하세요.</strong></li>
+<li><strong>추가: <a href="http://alankang.tistory.com/7" class="external" title="글 작성시 자동으로 현재 작성 중인 문단에서 핵심 단어를 추출">글 작성시 자동으로 현재 작성 중인 문단에서 핵심 단어를 추출</a>해주는 <a href="http://jania.pe.kr/xwriter" class="external" title="XWriter">XWriter</a>의 소스 코드를 살펴보세요. Xquared의 확장점을 활용하는 다양한 방법을 보실 수 있습니다.</strong></li>
+<li>추가: Validator를 사용자 정의할 수 있도록 하였습니다. 허용되는 태그 목록과 허용되는 속성 목록을 쉽게 재정의할 수 있습니다. <a href="542950.xhtml" class="wiki" title="설정하기">설정하기</a>의 allowedTags 및 allowedAttributes를 참고하세요. 디자인은 <a href="http://jfactory.tistory.com/" title="jfactory" class="external">jfactory</a>님, CSS 작업은 wpeofh님이 해주셨습니다. :)</li>
+<li>추가: xq.majorVerion 및 xq.minorVersion 을 추가하였습니다. (<a href="http://ecus.openmaru.com/issues/1663" title="ias님의 제안" class="external">ias님의 제안</a>)</li>
+<li>수정: xq_ui.css 가 Rails가 제공하는 CSS와 충돌하는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1665" title="ias님이 알려주신 버그" class="external">ias님이 알려주신 버그</a>)</li>
+<li>수정: IE6, IE7에서 마우스로 본문을 드래그하여 선택하는 중 링크 위를 지나갈 때 선택이 사라지는 문제를 수정하였습니다.</li>
+<li>수정: FF에서 setEditMode를 처음 호출하면서 'wysiwyg'이 아니라 'source'를 인자로 넘길 경우 예외가 발생하던 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1664" title="ias님이 알려주신 버그" class="external">ias님이 알려주신 버그</a>)</li>
+<li>수정: xq.Editor.config.imagePathForDefaultToobar의 값이 xq_ui.css의 규칙에 지정된 이미지 경로를 덮어쓰도록 하였습니다. (<a href="http://ecus.openmaru.com/issues/1719" title="ias님의 제안" class="external">ias님의 제안</a>)</li>
+<li>수정: 기본 툴바의 구분자 이미지(toolbarSeparator.gif)를 투명 GIF로 변경하였습니다.</li>
+<li>수정: IE에서 WYSIWYG 편집기 내부만 새로고침을 할 수 있도록 허용되는 문제를 수정하였습니다. (<a href="http://ecus.openmaru.com/issues/1629" class="external" title="하하님께서 알려주신 버그">하하님께서 알려주신 버그</a>)</li>
+<li>수정: 본문의 제일 첫 줄의 시작 부분에서 엔터키를 치면 빈 줄이 현재 문장 위에 삽입되도록 하였습니다(MS-Word와 비슷하게 작동하도록).</li>
+<li>수정: Undo/Redo 문제를 일부 수정하였습니다.</li>
+<li>수정: xq.Editor.handleLink 에서 "xed"라는 전역 변수를 가정하고 코딩된 부분을 수정하였습니다.</li>
+</ul></body></html>

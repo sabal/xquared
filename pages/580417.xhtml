@@ -1,0 +1,31 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>FormDialog</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>FormDialog는 일반적인 HTML FORM을 Dialog로 만들어줍니다. 사용자가 Form에 입력한 값은 자바스크립트 객체(Dictionary 혹은 Hash)로 변환됩니다.</p>
+<p> </p>
+<h3>FormDialog 인스턴스 생성하기</h3>
+<p>다음과 같은 코드를 통해 인스턴스를 만들 수 있습니다:</p>
+<ol class="code"><li>var dialog = new xq.Control.FormDialog(xed, html, onLoadHandler, onCloseHandler);</li>
+</ol><p> </p>
+<p>첫번째 인자(xed)는 xq.Editor 인스턴스 입니다. 두 번째 인자는 화면에 보여줄 HTML 스트링입니다. "&lt;form ...&gt; ... &lt;/form&gt;"과 같은 형식으로 써주시면 됩니다. 혹은 화면의 안보이는 영역(이를테면 style="display: none;"으로 설정된 DIV 등)에 FORM을 넣어두고, 이에 대한 innerHTML을 얻어서 인자로 넘겨도 됩니다. 세번째 인자는 FORM이 화면에 나타날 준비가 끝나면 호출될 콜백 함수이며, 생략하려면 null을 넘기시면 됩니다. onCloseHandler 함수는 사용자가 FORM을 submit 하거나 cancel 할 때 발생합니다. FORM을 submit 한 경우라면 콜백 함수의 인자로 자바스크립트 객체가 넘겨집니다.</p>
+<p> </p>
+<p>예를 들어 FORM이 다음과 같을 때</p>
+<ol class="code"><li>&lt;form&gt;</li>
+<li style="margin-left: 2em;">&lt;input type="text" name="field1" /&gt;</li>
+<li style="margin-left: 2em;">&lt;input type="text" name="field2" /&gt;</li>
+<li>&lt;/form&gt;</li>
+</ol><p>사용자가 field1에 "hello", field2에 "world"를 입력하고 submit을 한 경우 콜백 함수의 첫번째 인자는 다음과 같습니다:</p>
+<ol class="code"><li>{field1: "hello", field2: "world"}</li>
+</ol><p>따라서, 아래와 같은 코드로 폼 값을 얻어올 수 있습니다:</p>
+<ol class="code"><li>var onCloseHandler = function(data) {</li>
+<li style="margin-left: 2em;">alert(data.field1 + " " + data.field2);</li>
+<li>}</li>
+</ol><p> </p>
+<h3>FormDialog 화면에 보여주기</h3>
+<p>FormDialog를 생성하였으면 다음 코드를 통해 다이얼로그를 화면에 나타낼 수 있습니다:</p>
+<ol class="code"><li>dialog.show();</li>
+</ol><p>참고로, 다이얼로그가 뜰 때 특정 필드에 자동으로 초점(focus)을 주고 싶으면 해당 필드에 class="initialFocus" 속성을 지정하시면 됩니다:</p>
+<ol class="code"><li>&lt;input type="text" name="url" class="initialFocus" /&gt;</li>
+</ol><p> </p>
+<h3>예제</h3>
+<p>xq.Editor.handleLink 함수에서 FormDialog API를 이용하여 기본적인 링크 다이얼로그를 구현한 코드를 참고하시기 바랍니다.</p>
+
+  </body></html>

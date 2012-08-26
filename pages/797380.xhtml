@@ -1,0 +1,16 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Xquared 20080211 버전</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080211.tar.gz" title="xquared20080211.tar.gz" class="external">xquared20080211.tar.gz</a></p>
+<ul><li>추가: 글꼴과 글자 크기를 지정하는 기능이 추가되었습니다.</li>
+<li>추가: 툴바에 Drop-down list를 사용할 수 있습니다.</li>
+<li>추가: Editor.setEditMode에 두 번째 인자(dontGiveFocus)가 추가되었습니다. true를 주면 모드 전환시 포커스를 주지 않습니다.</li>
+<li>추가: Ctrl+Shift+Z로 다시하기(redo)를 수행할 수 있도록 새 단축키를 추가하였습니다.</li>
+<li>추가: Validator에 네 개의 콜백 함수를 추가하여 유효화 과정을 더 유연하게 재정의할 수 있도록 하였습니다.</li>
+<li>추가: xq.Editor.config.noValidationInSourceEditMode 설정을 추가하였습니다. true로 설정하면 소스를 직접 편집하고 저장하는 경우에 Validation을 수행하지 않습니다.</li>
+<li>수정: xq.Editor.handleList, xq.RichDom.turnElementIntoListItem, xq.RichDom.changeListTypeTo, xq.RichDom.applyList, xq.RichDom.applyLists의 인자(className)가 추가되었습니다. OL/UL을 생성할 때 class 속성을 부여하기 위해 사용됩니다.</li>
+<li>수정: 목록에서 BS 및 DEL 키 작동이 더 자연스럽게 되도록 수정하였습니다.</li>
+<li>수정: 빈 블록에서 DEL이나 ENTER를 누를 때 더 자연스럽게 되도록 수정하였습니다.</li>
+<li>수정: xq.Controls.FormDialog에서 키입력이 제대로 되지 않던 버그를 수정하였습니다. (IE6/7)</li>
+<li>수정: Mootools와의 이름충돌을 피하기 위해 Array.prototype.include를 Array.prototype.includeElement로 바꾸었습니다.</li>
+<li>수정: xq.RichDom.correctStructureAndStyle 메서드가 전경색/배경색 정보도 반환하도록 하였습니다.</li>
+<li>수정: 표 편집시 간혹 표가 둘로 나뉘어지던 버그를 수정하였습니다.</li>
+</ul></body></html>

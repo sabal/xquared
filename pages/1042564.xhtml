@@ -1,0 +1,232 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>02. Download</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h1><span style="font-size: x-large;"><span class="Apple-style-span" style="font-weight: bold;">Recent Releases</span></span></h1>
+<p><a href="http://code.google.com/p/xquared/downloads/list">http://code.google.com/p/xquared/downloads/list</a></p>
+<h5>2009/02/02</h5>
+<ul><li>TBD</li>
+</ul><h5>2008/04/23</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080423.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080423.tar.gz" class="external"/>Improvement: Edited the complete structure of the source code. Introduction of the concept of the package along with lowering the reliance between modules. Videos and other addition features are now separated as Plug-ins.</p>
+<ul><li>Modification: Created a restriction when connecting elements that are not a TEXTAREA to Xquared</li>
+<li>Addition: Added a plug-in that lets you drag the editor the the bottom portion of the screen and control the size (EditorResizePlugin.js). Refer to resize.html in the examples directory. (<span style="color: rgb(255, 118, 55);">Thanks to zenguy and jinagam for this suggestion</span>.)</li>
+<li>Addition: You can now add Yahoo videos.</li>
+<li>Addition: You can now insert the new version of Pandora TV's player.</li>
+<li>Modification: We have now restricted the input of URLs when inserting videos. Only OBJECT and EMBED are allowed.</li>
+<li>Fix: Fixed problem where videos could not play when margins and paddings did not exist in the BODY during editing mode.</li>
+<li>Fix: Fixed problem where removing a video with Cut (Ctrl+X) would not remove the video from the screen.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2008/03/27</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080327.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080327.tar.gz" class="external">xquared_client_20080327.tar.gz</a></p>
+<ul><li>Added: You can now add videos from Daum tv pod (<a href="http://tvpot.daum.net/">http://tvpot.daum.net</a>), Pandora TV(<a href="http://www.pandora.tv/">http://www.pandora.tv</a>), and MN cast (<a href="http://mncast.com/">http://mncast.com</a>). Click the video button The image “http://jania.pe.kr/xquared/client/images/toolbar/movie.gif” cannot be displayed, because it contains errors. from the toolbar.</li>
+<li>Added: When inserting a video, you can now also enter the OJBECT code (or URL) for the video to be recognized.</li>
+<li>Added: You can now insert IFRAMEs.</li>
+<li>Added: When setting config.autoFocusOnInit to true, when the editor starts running it will automatically be focused.</li>
+<li>Improvement: Included API documentation in the distribution version. Refer to the docs directory.</li>
+<li>Improvement: Added various keyboard shortcuts for Mac users. Meta+B, Meta+I, Meta+K, Meta+U will enable bold, italics, strikethrough, and underlining respectively. Original keyboard shortcuts Ctrl+B, Ctrl+I, Ctrl+K, and Ctrl+U are still intact . To add or remove keyboard shortcuts, please refer to our feature expansion page.</li>
+<li>
+<p>Fix: Problem where a security warning would appear when opening Xquared from an HTTPS page in IE.</p>
+<p> </p>
+<p> </p>
+</li>
+</ul><h5>2008/03/20</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080320.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared_client_20080320.tar.gz" class="external">xquared_clInternet Explorernt_20080320.tar.gz</a></p>
+<ul><li>Improvement: Completely modified the structure of file distribution. Please refer to our tutorial for more details.</li>
+<li>Improvement: Separated xq.Editor and xq.Toolbar.</li>
+<li>Modification: Fix the bug where you could only insert the HTML source code when inserting a video clip instead of inserting a video clip through a dialog box.</li>
+<li>Fix: Error where only one video clip file loads when having many video clips in a single page in FIREFOX and Internet Explorer.</li>
+<li>Fix: Problems of word wrap and the moving of block units in Safari</li>
+<li>Fix: Problem where the calling of xq.Editor.focus() and xq.RichDom.focus() where not being focused initially in Firefox.</li>
+<li>Modification: Modified the CSS in the source editing window in Internet Explorer6/7 that causes the browser to stop functioning when giving a border. <span style="color: rgb(255, 118, 55);">(problem from gEEkInsId. Thanks!)</span></li>
+<li>Fix: Error where the selection of the Title tool. <span style="color: rgb(255, 118, 55);">(Thanks to zenguy)</span></li>
+<li>Fix: Problem when the HTML properties ends with '=' (for example, &lt;a href='http://x.com?y='&gt;) that causes the Validator to malfunction in Firefox.</li>
+<li>Fix: The disappearance of the focus when typing Korean and the addition of characters in the editor FIREFOX</li>
+<li>Fix: The disappearing of carets when moving blank blocks up or down in Firefox.</li>
+<li>Fix: When a floating dialog appears in the center of the window (centerOfWindow) while a long sentence is present, the location of the scrollbar is not calculated correctly <span style="color: rgb(255, 118, 55);">(Problem notified by zenguy. Thanks!)</span></li>
+</ul><p> </p>
+<p> </p>
+<h5>2008/03/14</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080314.tar.gz" title="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080314.tar.gz">xquared20080314.tar.gz</a></p>
+<ul><li>Added: Users can now insert YouTube videos. Video clips can be viewed during WYSIWYG editing. You can insert video clips when clicking the Movie icon from the toolbar. We are planning to add TVPot and other video formats in the future.</li>
+<li>Added: Plug-In API in Xquared for easy feature expansion</li>
+<li>Improvement: Improved the validation logic. You can now define the grouping of tags. The logic behind the validation modification option has also changed. If you were using the validation set up by modifying it, please go to the set up page to find and fix corresponding codes.</li>
+<li>Improvement: Speed of initial loading and switching to editing mode</li>
+<li>Modification: Part of the problem where repeated lists become tangled when pressing DEL or Backspace</li>
+<li>Modification: A part of the problem where the deletion of automatically created blank spaces where not removed in Internet Explorer 6 &amp; 7.</li>
+<li>Modification: Added characters to xq.Editor.onEditorElementChanged (editor instance).</li>
+<li>
+<p>Modification: When removing formats (removeFormat) the link is now not removed.</p>
+<p> </p>
+<p> </p>
+</li>
+</ul><h5>2008/03/06</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080306.tar.gz" title="xquared20080306.tar.gz">xquared20080306.tar.gz</a></p>
+<ul><li>Fix: Problem where some keyboard shortcuts in Windows and Mac Safari were not recognized</li>
+<li>Improvement: Problems of Validation/Invalidation in Windows and Mac Safari</li>
+<li>Improvement: Small improvement in performance when loading large documents. (Regular Expression is now compiled in advance.)</li>
+<li>Fix: Problem where an exception would be generated through a malfunctioning of xq.RichDom.collectStructureAndStyle() in the middle of reloading the toolbar in Firefox</li>
+<li>Fix: Bug where the function xq.RichDom.hasFocus() did not function properly.</li>
+<li>Fix: Problem where prototype.js was loaded before xquared.js.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2008/03/03</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080303.tar.gz" title="xquared20080303.tar.gz">xquared20080303.tar.gz</a></p>
+<ul><li>Added: Strengthened Selenium feature testing.</li>
+<li>Fix: Problem where the caret would sometimes automatically move or not move correctly in Internet Explorer6/7. (Problem notified by Sang-Jin Han)</li>
+<li>Modification: Problem where the caret would not move correctly around the HR in Internet Explorer6/7. (Problem notified by Sang-Jin Han)</li>
+<li>Fix: Bug where Xquared is interlocked in the form, the preexistent factor of onsubmit handler is not maintained, thus causing a bug. (Proposed by wizkwon.)</li>
+<li>Fix: Bug where browser malfunctions when there is a label in a form in Firefox2. (bNotified by byeongseon.)</li>
+</ul><p> </p>
+<p> </p>
+<h5>2008/02/28</h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080228.tar.gz" title="xquared20080228.tar.gz">xquared20080228.tar.gz</a></p>
+<ul><li>Added: Part of the unit testing (JSSpec) that was not originally automated is now partially automated where features used Selenium.</li>
+<li>Added: Automation of complete unit testing in Selenium’s feature test</li>
+<li>Added: In browsers other than Internet Explorer, the URL from the page is automatically replaced by a link.</li>
+<li>Added: Functions xq.Editor.setWidth() and xq.Editor.setHeight().</li>
+<li>Improvement: Performance in validation and keyboard shortcut processing logic.</li>
+<li>Improvement: Removed part of repeated areas and unused code. The size of the script has been greatly reduced.</li>
+<li>Improvement: Applied JavaScript’s YUI-Compressor to the latest version (2.3.5) to reduce the file size of xquared_min.js</li>
+<li>Improvement: className is received as a factor in the xq.Editor.handleApplyBlock function. You can now assign names to class names while applying DIV and H1 (<span style="color: rgb(255, 118, 55);">Proposed by byeongseon.</span>.)</li>
+<li>Fix: Problem where contents of a page would not properly load during the source write mode during initial loading.</li>
+<li>Fix: Bug where xq.Editor.focus() would sometimes cause problems in Firefox. (<span style="color: rgb(255, 118, 55);">Notified by zenguy</span>..)</li>
+<li>Modification: When turning on Firefox the validation feature in editing mode (config.noValidationInSourceEditor) a part of the validation that was still being executed has been fixed.</li>
+<li>Modification: Problem where Xquared would not function when Prototype 1.5.x and Xquared are loaded together (<span style="color: rgb(255, 118, 55);">Suggested by Jinu</span>.)</li>
+<li>Fix: Problems where dialog boxes and menu contents would not appear in correct locations. (<span style="color: rgb(255, 118, 55);">Bug pointed out by zenguy</span>)</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/12/05</h5>
+<p><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20080211.tar.gz" title="xquared20080211.tar.gz">xquared20080211.tar.gz</a></span></p>
+<ul><li>News: Created <span><a href="http://bb.openmaru.com/baseboard/board/20071130165223312" title="자유게시판">General Board</a></span> and <span><a href="http://bb.openmaru.com/baseboard/board/20071130165200872" title="질문답변 게시판">Q&amp;A Board</a></span>.</li>
+<li>Modification: Modification so that the Prototype.js library is not used. Now, modification of Xquared is not required when used for sites that use jQuery or Mootools.</li>
+<li>Modification: Removed all memory leaks during the switching of pages in Internet Explorer6.</li>
+<li>Modification: Problem where dialog boxes did not appear appropriately in the middle of the editing space.. (<span><a href="http://ecus.openmaru.com/issues/2140" title="haneul님이 패치를 보내주셨습니다">Patch sent by haneul</a></span>. Thank you.)</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/11/21</h5>
+<p><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071121.tar.gz" title="xquared20071121.tar.gz">xquared20071121.tar.gz</a></span></p>
+<ul><li>News: Openmaru Project Bug Report Center’s, ECUS, text editor has now applied Xquared.</li>
+<li>News: Jihoon(智熏) has created a <span><a href="http://meiclamo.net/2007/11/wordpress-plugin-wp-xquared/" title="WordPress 용 Xquared 플러그인">WordPress Version of Xquared plug-ins</a></span>.</li>
+<li>Added: Dialog has been added to be able to select text color or background color.</li>
+<li>Modification: Modified various problems that manipulated the HR (block unit element) to an inline element.</li>
+<li>Modification: Modification where the toolbar is not recalled in the source editing mode. (<span><a href="http://ecus.openmaru.com/issues/1828" title="Secrice님의 제안">Proposed by Secrice</a></span>)</li>
+<li>Modification: Fixed class definitions and succeeding codes to match Prototype 1.6.</li>
+<li>Fix: Fixed problem where a &lt;br/&gt; tag would automatically be inserted during overlapping various inline elements insertion at the end of a paragraph in Firefox.</li>
+<li>Modification: Area where dialog box appears. The dialog box no longer appears at the center of your screen, it will now appear at the center of the editing space window.</li>
+<li>Modification: Fixed problem where there was an inappropriate dependence on translation variables in xq.Editor.handleLink. (<span><a href="http://ecus.openmaru.com/issues/1833" title="haneul님이 알려주신 버그">Proposed by haneul</a></span>)</li>
+<li>Modification: Fixed problem where focus was automatically placed even though xq.Editor.focus() is not called.</li>
+<li>Fix: Problems where UNDO/REDO would not properly function.</li>
+<li>Fix: Problem where the editor from Safari (Webkit) would not run.</li>
+<li>Modification: Modified the CSS that causes lines to jump up and down in Internet Explorer. Please recopy xq_content.css</li>
+<li>Fix: Bug where blank lines would randomly appear in Firefox.</li>
+<li>Fix: Bug where the width of a table would be too long that horizontal scroll bars would appear in Internet Explorer.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/11/14</h5>
+<ul><li>Upgrade: Upgraded Prototype.js 1.5.1 to 1.6.</li>
+<li>Added: Renewal of CSS in the (text) body. A new style is applied when putting content in the CSS and IMG directory folder. Please refer to the new body at the <span><a href="http://jania.pe.kr/xquared/examples/default.html" title="데모 사이트">Demo site</a></span>.</li>
+<li>Added: Please look at the source code of <span><a href="http://jania.pe.kr/xwriter" title="XWriter">XWriter</a></span> where <span><a href="http://alankang.tistory.com/7" title="글 작성시 자동으로 현재 작성 중인 문단에서 핵심 단어를 추출">when typing, the paragraph where you are typing extracts the core word automatically</a></span> You can see various methods and examples of expansion in Xquared.</li>
+<li>Added: Users can now define Validators. You can now easily redefine approved tag lists and approved property lists. <span><a href="http://xquared.springbook.playmaru.net/pages/542950" title="설정하기"><span>설정하기</span></a></span>의 Please refer to the approved tags and approved attributes in settings. (Design by <span><a href="http://jfactory.tistory.com/" title="jfactory">jfactory</a></span>, and CSS coding by wpeofh)</li>
+<li>Added: Added xq.majorVerion and xq.minorVersion. (<span><a href="http://ecus.openmaru.com/issues/1663" title="ias님의 제안">Proposed by ias</a></span>)</li>
+<li>Modification: Fixed problem of confliction between the CSS of xq_ui.css and Rails. (<span><a href="http://ecus.openmaru.com/issues/1665" title="ias님이 알려주신 버그">Proposed by ias</a></span>)</li>
+<li>Fix: Fixed problem of disappearing selection (by dragging the mouse) when the mouse hovers over a link in Internet Explorer6/7.</li>
+<li>Fix: Problem where when setEditMode is first called it doesn’t carry over ‘wisiwyg’ but ‘source’ as a factor which generates an exception in Firefox. (<span><a href="http://ecus.openmaru.com/issues/1664" title="ias님이 알려주신 버그">Notified by ias</a></span>)</li>
+<li>Modification: Overwrites the defined regulation depending on the image path value of xq.Editor.config.imagePathForDefaultToobar. (<span><a href="http://ecus.openmaru.com/issues/1719" title="ias님의 제안">Proposed by ias</a></span>)</li>
+<li>Modification: Switched default toolbar determiner image (toolbarSeparator.gif) to a transparent GIF.</li>
+<li>Modification: Fixed problem where refreshing within the WYSIWYG was allowed in Internet Explorer. (<span><a href="http://ecus.openmaru.com/issues/1629" title="하하님께서 알려주신 버그">Bug pointed out by Haha</a></span>)</li>
+<li>Modification: Added extra blank line above when pressing the Enter key initially from the first line. (Works similarly to MS-Word).</li>
+<li>Modification: Partial fix of the Undo/Redo problem.</li>
+<li>Modification: Fixed coding in “xed” translation variable in xq.Editor.handleLink.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/11/08<span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071108.tar.gz" title="xquared20071108.tar.gz"/></span><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071108.tar.gz" title="xquared20071108.tar.gz"/></span></h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071108.tar.gz" title="xquared20071108.tar.gz">xquared20071108.tar.gz</a></p>
+<ul><li>Added: Added a Link function. You can see the Link button on the toolbar. Used by function xq.Editor.handleLink()</li>
+<li>Added: Added a FormDialog for changing from Form to Dialog. Please refer to <a href="1192366.xhtml" class="wiki" title="FormDialog Instances">FormDialog</a> for more details.</li>
+<li>Modification: Problem where the code in the distinction of Ubuntu Linux would not function properly (caused by typo error).</li>
+<li>Modification: During the source viewing mode, we have simplified source modification by being able to add characters to word wrap within block elements.</li>
+<li>Modification: Bug where the caret in QuickSearchDialog does not appear in Firefox.</li>
+<li>Example: This feature shows the keywords in a paragraph automatically when inputting text. Currently QuickSearachDialog is used for word search in Gooogle, Wikipedia, dictionary, etc. <a href="http://jania.pe.kr/xwriter" title="이곳에서 확인해보실 수 있습니다">You can check out an example of this being functioned here.</a></li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/11/01<a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071101_2.tar.gz" title="xquared20071101_2.tar.gz"/></h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071101_2.tar.gz" title="xquared20071101_2.tar.gz">xquared20071101_2.tar.gz</a></p>
+<ul><li>Added: Basic HTML Source editing function. When clicking the “HTML” icon from the toolbar, you can toggle between the source editing mode and WYSIWYG mode. When saving from the source editing mode or switching to WYSIWYG mode, validation is automated. (Feature proposed by <span><a href="http://ecus.openmaru.com/issues/1494" title="EP님">EP</a></span> and <span><a href="http://secrice.com/writing/2007/10/22/Xquared+EC9790EB9494_1193049144.php" title="Secrice님">Secrice</a></span>)</li>
+<li>Added: Settings for Editor.config.changeCursorOnLink. When the setting value is true, the cursor turns to a hand when moving the cursor over a link.</li>
+<li>Added: Added a loading function for easier loading when JavaScript files are not put together in HTML. This feature is useful during development and debugging. When setting 'Xquared.js?load_others=1' in script src the leftover script is read in order automatically. However, we recommend you use the actual JavaScript files (xquared.js or xquared_min.js ).</li>
+<li>Modification: Depending on what has been added in the source editing mode, the factors in Editor.setEditMode being true or false has now been changed to 'wysiwyg', 'source', and 'readonly'.</li>
+<li>Fix: Problem where all empty lines would disappear after pressing DEL or BACKSPACE in Firefox.</li>
+<li>Fix: Bug where the deletion of empty elements through DEL or BACKSPACE key would not execute properly.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/28<span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071028.tar.gz" title="xquared20071028.tar.gz"/></span></h5>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071028.tar.gz" title="xquared20071028.tar.gz">xquared20071028.tar.gz</a></p>
+<div style="margin-left: 2em;"> </div>
+<div style="margin-left: 2em;"> </div>
+<ul><li>Added: The editor is now not only connected to DIV, but also TEXTAREA. Please refer to examples/form_and_textarea.html as an example.</li>
+<li>Added: Added Editor.config.automaticallyHookSubmitEvent settings. While the TEXTAREA is connected with the editor, when submitting FORMS that include the TEXTAREA, the TEXTAREA value can now automatically fill the editor content. TEXTAREA value now fills in the editor content.</li>
+<li>Fix: Bug where blank areas would appear when switching from read mode to Editor.setEditMode(false) command editing mode.</li>
+<li>Modification: Problem where clicking was not working appropriately due to icons and images on the toolbar crossing each other. (<span><a href="http://ecus.openmaru.com/issues/1450" title="삼지니님꼐서 지적해주신 문제">Sent in by Samjini</a></span>)</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/26</h5>
+<p><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071026.tar.gz" title="xquared20071026.tar.gz">xquared20071026.tar.gz</a></span></p>
+<ul><li>Modification: The URL Validation feature is complete. config.useRelativeUrlWheneverPossiblehas now been converted to urlValidationMode. Please look <span><a href="http://xquared.springbook.playmaru.net/pages/542950" title="설정하기">here</a></span> on urlValidationMode for more information. (<span><a href="http://ecus.openmaru.com/issues/1307" title="Secrice님께서 지적해주신 문제">Pointed out by Secrice</a></span> )</li>
+<li>Modification: Modified the image of the toolbar HTML and CSS.</li>
+<li>Fix: Problem where part of the document place-holder (br) after validation would not disappear in Firefox.</li>
+<li>Modification: Modification to enable restoration of nodes inserted by Editor.insertTemplateAt.</li>
+<li>Modification: Updated to the latest version of JSSpec.</li>
+<li>Modification: Modified appropriate deletion of inserted blank characters in Internet Explorer6, Internet Explorer7.</li>
+<li>Modification: Problem where the toolbar image would constantly reload in Internet Explorer6. (<span><a href="http://ecus.openmaru.com/issues/1361" title="삼지니님께서 지적해주신 문제">Notified by Samjini</a></span>)</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/17</h5>
+<p><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071017.tar.gz" title="xquared20071017.tar.gz">xquared20071017.tar.gz</a></span></p>
+<ul><li>Added: Editor.handleInsertLink Added</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">
+<p>Added: Added various example</p>
+<ul><li>default.html – basic functions, basic UI</li>
+<li>toolbar_disabled.html – UI that removes the toolbar</li>
+<li>toolbar_customized1.html – Removing and relocating the basic toolbar</li>
+<li>toolbar_customized2.html – User defined toolbar</li>
+<li>extensionpoint.html – Different utilization examples of keyboard shortcuts, auto-complete, auto-conversion, contacts menu, etc.</li>
+</ul></li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Added: Toolbar API Added. Toolbar is now provided by default. Through options you can now remove the toolbar, regroup/rearrange the order of toolbar icons, remove specified toolbar icons, or create a toolbar through HTML.</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Fix: Validation fix. There was a problem when you open a document created in Firefox with Internet Explorer that gives you a blank line because of &lt;br /&gt;. (<span><a href="http://ecus.openmaru.com/issues/1161" title="경민님께서 지적해주신 문제">Pointed out by Kyungmin</a></span> )</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Fix: Problem where &lt;br/&gt; remains when pressing DEL or BACKSPACE to have two lines into one line requiring you to press DEL/BS one more time in Firefox. (Pointed out by Kyungmin)</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Fix: Problem where the toolbar image is not properly displayed in Internet Explorer6 (<span><a href="http://ecus.openmaru.com/issues/1231" title="경민님께서 지적해주신 문제">Pointed out by Kyungmin</a></span>)</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Modification: Add rel and rev properties to validator whitelist (Pointed out by Secrice )</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Fix: Bug where relative paths are attached when copying and pasting content from web pages that have base href set (<span><a href="http://ecus.openmaru.com/issues/1240" title="Secrice님께서 지적해주신 문제)">Pointed out by Secrice</a></span>)</li>
+<li class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">Fix: Problem where a horizontal scrollbar appears when a vertical scrollbar appears in Internet Explorer6.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/12</h5>
+<p><span><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071012_2.tar.gz" title="xquared20071012_2.tar.gz">xquared20071012_2.tar.gz</a></span></p>
+<ul><li>Added: Basic toolbar support</li>
+<li>Improvement: CSS Improvement in text body</li>
+<li>Improvement: Editor design improvement</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/10</h5>
+<ul><li>Modification: TAB/Shift+TAB now works during cell movement in "data table" and indentation and outdentation in the "layout table"</li>
+<li>Fix: Bug where pressing DEL/BS during block unit elements being inline/text node becomes contiguous, causing the generation of an exception in Firefox.</li>
+<li>Modification: Logic of validating repeated FONT tags</li>
+<li>Fix: Problems where background colors and font colors could not be removed in Internet Explorer</li>
+<li>Modification: When removing SCRIPT tags during validation content is also removed along with the tags.</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/10/09</h5>
+<ul><li>Added: Context Menu API</li>
+<li>Added: Imported Apache Ant to our build</li>
+<li>Added: Template Processor API</li>
+<li>Added: Quick Search dialog</li>
+<li>Modification: TAB key now inserts 3 blank character spaces in the middle of text</li>
+<li>Improvement: XHTML Validation performance</li>
+<li>Improvement: Table row/column adding and removing</li>
+<li>Improvement: Safari 3 support. Caret and selection control, blank block examination logic Improvement</li>
+</ul><p> </p>
+<p> </p>
+<h5>2007/09/18</h5>
+<p> </p>
+<p>First Release</p>
+<p> </p>
+
+  </body></html>

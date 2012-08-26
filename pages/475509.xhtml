@@ -1,0 +1,34 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>전체 아키텍쳐</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>이 문서는 Xquared의 확장 기능(자동 완성, 자동 변환, 템플릿 처리기, 단축키 재정의 등)을 개발하거나, 코드를 수정하고자 하는 개발자를 위해 작성되었습니다.</p>
+<p> </p>
+<h3>Xquared의 주요 모듈 및 모듈 간의 관계</h3>
+<h5>xq.Xquared</h5>
+<p> </p>
+<h5>xq.Editor</h5>
+<p>xq.Editor 클래스는</p>
+<ul><li>편집모드/일반모드 사이의 전환</li>
+<li>키보드 단축키, 마우스 클릭 등의 이벤트 처리</li>
+<li>각종 편집 명령 처리</li>
+<li>각종 설정(자동 완성, 자동 변환 등) 처리</li>
+</ul><p>등을 담당합니다.</p>
+<p> </p>
+<h5>xq.rdom.Base</h5>
+<p>xq.rdom.Base 클래스는</p>
+<ul><li>브라우저 DOM 객체에 대한 기본적인 CRUD</li>
+<li>브라우저 간의 차이를 추상화한 고수준의 DOM 조작 API</li>
+<li>특정 DOM 노드를 얻어내기 위한 다양한 쿼리 메서드</li>
+<li>캐럿, 선택(selection) 관리를 위한 메서드</li>
+</ul><p>등을 제공합니다.</p>
+<p> </p>
+<h5>xq.validator.Base</h5>
+<p>xq.validator.Base 클래스는</p>
+<ul><li>편집에 적합한 형태로 HTML을 변환</li>
+<li>Whitelist 기반 HTML Validation</li>
+</ul><p>을 수행합니다.</p>
+<p> </p>
+<h5>xq.plugin.Base</h5>
+<p> </p>
+<h5>xq.macro.Base</h5>
+<p> </p>
+
+  </body></html>

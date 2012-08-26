@@ -1,0 +1,234 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>ButtonMap을 이용한 그룹핑 방식 (deprecated)</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>툴바 재정의에 가장 많이 이용되는 버튼 추가/삭제를 위해서는 이 defaultToolbarButtonMap 방식이 비효율적인 면이 있어서, List 기반의 툴바 재정의 방식을 추가했습니다.</p>
+<p>defaultButtonMap 을 사용하는 기존의 방식 역시 지원하지만, 새로운 List 기반 재정의 방식을 사용하는 것을 추천합니다.</p>
+<p>더 짧은 코드로 버튼 재정의를 할 수 있습니다.</p>
+<p> </p>
+<p><a href="542989.xhtml" class="wiki" title="툴바 사용자 정의하기">툴바 사용자 정의하기</a> 페이지를 참고하세요.</p>
+<p> </p>
+<p>아래는 기존의 페이지 내용입니다.</p>
+<p> </p>
+<h2>툴바 사용자 정의하기</h2>
+<p>툴바를 사용자 정의 하는데는 두 가지 방법이 있습니다.</p>
+<p> </p>
+<ol><li>기존 Toolbar를 수정/덮어씌우기</li>
+<li>새롭게 ToolbarContainer를 정의</li>
+</ol><p> </p>
+<p>사용자가 별도의 툴바 객체를 지정하지 않는다면, Xquared는 Editor.defaultToolbarButtonMap를 참고하여 디폴트 툴바를 설정합니다.</p>
+<h3>defaultToolbarButtonMap</h3>
+<p>defaultToolbarButtonMap는 <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: arial;">Xquared 기본 툴바에 들어갈 버튼들에 대한 정보를 담고 있는 배열입니다. 따라서, 이 배열 요소들을 재정의해서 툴바의 버튼들을 변경할 수 있습니다.</span></p>
+<p> </p>
+<p>아래는 Editor.js에 기술된 defaultToolbarButtonMap의 일부입니다.</p>
+<p> </p>
+<ol class="code"><li>this..defaultToolbarButtonMap = [<br/>
+    this..defaultToolbarButtonGroups.font,</li>
+<li>    ...<br/>
+    this..defaultToolbarButtonGroups.link,<br/>
+    this..defaultToolbarButtonGroups.insert,<br/>
+    [{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}],<br/>
+    [{className:"undo", title:"Undo", handler:"xed.handleUndo()"},{className:"redo", title:"Redo", handler:"xed.handleRedo()"}]<br/>
+];</li>
+</ol><p> </p>
+<p>defaultToolbarButtonMap 내의 배열 객체들 역시 배열로 감싸주어야 합니다. 이는 각 버튼들을 그룹 단위로 관리하기 위해서 입니다. 자세한 것은 아래 <strong>defaultToolbarButtonGroups</strong> 를 다룰 때 알아보기로 합니다.</p>
+<p> </p>
+<h3>버튼 정의 형식</h3>
+<p>defaultToolbarButtonMap에서 사용하는 툴바의 버튼 정의은 아래와 같습니다.</p>
+<p> </p>
+<ol class="code"><li>{className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}</li>
+</ol><p> </p>
+<ul><li>className : 버튼의 이름이자 ClassName 속성에 들어갈 값입니다. 버튼 이미지 파일의 className 이자, 파일 이름으로 사용됩니다.</li>
+<li>title : 버튼의 anchor의 title에 지정될 값입니다.</li>
+<li>handler : 버튼을 클릭했을 때 발생할 이벤트를 지정합니다.</li>
+</ul><p> </p>
+<p>즉, 위와 같은 버튼을 정의하면 툴바 영역에는 아래와 같은 HTML 이 추가됩니다.</p>
+<p> </p>
+<ol class="code"><li>&lt;span class=""&gt;&lt;a title="Edit source" href="#"&gt;&lt;img src="../images/toolbar/html.gif" class="html"&gt;&lt;/a&gt;&lt;/span&gt;</li>
+</ol><p> </p>
+<h3>defaultToolbarButtonGroups</h3>
+<p>defaultToolbarButtonMap 의 각 요소 역시 배열로 감싸줍니다. 이는 각 버튼들의 요소를 그룹으로 관리하기 위해서 입니다. Groups 단위로 묶는 이유는 의미적으로 유사한 단위의 버튼을 묶기 위해서 입니다. defaultToolbarButtonGroups의 각 그룹들은 세로 점선 모양의 구분자(Seperator)로 구분됩니다.</p>
+<p> </p>
+<p>아래 툴바 예제를 보면,</p>
+<p><img class="attachment" title="default.png" src="542989.attachments/1185198/default.png" alt="default.png"/></p>
+<p> </p>
+<p>    [{className:"undo", title:"Undo", handler:"xed.handleUndo()"},{className:"redo", title:"Redo", handler:"xed.handleRedo()"}]</p>
+<p> </p>
+<p>defaultToolbarButtonGroups 는 JSON 배열 형태로 사용합니다. 아래에 defaultToolbarButtonGroups의 예가 있습니다. Groups 단위로 묶는 이유는 의미적으로 유사한 단위의 버튼을 묶기 위해서 입니다. defaultToolbarButtonGroups의 각 그룹들은 세로 점선 모양의 구분자(Seperator)로 구분됩니다.</p>
+<p> </p>
+<ol class="code"><li>this..defaultToolbarButtonGroups = {<br/>
+    "color": [<br/>
+         {className:"foregroundColor", title:"Foreground color", list:[<br/>
+            {style: {backgroundColor:"#ffd8d8"}, handler:"xed.handleForegroundColor('#ffd8d8')"},<br/>
+             ...<br/>
+            {style: {backgroundColor:"#000000"}, handler:"xed.handleForegroundColor('#000000')"}<br/>
+        ]},      <br/>
+        {className:"backgroundColor", title:"Background color", list:[<br/>
+            {style: {backgroundColor:"#FFF700"}, handler:"xed.handleBackgroundColor('#FFF700')"},<br/>
+             ...<br/>
+            {style: {backgroundColor:"#FFFFFF"}, handler:"xed.handleBackgroundColor('#FFFFFF')"}<br/>
+        ]} ],   <br/>
+     "font": [<br/>
+        {className:"fontFace", title:"Font face", list:[<br/>
+            {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},<br/>
+              ...<br/>
+            {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}<br/>
+        ]},  ],<br/>
+    "link": [<br/>
+        {className:"link", title:"Link", handler:"xed.handleLink()"},<br/>
+        {className:"removeLink", title:"Remove link", handler:"xed.handleRemoveLink()"}],</li>
+</ol><p> </p>
+<p> </p>
+<p> </p>
+<h2>예제</h2>
+<h3>버튼 제거하기</h3>
+<p>기존 툴바의 버튼 중에 필요없는 버튼들을 감추고, 필요한 버튼들만 보여줄 수 있습니다.</p>
+<p> </p>
+<p>가장 간단한 방법으로, xq.config.defaultToolbarButtonMap 를 수정해서 툴바를 커스터마이징 할 수 있습니다.</p>
+<p> </p>
+<p>Editor.js 에서 아래와 같이 this.config.defaultToolbarButtonMap에 값을 할당하는 코드가 있습니다. </p>
+<p> </p>
+<ol class="code"><li>this.config.defaultToolbarButtonMap = [<br/>
+    this.config.defaultToolbarButtonGroups.font,<br/>
+    this.config.defaultToolbarButtonGroups.color,<br/>
+    this.config.defaultToolbarButtonGroups.style,<br/>
+    this.config.defaultToolbarButtonGroups.justification,<br/>
+    this.config.defaultToolbarButtonGroups.indentation,<br/>
+    this.config.defaultToolbarButtonGroups.block,<br/>
+    this.config.defaultToolbarButtonGroups.link,<br/>
+    this.config.defaultToolbarButtonGroups.insert,<br/>
+    [<br/>
+        {className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}<br/>
+    ],<br/>
+    [<br/>
+        {className:"undo", title:"Undo", handler:"xed.handleUndo()"},<br/>
+        {className:"redo", title:"Redo", handler:"xed.handleRedo()"}<br/>
+    ]<br/>
+];</li>
+</ol><p> </p>
+<p>이  코드를 복사해서 Xquared를 초기화하는 페이지에서 재정의 하면 됩니다. 유의할 것은 <strong>xed.setEditMode('wysiwyg');</strong> 이전에 defaultToolbarButtonMap를 변경해야 한다는 것입니다. 또한, 당연히 this.config 가 아니라 xed.config가 되어야 합니다.</p>
+<p> </p>
+<p>HTML 소스보기, 폰트컬러 팔레트, 글자 정렬, 인텐트가 필요없다고 가정해봅시다. 그럼 위 코드에서, 이 6줄을 지우면 됩니다.</p>
+<p> </p>
+<ol class="code"><li>this.config.defaultToolbarButtonGroups.color,</li>
+<li>this.config.defaultToolbarButtonGroups.justification,<br/>
+this.config.defaultToolbarButtonGroups.indentation,</li>
+<li>[<br/>
+   {className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}<br/>
+],</li>
+</ol><p> </p>
+<p>즉, 아래와 같이 defaultToolbarButtonMap를 재정의합니다.</p>
+<p> </p>
+<ol class="code"><li><strong>xed = new xq.Editor("xqEditor");</strong></li>
+<li> </li>
+<li><strong>xed.</strong>config.defaultToolbarButtonMap = [<br/>
+    <strong>xed.</strong>config.defaultToolbarButtonGroups.font,<br/>
+    <strong>xed.</strong>config.defaultToolbarButtonGroups.style,<br/>
+    <strong>xed.</strong>config.defaultToolbarButtonGroups.block,<br/>
+    <strong>xed.</strong>config.defaultToolbarButtonGroups.link,<br/>
+    <strong>xed.</strong>config.defaultToolbarButtonGroups.insert,<br/>
+    [<br/>
+        {className:"undo", title:"Undo", handler:"xed.handleUndo()"},<br/>
+        {className:"redo", title:"Redo", handler:"xed.handleRedo()"}<br/>
+    ]<br/>
+];</li>
+<li> </li>
+<li><strong>xed.setEditMode('wysiwyg');</strong></li>
+</ol><p> </p>
+<p>그러면, 아래 그림과 같이 툴바에서 버튼들이 사라진 것을 볼 수 있습니다.</p>
+<p><img title="toolbar_custum1.png" class="attachment" src="542989.attachments/1208696/toolbar_custum1.png" alt="toolbar_custum1.png"/></p>
+<p> </p>
+<h3>버튼 추가하기</h3>
+<p>툴바에 버튼을 추가해 보겠습니다.</p>
+<p> </p>
+<p>기존 툴바의 버튼들을 그대로 두고, 새롭게 버튼을 추가한다면, Array.push() 메소드를 사용하면 됩니다. 버튼 이미지 추가 없이 테스트해보기 위해서 기존에 있는 이미지를 사용하겠습니다.</p>
+<p> </p>
+<p>새로운 버튼 객체 그룹을 아래와 같이 만듭니다.</p>
+<p> </p>
+<ol class="code"><li>[<br/>
+  {className:"html", title:"Extended button", handler:"alert('New Button clicked!')"}<br/>
+]</li>
+</ol><p> </p>
+<p>그리고, 이 배열 객체를 config.defaultToolbarButtonMap에 추가합니다.</p>
+<p> </p>
+<ol class="code"><li>window.onload = function() {<br/>
+    xed = new xq.Editor("xqEditor");<br/>
+   <br/>
+    xed.config.defaultToolbarButtonMap.push(<br/>
+    [<br/>
+      {className:"html", title:"Extended button", handler:"alert('New Button clicked!')"}<br/>
+    ]<br/>
+    );<br/>
+   <br/>
+    xed.setEditMode('wysiwyg');<br/>
+}</li>
+</ol><p> </p>
+<p>이 예제를 실행하면, 툴바 맨 끝에 HTML 버튼이 추가된 것을 볼 수 있습니다.</p>
+<p> </p>
+<p><img title="button_added.png" class="attachment" src="542989.attachments/1189354/button_added.png" alt="button_added.png"/></p>
+<p> </p>
+<h3>아이콘 변경하기</h3>
+<p>툴바 이미지는 images/toolbar 폴더의 {className}.gif 를 가져옵니다. 따라서, 툴바 폴더에 className 이름과 동일한 gif 이미지를 넣으면 버튼의 이미지를 변경할 수 있습니다.</p>
+<p> </p>
+<h3>한글 폰트를 폰트 리스트에 추가하기</h3>
+<p>가장 간단한 방법으로, xq.config.defaultToolbarButtonMap 를 수정해서 툴바를 커스터마이징 할 수 있습니다.</p>
+<p> </p>
+<p>Editor.js 에서 defaultToolbarButtonMap로 찾아보면, 기본값을 할당하는 라인이 있습니다. 해당 라인을 복사하셔서, Xquared를 초기화하는 페이지에서 아래와 같이 바꿔줍니다.</p>
+<p>유의할 것은 <strong>xed.setEditMode('wysiwyg');</strong> 이전에 defaultToolbarButtonMap를 변경해야 한다는 것입니다.</p>
+<p> </p>
+<p>아래 예제코드에서 변경된 부분은 <strong>{className:"fontFace" ...</strong> 부분입니다.  여기에 폰트목록에 보일 폰트들을 설정하면 됩니다. 요소들은 각각,</p>
+<ul><li>html : 목록에 나올 제목</li>
+<li>fontFamily : 목록에 스타일링될 fontFamily</li>
+<li>handler: 실제 적용될 fontFamily</li>
+</ul><p>입니다.</p>
+<p> </p>
+<ol class="code"><li><strong>xed = new xq.Editor("xqEditor");</strong></li>
+<li> </li>
+<li>xed.config.defaultToolbarButtonMap = [<br/>
+    [<br/>
+        <span style="color: rgb(1, 0, 254);">{className:"fontFace", title:"Font face", list:[<br/>
+            {html:"굴림", style: {fontFamily: "'굴림','Gulim'"}, handler:"xed.handleFontFace('굴림,San-Serif')"},<br/>
+            {html:"굴림체", style: {fontFamily: "'굴림체','Gulimche'"}, handler:"xed.handleFontFace('굴림체,San-Serif')"},<br/>
+            {html:"궁서", style: {fontFamily: "'궁서','Gungseou'"}, handler:"xed.handleFontFace('궁서,Serif')"},<br/>
+             {html:"Arial", style: {fontFamily: "Arial"}, handler:"xed.handleFontFace('Arial')"},<br/>
+            {html:"Comic Sans MS", style: {fontFamily: "Comic Sans MS"}, handler:"xed.handleFontFace('Comic Sans MS')"},<br/>
+            {html:"Courier New", style: {fontFamily: "Courier New"}, handler:"xed.handleFontFace('Courier New')"},<br/>
+            {html:"Georgia", style: {fontFamily: "Georgia"}, handler:"xed.handleFontFace('Georgia')"},<br/>
+            {html:"Tahoma", style: {fontFamily: "Tahoma"}, handler:"xed.handleFontFace('Tahoma')"},<br/>
+            {html:"Times", style: {fontFamily: "Times"}, handler:"xed.handleFontFace('Times')"},<br/>
+            {html:"Trebuchte MS", style: {fontFamily: "Trebuchte MS"}, handler:"xed.handleFontFace('Trebuchte MS')"},<br/>
+            {html:"Verdana", style: {fontFamily: "Verdana"}, handler:"xed.handleFontFace('Verdana')"}<br/>
+        ]},</span><br/>
+       <br/>
+        {className:"fontSize", title:"Font size", list:[<br/>
+            {html:"Lorem ipsum dolor (8pt)", style: {fontSize: "8pt", marginBottom: "3px"}, handler:"xed.handleFontSize('1')"},<br/>
+            {html:"Lorem ipsum dolor (10pt)", style: {fontSize: "10pt", marginBottom: "3px"}, handler:"xed.handleFontSize('2')"},<br/>
+            {html:"Lorem ipsum dolor (12pt)", style: {fontSize: "12pt", marginBottom: "6px"}, handler:"xed.handleFontSize('3')"},<br/>
+            {html:"Lorem ipsum dolor (14pt)", style: {fontSize: "14pt", marginBottom: "10px"}, handler:"xed.handleFontSize('4')"},<br/>
+            {html:"Lorem ipsum dolor (18pt)", style: {fontSize: "18pt", marginBottom: "16px"}, handler:"xed.handleFontSize('5')"},<br/>
+            {html:"Lorem ipsum dolor (24pt)", style: {fontSize: "24pt", marginBottom: "6px"}, handler:"xed.handleFontSize('6')"}<br/>
+        ]}<br/>
+    ],<br/>
+    xed.config.defaultToolbarButtonGroups.color,<br/>
+    xed.config.defaultToolbarButtonGroups.style,<br/>
+    xed.config.defaultToolbarButtonGroups.justification,<br/>
+    xed.config.defaultToolbarButtonGroups.indentation,<br/>
+    xed.config.defaultToolbarButtonGroups.block,<br/>
+    xed.config.defaultToolbarButtonGroups.link,<br/>
+    xed.config.defaultToolbarButtonGroups.insert,<br/>
+    [<br/>
+        {className:"html", title:"Edit source", handler:"xed.toggleSourceAndWysiwygMode()"}<br/>
+    ],<br/>
+    [<br/>
+        {className:"undo", title:"Undo", handler:"xed.handleUndo()"},<br/>
+        {className:"redo", title:"Redo", handler:"xed.handleRedo()"}<br/>
+    ]<br/>
+];</li>
+<li> </li>
+<li><strong>xed.setEditMode('wysiwyg');</strong></li>
+</ol><p> </p>
+<h2>참고 문서</h2>
+<p>xquared/client/examples/ 폴더의</p>
+<ul><li>toolbar_customized1.html</li>
+<li>toolbar_customized2.html</li>
+<li>toolbar_disabled.html</li>
+</ul><p> </p>
+
+  </body></html>

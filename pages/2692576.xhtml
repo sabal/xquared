@@ -1,0 +1,157 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>플러그인 사용/제작하기</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <div id="toc" style="border: 1px solid tan; padding: 2px 10px 0px; background-color: rgb(255, 255, 250);">
+<p><strong>목차</strong></p>
+<hr/><ol><li><a href="#toc_0" title="toc_0" class="external">플러그인</a>
+<ol><li><a href="#toc_1" title="toc_1" class="external">현재 만들어진 플러그인 목록</a></li>
+<li><a href="#toc_2" title="toc_2" class="external">플러그인 사용 방법</a>
+<ol><li><a href="#toc_3" title="toc_3" class="external">파일 업로드 플러그인 사용방법</a></li>
+</ol></li>
+<li><a href="#toc_4" title="toc_4" class="external">플러그인 만들기</a>
+<ol><li><a href="#toc_5" title="toc_5" class="external">규칙</a></li>
+<li><a href="#toc_6" title="toc_6" class="external">함수</a></li>
+<li><a href="#toc_7" title="toc_7" class="external">외부 모듈 연동하기</a></li>
+<li><a href="#toc_8" title="toc_8" class="external">플러그인에서 이벤트를 받아서 처리하기</a></li>
+<li><a href="#toc_9" title="toc_9" class="external">단축키, 자동완성, 자동변환, 컨텍스트 메뉴 등의 추가</a></li>
+</ol></li>
+</ol></li>
+</ol></div>
+<p> </p>
+<h1>플러그인<sup class="tocAnchorContainer"><a href="#toc_0" title="toc_0" class="anchor" id="toc_0">#</a></sup></h1>
+<p>Xquared는 플러그인 기능을 지원합니다. 플러그인을 통해 누구나 Xquared의 기능을 수정/확장하고 배포할 수 있습니다.</p>
+<p>코드를 직접 수정하지 않고 플러그인 형태로 제작하면, Xquared 코드와의 결합성이 낮아집니다. 따라서, Xquared를 업데이트해도 문제가 생길 일이 적어집니다.</p>
+<p> </p>
+<h2>현재 만들어진 플러그인 목록<sup class="tocAnchorContainer"><a href="#toc_1" title="toc_1" class="anchor" id="toc_1">#</a></sup></h2>
+<p>기본으로 제공하는 플러그인은 javascripts/plugin 에서 확인할 수 있습니다.</p>
+<p> </p>
+<p>2009년 2월 16일 현재,</p>
+<ul><li>Resize 플러그인</li>
+<li>FileUpload 플러그인</li>
+<li>FlashMovie 삽입 플러그인</li>
+<li>Springnote 단축키 플러그인</li>
+</ul><p>등이 제공되고 있습니다.</p>
+<p> </p>
+<h2>플러그인 사용 방법<sup class="tocAnchorContainer"><a href="#toc_2" title="toc_2" class="anchor" id="toc_2">#</a></sup></h2>
+<p>플러그인을 사용하는 방법은 간단합니다. 플러그인 파일을 include한 후, Editor.addPlugin()로 추가하면 됩니다.</p>
+<p> </p>
+<p>1. 플러그인 파일을 삽입합니다.</p>
+<p> </p>
+<ol class="code"><li>&lt;script type="text/javascript" src="../javascripts/plugin/EditorResizePlugin.js"&gt;&lt;/script&gt;</li>
+</ol><p> </p>
+<p>2. Editor 객체에 플러그인을 추가합니다.</p>
+<p> </p>
+<ol class="code"><li>xed = new xq.Editor("xqEditor");<br/><strong>xed.addPlugin('EditorResize');</strong><br/>
+xed.setEditMode('wysiwyg');</li>
+</ol><p> </p>
+<p>Editor.addPlugin() 메소드를 사용해서 플러그인을 xed에 추가합니다.</p>
+<p>Xquared의 설정/초기화와 관련된 모든 메소드는 setEditMode() 이전에 선언되어야 합니다.</p>
+<p> </p>
+<p><img title="xquared_resize.png" class="attachment" src="2692576.attachments/1208468/xquared_resize.png" alt="xquared_resize.png"/></p>
+<p>에디터를 보면, Textarea 맨 하단에 Resizing을 할 수 있는 영역이 생성된 것을 확인할 수 있습니다.</p>
+<p> </p>
+<h3>파일 업로드 플러그인 사용방법<sup class="tocAnchorContainer"><a href="#toc_3" title="toc_3" class="anchor" id="toc_3">#</a></sup></h3>
+<p><a href="2768554.xhtml" title="싱글파일 업로드 플러그인" class="wiki">파일 업로드 플러그인</a> 페이지에서 자세한 사용방법을 알아볼 수 있습니다.</p>
+<p> </p>
+<h2>플러그인 만들기<sup class="tocAnchorContainer"><a href="#toc_4" title="toc_4" class="anchor" id="toc_4">#</a></sup></h2>
+<p>플러그인을 만들기 위해서는 이미 만들어진 다른 플러그인들을 예제로 활용하는 것이 가장 좋습니다.</p>
+<p>기본 제공되는 플러그인들은 각각 다음의 예제 역할도 겸합니다.</p>
+<p> </p>
+<ul><li>
+<p>툴바에 버튼을 추가하고, 버튼을 클릭했을 때 지정된 자바스크립트 액션(함수)를 수행하는 플러그인</p>
+<ul><li>FileUpload 플러그인</li>
+</ul></li>
+<li>
+<p>XQuared의 Mouse/Key 이벤트에 지정된 함수를 추가하기</p>
+<ul><li>Resize 플러그인</li>
+</ul></li>
+<li>
+<p>Xquared의 단축키, 자동완성, 자동변환에 지정된 것들을 추가</p>
+<ul><li>Springnote 단축키 플러그인</li>
+</ul></li>
+</ul><h3>규칙<sup class="tocAnchorContainer"><a href="#toc_5" title="toc_5" class="anchor" id="toc_5">#</a></sup></h3>
+<p>Xquared에서는 플러그인 설정을 쉽게 하기 위해, 플러그인 코드(.js) 파일이 위치하는 경로, 파일이름과 플러그인의 명명규칙을 제한하고 있습니다.</p>
+<p> </p>
+<p>플러그인의 이름을 EditorResize 이라고 할 때,</p>
+<p> </p>
+<ul><li><strong>플러그인의 이름</strong> : EditorResizePlugin</li>
+<li><strong>코드파일의 이름</strong> : EditorResizePlugin.js</li>
+<li><strong>플러그인 소스파일(.js)의 경로</strong> : javascripts/plugin</li>
+</ul><p> </p>
+<p>을 지켜야 합니다.</p>
+<p> </p>
+<h3>함수<sup class="tocAnchorContainer"><a href="#toc_6" title="toc_6" class="anchor" id="toc_6">#</a></sup></h3>
+<p>javascripts/plugin/Base.js은 플러그인 클래스의 Base Class 입니다. 이 베이스 클래스에서 플러그인에서 사용되는 함수들을 확인할 수 있습니다.</p>
+<p>javascripts/plugin/Base.js를 보고, 필요한 함수들을 오버라이딩해서 사용하면 됩니다.</p>
+<p> </p>
+<p>플러그인에서 사용되는 주요 함수들은 다음과 같습니다.</p>
+<p> </p>
+<ul><li>this.onAfterLoad(this.editor);</li>
+<li>this.onAfterUnload(this.editor);</li>
+</ul><p> </p>
+<p><strong>onAfterLoad</strong> 메소드는 플러그인이 로딩된 후 호출되는 메소드이며, <strong>onAfterUnload</strong> 메소드는 플러그인이 언로드된 후 호출되는 메소드입니다.</p>
+<p> </p>
+<p>onAfterLoad 메소드에서 Editor(xed)에 객체나 함수를 추가하는 방법으로 Xquared를 확장할 수 있습니다.</p>
+<p> </p>
+<h3>외부 모듈 연동하기<sup class="tocAnchorContainer"><a href="#toc_7" title="toc_7" class="anchor" id="toc_7">#</a></sup></h3>
+<p>Xquared를 도입하는 측에서 가장 많이 문의하는 것은</p>
+<p> </p>
+<ul><li>툴바에서 기본 버튼을 제거하기</li>
+<li>툴바에 새로운 버튼을 추가하기</li>
+<li>툴바에 추가한 버튼을 눌렀을 때 외부 모듈이 실행되고, 그 모듈의 결과가 에디터 내부에 삽입되기</li>
+</ul><p> </p>
+<p>입니다.</p>
+<p> </p>
+<p>이 중 툴바에서 버튼을 추가/제거하는 것은 <a href="542989.xhtml" title="툴바 사용자 정의하기" class="wiki">툴바 사용자 정의하기</a> 페이지를 참고하면 됩니다.</p>
+<p><strong>툴바에 추가한 버튼을 눌렀을 때 외부 모듈이 실행되고, 그 모듈의 결과가 에디터 내부에 삽입되기</strong>를 구현해 보겠습니다.</p>
+<p> </p>
+<p><a href="542989.xhtml" title="툴바 사용자 정의하기" class="wiki">툴바 사용자 정의하기</a> 페이지를 통해, 툴바에 버튼을 하나 추가했다고 합시다.</p>
+<p> </p>
+<h3>플러그인에서 이벤트를 받아서 처리하기<sup class="tocAnchorContainer"><a href="#toc_8" title="toc_8" class="anchor" id="toc_8">#</a></sup></h3>
+<p>DOM 이벤트가 발생할 때 플러그인이 이 이벤트를 받아서 핸들링할 수 있습니다. 이를 위해서는 플러그인 내부에 다음과 같은 구현을 해야 합니다.</p>
+<p> </p>
+<ol><li>isEventListener 메소드를 오버라이딩하고, true 를 반환하게 합니다.</li>
+<li>onEditorInitialized 함수를 만들고, 그 안에서 registerEventFirer를 사용해 이벤트를 등록하고, 원하는 이벤트를 observe 하게 합니다.</li>
+</ol><p> </p>
+<p>javascripts/plugin/EditorResizePlugin.js 가 좋은 예입니다.</p>
+<p> </p>
+<ol class="code"><li>xq.plugin.EditorResizePlugin = xq.Class(xq.plugin.Base,<br/>
+    /**<br/>
+     * @name xq.plugin.EditorResizePlugin<br/>
+     * @lends xq.plugin.EditorResizePlugin.prototype<br/>
+     * @extends xq.plugin.Base<br/>
+     * @constructor<br/>
+     */<br/>
+    {<br/>
+    isEventListener: function() {return true;},<br/>
+   <br/>
+    onAfterLoad: function(xed) {<br/>
+        this.xed = xed;<br/>
+        this.bar = null;<br/>
+        this.screen = null;<br/>
+        this.active = false;<br/>
+    },<br/>
+   <br/>
+    onEditorInitialized: function(xed) {<br/>
+        xed.registerEventFirer("Editor", "Resized");    <br/>
+        // ...중략...<br/><br/>
+        // register event<br/>
+        xq.observe(this.bar, 'mousedown', this.onMousedown.bindAsEventListener(this));<br/>
+        xq.observe(document, 'mouseup', this.onMouseup.bindAsEventListener(this));<br/>
+        xq.observe(this.bar, 'click', this.onMouseup.bindAsEventListener(this));<br/>
+        this.mousemoveHandler = this.onMousemove.bindAsEventListener(this);<br/>
+    },<br/>
+   <br/>
+    onMousedown: function(e) {</li>
+<li style="margin-left: 6em;">// 구현...</li>
+<li style="margin-left: 6em;">}</li>
+</ol><h3>단축키, 자동완성, 자동변환, 컨텍스트 메뉴 등의 추가<sup class="tocAnchorContainer"><a href="#toc_9" title="toc_9" class="anchor" id="toc_9">#</a></sup></h3>
+<p>플러그인이 Xquared의 단축키, 자동완성, 자동변환, 컨텍스트 메뉴 등의 기능을 확장할 수 있습니다. 플러그인에 해당 콜백 함수들을 오버라이딩하면 됩니다.</p>
+<p>SpringnotePlugin.js 에서 단축키-getShortcuts, 자동 완성-getAutocorrections, 자동변환-getAutocompletions, 템플릿-getTemplateProcessors 등을 오버라이딩하고 있습니다. 이를 예제로 참고하셔서 구현하시면 됩니다.</p>
+<p> </p>
+<ol class="code"><li>getShortcuts: function() {return [];},</li>
+<li>getAutocorrections: function() {return [];},<br/>
+getAutocompletions: function() {return [];},<br/>
+getTemplateProcessors: function() {return [];},</li>
+<li>getContextMenuHandlers: function() {return [];}</li>
+</ol><p> </p>
+
+  </body></html>

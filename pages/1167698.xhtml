@@ -1,0 +1,30 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Full Architecture</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <h1><span style="FONT-SIZE: x-large"><strong>Full Architecture</strong></span></h1>
+<p>This document is for developers that want to develop expansion features for Xquared (autocompletion, autocorrection, templates, redefined keyboard shortcuts, etc.) or for developers that want to edit our code.</p>
+<p> </p>
+<h4>Xquared's main modules and module relationships </h4>
+<h5>xq.Editor</h5>
+<p>xq.Editor class handles<br/></p>
+<ul><li>the conversion between editing mode and standard mode</li>
+<li>event processing between keyboard shortcuts, mouse clicks, etc.</li>
+<li>all editing command processing</li>
+<li>All settings (autocompletion, autocorrection, etc.) processing</li>
+</ul><p><br/></p>
+<h5>xq.rdom.Base</h5>
+<p>xq.rdom.Base class provides</p>
+<ul><li>default CRUB of browser DOM objects</li>
+<li>high level DOM constructive API in inferring the difference between browsers</li>
+<li>various query methods to obtain specified DOM nodes</li>
+<li>method for caret and selection administration</li>
+</ul><p> </p>
+<h5>xq.Validator</h5>
+<p>xq.Validator class executes</p>
+<ul><li>conversion of HTML to appropriate form in editing</li>
+<li>Whitelist based HTML Validation</li>
+</ul><p> </p>
+<h5>xq.plugin.Base</h5>
+<p> </p>
+<h5>xq.macro.Base</h5>
+<p><br/></p>
+
+  </body></html>

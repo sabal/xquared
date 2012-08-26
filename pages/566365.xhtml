@@ -1,0 +1,13 @@
+<html version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.w3.org/1999/xhtml&#10;    http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><title>Xquared 20071101 버전</title><link href="sabal.css" rel="stylesheet" media="screen" type="text/css"/></head><body>
+    <p>소스 편집 기능 등을 추가한 11월 01일 버전이 릴리즈 되었습니다! 기존 버전을 쓰시던 분들 께서는 Editor.setEditMode 부분을 수정해주셔야 합니다. 자세한 내용은 아래를 참고하세요.</p>
+<p> </p>
+<p><a href="http://jania.pe.kr/aw/moin.cgi/Xquared?action=AttachFile&amp;do=get&amp;target=xquared20071101_2.tar.gz" class="external" title="xquared20071101_2.tar.gz">xquared20071101_2.tar.gz</a></p>
+<ul><li><strong>추가: 기본적인 HTML 소스 편집 기능이 추가되었습니다. 툴바의 "HTML" 아이콘을 누르면 소스 편집 모드와 WYSIWYG 모드가 토글됩니다. 소스 편집 모드에서 편집된 소스는 저장시 혹은 WYSIWYG 모드로 전환 시 자동으로 Validation 됩니다.</strong></li>
+<li>추가: Editor.config.changeCursorOnLink 설정을 추가하였습니다. 설정값이 true 이면 링크 위에 마우스를 올렸을 때 마우스 커서 모양이 손가락으로 바뀝니다.</li>
+<li>추 가: 합쳐지지 않은 자바스크립트 파일을 HTML에 쉽게 로딩할 수 있도록 동적 로딩 기능을 추가하였습니다. 개발 및 디버깅 시 유용한 기능입니다. script src에 'Xquared.js?load_others=1'로 설정하면 나머지 스크립트를 순서에 맞게 자동으로 읽어옵니다. 단, 실제 사이트에서는 합쳐진 자바스크립트 파일(xquared.js 혹은 xquared_min.js)을 사용하실 것을 권장합니다.</li>
+<li><strong>수정: 소스 편집 모드 추가에 따라 Editor.setEditMode의 인자가 true, false에서 'wysiwyg', 'source', 'readonly'로 바뀌었습니다.</strong></li>
+<li>수정: Firefox에서 DEL 혹은 BS 키를 누를 때 간혹 현재 편집 위치 이후의 모든 빈 줄이 사라지던 버그를 수정하였습니다.</li>
+<li>수정: DEL 키나 BS 키로 빈 엘리먼트를 삭제하려고 할 때 간혹 원하는 동작이 수행되지 않던 버그를 수정하였습니다.</li>
+</ul><p> </p>
+
+  </body></html>
